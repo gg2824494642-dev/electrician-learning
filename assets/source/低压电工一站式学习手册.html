@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>低压电工 · 一站式学习通关手册（学习表+精讲+练习卷合一）</title>
+<style>
+:root{--blue:#185FA5;--sky:#0EA5E9;--orange:#F97316;--blue-d:#0C447C;--blue-l:#E6F1FB;
+--amber:#854F0B;--amber-l:#FAEEDA;--amber-d:#633806;--red:#A32D2D;--green:#3B6D11;
+--gray:#5F5E5A;--line:#D3D1C7;--ink:#2C2C2A;}
+*{box-sizing:border-box;}
+[id]{scroll-margin-top:64px;}
+body{font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;color:var(--ink);line-height:1.75;margin:0;background:#F4F7FB;}
+.wrap{max-width:1000px;margin:0 auto;padding:0 16px 70px;}
+.hero{background:linear-gradient(135deg,#0C447C,#185FA5 55%,#378ADD);color:#fff;padding:34px 26px 24px;}
+.hero h1{margin:0 0 6px;font-size:27px;}
+.hero p{margin:4px 0;font-size:15px;opacity:.95;}
+.hero p.dim{font-size:13px;opacity:.85;}
+.pills{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;}
+.pill{background:rgba(255,255,255,.16);padding:6px 13px;border-radius:999px;font-size:13px;}
+.topnav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.97);border-bottom:1px solid #E2E8F0;}
+.navin{display:flex;align-items:center;gap:6px;padding:8px 14px;overflow-x:auto;}
+.navbrand{font-weight:700;color:var(--blue-d);font-size:14px;white-space:nowrap;margin-right:4px;}
+nav a{font-size:13px;color:#0C447C;text-decoration:none;padding:5px 10px;border-radius:8px;white-space:nowrap;background:#F1F5F9;}
+nav a:hover{background:#E6F1FB;}
+.navbtn{background:#E6F1FB;border:1px solid #B5D4F4;color:#0C447C;border-radius:8px;padding:5px 10px;font-size:12px;cursor:pointer;white-space:nowrap;}
+.navbtn.alt{background:#FAEEDA;border-color:#FAC775;color:#633806;}
+.lead{background:var(--blue-l);border-radius:12px;padding:16px 20px;color:var(--blue-d);margin-top:18px;font-size:14.5px;}
+.icards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0;}
+.icard{background:#fff;border-radius:12px;padding:14px 16px;border-left:5px solid var(--blue);box-shadow:0 2px 8px rgba(0,0,0,.05);}
+.icard.o{border-left-color:var(--orange);} .icard.g{border-left-color:var(--green);} .icard.s{border-left-color:var(--sky);}
+.icard h3{margin:0 0 4px;font-size:15px;color:var(--ink);} .icard p{margin:0;font-size:12.5px;color:var(--gray);line-height:1.55;}
+@media (max-width:760px){.icards{grid-template-columns:1fr 1fr;}}
+section.week{margin-top:30px;}
+.wkhead{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#0C447C,#378ADD);color:#fff;border-radius:14px;padding:12px 18px;flex-wrap:wrap;}
+.wkhead.warm{background:linear-gradient(135deg,#C2410C,#FB923C);}
+.wknum{font-size:20px;font-weight:800;white-space:nowrap;}
+.wktitle{font-size:17px;font-weight:600;}
+.wktime{margin-left:auto;font-size:12px;background:rgba(255,255,255,.18);padding:4px 11px;border-radius:999px;}
+.toplink{color:#fff;text-decoration:none;font-size:12px;background:rgba(255,255,255,.14);padding:4px 10px;border-radius:999px;}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:13.5px;}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:center;}
+th{background:var(--blue-l);color:var(--blue-d);}
+tr:nth-child(even) td{background:#FAFBFC;}
+.dtable{margin-top:10px;}
+.dtable th{background:var(--blue);color:#fff;font-size:13px;}
+.dtable td{text-align:left;vertical-align:top;}
+.dtable td.c{text-align:center;white-space:nowrap;}
+.dtable td.dur{color:var(--orange);font-weight:700;text-align:center;}
+.dtable a{color:var(--blue);text-decoration:none;font-size:12.5px;white-space:nowrap;}
+.dtable a:hover{text-decoration:underline;}
+.qlink{color:var(--orange)!important;font-weight:700;}
+.jumprow{margin:10px 2px 2px;font-size:13px;color:var(--gray);}
+.jumprow a{color:var(--orange);font-weight:700;text-decoration:none;}
+.fraglabel{margin:20px 0 6px;font-size:15px;font-weight:700;color:var(--blue-d);}
+.fraglabel.qz{color:#C2410C;}
+h3.ctitle{font-size:19px;color:var(--blue-d);border-left:6px solid var(--orange);padding-left:12px;margin:26px 0 8px;}
+h3.ctitle .sub{display:block;font-size:12.5px;color:var(--gray);font-weight:400;margin-top:2px;}
+h4{font-size:16px;color:var(--amber-d);margin:20px 0 6px;border-left:4px solid #FAC775;padding-left:10px;}
+.card{border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:18px 0;background:#fff;}
+.lead2,.analogy{background:var(--amber-l);border-radius:10px;padding:12px 16px;color:var(--amber-d);margin:12px 0;}
+.formula{background:#0C447C;color:#fff;border-radius:10px;padding:12px 16px;font-size:17px;text-align:center;letter-spacing:1px;margin:14px 0;font-family:Consolas,monospace;}
+.note,.warn{background:#FCEBEB;border-left:4px solid var(--red);padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13.5px;}
+.tip{background:#EAF3DE;border-left:4px solid var(--green);padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0;}
+.kou{background:#FAEEDA;border:1px dashed var(--amber);border-radius:10px;padding:12px 16px;color:var(--amber-d);margin:12px 0;}
+.eg{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:12px 0;}
+.eg b{color:var(--blue-d);}
+.small{font-size:13px;color:var(--gray);}
+code{background:#EFEFEF;padding:1px 6px;border-radius:5px;font-family:Consolas,monospace;font-size:.95em;}
+svg{width:100%;height:auto;display:block;margin:14px 0;}
+.links a{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;padding:7px 13px;border-radius:8px;margin:6px 8px 6px 0;font-size:13px;}
+.links a:hover{background:var(--blue-d);}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:20px;color:#fff;margin-right:8px;}
+.tag.i{background:#185FA5;} .tag.u{background:#854F0B;} .tag.r{background:#3B6D11;} .tag.p{background:#A32D2D;}
+.q{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:8px 0;background:#fff;}
+.qt{font-size:14.5px;}
+.no{color:#185FA5;font-weight:700;margin-right:2px;}
+.slot{color:#5F5E5A;letter-spacing:2px;}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:2px 18px;margin:6px 0 2px 20px;font-size:13.5px;color:#334155;}
+details{margin-top:6px;}
+summary{cursor:pointer;color:var(--blue);font-size:13px;user-select:none;}
+summary:hover{color:var(--blue-d);}
+.ans{background:#E6F1FB;border-radius:8px;padding:8px 12px;margin-top:6px;font-size:13.5px;color:#334155;}
+.ans b.ok{color:var(--green);} .ans b.no2{color:var(--red);}
+.key{background:#fff;border:1px dashed var(--amber);border-radius:10px;padding:12px 16px;margin:14px 0;}
+.krow{font-size:14px;letter-spacing:1px;margin:3px 0;font-weight:600;color:var(--amber-d);}
+.sec{color:var(--amber-d);font-weight:600;font-size:14px;margin:14px 0 4px;}
+.quizwrap{background:#fff;border:1px solid #FED7AA;border-radius:16px;padding:6px 18px 14px;margin-top:8px;}
+.tipsbox{background:#FFF7ED;border-radius:14px;padding:16px 20px;margin-top:30px;}
+.tipsbox h3{margin:0 0 8px;color:#C2410C;font-size:17px;}
+.tipsbox li{font-size:14px;margin:5px 0;}
+footer{text-align:center;color:var(--gray);font-size:12px;margin-top:30px;}
+@media print{body{background:#fff;}.topnav{display:none;}.hero{border-radius:0;}section.week{page-break-before:always;}.q,.card,.eg{break-inside:avoid;}}
+</style></head><body>
+
+<header class="hero" id="top">
+  <h1>⚡ 低压电工 · 一站式学习通关手册</h1>
+  <p>每日学习表 + 概念精讲 + 五套练习卷 · 全部合并本页 —— 学完当周内容，往下滚动直接做题</p>
+  <p class="dim">深圳南山深职训学员专用 · 零基础 · 每日 1–2 小时 · 可整页打印 · 无需再打开 PPT 或其他文件</p>
+  <div class="pills">
+    <span class="pill">70 天每日计划</span><span class="pill">17 张零基础图解</span>
+    <span class="pill">240 题附答案解疑</span><span class="pill">双 80 分合格</span>
+    <span class="pill">报考 ≈2219 元</span>
+  </div>
+</header>
+
+<nav class="topnav"><div class="navin">
+  <span class="navbrand">📖 通关手册</span>
+  <a href="#week1">第1周</a><a href="#week2">第2周</a><a href="#week3">第3周</a><a href="#week4">第4周</a>
+  <a href="#week5">第5周</a><a href="#week6">第6周</a><a href="#week7">第7周</a><a href="#week8">第8周</a>
+  <a href="#week9">第9周·卷五</a><a href="#week10">第10周·考试</a>
+  <button class="navbtn" onclick="setAll(true)">📖 展开全部解析</button>
+  <button class="navbtn alt" onclick="setAll(false)">✍ 收起（自测）</button>
+</div></nav>
+
+<div class="wrap">
+
+<div class="lead">
+💡 <b>使用方法：</b>① 每天按「第 N 周计划表」完成一行，点 🔍 直达 B 站对应视频；② 表格下方就是<b>本周概念精讲</b>（含图解），配合当天内容阅读；③ 周日复盘后，<b>限时闭卷</b>做本页内嵌的练习卷（第 2/4/6/8 周各一卷，第 9 周全真模拟卷五），点每题「答案与解析」核对解疑。本页已含<b>全部学习与练习内容</b>——一个链接搞定，不用再开 PPT。
+</div>
+
+<div class="icards">
+  <div class="icard"><h3>🗓 70 天计划</h3><p>第 1–9 周每日 1–2h 自学；第 10 周深职训线下集训 7.5 天 + 考试。</p></div>
+  <div class="icard s"><h3>📖 概念精讲</h3><p>每周内容配超详细图解教程：串并联、三相、电容电感、安全、电机、仪表、急救。</p></div>
+  <div class="icard o"><h3>✍ 五套练习卷</h3><p>240 题全部附答案与逐题解疑，嵌在对应周末；打印时解析自动展开。</p></div>
+  <div class="icard g"><h3>🎯 双 80 合格</h3><p>理论机考 100 题 / 实操 4 科目均 80 分合格；错题当天清，考前一周只刷错题。</p></div>
+</div>
+
+<div class="card">
+<b>考试与费用速览</b>
+<table>
+<tr><th style="width:110px">项目</th><th>要点</th></tr>
+<tr><td>理论机考</td><td style="text-align:left">100 题（70 判断 + 30 单选）· 120 分钟 · <b>80 分</b>合格 · 五模块：安全35% / 基础25% / 法规15% / 设备15% / 急救10%</td></tr>
+<tr><td>实操考试</td><td style="text-align:left">四科目：①安全用具 20 ②安全接线 40 ③隐患排查 20 ④应急处置 20 · <b>80 分</b>合格 · 带电接线/短路等为否决项</td></tr>
+<tr><td>报考费用</td><td style="text-align:left">培训 2010 元 + 考核 209 元（理论 56 + 实操 153，粤省事自缴）≈ <b>2219 元</b></td></tr>
+<tr><td>证书管理</td><td style="text-align:left">应急管理部门核发 · 6 年有效 · 每 3 年复审一次（仅考理论）</td></tr>
+</table>
+</div>
+
+<div class="card">
+<b>五套练习卷 · 成绩记录表</b>
+<table>
+<tr><th>卷号</th><th>对应周次</th><th>题量</th><th>建议用时</th><th>首次得分</th><th>错题数</th><th>重做得分</th></tr>
+<tr><td>卷一</td><td>第2周周日</td><td>25判断+10单选</td><td>40 分钟</td><td>　</td><td>　</td><td>　</td></tr>
+<tr><td>卷二</td><td>第4周周日</td><td>25判断+10单选</td><td>40 分钟</td><td>　</td><td>　</td><td>　</td></tr>
+<tr><td>卷三</td><td>第6周周日</td><td>25判断+10单选</td><td>40 分钟</td><td>　</td><td>　</td><td>　</td></tr>
+<tr><td>卷四</td><td>第8周周日</td><td>25判断+10单选</td><td>40 分钟</td><td>　</td><td>　</td><td>　</td></tr>
+<tr><td>卷五</td><td>第9周冲刺</td><td>70判断+30单选</td><td>120 分钟</td><td>　</td><td>　</td><td>　</td></tr>
+</table>
+<p class="small">评分：卷一~卷四判断每题 2 分、单选每题 5 分；卷五每题 1 分（与真考一致）；均 80 分合格。</p>
+</div>
+
+<section class="week" id="week1">
+<div class="wkhead">
+  <span class="wknum">第1周</span><span class="wktitle">电路与电气符号</span>
+  <span class="wktime">每日约 1–1.5h</span>
+  <a class="toplink" href="#top">↑ 顶部</a>
+</div>
+<table class="dtable">
+<thead><tr><th style="width:50px">星期</th><th>当日具体学习内容（点🔍看 B 站）</th><th style="width:168px">B 站对应</th><th style="width:56px">时长</th></tr></thead><tbody>
+<tr><td class='c'>周一</td><td>电的基本概念：电流/电压/电阻/电功率；单位与换算</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%AD%A6%E7%94%B5%E5%B7%A5%20%E5%B7%A5%E6%8E%A7%E5%9C%88' target='_blank'>🔍 零基础学电工 工控圈</a></td><td class='c dur'>1h</td></tr><tr><td class='c'>周二</td><td>欧姆定律与串、并联电路计算（含例题）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E6%AC%A7%E5%A7%86%E5%AE%9A%E5%BE%8B%20%E4%B8%B2%E5%B9%B6%E8%81%94' target='_blank'>🔍 欧姆定律 串并联</a></td><td class='c dur'>1h</td></tr><tr><td class='c'>周三</td><td>直流电与交流电基础：频率、周期、相位</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%BA%A4%E6%B5%81%E7%94%B5%20%E5%9F%BA%E7%A1%80' target='_blank'>🔍 交流电 基础</a></td><td class='c dur'>1h</td></tr><tr><td class='c'>周四</td><td>三相交流电（380/220V）与星形/三角形接法</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%B8%89%E7%9B%B8%E7%94%B5%20%E6%98%9F%E5%BD%A2%20%E4%B8%89%E8%A7%92%E5%BD%A2' target='_blank'>🔍 三相电 星形 三角形</a></td><td class='c dur'>1h</td></tr><tr><td class='c'>周五</td><td>常用电气图形符号识读：开关/电机/继电器/接触器</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E7%94%B5%E6%B0%94%E7%AC%A6%E5%8F%B7%20%E8%AF%86%E5%9B%BE' target='_blank'>🔍 电气符号 识图</a></td><td class='c dur'>1h</td></tr><tr><td class='c'>周六</td><td>识图练习：看懂一张简单电气原理图；复习本周</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E7%94%B5%E6%B0%94%E5%8E%9F%E7%90%86%E5%9B%BE%20%E8%AF%86%E8%AF%BB' target='_blank'>🔍 电气原理图 识读</a></td><td class='c dur'>1h</td></tr><tr><td class='c'>周日</td><td>周末复盘：做 20 题 + 自画符号卡片</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%BD%8E%E5%8E%8B%E7%94%B5%E5%B7%A5%20%E7%90%86%E8%AE%BA%E9%A2%98%E5%BA%93' target='_blank'>🔍 低压电工 理论题库</a></td><td class='c dur'>1.5h</td></tr></tbody></table>
+<div class='jumprow'>📖 下方为本周概念精讲，配合上方每日安排阅读</div>
+<div class='fraglabel'>📘 概念精讲 · 电学基础（四大概念 / 欧姆定律 / 单位换算 / 考试例题 / 口诀）</div>
+<h3 class="ctitle" id="c1">一、总览：四兄弟一台戏</h3>
+<p>先记住一句话：<b>电压推着电流跑，电阻拦着电流跑，功率说明电干了多少活。</b> 四个量谁也离不了谁。</p>
+
+<table>
+<tr><th>名称</th><th>符号</th><th>单位</th><th>单位符号</th><th>一句话理解</th><th>水路类比</th></tr>
+<tr><td>电流</td><td>I</td><td>安培</td><td>A</td><td>电在导线里"流动"的快慢</td><td>水流（升/秒）</td></tr>
+<tr><td>电压</td><td>U</td><td>伏特</td><td>V</td><td>推着电跑的"力"</td><td>水压</td></tr>
+<tr><td>电阻</td><td>R</td><td>欧姆</td><td>Ω</td><td>导体拦电的"劲"</td><td>阀门/窄管</td></tr>
+<tr><td>电功率</td><td>P</td><td>瓦特</td><td>W</td><td>电每秒干多少活</td><td>水车做功</td></tr>
+</table>
+
+<div class="analogy">
+🏞️ <b>水路类比（贯穿全篇）：</b>把电路想成一条水路——<b>电池像水泵</b>（提供推力），<b>导线像水管</b>，<b>电流像水流</b>，<b>电压像水压</b>（推力大小），<b>电阻像阀门收窄</b>（越窄越难流），<b>电功率像水车转起来做的功</b>。水压越大、水管越粗（电阻小），水流就越急。
+</div>
+
+<svg viewBox="0 0 680 230" role="img" aria-label="四概念与水路对应">
+<defs><marker id="a1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect x="30" y="30" width="290" height="170" rx="14" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="175" y="56" text-anchor="middle" font-size="14" font-weight="600" fill="#0C447C">水路</text>
+<circle cx="90" cy="100" r="22" fill="#85B7EB" stroke="#185FA5" stroke-width="0.5"/><text x="90" y="100" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#042C53">水泵</text>
+<text x="170" y="92" font-size="13" fill="#5F5E5A">水压 →</text><text x="170" y="112" font-size="13" fill="#5F5E5A">水流 →</text>
+<rect x="200" y="86" width="60" height="26" rx="6" fill="#FAC775" stroke="#854F0B" stroke-width="0.5"/><text x="230" y="103" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#412402">窄阀</text>
+<rect x="360" y="30" width="290" height="170" rx="14" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text x="505" y="56" text-anchor="middle" font-size="14" font-weight="600" fill="#633806">电路</text>
+<circle cx="420" cy="100" r="22" fill="#EF9F27" stroke="#854F0B" stroke-width="0.5"/><text x="420" y="100" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#412402">电池</text>
+<text x="500" y="92" font-size="13" fill="#5F5E5A">电压U →</text><text x="500" y="112" font-size="13" fill="#5F5E5A">电流I →</text>
+<rect x="540" y="86" width="60" height="26" rx="6" fill="#C0DD97" stroke="#3B6D11" stroke-width="0.5"/><text x="570" y="103" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#27500A">电阻R</text>
+<path d="M320 100 H360" stroke="#888780" stroke-width="1.5" fill="none" marker-end="url(#a1)"/>
+</svg>
+
+<!-- ============ 电流 ============ -->
+<h3 class="ctitle" id="c2">二、电流 I —— 电在"跑"</h3>
+<div class="card i">
+<span class="tag i">电流</span><b>符号 I ｜ 单位 安培(A)</b>
+<h4>1. 它到底是什么？</h4>
+<p>电流是<b>电荷（电子）在导线里定向移动</b>形成的。你可以把它想成"水管里流动的水"。电子从电源负极出发，经过导线和用电器，回到正极，这一圈就叫"电流"。</p>
+
+<h4>2. 单位与换算</h4>
+<table>
+<tr><th>单位</th><th>符号</th><th>等于多少个安培(A)</th><th>生活例子</th></tr>
+<tr><td>千安</td><td>kA</td><td>1 kA = 1000 A</td><td>大型变电站</td></tr>
+<tr><td>安培（主单位）</td><td>A</td><td>1 A（基准）</td><td>一个 100W 灯泡约 0.45A</td></tr>
+<tr><td>毫安</td><td>mA</td><td>1 A = 1000 mA</td><td>手机充电约 2000 mA = 2A</td></tr>
+<tr><td>微安</td><td>μA</td><td>1 A = 1,000,000 μA</td><td>人体微弱生物电</td></tr>
+</table>
+<div class="formula">1 A = 1000 mA ｜ 1 mA = 1000 μA ｜ 小 → 大 ÷1000，大 → 小 ×1000</div>
+
+<h4>3. 电流的方向（考试常考！）</h4>
+<p>物理上规定：<b>正电荷移动的方向为电流方向</b>，即从电源<b>正极 → 负极</b>。但金属里真正跑的是<b>电子</b>，电子是<b>负极 → 正极</b>。考题里说的"电流方向"一律按<b>正电荷方向（正极到负极）</b>答，别和 electrons 搞混。</p>
+
+<h4>4. 怎么测量？</h4>
+<p>用<b>电流表（安培表）</b>，必须<b>串联</b>进电路（像把水表串进水管），且<b>电流从"+"接线柱进、"−"出</b>，否则指针反打会打弯。低压电工实操考"安全用具使用"会用到钳形表测电流——<b>钳形表不用断电、不用拆线</b>，直接夹住一根导线读数。</p>
+<div class="tip">📌 口诀：电流表"串"着走，+"进−"出别接反；测大电流用钳形表，夹一根线就行。</div>
+</div>
+
+<!-- ============ 电压 ============ -->
+<h3 class="ctitle" id="c3">三、电压 U —— 电的"推力"</h3>
+<div class="card u">
+<span class="tag u">电压</span><b>符号 U ｜ 单位 伏特(V)</b>
+<h4>1. 它到底是什么？</h4>
+<p>电压也叫<b>电位差 / 电势差</b>。两点之间"电的推力差"就是电压。没有电压，电荷就不会动，就没有电流——<b>电压是形成电流的原因</b>。类比：没有水压，水就不会流。</p>
+
+<h4>2. 单位与换算</h4>
+<table>
+<tr><th>单位</th><th>符号</th><th>等于多少个伏特(V)</th><th>生活例子</th></tr>
+<tr><td>千伏</td><td>kV</td><td>1 kV = 1000 V</td><td>高压输电 10kV/110kV</td></tr>
+<tr><td>伏特（主单位）</td><td>V</td><td>1 V（基准）</td><td>干电池 1.5V、USB 5V</td></tr>
+<tr><td>毫伏</td><td>mV</td><td>1 V = 1000 mV</td><td>热电偶信号 mV 级</td></tr>
+<tr><td>微伏</td><td>μV</td><td>1 V = 1,000,000 μV</td><td>微弱传感器信号</td></tr>
+</table>
+<div class="formula">1 kV = 1000 V ｜ 1 V = 1000 mV ｜ 同样 ×1000 / ÷1000 规则</div>
+
+<h4>3. 常见电压值（考试背下来）</h4>
+<table>
+<tr><th>场景</th><th>电压</th><th>备注</th></tr>
+<tr><td>安全特低电压（SELV）</td><td>≤ 36 V</td><td>潮湿环境常用 12V/24V</td></tr>
+<tr><td>普通单相民用</td><td>220 V</td><td>我国家庭标准</td></tr>
+<tr><td>三相工业</td><td>380 V</td><td>线电压（相电压 220V）</td></tr>
+<tr><td>低压电工证范围</td><td>≤ 1000 V（交流）</td><td>证上写的作业范围</td></tr>
+</table>
+<div class="note">⚠️ 安全重点：<b>36V 是安全电压上限</b>（干燥环境）；潮湿、金属容器内必须用 <b>12V</b>。低压电工证只覆盖 <b>1kV 以下</b>，超过就是高压，无证绝对不能碰！</div>
+
+<h4>4. 怎么测量？</h4>
+<p>用<b>电压表（伏特表）</b>，必须<b>并联</b>在被测元件两端（像把水压表接在管子两头），同样"<b>+</b>进<b>−</b>出"。实测 household 插座：火线—零线 = 220V，火线—地线 ≈ 220V，零线—地线 ≈ 0V。</p>
+</div>
+
+<!-- ============ 电阻 ============ -->
+<h3 class="ctitle" id="c4">四、电阻 R —— 电的"拦路虎"</h3>
+<div class="card r">
+<span class="tag r">电阻</span><b>符号 R ｜ 单位 欧姆(Ω)</b>
+<h4>1. 它到底是什么？</h4>
+<p>导体对电流的<b>阻碍作用</b>叫电阻。任何导线都有电阻，只是大小不同。类比：水管越细越长，水越难流——电阻越大。</p>
+
+<h4>2. 单位与换算（注意跨度大！）</h4>
+<table>
+<tr><th>单位</th><th>符号</th><th>等于多少个欧姆(Ω)</th><th>例子</th></tr>
+<tr><td>兆欧</td><td>MΩ</td><td>1 MΩ = 1,000,000 Ω</td><td>绝缘电阻（越大越安全）</td></tr>
+<tr><td>千欧</td><td>kΩ</td><td>1 kΩ = 1000 Ω</td><td>普通电阻标称 1kΩ~1MΩ</td></tr>
+<tr><td>欧姆（主单位）</td><td>Ω</td><td>1 Ω（基准）</td><td>1A 电流在 1V 下所受阻碍</td></tr>
+<tr><td>毫欧</td><td>mΩ</td><td>1 Ω = 1000 mΩ</td><td>导线、接头微小电阻</td></tr>
+</table>
+<div class="formula">1 MΩ = 1000 kΩ = 1,000,000 Ω ｜ 大→小 ×1000，小→大 ÷1000</div>
+
+<h4>3. 电阻由什么决定？（材料公式，考试常考）</h4>
+<div class="formula">R = ρ × L / S</div>
+<p>ρ（rho）= 电阻率（材料本身性质，铜小铝大）；L = 导线长度（越长电阻越大）；S = 横截面积（越粗电阻越小）。</p>
+<table>
+<tr><th>想让电阻变大</th><th>想让电阻变小</th></tr>
+<tr><td>用电阻率大的材料（如铁）</td><td>用电阻率小的材料（如铜、银）</td></tr>
+<tr><td>把导线拉长</td><td>把导线加粗（S 变大）</td></tr>
+<tr><td>温度升高（金属导体通常如此）</td><td>温度降低</td></tr>
+</table>
+
+<h4>4. 电阻与温度（易错点）</h4>
+<p>金属导体：温度↑ → 电阻↑；碳/半导体：温度↑ → 电阻↓。低压电工考"导线发热"就靠这条：<b>电流过大→发热→电阻再升→更热→烧断/起火</b>，所以过载保护很重要。</p>
+
+<h4>5. 怎么测量？</h4>
+<p>用<b>万用表电阻档（Ω）</b>或<b>兆欧表（摇表）</b>。关键：<b>必须断电、被测件脱离电路</b>再测！兆欧表专测绝缘电阻（MΩ 级），是电工上岗必会的安全检测。</p>
+<div class="tip">📌 口诀：电阻测量要"断电脱离"，Ω 档测通断，摇表测绝缘（MΩ 越大越安全）。</div>
+</div>
+
+<!-- ============ 功率 ============ -->
+<h3 class="ctitle" id="c5">五、电功率 P —— 电干活的"快慢"</h3>
+<div class="card p">
+<span class="tag p">功率</span><b>符号 P ｜ 单位 瓦特(W)</b>
+<h4>1. 它到底是什么？</h4>
+<p>电功率表示<b>电流做功的快慢</b>，即<b>每秒消耗/转换多少电能</b>。类比：水车转得快不快、一秒能做多少功。灯泡 60W 比 20W 亮，就是功率大、干活快。</p>
+
+<h4>2. 单位与换算</h4>
+<table>
+<tr><th>单位</th><th>符号</th><th>等于多少个瓦特(W)</th><th>例子</th></tr>
+<tr><td>兆瓦</td><td>MW</td><td>1 MW = 1,000,000 W</td><td>发电站</td></tr>
+<tr><td>千瓦</td><td>kW</td><td>1 kW = 1000 W</td><td>空调 1.5kW、电热水器 2kW</td></tr>
+<tr><td>瓦特（主单位）</td><td>W</td><td>1 W（基准）</td><td>白炽灯 40~100W</td></tr>
+<tr><td>毫瓦</td><td>mW</td><td>1 W = 1000 mW</td><td>LED 指示灯、耳机</td></tr>
+</table>
+<div class="formula">1 kW = 1000 W ｜ 1 MW = 1000 kW ｜ 同样 ×1000 / ÷1000</div>
+
+<h4>3. 三大核心公式（必背！）</h4>
+<div class="formula">P = U × I &nbsp;&nbsp;（通用，任何电路）</div>
+<div class="formula">P = I² × R &nbsp;&nbsp;（已知电流、电阻时用）</div>
+<div class="formula">P = U² ÷ R &nbsp;&nbsp;（已知电压、电阻时用）</div>
+<p>这三个公式本质同一个：把欧姆定律 <code>U=IR</code> 代入 <code>P=UI</code> 就能推出后两个。低压电工最常用 <b>P=UI</b> 估算负载（比如一个 220V、10A 的回路能带多大功率）。</p>
+
+<h4>4. 功率、电能、电费的关系</h4>
+<div class="formula">电能 W = P × t &nbsp;（单位：千瓦时 kWh = "度"）</div>
+<p>1 度电 = 1 kW 的电器用 1 小时。例：2000W(=2kW) 电暖器开 5 小时 = 2×5 = 10 度电。</p>
+
+<h4>5. 焦耳定律（发热公式，安全必考）</h4>
+<div class="formula">Q = I² × R × t &nbsp;（电流流过电阻产生的热量）</div>
+<p>电流越大、电阻越大、时间越长，发热越猛。这就是<b>短路/过载会起火</b>的物理原因——短路时 R 极小、I 极大，Q 暴增。所以电路必须装<b>熔断器/断路器</b>。</p>
+<div class="note">⚠️ 考试高频：计算题常给额定电压/功率，求电阻或电流。记住"额定"三兄弟：<code>P额=U额×I额</code>、<code>R=U额²/P额</code>。</div>
+</div>
+
+<!-- ============ 欧姆定律 ============ -->
+<h3 class="ctitle" id="c6">六、欧姆定律：把三个量串起来</h3>
+<p>这是全篇最核心的一条，把<b>电压、电流、电阻</b>用一个公式绑死：</p>
+<div class="formula">U = I × R &nbsp;（电压 = 电流 × 电阻）</div>
+<p>由此可推出两个变形（盖住谁就求谁）：</p>
+<div class="formula">I = U ÷ R &nbsp;&nbsp;&nbsp; R = U ÷ I</div>
+
+<svg viewBox="0 0 680 220" role="img" aria-label="欧姆定律三角记忆法">
+<defs><marker id="a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<polygon points="340,30 480,190 200,190" fill="#E6F1FB" stroke="#185FA5" stroke-width="1"/>
+<text x="340" y="70" text-anchor="middle" font-size="22" font-weight="600" fill="#0C447C">U</text>
+<text x="262" y="170" text-anchor="middle" font-size="20" fill="#042C53">I</text>
+<text x="418" y="170" text-anchor="middle" font-size="20" fill="#042C53">R</text>
+<text x="340" y="215" text-anchor="middle" font-size="13" fill="#5F5E5A">盖住谁，谁就在分子上（U 在顶，I、R 在底相乘）</text>
+</svg>
+
+<div class="kou">🔺 <b>三角记忆法：</b>画个倒三角，顶上是 U，底下左右是 I 和 R。<b>U = I × R</b>；盖住 I 得 <b>I = U ÷ R</b>；盖住 R 得 <b>R = U ÷ I</b>。考试时画这个三角，永远不慌。</div>
+
+<h4>串并联里的规律（考试小题）</h4>
+<table>
+<tr><th>连接方式</th><th>电流 I</th><th>电压 U</th><th>电阻 R</th></tr>
+<tr><td>串联</td><td>处处相等 I=I₁=I₂</td><td>分压 U=U₁+U₂</td><td>越串越大 R=R₁+R₂</td></tr>
+<tr><td>并联</td><td>分流 I=I₁+I₂</td><td>处处相等 U=U₁=U₂</td><td>越并越小 1/R=1/R₁+1/R₂</td></tr>
+</table>
+<div class="tip">📌 家庭用电都是<b>并联</b>——所以拔掉一个电器，其他照常工作；插座越多并联支路越多，总电阻越小、总电流越大，这就是要算"回路总负载"的原因。</div>
+
+<svg viewBox="0 0 680 300" role="img" aria-label="电流表串联与电压表并联接法">
+<title>电流表串联、电压表并联的正确接法对比</title>
+<rect x="30" y="50" width="300" height="200" rx="12" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<rect x="350" y="50" width="300" height="200" rx="12" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text x="180" y="76" text-anchor="middle" font-size="14" font-weight="600" fill="#0C447C">电流表 → 串联（断开电路串入）</text>
+<text x="500" y="76" text-anchor="middle" font-size="14" font-weight="600" fill="#633806">电压表 → 并联（跨接元件两端）</text>
+<g stroke="#334155" stroke-width="1.6" fill="none">
+<path d="M100 160 H150 M190 160 H240 M278 160 H310"/>
+<path d="M420 160 H470 M508 160 H560 M560 160 H620"/>
+<path d="M482 100 V132 M536 100 V132 M482 100 H536"/>
+</g>
+<circle cx="80" cy="160" r="20" fill="#fff" stroke="#185FA5" stroke-width="1.5"/>
+<text x="80" y="165" text-anchor="middle" font-size="12" fill="#0C447C">U</text>
+<circle cx="170" cy="160" r="20" fill="#fff" stroke="#A32D2D" stroke-width="2"/>
+<text x="170" y="165" text-anchor="middle" font-size="13" font-weight="600" fill="#A32D2D">A</text>
+<circle cx="258" cy="160" r="18" fill="#fff" stroke="#854F0B" stroke-width="1.5"/>
+<path d="M245 148 L271 172 M271 148 L245 172" stroke="#854F0B" stroke-width="1.4"/>
+<text x="258" y="196" text-anchor="middle" font-size="11" fill="#633806">灯</text>
+<circle cx="400" cy="160" r="20" fill="#fff" stroke="#854F0B" stroke-width="1.5"/>
+<text x="400" y="165" text-anchor="middle" font-size="12" fill="#633806">U</text>
+<circle cx="509" cy="132" r="4" fill="#334155"/><circle cx="509" cy="188" r="4" fill="#334155"/>
+<circle cx="489" cy="160" r="20" fill="#fff" stroke="#A32D2D" stroke-width="2"/>
+<text x="489" y="165" text-anchor="middle" font-size="13" font-weight="600" fill="#A32D2D">V</text>
+<path d="M509 188 V188" stroke="#334155"/>
+<path d="M470 160 H489 M509 160 H560" stroke="#334155" stroke-width="1.6" fill="none"/>
+<path d="M560 160 q10 -20 0 -38" stroke="#854F0B" stroke-width="1.6" fill="none"/>
+<circle cx="560" cy="118" r="18" fill="#fff" stroke="#854F0B" stroke-width="1.5"/>
+<path d="M547 106 L573 130 M573 106 L547 130" stroke="#854F0B" stroke-width="1.4"/>
+<text x="620" y="164" font-size="11" fill="#633806" text-anchor="end"></text>
+<text x="180" y="228" text-anchor="middle" font-size="12" fill="#334155">电流全部流过表 ·「+」进「−」出 · 量程从大到小</text>
+<text x="180" y="248" text-anchor="middle" font-size="11.5" fill="#A32D2D">⚠ 电流档误并联到电源 = 短路烧表</text>
+<text x="500" y="228" text-anchor="middle" font-size="12" fill="#334155">只取微小电流 · 并在灯两端测 220V</text>
+<text x="500" y="248" text-anchor="middle" font-size="11.5" fill="#3B6D11">口诀：测流串着走 · 测压并排搭</text>
+</svg>
+</div>
+
+<!-- ============ 换算大表 ============ -->
+<h3 class="ctitle" id="c7">七、单位换算速查大表（打印贴墙）</h3>
+<table>
+<tr><th>物理量</th><th>小单位 → 主单位</th><th>主单位 → 大单位</th><th>主单位</th><th>大单位</th></tr>
+<tr><td>电流 I</td><td>mA÷1000, μA÷10⁶</td><td>A×1000=kA</td><td>安培 A</td><td>千安 kA</td></tr>
+<tr><td>电压 U</td><td>mV÷1000, μV÷10⁶</td><td>V×1000=kV</td><td>伏特 V</td><td>千伏 kV</td></tr>
+<tr><td>电阻 R</td><td>mΩ÷1000</td><td>Ω×1000=kΩ, ×10⁶=MΩ</td><td>欧姆 Ω</td><td>千欧 kΩ / 兆欧 MΩ</td></tr>
+<tr><td>功率 P</td><td>mW÷1000</td><td>W×1000=kW, ×10⁶=MW</td><td>瓦特 W</td><td>千瓦 kW / 兆瓦 MW</td></tr>
+</table>
+<div class="kou">🔢 <b>统一口诀：</b>"小换大，除 1000；大换小，乘 1000。" 电阻和功率跨到 M 级时多乘一次 1000（即 ×10⁶）。考试填空别漏写单位符号！</div>
+
+<!-- ============ 例题 ============ -->
+<h3 class="ctitle" id="c8">八、经典考试例题（带步骤）</h3>
+
+<div class="eg">
+<b>例题 1（求电流）：</b>一个 220V 的电饭煲，电阻为 48.4Ω，求它通过电流是多少？<br>
+<b>解：</b>用欧姆定律 I = U ÷ R = 220 ÷ 48.4 = <b>4.55 A</b>。<br>
+<span class="small">考点：直接套 I=U/R，注意单位都已是 V 和 Ω，结果就是 A。</span>
+</div>
+
+<div class="eg">
+<b>例题 2（求功率）：</b>上题电饭煲的实际功率是多少瓦？每小时耗电多少度？<br>
+<b>解：</b>P = U × I = 220 × 4.55 ≈ <b>1000 W = 1 kW</b>；<br>
+每小时耗电 W = P × t = 1kW × 1h = <b>1 度</b>。<br>
+<span class="small">考点：P=UI 与电能换算，家用电器标称常给"220V 1000W"。</span>
+</div>
+
+<div class="eg">
+<b>例题 3（单位换算）：</b>测得某电路电流为 350 mA，换算成安培是多少？<br>
+<b>解：</b>小换大 ÷1000 → 350 ÷ 1000 = <b>0.35 A</b>。<br>
+<span class="small">考点：mA→A 必须 ÷1000，别写成 350A 或 0.035A。</span>
+</div>
+
+<div class="eg">
+<b>例题 4（安全计算）：</b>某插座回路额定电流 10A、电压 220V，最大能带多大功率的电器？<br>
+<b>解：</b>P = U × I = 220 × 10 = <b>2200 W = 2.2 kW</b>。<br>
+<span class="small">考点：估算回路负载上限，超过就过载跳闸，这是实操安全常识。</span>
+</div>
+
+<div class="eg">
+<b>例题 5（焦耳发热）：</b>一根导线电阻 2Ω，通过 5A 电流，1 分钟产生多少热量？<br>
+<b>解：</b>Q = I² × R × t = 5² × 2 × 60 = 25 × 2 × 60 = <b>3000 J（焦耳）</b>。<br>
+<span class="small">考点：t 要用秒（1 分钟=60 秒），Q 单位是焦耳 J。</span>
+</div>
+
+<!-- ============ 口诀陷阱 ============ -->
+<h3 class="ctitle" id="c9">九、记忆口诀 + 考试陷阱</h3>
+<div class="kou">
+🧠 <b>四大概念口诀：</b><br>
+"电压推、电流跑、电阻拦、功率干；<br>
+U=IR 三角记，P=UI 不能忘；<br>
+小换大除千，大换小乘千；<br>
+测电流要串联，测电压要并联；<br>
+测电阻先断电，安全第一记心间。"
+</div>
+
+<div class="note">
+⚠️ <b>五大考试陷阱：</b>
+<ol>
+<li><b>电流方向</b>：考题按"正电荷方向（正→负）"，不是电子方向。</li>
+<li><b>安全电压</b>：干燥环境 ≤36V，潮湿/容器内用 12V，别混。</li>
+<li><b>低压范围</b>：证只管 ≤1000V 交流，高压不能碰。</li>
+<li><b>单位漏写/写错</b>：mA 写成 A、kΩ 写成 Ω，整题扣分。</li>
+<li><b>表笔接法</b>：电流表串联、电压表并联、"+"进"−"出，实操考评必查。</li>
+</ol>
+</div>
+
+<!-- ============ 链接 ============ -->
+<h3 class="ctitle" id="c10">十、配套 B 站学习链接</h3>
+<p>下面用搜索关键词直达（B 站分集序号以播放列表实际为准，搜关键词最稳）：</p>
+<div class="links">
+<a href="https://search.bilibili.com/all?keyword=电流电压电阻电功率基础讲解" target="_blank">🔍 电流电压电阻功率基础讲解</a>
+<a href="https://search.bilibili.com/all?keyword=欧姆定律详细讲解例题" target="_blank">🔍 欧姆定律例题</a>
+<a href="https://search.bilibili.com/all?keyword=电工基础零基础电流电压" target="_blank">🔍 电工基础·零基础</a>
+<a href="https://search.bilibili.com/all?keyword=万用表测电流电压电阻" target="_blank">🔍 万用表测量教学</a>
+<a href="https://search.bilibili.com/all?keyword=低压电工理论考试电工基础" target="_blank">🔍 低压电工理论·电工基础</a>
+</div>
+
+<div class="tip">
+📚 <b>学习建议（配合你的 70 天计划）：</b>把本教程对应到计划第 1–2 周"电工基础"模块——通勤时用 B 站视频建立画面，晚上用本教程的例题动手算 2 题，周末用口诀复述一遍，基础就扎实了。
+</div>
+<div class='fraglabel'>📗 概念精讲 · 电路进阶（串并联 / 交流三相 / 电容电感 / 电气符号识读）</div>
+<h3 class="ctitle" id="ch1">第1章 · 电路基础进阶</h3>
+
+<div class="links">
+<a href="https://search.bilibili.com/all?keyword=串联并联电路讲解" target="_blank">🔍 串并联电路</a>
+<a href="https://search.bilibili.com/all?keyword=正弦交流电基础讲解" target="_blank">🔍 交流电基础</a>
+<a href="https://search.bilibili.com/all?keyword=电容原理充放电" target="_blank">🔍 电容原理</a>
+<a href="https://search.bilibili.com/all?keyword=电感自感原理" target="_blank">🔍 电感原理</a>
+<a href="https://search.bilibili.com/all?keyword=三相交流电星形三角形接法" target="_blank">🔍 三相电与星三角</a>
+</div>
+
+<h4>1.1 串联电路 —— 独木桥式连接（对应：第1周·周二）</h4>
+<div class="card">
+<p><b>定义：</b>把元件像串珠子一样<b>首尾相连成一条线</b>，电流只有一条路可走。类比：独木桥，所有水（电流）依次流过每一块木板（元件），谁也别想绕行。</p>
+<table>
+<tr><th>物理量</th><th>串联规律</th><th>一句话记忆</th></tr>
+<tr><td>电流 I</td><td><b>处处相等</b> I = I₁ = I₂</td><td>一条路，大家流量一样</td></tr>
+<tr><td>电压 U</td><td><b>分压</b> U = U₁ + U₂</td><td>总推力被各元件分掉</td></tr>
+<tr><td>电阻 R</td><td><b>相加</b> R = R₁ + R₂（越串越大）</td><td>路越走阻力越多</td></tr>
+<tr><td>功率 P</td><td>分功率 P = P₁ + P₂，P₁ = I²R₁</td><td>电阻大的分得多、发热多</td></tr>
+</table>
+<div class="formula">分压公式：U₁ = U × R₁ / (R₁ + R₂)　——电阻大的分得电压多</div>
+<div class="eg"><b>例题 1：</b>R₁=6Ω、R₂=3Ω 串联接在 12V 电源上。<br>
+<b>解：</b>① R总 = 6+3 = 9Ω；② I = U÷R总 = 12÷9 ≈ <b>1.33A</b>（两元件电流相同）；③ U₁ = 1.33×6 ≈ <b>8V</b>，U₂ = 1.33×3 ≈ <b>4V</b>（8+4=12 ✓，电阻大分压多）。</div>
+<p><b>生活应用：</b>开关必须与灯<b>串联</b>（才能控制它）；旧式小彩灯串联（一坏全灭）；电流表串联接入。⚠ 开关与用电器<b>并联</b>会造成"常通"甚至短路烧线！</p>
+</div>
+
+<h4>1.2 并联电路 —— 多车道式连接（对应：第1周·周二）</h4>
+<div class="card">
+<p><b>定义：</b>元件<b>两端分别接在同两个节点上</b>，电流有多条路可走。类比：多车道公路，水多路走，每条道互相独立。</p>
+<table>
+<tr><th>物理量</th><th>并联规律</th><th>一句话记忆</th></tr>
+<tr><td>电压 U</td><td><b>处处相等</b> U = U₁ = U₂ = 220V</td><td>每条道两端落差相同</td></tr>
+<tr><td>电流 I</td><td><b>分流</b> I = I₁ + I₂</td><td>总流量 = 各车道之和</td></tr>
+<tr><td>电阻 R</td><td><b>1/R = 1/R₁ + 1/R₂</b>（越并越小）</td><td>路越多总阻力越小</td></tr>
+</table>
+<div class="formula">两个电阻并联：R = R₁×R₂ / (R₁ + R₂)　——结果一定<b>小于</b>较小的一个</div>
+<div class="formula">分流公式：I₁ = I × R₂ / (R₁ + R₂)　——电阻小的分得电流多</div>
+<div class="eg"><b>例题 2：</b>R₁=6Ω、R₂=3Ω 并联接在 12V 上。<br>
+<b>解：</b>① 每条支路电压都是 12V；② I₁ = 12÷6 = 2A，I₂ = 12÷3 = 4A；③ I总 = <b>6A</b>；④ R总 = 12÷6 = <b>2Ω</b>（= 6×3/(6+3) ✓，比 3Ω 还小）。</div>
+<p><b>生活应用：</b>家庭里所有插座和灯都是<b>并联</b>（所以关一个灯其他照常亮）；电压表并联测量。</p>
+<div class="warn">⚠ <b>考试高频：</b>家庭并联 → 每多开一个电器，总电阻越小、总电流越大。10A 插座回路最多带 220V×10A = <b>2.2kW</b>，超了就过载跳闸——这是理论题与实操安全双考点。</div>
+</div>
+
+<svg viewBox="0 0 680 300" role="img" aria-label="串联与并联电路对比">
+<title>串联与并联电路对比</title>
+<text x="180" y="28" text-anchor="middle" font-size="14" font-weight="600" fill="#0C447C">串联：一条独木桥</text>
+<text x="510" y="28" text-anchor="middle" font-size="14" font-weight="600" fill="#633806">并联：多条车道</text>
+<g stroke="#334155" stroke-width="1.5" fill="none">
+<path d="M70 70 H120 M180 70 H200 M260 70 H290 V200 H70 V113 M70 157 V70"/>
+<path d="M400 70 H460 M560 70 H620 V200 H400 V113 M400 157 V70"/>
+<path d="M460 70 V140 H470 M530 140 H560 V70"/>
+</g>
+<circle cx="70" cy="135" r="21" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.5"/>
+<text x="70" y="140" text-anchor="middle" font-size="13" fill="#0C447C">U</text>
+<circle cx="400" cy="135" r="21" fill="#FAEEDA" stroke="#854F0B" stroke-width="1.5"/>
+<text x="400" y="140" text-anchor="middle" font-size="13" fill="#633806">U</text>
+<rect x="120" y="55" width="60" height="30" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.5"/>
+<text x="150" y="74" text-anchor="middle" font-size="12" fill="#0C447C">R1</text>
+<rect x="200" y="55" width="60" height="30" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.5"/>
+<text x="230" y="74" text-anchor="middle" font-size="12" fill="#0C447C">R2</text>
+<rect x="470" y="55" width="60" height="30" fill="#FAEEDA" stroke="#854F0B" stroke-width="1.5"/>
+<text x="500" y="74" text-anchor="middle" font-size="12" fill="#633806">R1</text>
+<rect x="470" y="125" width="60" height="30" fill="#FAEEDA" stroke="#854F0B" stroke-width="1.5"/>
+<text x="500" y="144" text-anchor="middle" font-size="12" fill="#633806">R2</text>
+<circle cx="460" cy="70" r="4" fill="#334155"/><circle cx="560" cy="70" r="4" fill="#334155"/>
+<path d="M92 70 H108" stroke="#185FA5" stroke-width="2" marker-end="url(#ar)"/>
+<text x="100" y="52" text-anchor="middle" font-size="12" fill="#185FA5">I</text>
+<path d="M422 70 H448" stroke="#854F0B" stroke-width="2" marker-end="url(#ar2)"/>
+<text x="432" y="52" text-anchor="middle" font-size="12" fill="#854F0B">I</text>
+<text x="500" y="46" text-anchor="middle" font-size="11" fill="#633806">I1</text>
+<text x="500" y="172" text-anchor="middle" font-size="11" fill="#633806">I2</text>
+<text x="180" y="232" text-anchor="middle" font-size="12.5" fill="#334155">电流处处相等 I=I1=I2 ｜ U=U1+U2 ｜ R=R1+R2</text>
+<text x="180" y="256" text-anchor="middle" font-size="12.5" fill="#334155">分压：U1 = U×R1/(R1+R2)</text>
+<text x="510" y="232" text-anchor="middle" font-size="12.5" fill="#334155">电压处处相等 ｜ I=I1+I2 ｜ 1/R=1/R1+1/R2</text>
+<text x="510" y="256" text-anchor="middle" font-size="12.5" fill="#334155">分流：I1 = I×R2/(R1+R2)</text>
+<defs>
+<marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round"/></marker>
+<marker id="ar2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#854F0B" stroke-width="1.5" stroke-linecap="round"/></marker>
+</defs>
+</svg>
+
+<h4>1.3 混联电路与解题四步法</h4>
+<div class="card">
+<p>实际电路常常"串中有并"。解题口诀：<b>一看结构 → 二算局部（先并后串）→ 三求总电阻 → 四按串并联规律分配电压电流</b>。</p>
+<div class="eg"><b>例题 3（混联）：</b>R₂=6Ω 与 R₃=3Ω 并联后，再与 R₁=4Ω 串联，接 24V。求总电流。<br>
+<b>解：</b>① 并联部分 R并 = 6×3/(6+3) = 2Ω；② R总 = 4+2 = 6Ω；③ I总 = 24÷6 = <b>4A</b>（即流过 R₁ 的电流）；④ 并联部分电压 = 4A×2Ω = 8V → I₂ = 8÷6 ≈ 1.33A，I₃ = 8÷3 ≈ 2.67A（1.33+2.67=4 ✓）。</div>
+</div>
+
+<h4>1.4 直流电与交流电 —— 频率、周期、相位（对应：第1周·周三）</h4>
+<div class="card">
+<table>
+<tr><th>对比</th><th>直流 DC</th><th>交流 AC</th></tr>
+<tr><td>方向</td><td>不变（电池、USB）</td><td>周期性变化（电网）</td></tr>
+<tr><td>用途</td><td>电子电路、充电</td><td>远距离输电、家用 220V</td></tr>
+<tr><td>符号</td><td>DC（—）</td><td>AC（～）</td></tr>
+</table>
+<p><b>正弦交流电三要素：</b></p>
+<table>
+<tr><th>要素</th><th>含义</th><th>我国电网数值</th></tr>
+<tr><td>最大值 Um</td><td>波形峰值</td><td>220V×√2 ≈ <b>311V</b></td></tr>
+<tr><td>频率 f / 周期 T</td><td>每秒变化次数 / 变化一周的时间</td><td>f = <b>50Hz</b>，T = 1/f = <b>0.02s</b></td></tr>
+<tr><td>初相位 φ</td><td>起始时刻的"步点"</td><td>两个波的"步差"叫相位差</td></tr>
+</table>
+<div class="formula">有效值与最大值：U最大 = √2 × U有效 → 311 = 1.414 × 220</div>
+<p><b>有效值定义（考定义题）：</b>与交流电<b>热效应相同</b>的直流电数值。我们说的 220V、万用表读数、铭牌标注全是<b>有效值</b>；只有绝缘耐压、峰值计算才用到 311V。</p>
+</div>
+
+<svg viewBox="0 0 680 280" role="img" aria-label="正弦交流电波形三要素">
+<title>正弦交流电波形：最大值、有效值、周期</title>
+<line x1="36" y1="150" x2="680" y2="150" stroke="#B4B2A9" stroke-width="1"/>
+<line x1="40" y1="40" x2="40" y2="260" stroke="#B4B2A9" stroke-width="1"/>
+<polyline points="40,150 60,116 80,86 100,67 120,60 140,67 160,86 180,116 200,150 220,184 240,214 260,233 280,240 300,233 320,214 340,184 360,150 380,116 400,86 420,67 440,60 460,67 480,86 500,116 520,150 540,184 560,214 580,233 600,240 620,233 640,214 660,184 680,150" fill="none" stroke="#185FA5" stroke-width="2.5"/>
+<line x1="40" y1="86" x2="680" y2="86" stroke="#854F0B" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="560" y="80" font-size="12.5" fill="#854F0B">有效值 U=220V（=Um/√2）</text>
+<text x="120" y="50" text-anchor="middle" font-size="12.5" fill="#0C447C">最大值 Um≈311V</text>
+<path d="M120 22 H440" stroke="#3B6D11" stroke-width="1.3"/>
+<path d="M120 18 V26 M440 18 V26" stroke="#3B6D11" stroke-width="1.3"/>
+<text x="280" y="14" text-anchor="middle" font-size="12.5" fill="#3B6D11">周期 T = 0.02s（f = 50Hz）</text>
+<text x="230" y="132" font-size="11.5" fill="#888780">正半周</text>
+<text x="270" y="176" font-size="11.5" fill="#888780">负半周</text>
+</svg>
+
+<h4>1.5 电容 C —— 储存电荷的"小水池"（补充基础·配合交流电与第4-5周）</h4>
+<div class="card">
+<p><b>结构：</b>两块金属极板中间夹绝缘介质，<b>储存电荷（电场能）</b>。定义式 C = Q/U（电荷量/电压）。</p>
+<p><b>核心特性（背下来）：</b>① <b>隔直流、通交流</b>——充满电后电路就"断"了，但交流方向不断变化，相当于反复充放电，所以"过得去"；② <b>两端电压不能突变</b>（水池水位不能瞬间变）。</p>
+<div class="formula">容抗 Xc = 1 / (2πfC)　——频率越高、容量越大，容抗越小越"畅通"</div>
+<div class="formula">充放电时间常数 τ = R×C　——约 3τ~5τ 视为充满/放完</div>
+<table>
+<tr><th>单位</th><th>换算</th><th>常见场合</th></tr>
+<tr><td>法拉 F（主单位）</td><td>1F（基准）</td><td>超级电容</td></tr>
+<tr><td>微法 μF</td><td>1F = 10⁶ μF</td><td>电机启动/运转电容（如 4μF、30μF）</td></tr>
+<tr><td>皮法 pF</td><td>1μF = 10⁶ pF</td><td>电子小电容</td></tr>
+</table>
+<p><b>常见种类：</b>电解电容<b>有极性</b>（长脚为+，接反会爆）、瓷片/薄膜电容无极性。</p>
+<p><b>电工三大应用：</b>① 单相电机启动/运转电容；② 配电<b>无功补偿电容柜</b>（提高功率因数，省电费）；③ 滤波。</p>
+<div class="note">⚠ <b>安全必考：</b>电容断电后极板上<b>仍然储有电荷</b>！检修电容柜/变频器前，必须用放电电阻（或兆欧表）对地放电，否则会被电到——这常作为隐患排查考点出现。</div>
+</div>
+
+<svg viewBox="0 0 680 230" role="img" aria-label="电容充放电示意">
+<title>电容充放电电路示意</title>
+<g stroke="#334155" stroke-width="1.5" fill="none">
+<path d="M60 60 H120 M160 60 H330 M346 60 H520 M580 60 H620 V180 H60 V100 M60 140 V180"/>
+</g>
+<circle cx="60" cy="120" r="20" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.5"/>
+<text x="60" y="125" text-anchor="middle" font-size="12" fill="#0C447C">U</text>
+<circle cx="120" cy="60" r="3.5" fill="#334155"/><circle cx="160" cy="60" r="3.5" fill="#334155"/>
+<line x1="124" y1="48" x2="158" y2="56" stroke="#334155" stroke-width="1.5"/>
+<text x="140" y="36" text-anchor="middle" font-size="12" fill="#334155">开关 S</text>
+<line x1="330" y1="40" x2="330" y2="80" stroke="#185FA5" stroke-width="2.5"/>
+<line x1="346" y1="40" x2="346" y2="80" stroke="#185FA5" stroke-width="2.5"/>
+<text x="318" y="32" font-size="13" fill="#185FA5">+</text>
+<text x="352" y="32" font-size="13" fill="#185FA5">−</text>
+<text x="338" y="100" text-anchor="middle" font-size="12" fill="#0C447C">电容 C</text>
+<rect x="520" y="45" width="60" height="30" fill="#FAEEDA" stroke="#854F0B" stroke-width="1.5"/>
+<text x="550" y="64" text-anchor="middle" font-size="12" fill="#633806">R</text>
+<path d="M200 60 H240" stroke="#3B6D11" stroke-width="2" marker-end="url(#arc)"/>
+<text x="222" y="46" text-anchor="middle" font-size="12" fill="#3B6D11">充电电流 i</text>
+<text x="340" y="210" text-anchor="middle" font-size="12.5" fill="#334155">充电：电荷跑向极板，电压按 τ=R×C 缓缓建立，约 3τ 充满</text>
+<defs><marker id="arc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#3B6D11" stroke-width="1.5" stroke-linecap="round"/></marker></defs>
+</svg>
+
+<h4>1.6 电感 L —— 储存磁场的"线圈"（补充基础·理解接触器与电机的钥匙）</h4>
+<div class="card">
+<p><b>结构：</b>导线绕成线圈（常带铁芯），通电产生磁场，<b>储存磁场能</b>。单位：<b>亨利 H</b>（1H = 1000mH = 10⁶μH）。</p>
+<p><b>核心特性（背下来）：</b>① <b>通直流、阻交流</b>——直流"顺畅通过"（只剩线圈自身电阻），交流变化时线圈产生反向自感电动势阻碍变化；② <b>流过的电流不能突变</b>。</p>
+<div class="formula">感抗 XL = 2πfL　——频率越高、电感越大，阻碍越强</div>
+<p><b>自感现象：</b>线圈自身电流突变时，感应出很高电压。<b>互感现象：</b>两个线圈靠磁场传递能量——变压器的原理。</p>
+<p><b>电工应用：</b>交流接触器线圈、电动机绕组、日光灯镇流器、变压器、电焊机。</p>
+<div class="note">⚠ <b>安全必考：</b>带电断开线圈（如拔接触器线圈）瞬间，电流突变产生<b>高压自感电动势 → 拉弧伤人</b>！直流线圈电路常并联<b>续流二极管</b>吸收这个高压。所以"断电操作必须先停电源、后拆线"。</div>
+<div class="kou">🧠 <b>电容电感对比口诀：</b>电容隔直通交、电压不能突变；电感通直阻交、电流不能突变。</div>
+</div>
+
+<h4>1.7 三相交流电 —— 380V 从哪来（对应：第1周·周四）</h4>
+<div class="card">
+<p><b>为什么用三相：</b>发电机三个绕组互差 120°，发出三路相位互差 120° 的正弦电，输电经济、电机转动平稳。工厂三根火线 <b>L1（黄）/ L2（绿）/ L3（红）</b>，再加一根零线 <b>N（淡蓝）</b>，即"三相四线制"。</p>
+<div class="formula">线电压 = √3 × 相电压 → 380V = 1.732 × 220V</div>
+<table>
+<tr><th>名称</th><th>测哪两端</th><th>数值</th><th>用在哪</th></tr>
+<tr><td>相电压</td><td>火线 — 零线</td><td><b>220V</b></td><td>照明、单相电器</td></tr>
+<tr><td>线电压</td><td>火线 — 火线</td><td><b>380V</b></td><td>三相电动机</td></tr>
+</table>
+<table>
+<tr><th>接法</th><th>怎么接</th><th>特点</th><th>典型用途</th></tr>
+<tr><td>星形 Y</td><td>三绕组末端接一起引出<b>零线</b></td><td>有零线，可带单相负载</td><td>配电变压器、照明混合负载</td></tr>
+<tr><td>三角形 △</td><td>三绕组首尾相接成闭环</td><td>无零线，U线=U相</td><td>三相电动机等平衡负载</td></tr>
+</table>
+<div class="eg"><b>例题 4：</b>三相四线制中，测得 L1—N 为 220V，问 L1—L2 是多少？<br>
+<b>解：</b>U线 = √3 × U相 = 1.732 × 220 ≈ <b>380V</b>。</div>
+<div class="note">⚠ <b>断零危害（高频考点）：</b>三相四线中零线断开后，三路单相负载串联分摊 380V，负载轻的一相电压<b>飙升烧电器</b>。所以零线上<b>严禁装熔断器和开关</b>。</div>
+<p><b>相序与电机转向：</b>L1→L2→L3 的顺序叫相序；三相电机<b>对调任意两根相线即反转</b>——这是实操正反转接线的理论依据。</p>
+
+<svg viewBox="0 0 680 310" role="img" aria-label="电机接线盒星形与三角形接法端子图">
+<title>电动机接线盒：Y 接与 △ 接的端子短接片位置</title>
+<text x="170" y="34" text-anchor="middle" font-size="14" font-weight="600" fill="#0C447C">Y（星形）接法</text>
+<text x="510" y="34" text-anchor="middle" font-size="14" font-weight="600" fill="#633806">△（三角形）接法</text>
+<rect x="60" y="60" width="230" height="190" rx="12" fill="#F8FAFC" stroke="#185FA5" stroke-width="1.2"/>
+<rect x="400" y="60" width="230" height="190" rx="12" fill="#FAEEDA" stroke="#854F0B" stroke-width="1.2"/>
+<g fill="#fff" stroke="#334155" stroke-width="1.4">
+<circle cx="105" cy="115" r="8"/><circle cx="175" cy="115" r="8"/><circle cx="245" cy="115" r="8"/>
+<circle cx="105" cy="205" r="8"/><circle cx="175" cy="205" r="8"/><circle cx="245" cy="205" r="8"/>
+<circle cx="445" cy="115" r="8"/><circle cx="515" cy="115" r="8"/><circle cx="585" cy="115" r="8"/>
+<circle cx="445" cy="205" r="8"/><circle cx="515" cy="205" r="8"/><circle cx="585" cy="205" r="8"/>
+</g>
+<text x="105" y="100" text-anchor="middle" font-size="11.5" fill="#0C447C">W2</text>
+<text x="175" y="100" text-anchor="middle" font-size="11.5" fill="#0C447C">U2</text>
+<text x="245" y="100" text-anchor="middle" font-size="11.5" fill="#0C447C">V2</text>
+<text x="105" y="228" text-anchor="middle" font-size="11.5" fill="#0C447C">U1</text>
+<text x="175" y="228" text-anchor="middle" font-size="11.5" fill="#0C447C">V1</text>
+<text x="245" y="228" text-anchor="middle" font-size="11.5" fill="#0C447C">W1</text>
+<text x="445" y="100" text-anchor="middle" font-size="11.5" fill="#633806">W2</text>
+<text x="515" y="100" text-anchor="middle" font-size="11.5" fill="#633806">U2</text>
+<text x="585" y="100" text-anchor="middle" font-size="11.5" fill="#633806">V2</text>
+<text x="445" y="228" text-anchor="middle" font-size="11.5" fill="#633806">U1</text>
+<text x="515" y="228" text-anchor="middle" font-size="11.5" fill="#633806">V1</text>
+<text x="585" y="228" text-anchor="middle" font-size="11.5" fill="#633806">W1</text>
+<path d="M105 112 H245" stroke="#A32D2D" stroke-width="4"/>
+<text x="175" y="86" text-anchor="middle" font-size="10.5" fill="#A32D2D">3 块短接片横连（中性点）</text>
+<path d="M105 44 V100 M175 44 V100 M245 44 V100" stroke="#EF9F27" stroke-width="2" fill="none" marker-end="url(#ya)"/>
+<text x="60" y="52" font-size="11" fill="#854F0B">L1</text><text x="130" y="52" font-size="11" fill="#854F0B">L2</text><text x="212" y="52" font-size="11" fill="#854F0B">L3</text>
+<text x="322" y="46" font-size="10.5" fill="#854F0B">电源接下排</text>
+<path d="M445 112 V208 M515 112 V208 M585 112 V208" stroke="#A32D2D" stroke-width="4"/>
+<text x="472" y="166" font-size="10.5" fill="#A32D2D">竖连</text>
+<path d="M445 44 V100 M515 44 V100 M585 44 V100" stroke="#EF9F27" stroke-width="2" fill="none" marker-end="url(#ya2)"/>
+<text x="412" y="52" font-size="11" fill="#854F0B">L1</text><text x="492" y="52" font-size="11" fill="#854F0B">L2</text><text x="568" y="52" font-size="11" fill="#854F0B">L3</text>
+<text x="170" y="280" text-anchor="middle" font-size="12" fill="#334155">上排三端短接 = 中性点；电源接下排 U1/V1/W1</text>
+<text x="170" y="300" text-anchor="middle" font-size="11.5" fill="#5F5E5A">每相电压 220V · 启动时用（Y 启）</text>
+<text x="510" y="280" text-anchor="middle" font-size="12" fill="#334155">竖向短接 U1–W2、V1–U2、W1–V2，电源接三个短接点</text>
+<text x="510" y="300" text-anchor="middle" font-size="11.5" fill="#5F5E5A">绕组直接受 380V · 运行时用（△ 运）</text>
+<defs>
+<marker id="ya" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#EF9F27" stroke-width="1.5" stroke-linecap="round"/></marker>
+<marker id="ya2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#EF9F27" stroke-width="1.5" stroke-linecap="round"/></marker>
+</defs>
+</svg>
+</div>
+
+<svg viewBox="0 0 680 300" role="img" aria-label="三相交流电波形">
+<title>三相交流电：三条互差120度的正弦波</title>
+<defs><polyline id="sin3" points="40,150 60,116 80,86 100,67 120,60 140,67 160,86 180,116 200,150 220,184 240,214 260,233 280,240 300,233 320,214 340,184 360,150 380,116 400,86 420,67 440,60 460,67 480,86 500,116 520,150 540,184 560,214 580,233 600,240 620,233 640,214 660,184 680,150" fill="none"/></defs>
+<line x1="40" y1="150" x2="680" y2="150" stroke="#B4B2A9" stroke-width="1"/>
+<use href="#sin3" stroke="#185FA5" stroke-width="2.2"/>
+<use href="#sin3" stroke="#3B6D11" stroke-width="2.2" transform="translate(-107,0)"/>
+<use href="#sin3" stroke="#A32D2D" stroke-width="2.2" transform="translate(-213,0)"/>
+<text x="470" y="60" font-size="13" fill="#185FA5">L1</text>
+<text x="360" y="60" font-size="13" fill="#3B6D11">L2</text>
+<text x="255" y="60" font-size="13" fill="#A32D2D">L3</text>
+<text x="340" y="285" text-anchor="middle" font-size="13" fill="#334155">三条波相位互差 120°（T/3）｜频率同为 50Hz｜任意两根火线间 = 380V</text>
+</svg>
+
+<svg viewBox="0 0 680 260" role="img" aria-label="星形与三角形接法">
+<title>星形Y接法与三角形△接法</title>
+<text x="170" y="30" text-anchor="middle" font-size="14" font-weight="600" fill="#0C447C">星形 Y 接法（引出零线）</text>
+<g stroke="#185FA5" stroke-width="1.6" fill="none">
+<line x1="170" y1="150" x2="110" y2="80"/><line x1="170" y1="150" x2="230" y2="80"/><line x1="170" y1="150" x2="170" y2="220"/>
+</g>
+<circle cx="170" cy="150" r="5" fill="#0C447C"/>
+<text x="186" y="154" font-size="13" fill="#0C447C">N（零线）</text>
+<circle cx="110" cy="80" r="4" fill="#0C447C"/><circle cx="230" cy="80" r="4" fill="#0C447C"/><circle cx="170" cy="220" r="4" fill="#0C447C"/>
+<text x="96" y="66" font-size="12.5" fill="#334155">L1</text><text x="238" y="66" font-size="12.5" fill="#334155">L2</text><text x="182" y="238" font-size="12.5" fill="#334155">L3</text>
+<text x="170" y="250" text-anchor="middle" font-size="12" fill="#5F5E5A">U相=220V（火—零）｜U线=√3×U相=380V</text>
+<text x="480" y="30" text-anchor="middle" font-size="14" font-weight="600" fill="#633806">三角形 △ 接法（无零线）</text>
+<polygon points="480,80 600,190 360,190" fill="#FAEEDA" stroke="#854F0B" stroke-width="1.6"/>
+<circle cx="480" cy="80" r="4" fill="#633806"/><circle cx="600" cy="190" r="4" fill="#633806"/><circle cx="360" cy="190" r="4" fill="#633806"/>
+<text x="480" y="68" text-anchor="middle" font-size="12.5" fill="#334155">L1</text>
+<text x="616" y="196" font-size="12.5" fill="#334155">L2</text>
+<text x="332" y="196" font-size="12.5" fill="#334155">L3</text>
+<text x="480" y="150" text-anchor="middle" font-size="12" fill="#633806">三个绕组首尾相连</text>
+<text x="480" y="250" text-anchor="middle" font-size="12" fill="#5F5E5A">U线 = U相 ｜ 供三相电动机等平衡负载</text>
+</svg>
+
+<h4>1.8 电气图形符号速查（对应：第1周·周五·识图日）</h4>
+<div class="card">
+<p>理论考试与实操识图全靠这张表，<b>建议周末默写一遍</b>：</p>
+<table>
+<tr><th>文字符号</th><th>名称</th><th>图形符号要点</th><th>一句话作用</th></tr>
+<tr><td><b>QS</b></td><td>刀开关（隔离开关）</td><td>一条斜线+触点</td><td>检修时隔离电源，明显断开点</td></tr>
+<tr><td><b>QF</b></td><td>低压断路器（空开）</td><td>×叉+横杠组合</td><td>过载+短路自动跳闸</td></tr>
+<tr><td><b>FU</b></td><td>熔断器</td><td>长方形里一条穿过的线</td><td>短路保护（一次性）</td></tr>
+<tr><td><b>KM</b></td><td>交流接触器</td><td>主触点带半圆/线圈方框</td><td>频繁通断主电路</td></tr>
+<tr><td><b>KA</b></td><td>中间继电器</td><td>触点+线圈方框</td><td>信号中转、扩大触点数量</td></tr>
+<tr><td><b>KT</b></td><td>时间继电器</td><td>触点带延时标注</td><td>延时动作（星三角切换靠它）</td></tr>
+<tr><td><b>FR</b></td><td>热继电器</td><td>方框内加热元件+触点</td><td>过载保护</td></tr>
+<tr><td><b>SB</b></td><td>按钮</td><td>常开/常闭触点带按钮帽</td><td>绿启动、红停止（主令电器）</td></tr>
+<tr><td><b>SQ</b></td><td>行程开关</td><td>带撞块的触点</td><td>机械位置检测（限位）</td></tr>
+<tr><td><b>M</b></td><td>电动机</td><td>圆圈里写 M（3~表三相）</td><td>拖动机械运转</td></tr>
+<tr><td><b>T</b></td><td>变压器</td><td>两个交叠圆圈</td><td>变电压/隔离</td></tr>
+<tr><td><b>HL</b></td><td>指示灯</td><td>圆圈+叉</td><td>运行/停止/故障指示</td></tr>
+<tr><td><b>PE</b></td><td>保护接地</td><td>三条横线由短变长</td><td>外壳接地保命线</td></tr>
+</table>
+<div class="kou">🧠 <b>识图口诀：</b>先看主电路（电源→QS→FU→KM主触点→FR→M），再走控制回路（从一根相线出发、经SB、KM线圈回到零线），从上到下、从左到右。</div>
+</div>
+
+<!-- ================= 第2章 ================= -->
+
+</section>
+
+<section class="week" id="week2">
+<div class="wkhead">
+  <span class="wknum">第2周</span><span class="wktitle">安全用电基础</span>
+  <span class="wktime">每日 1h</span>
+  <a class="toplink" href="#top">↑ 顶部</a>
+</div>
+<table class="dtable">
+<thead><tr><th style="width:50px">星期</th><th>当日具体学习内容（点🔍看 B 站）</th><th style="width:168px">B 站对应</th><th style="width:56px">时长</th></tr></thead><tbody>
+<tr><td class='c'>周一</td><td>电流对人体的危害与触电类型（单相/两相/跨步）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E8%A7%A6%E7%94%B5%E5%8D%B1%E5%AE%B3%20%E7%B1%BB%E5%9E%8B' target='_blank'>🔍 触电危害 类型</a></td><td class='c dur'>1h</td></tr><tr><td class='c'>周二</td><td>安全电压（36/24/12V）与绝缘、屏护、安全距离</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E5%AE%89%E5%85%A8%E7%94%B5%E5%8E%8B%20%E7%BB%9D%E7%BC%98%20%E5%B1%8F%E6%8A%A4' target='_blank'>🔍 安全电压 绝缘 屏护</a></td><td class='c dur'>1h</td></tr><tr><td class='c'>周三</td><td>接地与接零保护：IT / TT / TN 系统原理</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E6%8E%A5%E5%9C%B0%20%E6%8E%A5%E9%9B%B6%20IT%20TT%20TN' target='_blank'>🔍 接地 接零 IT TT TN</a></td><td class='c dur'>1h</td></tr><tr><td class='c'>周四</td><td>漏电保护器（RCD）原理、参数与选用</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E6%BC%8F%E7%94%B5%E4%BF%9D%E6%8A%A4%E5%99%A8%20%E5%8E%9F%E7%90%86' target='_blank'>🔍 漏电保护器 原理</a></td><td class='c dur'>1h</td></tr><tr><td class='c'>周五</td><td>防触电技术：双重绝缘、安全电压、加强绝缘</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E9%98%B2%E8%A7%A6%E7%94%B5%20%E5%8F%8C%E9%87%8D%E7%BB%9D%E7%BC%98' target='_blank'>🔍 防触电 双重绝缘</a></td><td class='c dur'>1h</td></tr><tr><td class='c'>周六</td><td>电气防火与防爆基础：原因与预防措施</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E7%94%B5%E6%B0%94%E9%98%B2%E7%81%AB%20%E9%98%B2%E7%88%86' target='_blank'>🔍 电气防火 防爆</a></td><td class='c dur'>1h</td></tr><tr><td class='c'>周日</td><td>周末复盘 + 限时刷 <a class="qlink" href="#quiz1">练习卷一 ↓</a> 并对答案</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%BD%8E%E5%8E%8B%E7%94%B5%E5%B7%A5%20%E7%94%B5%E6%B0%94%E5%AE%89%E5%85%A8' target='_blank'>🔍 低压电工 电气安全</a></td><td class='c dur'>1.5h</td></tr></tbody></table>
+<div class='jumprow'>📖 本周概念精讲在下方 ｜ ✍ 周日练习：<a href='#quiz1'>直达练习卷一</a>（复盘后限时闭卷完成）</div>
+<h3 class="ctitle" id="ch2">第2章 · 安全用电基础</h3>
+
+<div class="links">
+<a href="https://search.bilibili.com/all?keyword=触电类型危害安全电压" target="_blank">🔍 触电类型与安全电压</a>
+<a href="https://search.bilibili.com/all?keyword=接地接零ITTTTN系统" target="_blank">🔍 IT/TT/TN 系统</a>
+<a href="https://search.bilibili.com/all?keyword=漏电保护器原理选用" target="_blank">🔍 漏电保护器</a>
+</div>
+
+<h4>2.1 电流对人体的效应与触电类型（对应：第2周·周一）</h4>
+<div class="card">
+<table>
+<tr><th>通过人体电流</th><th>人体反应</th></tr>
+<tr><td>约 1mA</td><td>刚有感（感知阈）</td></tr>
+<tr><td>10~15mA</td><td>肌肉抽搐、<b>难以自主摆脱</b>（摆脱阈）</td></tr>
+<tr><td><b>30mA 以上</b></td><td>呼吸困难、心室颤动风险（致命阈）</td></tr>
+<tr><td>50mA 以上</td><td>心室颤动，短时间致命</td></tr>
+</table>
+<p><b>三种触电类型：</b></p>
+<table>
+<tr><th>类型</th><th>经过路径</th><th>危险度</th></tr>
+<tr><td>单相触电</td><td>碰一根火线 → 经大地回零点</td><td>最常见（220V）</td></tr>
+<tr><td>两相触电</td><td>同时碰两根火线</td><td>最危险（380V 电流更大）</td></tr>
+<tr><td>跨步电压触电</td><td>高压线落地，两脚间电位差</td><td>单脚跳离（8~10m 内有电）</td></tr>
+</table>
+<p><b>伤害程度五因素：</b>电流大小、持续时间、<b>电流路径</b>（左手→左脚经心脏最危险）、电流频率（50Hz 恰好最危险）、个体健康状况。</p>
+<div class="note">⚠ 记住两个数：<b>30mA</b>（致命阈，也是漏保动作值依据）、50/60Hz 工频最危险——都是判断题常客。</div>
+
+<svg viewBox="0 0 680 265" role="img" aria-label="三种触电类型示意">
+<title>三种触电类型：单相、两相、跨步电压</title>
+<rect x="30" y="42" width="195" height="180" rx="12" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<rect x="242" y="42" width="195" height="180" rx="12" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<rect x="454" y="42" width="196" height="180" rx="12" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<g stroke="#334155" stroke-width="1.6" fill="none">
+<circle cx="90" cy="92" r="8" fill="#F8FAFC"/>
+<path d="M90 100 V136 M90 112 L72 124 M90 112 L108 118 M90 136 L78 154 M90 136 L102 154"/>
+<circle cx="342" cy="92" r="8" fill="#F8FAFC"/>
+<path d="M342 100 V136 M342 112 L322 112 M342 112 L362 112 M342 136 L330 154 M342 136 L354 154"/>
+<circle cx="554" cy="92" r="8" fill="#F8FAFC"/>
+<path d="M554 100 V136 M554 112 L536 118 M554 112 L572 118 M554 136 L540 158 M554 136 L568 158"/>
+</g>
+<path d="M108 118 H150" stroke="#A32D2D" stroke-width="2"/>
+<text x="158" y="122" font-size="12" fill="#A32D2D">火线L</text>
+<text x="128" y="215" text-anchor="middle" font-size="12.5" fill="#0C447C">单相触电 · 220V</text>
+<text x="128" y="234" text-anchor="middle" font-size="11.5" fill="#5F5E5A">碰一根火线 · 最常见</text>
+<path d="M322 112 H288" stroke="#A32D2D" stroke-width="2"/>
+<path d="M362 112 H396" stroke="#A32D2D" stroke-width="2"/>
+<text x="286" y="100" font-size="11" fill="#A32D2D" text-anchor="end">L1</text>
+<text x="398" y="100" font-size="11" fill="#A32D2D">L2</text>
+<text x="340" y="215" text-anchor="middle" font-size="12.5" fill="#0C447C">两相触电 · 380V</text>
+<text x="340" y="234" text-anchor="middle" font-size="11.5" fill="#5F5E5A">同时碰两根火线 · 最危险</text>
+<path d="M554 172 V176 M540 176 H568 M554 176 V192 M546 192 H562 M554 192 V204 M549 204 H559" stroke="#334155" stroke-width="1.4" fill="none"/>
+<path d="M590 168 q-14 10 -28 0" stroke="#A32D2D" stroke-width="1.6" fill="none"/>
+<text x="596" y="172" font-size="11" fill="#A32D2D">断落火线</text>
+<path d="M522 186 q-10 8 -20 0 M500 186 q-10 8 -20 0" stroke="#EF9F27" stroke-width="1.4" fill="none" stroke-dasharray="3 2"/>
+<text x="516" y="182" font-size="10.5" fill="#854F0B">电位高</text>
+<text x="484" y="182" font-size="10.5" fill="#854F0B">电位低</text>
+<text x="552" y="215" text-anchor="middle" font-size="12.5" fill="#0C447C">跨步电压触电</text>
+<text x="552" y="234" text-anchor="middle" font-size="11.5" fill="#5F5E5A">两脚电位差 · 单脚跳离！</text>
+</svg>
+</div>
+
+<h4>2.2 安全电压、绝缘、屏护、间距（对应：第2周·周二）</h4>
+<div class="card">
+<table>
+<tr><th>安全电压等级</th><th>适用环境</th></tr>
+<tr><td><b>42V</b></td><td>手持电动工具等特定场合</td></tr>
+<tr><td><b>36V</b></td><td>干燥环境行灯、局部照明上限</td></tr>
+<tr><td><b>24V</b></td><td>较潮湿环境</td></tr>
+<tr><td><b>12V</b></td><td>潮湿、金属容器、特别危险场所</td></tr>
+</table>
+<p><b>三大直接防护：</b>① <b>绝缘</b>（工作绝缘/双重绝缘/加强绝缘）；② <b>屏护</b>（遮栏、护罩挡住带电体）；③ <b>间距</b>（保持安全距离，低压作业≥0.1m 思想上也要"留距离"）。</p>
+<div class="note">⚠ 判断题陷阱："安全电压 36V 绝对安全"——<b>错</b>！36V 只是相对安全，潮湿环境必须降到 12V。</div>
+</div>
+
+<h4>2.3 接地与接零：IT / TT / TN（对应：第2周·周三）</h4>
+<div class="card">
+<table>
+<tr><th>系统</th><th>含义</th><th>设备外壳怎么保</th><th>常见场所</th></tr>
+<tr><td><b>IT</b></td><td>电源中性点<b>不接地</b>（或经高阻）</td><td>外壳独立接地，单相漏电不断电</td><td>矿井、医院手术室（不能停电）</td></tr>
+<tr><td><b>TT</b></td><td>电源中性点直接接地</td><td>设备外壳<b>各自独立接地</b></td><td>零散用户、农村电网</td></tr>
+<tr><td><b>TN</b></td><td>电源中性点接地，<b>外壳接零线</b></td><td>漏电→相零短路→保护跳闸</td><td>城市主流（TN-S 五线制）</td></tr>
+</table>
+<p><b>TN 细分（重点 TN-S）：</b>TN-S = 三根相线 + <b>N（工作零线）</b> + <b>PE（保护线，黄绿双色）</b> 分开的五线制，民用建筑标准做法；TN-C 的 PEN 线零地合一（老式四线），可靠性差。</p>
+<div class="note">⚠ 高频判断：① <b>零线（N）≠ 地线（PE）</b>，零线走工作电流、地线只在漏电时才流电流；② PE 线上<b>严禁</b>装开关、熔断器；③ 严禁"一楼一地"借用大地当零线。</div>
+
+<svg viewBox="0 0 680 290" role="img" aria-label="TN-S 五线制系统示意">
+<title>TN-S 系统：三根相线 + 工作零线 N + 保护线 PE 全程分开</title>
+<circle cx="70" cy="150" r="17" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.5"/>
+<circle cx="100" cy="150" r="17" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.5"/>
+<text x="85" y="122" text-anchor="middle" font-size="12" fill="#0C447C">变压器</text>
+<path d="M117 150 H150" stroke="#334155" stroke-width="1.6" fill="none"/>
+<path d="M100 167 V210 M92 210 H108 M96 218 H104 M98 226 H102" stroke="#334155" stroke-width="1.4" fill="none"/>
+<text x="118" y="222" font-size="11" fill="#5F5E5A">中性点接地</text>
+<line x1="160" y1="60" x2="470" y2="60" stroke="#EF9F27" stroke-width="2.2"/>
+<line x1="160" y1="90" x2="470" y2="90" stroke="#3B6D11" stroke-width="2.2"/>
+<line x1="160" y1="120" x2="470" y2="120" stroke="#A32D2D" stroke-width="2.2"/>
+<line x1="160" y1="150" x2="470" y2="150" stroke="#378ADD" stroke-width="2.2"/>
+<line x1="160" y1="180" x2="470" y2="180" stroke="#3B6D11" stroke-width="2.2"/>
+<line x1="160" y1="180" x2="470" y2="180" stroke="#EF9F27" stroke-width="2.2" stroke-dasharray="8 8"/>
+<text x="478" y="64" font-size="12" fill="#854F0B">L1（黄）</text>
+<text x="478" y="94" font-size="12" fill="#3B6D11">L2（绿）</text>
+<text x="478" y="124" font-size="12" fill="#A32D2D">L3（红）</text>
+<text x="478" y="154" font-size="12" fill="#185FA5">N 工作零线（淡蓝）</text>
+<text x="478" y="184" font-size="12" fill="#854F0B">PE 保护线（黄绿双色）</text>
+<path d="M117 60 H160 M117 90 H160 M117 120 H160" stroke="#334155" stroke-width="1" stroke-dasharray="3 2" fill="none"/>
+<path d="M117 150 H160" stroke="#334155" stroke-width="1" stroke-dasharray="3 2" fill="none"/>
+<rect x="540" y="100" width="110" height="100" rx="10" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+<text x="595" y="140" text-anchor="middle" font-size="12.5" fill="#633806">用电设备</text>
+<text x="595" y="160" text-anchor="middle" font-size="11" fill="#633806">（金属外壳）</text>
+<path d="M470 150 H520 V110 H540" stroke="#378ADD" stroke-width="1.8" fill="none"/>
+<path d="M470 180 H595 V200" stroke="#3B6D11" stroke-width="1.8" fill="none"/>
+<path d="M595 200 V236 M587 236 H603 M591 244 H599 M593 252 H597" stroke="#334155" stroke-width="1.4" fill="none"/>
+<text x="612" y="244" font-size="11" fill="#5F5E5A">外壳接 PE</text>
+<text x="340" y="216" text-anchor="middle" font-size="12.5" fill="#334155">N 只走工作电流；PE 平时无电流、漏电瞬间导通保命</text>
+<text x="340" y="238" text-anchor="middle" font-size="12.5" fill="#A32D2D">两线从变压器到设备全程分开、不得混接 —— 这就是 TN-S 五线制</text>
+</svg>
+</div>
+
+<h4>2.4 漏电保护器 RCD（对应：第2周·周四）</h4>
+<div class="card">
+<p><b>原理：</b>零序电流互感器监测——正常时相线与零线电流大小相等方向相反，合成磁通为 0；漏电时（一部分电流经人体/大地跑掉）合成不为 0，脱扣器 0.1 秒内跳闸。</p>
+<table>
+<tr><th>参数</th><th>末端保护（人身）</th><th>干线防火</th></tr>
+<tr><td>动作电流</td><td><b>30mA</b></td><td>100~300mA</td></tr>
+<tr><td>动作时间</td><td><b>≤0.1s</b></td><td>带延时</td></tr>
+</table>
+<p><b>安装要求：</b>插座回路、潮湿场所、手持电动工具<b>必须装</b>；相线与零线一起穿过互感器，<b>PE 线不能穿入</b>；每月按一次试验按钮（T 按钮）。</p>
+<div class="tip">📌 <b>漏保 vs 空开：</b>空开管"过载+短路"，漏保管"漏电保命"——两者都要装，各管各的，不能互相替代（常考！）。</div>
+
+<svg viewBox="0 0 680 280" role="img" aria-label="漏电保护器工作原理">
+<title>漏电保护器：零序电流互感器检测漏电并脱扣跳闸</title>
+<circle cx="210" cy="150" r="52" fill="none" stroke="#B4B2A9" stroke-width="14"/>
+<circle cx="210" cy="150" r="52" fill="none" stroke="#D3D1C7" stroke-width="1"/>
+<line x1="60" y1="128" x2="360" y2="128" stroke="#A32D2D" stroke-width="2.2"/>
+<line x1="60" y1="172" x2="360" y2="172" stroke="#185FA5" stroke-width="2.2"/>
+<text x="52" y="120" font-size="11.5" fill="#A32D2D" text-anchor="end">L 相线</text>
+<text x="52" y="178" font-size="11.5" fill="#185FA5" text-anchor="end">N 零线</text>
+<path d="M100 128 H130" stroke="#A32D2D" stroke-width="2" marker-end="url(#rc)"/>
+<path d="M120 172 H90" stroke="#185FA5" stroke-width="2" marker-end="url(#rc2)"/>
+<text x="112" y="112" font-size="11" fill="#A32D2D">I(L)→</text>
+<text x="112" y="196" font-size="11" fill="#185FA5">←I(N)</text>
+<path d="M210 202 q10 22 32 26 H290" stroke="#3B6D11" stroke-width="1.8" fill="none"/>
+<text x="228" y="248" font-size="11.5" fill="#3B6D11">感应线圈（有差流才输出）</text>
+<rect x="290" y="228" width="110" height="44" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="1"/>
+<text x="345" y="255" text-anchor="middle" font-size="12.5" fill="#0C447C">脱扣器</text>
+<path d="M400 250 H430 V120" stroke="#3B6D11" stroke-width="1.8" fill="none" marker-end="url(#rc3)"/>
+<circle cx="430" cy="100" r="4" fill="#334155"/>
+<path d="M430 100 L470 70 M470 70 L510 96" stroke="#A32D2D" stroke-width="2.2" fill="none"/>
+<text x="470" y="56" font-size="12" fill="#A32D2D">开关跳开</text>
+<rect x="470" y="160" width="180" height="90" rx="10" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.8"/>
+<text x="560" y="184" text-anchor="middle" font-size="12" fill="#633806">正常：I(L)=I(N)</text>
+<text x="560" y="204" text-anchor="middle" font-size="12" fill="#633806">合成磁通=0，不动作</text>
+<text x="560" y="228" text-anchor="middle" font-size="12" fill="#A32D2D">漏电：I(L)=I(N)+I漏</text>
+<text x="560" y="246" text-anchor="middle" font-size="12" fill="#A32D2D">→ 30mA、0.1s 内跳闸</text>
+<text x="210" y="272" text-anchor="middle" font-size="12" fill="#334155">PE 线不得穿入互感器；每月按一次试验按钮 T</text>
+<defs>
+<marker id="rc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#A32D2D" stroke-width="1.5" stroke-linecap="round"/></marker>
+<marker id="rc2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round"/></marker>
+<marker id="rc3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#3B6D11" stroke-width="1.5" stroke-linecap="round"/></marker>
+</defs>
+</svg>
+</div>
+
+<h4>2.5 电气防火与防爆（对应：第2周·周六）</h4>
+<div class="card">
+<table>
+<tr><th>起火四因</th><th>机理</th><th>预防</th></tr>
+<tr><td>短路</td><td>电阻骤减电流暴增，Q=I²Rt</td><td>绝缘完好、装保护</td></tr>
+<tr><td>过载</td><td>长期超额定电流发热</td><td>算负载、选对线径</td></tr>
+<tr><td>接触不良</td><td>接头电阻大→局部高温</td><td>压接牢固、定期紧固</td></tr>
+<tr><td>电弧/电火花</td><td>拉弧引燃可燃物</td><td>灭弧装置、防爆设备</td></tr>
+</table>
+<p><b>爆燃三要素：</b>可燃物 + 助燃物 + 引火源（电弧/高温）。防爆思路：隔爆外壳、本质安全电路、通风置换。</p>
+</div>
+
+<!-- ================= 第3章 ================= -->
+
+<div class='fraglabel qz'>✍ 周日练习 · 限时闭卷 · 80 分合格（解析点击展开，自测时别偷看）</div>
+<div class='quizwrap' id='quiz1'>
+<h3 class="ctitle">练习卷一 · 电工基础与安全用电
+<span class="sub">对应：第1–2周学习内容 ｜ 建议在第2周周日完成 ｜ 用时 40 分钟 ｜ 判断每题 2 分、单选每题 5 分，满分 100 分，80 分合格</span></h3>
+<h4>一、判断题（共 25 题）</h4>
+<div class='q'><div class='qt'><span class='no'>1.</span> 电流方向规定为正电荷移动方向，即从电源正极经外电路流向负极。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：正电荷方向为电流方向；金属导体中电子实际从负极流向正极，方向相反。</div></details></div><div class='q'><div class='qt'><span class='no'>2.</span> 金属导体中，自由电子从电源正极流向负极。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：电子带负电，实际运动方向与电流方向相反：负极→正极。</div></details></div><div class='q'><div class='qt'><span class='no'>3.</span> 电压是形成电流的原因。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：没有电位差（电压），电荷不会定向移动，就没有电流。</div></details></div><div class='q'><div class='qt'><span class='no'>4.</span> 36V 是绝对安全的电压，任何情况下都不会伤人。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：36V 只是干燥环境下的相对安全上限；潮湿、金属容器内必须降到 12V。</div></details></div><div class='q'><div class='qt'><span class='no'>5.</span> 在潮湿的金属容器内作业，照明应使用 12V 安全电压。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：特别危险场所（潮湿/金属容器）安全电压等级取 12V。</div></details></div><div class='q'><div class='qt'><span class='no'>6.</span> 特种作业中「低压」指交流 1000V（1kV）以下。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：低压电工操作证作业范围为 1kV 以下；超过即属高压，不可操作。</div></details></div><div class='q'><div class='qt'><span class='no'>7.</span> 导体越长电阻越大，截面积越大电阻也越大。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：R=ρL/S：截面积 S 在分母，越粗电阻越小。</div></details></div><div class='q'><div class='qt'><span class='no'>8.</span> 金属导体的温度升高时，电阻减小。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：金属导体温度升高电阻增大；这也是导线过热加速烧毁的原因。</div></details></div><div class='q'><div class='qt'><span class='no'>9.</span> 用兆欧表测量绝缘电阻必须在停电状态下进行。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：摇表输出数百伏电压，带电测量会损坏仪表并危及人身安全。</div></details></div><div class='q'><div class='qt'><span class='no'>10.</span> 欧姆定律的表达式是 U=I×R。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：核心公式；变形 I=U/R、R=U/I 用三角记忆法推导。</div></details></div><div class='q'><div class='qt'><span class='no'>11.</span> 串联电路中，电流处处相等。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：串联只有一条路径，各处电流必然相同。</div></details></div><div class='q'><div class='qt'><span class='no'>12.</span> 并联电路中，各支路两端电压相等。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：并联支路接在同两节点之间，电压相同（家庭 220V）。</div></details></div><div class='q'><div class='qt'><span class='no'>13.</span> 两个电阻并联后的总电阻，大于其中任何一个电阻。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：并联相当于导线加粗，总电阻小于最小的一个支路电阻。</div></details></div><div class='q'><div class='qt'><span class='no'>14.</span> 家庭中的电灯、插座等用电器是串联连接的。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：家庭用电为并联，关掉一盏灯其他电器照常工作。</div></details></div><div class='q'><div class='qt'><span class='no'>15.</span> 我国交流电频率为 50Hz，周期为 0.02s。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：T=1/f=1/50=0.02s。</div></details></div><div class='q'><div class='qt'><span class='no'>16.</span> 我们平时说的 220V 是交流电的最大值。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：220V 是有效值；最大值 Um=√2×220≈311V。</div></details></div><div class='q'><div class='qt'><span class='no'>17.</span> 火线与火线之间是 380V，火线与零线之间是 220V。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：线电压=√3×相电压≈380V；相电压 220V。</div></details></div><div class='q'><div class='qt'><span class='no'>18.</span> 三相绕组星形（Y）接法可以引出零线。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：Y 接公共点引出中性线（N），可同时供单相负载。</div></details></div><div class='q'><div class='qt'><span class='no'>19.</span> 三角形（△）接法中线电压等于相电压。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：△接每个绕组直接跨接在两根火线之间，U线=U相。</div></details></div><div class='q'><div class='qt'><span class='no'>20.</span> 三相四线制中，允许在零线上安装熔断器。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：零线断开会导致负载电压失衡烧毁电器，严禁在零线装熔断器或开关。</div></details></div><div class='q'><div class='qt'><span class='no'>21.</span> 对调任意两根相线，三相电动机就会反转。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：相序决定旋转磁场方向，对调两相即改变相序。</div></details></div><div class='q'><div class='qt'><span class='no'>22.</span> 电容两端电压不能突变，电感中电流不能突变。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：换路定则：电容限「压」、电感限「流」。</div></details></div><div class='q'><div class='qt'><span class='no'>23.</span> 电容的特性是「隔直流、通交流」。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：直流充电完成后电路断开；交流反复充放相当于导通。</div></details></div><div class='q'><div class='qt'><span class='no'>24.</span> 电感的特性是「通直流、阻交流」。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：电流变化时电感产生自感反电动势阻碍变化；直流稳定后阻碍消失。</div></details></div><div class='q'><div class='qt'><span class='no'>25.</span> 单相触电比两相触电更危险。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：两相触电承受 380V 线电压，电流更大，比单相（220V）更危险。</div></details></div><h4>二、单选题（共 10 题）</h4><div class='q'><div class='qt'><span class='no'>1.</span> 末端线路漏电保护器（人身保护）的额定动作电流是</div><div class='opts'><span>A. 10mA</span><span>B. 30mA</span><span>C. 100mA</span><span>D. 500mA</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：末端人身保护：30mA、动作时间 ≤0.1s；100~300mA 用于干线防火。</div></details></div><div class='q'><div class='qt'><span class='no'>2.</span> 下列不属于安全电压等级的是</div><div class='opts'><span>A. 42V</span><span>B. 36V</span><span>C. 12V</span><span>D. 220V</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>D</b>　｜　解疑：安全电压等级：42、36、24、12V。</div></details></div><div class='q'><div class='qt'><span class='no'>3.</span> I=U÷R 出自哪条定律</div><div class='opts'><span>A. 焦耳定律</span><span>B. 欧姆定律</span><span>C. 基尔霍夫定律</span><span>D. 法拉第定律</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：欧姆定律三兄弟：U=IR、I=U/R、R=U/I。</div></details></div><div class='q'><div class='qt'><span class='no'>4.</span> 220V 电饭煲电阻 48.4Ω，工作电流约为</div><div class='opts'><span>A. 0.45A</span><span>B. 2.2A</span><span>C. 4.55A</span><span>D. 10.6A</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>C</b>　｜　解疑：I=U/R=220÷48.4≈4.55A。</div></details></div><div class='q'><div class='qt'><span class='no'>5.</span> 对人体最危险的电流路径是</div><div class='opts'><span>A. 右手至右脚</span><span>B. 左手至左脚（经心脏）</span><span>C. 左手至右手</span><span>D. 右脚至左脚</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：电流途经心脏时心室颤动风险最大。</div></details></div><div class='q'><div class='qt'><span class='no'>6.</span> 10A 插座回路最多可带功率约</div><div class='opts'><span>A. 1000W</span><span>B. 1500W</span><span>C. 2200W</span><span>D. 5000W</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>C</b>　｜　解疑：P=UI=220×10=2200W=2.2kW。</div></details></div><div class='q'><div class='qt'><span class='no'>7.</span> 周期为 0.02s 的交流电，频率是</div><div class='opts'><span>A. 25Hz</span><span>B. 50Hz</span><span>C. 60Hz</span><span>D. 100Hz</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：f=1/T=1/0.02=50Hz。</div></details></div><div class='q'><div class='qt'><span class='no'>8.</span> 两相触电时人体承受的电压是</div><div class='opts'><span>A. 110V</span><span>B. 220V</span><span>C. 380V</span><span>D. 1000V</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>C</b>　｜　解疑：同时触碰两根火线，承受线电压 380V。</div></details></div><div class='q'><div class='qt'><span class='no'>9.</span> 兆欧表（摇表）测绝缘时的摇速应保持在</div><div class='opts'><span>A. 60 r/min</span><span>B. 120 r/min</span><span>C. 300 r/min</span><span>D. 越快越好</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：约 120 r/min 匀速，保持 1 分钟后读数。</div></details></div><div class='q'><div class='qt'><span class='no'>10.</span> 6Ω 与 3Ω 两个电阻串联，总电阻为</div><div class='opts'><span>A. 2Ω</span><span>B. 3Ω</span><span>C. 9Ω</span><span>D. 18Ω</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>C</b>　｜　解疑：串联相加：R=6+3=9Ω。</div></details></div>
+<div class="key"><b>⚡ 答案速查（卷一）</b>
+<div class='krow' style='margin-top:6px;'>判断题</div><div class='krow'>1.√　2.×　3.√　4.×　5.√　6.√　7.×　8.×　9.√　10.√</div><div class='krow'>11.√　12.√　13.×　14.×　15.√　16.×　17.√　18.√　19.√　20.×</div><div class='krow'>21.√　22.√　23.√　24.√　25.×</div>
+<div class='krow'>单选题</div><div class='krow'>1.B　2.D　3.B　4.C　5.B　6.C　7.B　8.C　9.B　10.C</div></div>
+<div class="warn">📌 <b>本卷易错提醒：</b>① 220V 是有效值，最大值约 311V；② 并联总电阻反而变小；③ 36V 安全电压≠绝对安全；④ 零线严禁装熔断器。</div>
+
+<div style="margin-top:34px;"></div>
+
+</div>
+</section>
+
+<section class="week" id="week3">
+<div class="wkhead">
+  <span class="wknum">第3周</span><span class="wktitle">安全用具与标识</span>
+  <span class="wktime">每日 1h</span>
+  <a class="toplink" href="#top">↑ 顶部</a>
+</div>
+<table class="dtable">
+<thead><tr><th style="width:50px">星期</th><th>当日具体学习内容（点🔍看 B 站）</th><th style="width:168px">B 站对应</th><th style="width:56px">时长</th></tr></thead><tbody>
+<tr><td class='c'>周一</td><td>绝缘安全用具（手套/靴/垫）认知与有效期检验</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E5%AE%89%E5%85%A8%E7%94%A8%E5%85%B7%20%E7%BB%9D%E7%BC%98%E6%89%8B%E5%A5%97' target='_blank'>🔍 安全用具 绝缘手套</a></td><td class='c dur'>1h</td></tr><tr><td class='c'>周二</td><td>验电器、临时接地线、遮栏、标识牌的使用</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E9%AA%8C%E7%94%B5%E5%99%A8%20%E6%8E%A5%E5%9C%B0%E7%BA%BF%20%E9%81%AE%E6%A0%8F' target='_blank'>🔍 验电器 接地线 遮栏</a></td><td class='c dur'>1h</td></tr><tr><td class='c'>周三</td><td>安全色与安全标识：禁止/警告/指令/提示四类</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E5%AE%89%E5%85%A8%E8%89%B2%20%E5%AE%89%E5%85%A8%E6%A0%87%E8%AF%86' target='_blank'>🔍 安全色 安全标识</a></td><td class='c dur'>1h</td></tr><tr><td class='c'>周四</td><td>灭火器类型与选用（干粉 / 二氧化碳）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E7%81%AD%E7%81%AB%E5%99%A8%20%E9%80%89%E7%94%A8%20%E5%B9%B2%E7%B2%89' target='_blank'>🔍 灭火器 选用 干粉</a></td><td class='c dur'>1h</td></tr><tr><td class='c'>周五</td><td>登高安全用具与低压带电作业安全要求</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E7%99%BB%E9%AB%98%E7%94%A8%E5%85%B7%20%E5%B8%A6%E7%94%B5%E4%BD%9C%E4%B8%9A' target='_blank'>🔍 登高用具 带电作业</a></td><td class='c dur'>1h</td></tr><tr><td class='c'>周六</td><td>安全用具综合口述练习（口述检查流程）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E5%AE%89%E5%85%A8%E7%94%A8%E5%85%B7%20%E5%8F%A3%E8%BF%B0' target='_blank'>🔍 安全用具 口述</a></td><td class='c dur'>1h</td></tr><tr><td class='c'>周日</td><td>周末复盘：模拟口述 + 看实操演示</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%BD%8E%E5%8E%8B%E7%94%B5%E5%B7%A5%20%E5%AE%89%E5%85%A8%E7%94%A8%E5%85%B7%20%E6%A0%87%E8%AF%86' target='_blank'>🔍 低压电工 安全用具 标识</a></td><td class='c dur'>1.5h</td></tr></tbody></table>
+<div class='jumprow'>📖 下方为本周概念精讲，配合上方每日安排阅读</div>
+<h3 class="ctitle" id="ch3">第3章 · 安全用具与标识</h3>
+
+<div class="links">
+<a href="https://search.bilibili.com/all?keyword=电工安全用具绝缘手套验电器" target="_blank">🔍 安全用具</a>
+<a href="https://search.bilibili.com/all?keyword=安全色安全标识四类" target="_blank">🔍 安全色与标识</a>
+<a href="https://search.bilibili.com/all?keyword=电气火灾灭火器选用" target="_blank">🔍 灭火器</a>
+</div>
+
+<h4>3.1 绝缘安全用具分类与检验（对应：第3周·周一）</h4>
+<div class="card">
+<table>
+<tr><th>类别</th><th>定义</th><th>举例</th></tr>
+<tr><td><b>基本安全用具</b></td><td>绝缘强度能长期承受工作电压，<b>可直接碰带电体</b></td><td>绝缘杆、绝缘钳、低压验电器</td></tr>
+<tr><td><b>辅助安全用具</b></td><td>不能单独作业，只能配合基本用具</td><td>绝缘手套、绝缘靴、绝缘垫、绝缘台</td></tr>
+</table>
+<p><b>使用前三查：</b>查名称与电压等级、查外观（无破损发粘）、查检验合格标签<b>在有效期内</b>。绝缘手套用法：卷压查漏气→双手清洁干燥→套在袖口外。</p>
+<p class="small">检验周期参考（以当地规程为准）：绝缘杆/钳每年 1 次；绝缘手套、绝缘靴、低压验电器每半年 1 次；绝缘垫/台每 2 年 1 次；登高用具每半年做静负荷试验。</p>
+</div>
+
+<h4>3.2 验电器与临时接地线（对应：第3周·周二）</h4>
+<div class="card">
+<p><b>低压验电笔：</b>笔尾金属帽抵手指、笔尖碰带电体，氖泡亮即有电；使用前<b>先在确认有电处试好</b>再验目标。区分火线零线：亮的是火线。</p>
+<p><b>临时接地线装拆顺序（口诀必背）：</b></p>
+<div class="kou">🧠 <b>装接地线：先接接地端，后接导体端；拆接地线：先拆导体端，后拆接地端。</b>（先接大地再接火线，防止接火线瞬间设备带电伤人）</div>
+<p><b>遮栏与标示牌：</b>作业区设遮栏挂标示牌，"禁止合闸，有人工作"必须挂在开关操作把手上。</p>
+</div>
+
+<h4>3.3 安全色与四类标识（对应：第3周·周三）</h4>
+<div class="card">
+<table>
+<tr><th>颜色</th><th>含义</th><th>例子</th></tr>
+<tr><td style="background:#FCEBEB"><b>红</b></td><td>禁止、停止、危险、消防</td><td>禁止合闸、急停按钮、灭火器</td></tr>
+<tr><td style="background:#FAEEDA"><b>黄</b></td><td>警告、注意</td><td>当心触电、警戒线</td></tr>
+<tr><td style="background:#E6F1FB"><b>蓝</b></td><td>指令、必须遵守</td><td>必须戴绝缘手套、必须接地</td></tr>
+<tr><td style="background:#EAF3DE"><b>绿</b></td><td>提示、安全状态、通行</td><td>安全出口、在此工作</td></tr>
+</table>
+<p><b>四类标识：</b>禁止标示（红圈红斜杠）、警告标示（黄底黑边三角）、指令标示（蓝底白图圆形）、提示标示（绿底白图方形）。</p>
+</div>
+
+<h4>3.4 灭火器与电气灭火（对应：第3周·周四）</h4>
+<div class="card">
+<table>
+<tr><th>灭火器</th><th>适用</th><th>电气火灾可用？</th><th>注意</th></tr>
+<tr><td><b>干粉（ABC）</b></td><td>固、液、气、带电设备</td><td>✅ 可以（最常用）</td><td>喷射后有粉尘</td></tr>
+<tr><td><b>二氧化碳 CO₂</b></td><td>精密仪器、带电设备</td><td>✅ 可以</td><td>防冻伤、窄小空间防窒息</td></tr>
+<tr><td>水基/泡沫</td><td>一般固体、油类</td><td>❌ <b>带电严禁</b>（导电）</td><td>先断电才可考虑</td></tr>
+</table>
+<div class="formula">电气灭火四步：先断电 → 再报警 → 干粉/CO₂ 保持距离喷射 → 严禁水和泡沫</div>
+<p class="small">干粉使用口诀：提（提把）—拔（拔销）—握（握管口对火根）—压（压把手）。</p>
+</div>
+
+<!-- ================= 第4章 ================= -->
+
+</section>
+
+<section class="week" id="week4">
+<div class="wkhead">
+  <span class="wknum">第4周</span><span class="wktitle">低压电器（一）</span>
+  <span class="wktime">每日 1.5h</span>
+  <a class="toplink" href="#top">↑ 顶部</a>
+</div>
+<table class="dtable">
+<thead><tr><th style="width:50px">星期</th><th>当日具体学习内容（点🔍看 B 站）</th><th style="width:168px">B 站对应</th><th style="width:56px">时长</th></tr></thead><tbody>
+<tr><td class='c'>周一</td><td>刀开关与低压断路器：结构/原理/图形符号</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%BD%8E%E5%8E%8B%E6%96%AD%E8%B7%AF%E5%99%A8%20%E5%88%80%E5%BC%80%E5%85%B3' target='_blank'>🔍 低压断路器 刀开关</a></td><td class='c dur'>1.5h</td></tr><tr><td class='c'>周二</td><td>交流接触器：结构、工作原理与符号</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%BA%A4%E6%B5%81%E6%8E%A5%E8%A7%A6%E5%99%A8%20%E5%8E%9F%E7%90%86' target='_blank'>🔍 交流接触器 原理</a></td><td class='c dur'>1.5h</td></tr><tr><td class='c'>周三</td><td>主令电器：按钮、行程开关、转换开关</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%B8%BB%E4%BB%A4%E7%94%B5%E5%99%A8%20%E6%8C%89%E9%92%AE' target='_blank'>🔍 主令电器 按钮</a></td><td class='c dur'>1.5h</td></tr><tr><td class='c'>周四</td><td>低压熔断器：原理、特性与选用</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%BD%8E%E5%8E%8B%E7%86%94%E6%96%AD%E5%99%A8%20%E9%80%89%E7%94%A8' target='_blank'>🔍 低压熔断器 选用</a></td><td class='c dur'>1.5h</td></tr><tr><td class='c'>周五</td><td>继电器基础：中间/时间/热继电器</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E7%BB%A7%E7%94%B5%E5%99%A8%20%E7%83%AD%E7%BB%A7%E7%94%B5%E5%99%A8' target='_blank'>🔍 继电器 热继电器</a></td><td class='c dur'>1.5h</td></tr><tr><td class='c'>周六</td><td>电器图形符号默写 + 识图训练</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E7%94%B5%E6%B0%94%E7%AC%A6%E5%8F%B7%20%E9%BB%98%E5%86%99' target='_blank'>🔍 电气符号 默写</a></td><td class='c dur'>1.5h</td></tr><tr><td class='c'>周日</td><td>周末复盘 + 限时刷 <a class="qlink" href="#quiz2">练习卷二 ↓</a> 并对答案</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%BD%8E%E5%8E%8B%E7%94%B5%E5%99%A8%20%E6%96%AD%E8%B7%AF%E5%99%A8%20%E6%8E%A5%E8%A7%A6%E5%99%A8' target='_blank'>🔍 低压电器 断路器 接触器</a></td><td class='c dur'>1.5h</td></tr></tbody></table>
+<div class='jumprow'>📖 本周概念精讲在下方 ｜ ✍ 周日练习：<a href='#quiz2'>直达练习卷二</a>（复盘后限时闭卷完成）</div>
+<h3 class="ctitle" id="ch4">第4章 · 低压电器（一）</h3>
+
+<div class="links">
+<a href="https://search.bilibili.com/all?keyword=低压断路器结构原理" target="_blank">🔍 断路器</a>
+<a href="https://search.bilibili.com/all?keyword=交流接触器结构与工作原理" target="_blank">🔍 交流接触器</a>
+<a href="https://search.bilibili.com/all?keyword=熔断器热继电器选用" target="_blank">🔍 熔断器与继电器</a>
+</div>
+
+<h4>4.1 刀开关与低压断路器（对应：第4周·周一）</h4>
+<div class="card">
+<p><b>刀开关 QS：</b>手动隔离电源，制造"明显断开点"，检修第一步就是拉它。只作隔离，不能带大负荷频繁分合。</p>
+<p><b>断路器 QF（空开）：</b>两大自动脱扣——</p>
+<table>
+<tr><th>脱扣器</th><th>元件</th><th>管什么</th><th>动作特性</th></tr>
+<tr><td>热脱扣</td><td>双金属片受热弯曲</td><td><b>过载</b></td><td>反时限：超得越多跳得越快</td></tr>
+<tr><td>磁脱扣</td><td>电磁铁瞬时吸合</td><td><b>短路</b></td><td>瞬时动作</td></tr>
+</table>
+<p><b>选型速记：</b>照明回路 1P 10A；普通插座 2P 16~20A（配漏保）；空调/厨电 2P 20~25A；总开关 2P 40A。照明选 C 特性曲线，电机回路冲击大选 D 曲线。</p>
+</div>
+
+<h4>4.2 交流接触器 KM（对应：第4周·周二）</h4>
+<div class="card">
+<p><b>结构五件套：</b>线圈、静/动铁芯、主触点（3 对，接主电路）、辅助触点（常开 NO / 常闭 NC，接控制电路）、灭弧罩。</p>
+<p><b>工作过程：</b>线圈得电 → 动铁芯被吸合 → 主触点闭合（电机转）、辅助触点联动。线圈失电 → 弹簧复位 → 全部断开。</p>
+<div class="kou">🧠 口诀：<b>"线圈得电全吸合，失电全复位；主触点管大电流，辅助触点做连锁。"</b></div>
+
+<svg viewBox="0 0 680 310" role="img" aria-label="接触器失电与得电动作对比">
+<title>交流接触器：失电释放与得电吸合两个状态</title>
+<rect x="30" y="50" width="300" height="220" rx="12" fill="#F8FAFC" stroke="#B4B2A9" stroke-width="0.6"/>
+<rect x="350" y="50" width="300" height="220" rx="12" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.6"/>
+<text x="180" y="76" text-anchor="middle" font-size="14" font-weight="600" fill="#5F5E5A">失电状态（释放）</text>
+<text x="500" y="76" text-anchor="middle" font-size="14" font-weight="600" fill="#633806">得电状态（吸合）</text>
+<polyline points="150,100 150,118 158,124 142,132 158,140 142,148 158,156 150,162 150,180" fill="none" stroke="#5F5E5A" stroke-width="1.6"/>
+<polyline points="470,110 470,122 478,128 462,136 478,144 462,152 478,160 470,166 470,180" fill="none" stroke="#854F0B" stroke-width="1.6"/>
+<text x="132" y="140" font-size="11" fill="#5F5E5A" text-anchor="end">弹簧（伸长顶开）</text>
+<text x="452" y="146" font-size="11" fill="#854F0B" text-anchor="end">弹簧（压短）</text>
+<rect x="140" y="180" width="60" height="16" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="1"/>
+<text x="170" y="216" text-anchor="middle" font-size="11" fill="#5F5E5A">动铁芯（被顶起）</text>
+<rect x="140" y="212" width="60" height="16" fill="#85B7EB" stroke="#185FA5" stroke-width="1"/>
+<rect x="140" y="216" width="60" height="16" fill="#85B7EB" stroke="#185FA5" stroke-width="1"/>
+<rect x="140" y="228" width="60" height="16" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="1"/>
+<text x="170" y="262" text-anchor="middle" font-size="11" fill="#5F5E5A">静铁芯</text>
+<rect x="140" y="236" width="60" height="24" fill="#E6F1FB" stroke="#185FA5" stroke-width="1"/>
+<text x="170" y="252" text-anchor="middle" font-size="11" fill="#0C447C">线圈</text>
+<circle cx="250" cy="120" r="4" fill="#334155"/><circle cx="250" cy="160" r="4" fill="#334155"/>
+<path d="M225 90 H275" stroke="#A32D2D" stroke-width="2.4" fill="none"/>
+<path d="M250 90 V104" stroke="#A32D2D" stroke-width="1.6" stroke-dasharray="3 2"/>
+<text x="250" y="82" text-anchor="middle" font-size="11" fill="#A32D2D">主触点（断开）</text>
+<path d="M200 196 H240" stroke="#5F5E5A" stroke-width="1.4" stroke-dasharray="3 2" fill="none"/>
+<text x="180" y="100" font-size="11" fill="#5F5E5A"></text>
+<rect x="460" y="180" width="60" height="16" fill="#85B7EB" stroke="#185FA5" stroke-width="1.4"/>
+<text x="490" y="214" text-anchor="middle" font-size="11" fill="#185FA5">动铁芯（被吸下）</text>
+<rect x="460" y="196" width="60" height="16" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="1"/>
+<text x="490" y="242" text-anchor="middle" font-size="11" fill="#633806">静铁芯</text>
+<rect x="460" y="212" width="60" height="24" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.6"/>
+<text x="490" y="228" text-anchor="middle" font-size="11" fill="#0C447C">线圈（得电）</text>
+<circle cx="570" cy="120" r="4" fill="#334155"/><circle cx="570" cy="160" r="4" fill="#334155"/>
+<path d="M545 140 H595" stroke="#3B6D11" stroke-width="2.4" fill="none"/>
+<path d="M570 126 V140" stroke="#3B6D11" stroke-width="1.6" stroke-dasharray="3 2"/>
+<text x="570" y="106" text-anchor="middle" font-size="11" fill="#3B6D11">主触点（闭合）</text>
+<text x="180" y="288" text-anchor="middle" font-size="12" fill="#5F5E5A">无电：弹簧顶开动铁芯 → 触点断开</text>
+<text x="500" y="288" text-anchor="middle" font-size="12" fill="#633806">得电：电磁吸力克服弹簧 → 触点闭合，电机运转</text>
+</svg>
+<p><b>常见故障判断：</b>嗡嗡声大 → 铁芯极面脏或<b>短路环断裂</b>；吸不上 → 线圈电压不足或断线；铭牌要点：线圈电压（220V/380V 别接错）、AC-3 使用类别。</p>
+<div class="note">⚠ 接触器线圈就是<b>电感</b>（见 1.6 节）——带电拆线圈会拉弧，这是"电容电感"与"电器"两个考点的连接点。</div>
+</div>
+
+<h4>4.3 主令电器（对应：第4周·周三）</h4>
+<div class="card">
+<table>
+<tr><th>名称</th><th>符号</th><th>要点</th></tr>
+<tr><td>按钮</td><td>SB</td><td><b>红=停止（常闭）、绿=启动（常开）</b>；急停用红色蘑菇头（自锁式）</td></tr>
+<tr><td>行程开关</td><td>SQ</td><td>机械撞压动作，做限位/自动往返</td></tr>
+<tr><td>转换开关</td><td>SA</td><td>手动/自动、正转/反转工况切换</td></tr>
+<tr><td>接近开关</td><td>SQ(SP)</td><td>无触点感应，寿命长</td></tr>
+</table>
+</div>
+
+<h4>4.4 熔断器 FU（对应：第4周·周四）</h4>
+<div class="card">
+<p><b>作用：</b><b>短路保护</b>（不能做过载保护！）。熔体熔断时间随电流增大而缩短——<b>安秒反时限特性</b>。</p>
+<div class="formula">选用经验：I熔 ≈ (1.5~2.5) × 电动机额定电流（躲过启动冲击）</div>
+<div class="note">⚠ 高频判断：①熔断器可代过载保护——<b>错</b>；②熔体熔断后可用铜丝铁丝代用——<b>严重错误</b>；③熔断后必须停电换同规格熔体。</div>
+</div>
+
+<h4>4.5 继电器家族（对应：第4周·周五）</h4>
+<div class="card">
+<table>
+<tr><th>名称</th><th>符号</th><th>结构/原理</th><th>用途</th></tr>
+<tr><td>中间继电器</td><td>KA</td><td>小线圈带动多组触点</td><td>信号中转、触点扩容</td></tr>
+<tr><td>时间继电器</td><td>KT</td><td>得电/失电后<b>延时</b>动作</td><td>星三角切换、顺序启动</td></tr>
+<tr><td><b>热继电器</b></td><td>FR</td><td>双金属片受热弯曲顶开触点</td><td><b>过载保护</b>（电机专用）</td></tr>
+</table>
+<div class="formula">热继电器整定电流 ≈ (0.95~1.05) × 电动机额定电流</div>
+<p><b>为什么热继+熔断器要搭配：</b>熔断器管短路（瞬时大电流），热继电器管长期过载（小电流长时间）——<b>两者谁也替代不了谁</b>（高频考点）。带断相保护的热继电器（3D 型）能检测"缺相"。</p>
+</div>
+
+<!-- ================= 第5章 ================= -->
+
+<div class='fraglabel qz'>✍ 周日练习 · 限时闭卷 · 80 分合格（解析点击展开，自测时别偷看）</div>
+<div class='quizwrap' id='quiz2'>
+<h3 class="ctitle">练习卷二 · 安全用具与低压电器
+<span class="sub">对应：第3–4周学习内容 ｜ 建议在第4周周日完成 ｜ 用时 40 分钟 ｜ 判断每题 2 分、单选每题 5 分，满分 100 分，80 分合格</span></h3>
+<h4>一、判断题（共 25 题）</h4>
+<div class='q'><div class='qt'><span class='no'>1.</span> 绝缘手套是基本安全用具，可单独直接接触带电体作业。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：绝缘手套、绝缘靴属于辅助安全用具，只能配合基本用具使用。</div></details></div><div class='q'><div class='qt'><span class='no'>2.</span> 绝缘杆（令克棒）属于基本安全用具。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：绝缘强度能长期承受工作电压，可直接操作带电体。</div></details></div><div class='q'><div class='qt'><span class='no'>3.</span> 安全色中，红色表示禁止、停止和消防。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：红=禁止停止；黄=警告；蓝=指令；绿=提示安全。</div></details></div><div class='q'><div class='qt'><span class='no'>4.</span> 安全色中，黄色表示必须遵守的指令。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：黄色=警告注意；「指令必须遵守」是蓝色。</div></details></div><div class='q'><div class='qt'><span class='no'>5.</span> 安全色中，绿色表示提示、安全状态、通行。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：绿色用于安全通道、「在此工作」等提示标识。</div></details></div><div class='q'><div class='qt'><span class='no'>6.</span> 电气设备着火时，可以直接用水扑救。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：水导电，带电灭火会造成触电；必须先断电。</div></details></div><div class='q'><div class='qt'><span class='no'>7.</span> 干粉灭火器可以用于带电设备火灾。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：干粉不导电，ABC 干粉是电气火灾最常用灭火器。</div></details></div><div class='q'><div class='qt'><span class='no'>8.</span> 使用二氧化碳灭火器时，要防止冻伤和窒息。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：CO₂ 喷出时急剧吸热，且大量积聚会挤占氧气。</div></details></div><div class='q'><div class='qt'><span class='no'>9.</span> 装设临时接地线时，应先接导体端，后接接地端。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：顺序相反：先接接地端，后接导体端；拆除时先拆导体端。</div></details></div><div class='q'><div class='qt'><span class='no'>10.</span> 验电前应先在有电的设备上验证验电器良好。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：确认验电器本身完好，再对目标设备验电。</div></details></div><div class='q'><div class='qt'><span class='no'>11.</span> 低压断路器中，热脱扣器管过载、磁脱扣器管短路。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：双金属片热脱扣反时限动作；电磁脱扣瞬时动作。</div></details></div><div class='q'><div class='qt'><span class='no'>12.</span> 熔断器可以作为电动机的过载保护。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：熔断器只作短路保护；过载保护用热继电器。</div></details></div><div class='q'><div class='qt'><span class='no'>13.</span> 熔体熔断后，可以用铜丝、铁丝临时代替。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：铜丝铁丝不熔断，完全失去保护作用，属于严重违章。</div></details></div><div class='q'><div class='qt'><span class='no'>14.</span> 接触器线圈得电时，主触点与辅助触点同时动作。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：线圈得电→动铁芯吸合→主、辅触点联动；失电全部复位。</div></details></div><div class='q'><div class='qt'><span class='no'>15.</span> 接触器的主触点应接在控制回路中。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：主触点接主电路（大电流）；辅助触点接控制回路。</div></details></div><div class='q'><div class='qt'><span class='no'>16.</span> 按钮的颜色规定：红色为启动、绿色为停止。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：红=停止（常闭），绿=启动（常开）。</div></details></div><div class='q'><div class='qt'><span class='no'>17.</span> 急停按钮应采用红色蘑菇头、自锁式。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：按下后保持锁定，防止误复位，排除故障后手动复位。</div></details></div><div class='q'><div class='qt'><span class='no'>18.</span> 热继电器主要用于电动机的短路保护。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：热继电器是过载保护；短路保护靠熔断器/断路器磁脱扣。</div></details></div><div class='q'><div class='qt'><span class='no'>19.</span> 热继电器的整定电流约为电动机额定电流的 0.95~1.05 倍。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：整定过大不动作、过小误动，按铭牌额定电流整定。</div></details></div><div class='q'><div class='qt'><span class='no'>20.</span> 保护电动机的熔体，可按电动机额定电流的 1.5~2.5 倍选择。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：躲过 4~7 倍的启动冲击电流。</div></details></div><div class='q'><div class='qt'><span class='no'>21.</span> 中间继电器可用于信号中转和扩大触点数量。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：KA 触点多、容量小，做控制信号的「中转站」。</div></details></div><div class='q'><div class='qt'><span class='no'>22.</span> 星三角降压启动的延时切换由时间继电器完成。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：KT 延时（几秒）后把 Y 接切换为 △ 接。</div></details></div><div class='q'><div class='qt'><span class='no'>23.</span> 热继电器与熔断器功能相同，可以互相替代。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：一个管长期过载、一个管瞬时短路，特性完全不同，必须搭配使用。</div></details></div><div class='q'><div class='qt'><span class='no'>24.</span> 绝缘手套使用前应卷压检查是否漏气。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：卷紧挤压后观察是否回弹鼓起，判断气密完好。</div></details></div><div class='q'><div class='qt'><span class='no'>25.</span> 用灭火器灭火时，应瞄准火焰的上部。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：对准火焰根部（燃烧源）才能隔绝/降温灭火。</div></details></div><h4>二、单选题（共 10 题）</h4><div class='q'><div class='qt'><span class='no'>1.</span> 下列属于基本安全用具的是</div><div class='opts'><span>A. 绝缘手套</span><span>B. 绝缘靴</span><span>C. 绝缘杆</span><span>D. 绝缘垫</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>C</b>　｜　解疑：绝缘杆、绝缘钳、验电器是基本用具；手套靴垫为辅助用具。</div></details></div><div class='q'><div class='qt'><span class='no'>2.</span> 安全色「红色」的含义是</div><div class='opts'><span>A. 警告注意</span><span>B. 指令遵守</span><span>C. 禁止停止</span><span>D. 提示通行</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>C</b>　｜　解疑：红=禁止停止消防（急停、禁止合闸、灭火器）。</div></details></div><div class='q'><div class='qt'><span class='no'>3.</span> 电气火灾的正确处置顺序是</div><div class='opts'><span>A. 先灭火再断电</span><span>B. 先断电再灭火</span><span>C. 先报警再灭火</span><span>D. 直接用水浇</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：先断电防止灭火人员触电，再报警并用干粉/CO₂ 扑救。</div></details></div><div class='q'><div class='qt'><span class='no'>4.</span> 低压断路器的文字符号是</div><div class='opts'><span>A. QS</span><span>B. QF</span><span>C. FU</span><span>D. KM</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：QS=刀开关，QF=断路器，FU=熔断器，KM=接触器。</div></details></div><div class='q'><div class='qt'><span class='no'>5.</span> 熔断器的文字符号是</div><div class='opts'><span>A. FU</span><span>B. FR</span><span>C. KA</span><span>D. KT</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>A</b>　｜　解疑：FU=Fuse 熔断器。</div></details></div><div class='q'><div class='qt'><span class='no'>6.</span> 热继电器的文字符号是</div><div class='opts'><span>A. FU</span><span>B. FR</span><span>C. KM</span><span>D. SB</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：FR 串入主电路检测过载。</div></details></div><div class='q'><div class='qt'><span class='no'>7.</span> 交流接触器的文字符号是</div><div class='opts'><span>A. KM</span><span>B. KA</span><span>C. KT</span><span>D. QF</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>A</b>　｜　解疑：KM 主触点通断主电路。</div></details></div><div class='q'><div class='qt'><span class='no'>8.</span> 断路器中热脱扣（过载保护）的核心元件是</div><div class='opts'><span>A. 电磁铁</span><span>B. 双金属片</span><span>C. 熔丝</span><span>D. 弹簧</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：双金属片受热弯曲推动脱扣。</div></details></div><div class='q'><div class='qt'><span class='no'>9.</span> 熔断器的「安秒特性」是</div><div class='opts'><span>A. 电流越大熔断越快</span><span>B. 电流越小熔断越快</span><span>C. 与电流无关</span><span>D. 固定时间熔断</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>A</b>　｜　解疑：反时限特性：短路大电流瞬时熔断，小过载长时间才熔断。</div></details></div><div class='q'><div class='qt'><span class='no'>10.</span> 热继电器主要保护的对象是</div><div class='opts'><span>A. 照明线路</span><span>B. 电动机过载</span><span>C. 插座短路</span><span>D. 变压器</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：针对电动机长期过载（含断相保护型）。</div></details></div>
+<div class="key"><b>⚡ 答案速查（卷二）</b>
+<div class='krow' style='margin-top:6px;'>判断题</div><div class='krow'>1.×　2.√　3.√　4.×　5.√　6.×　7.√　8.√　9.×　10.√</div><div class='krow'>11.√　12.×　13.×　14.√　15.×　16.×　17.√　18.×　19.√　20.√</div><div class='krow'>21.√　22.√　23.×　24.√　25.×</div>
+<div class='krow'>单选题</div><div class='krow'>1.C　2.C　3.B　4.B　5.A　6.B　7.A　8.B　9.A　10.B</div></div>
+<div class="warn">📌 <b>本卷易错提醒：</b>① 熔断器只作短路保护，过载靠热继电器；② 热继电器与熔断器不能互相替代；③ 按钮红停绿启；④ 装地线先接接地端。</div>
+
+<div style="margin-top:34px;"></div>
+
+</div>
+</section>
+
+<section class="week" id="week5">
+<div class="wkhead">
+  <span class="wknum">第5周</span><span class="wktitle">低压电器（二）+ 电动机</span>
+  <span class="wktime">每日 1.5h</span>
+  <a class="toplink" href="#top">↑ 顶部</a>
+</div>
+<table class="dtable">
+<thead><tr><th style="width:50px">星期</th><th>当日具体学习内容（点🔍看 B 站）</th><th style="width:168px">B 站对应</th><th style="width:56px">时长</th></tr></thead><tbody>
+<tr><td class='c'>周一</td><td>热继电器与漏电断路器的接线与整定</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E7%83%AD%E7%BB%A7%E7%94%B5%E5%99%A8%20%E6%8E%A5%E7%BA%BF' target='_blank'>🔍 热继电器 接线</a></td><td class='c dur'>1.5h</td></tr><tr><td class='c'>周二</td><td>三相异步电动机：结构与工作原理</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%B8%89%E7%9B%B8%E5%BC%82%E6%AD%A5%E7%94%B5%E6%9C%BA%20%E5%8E%9F%E7%90%86' target='_blank'>🔍 三相异步电机 原理</a></td><td class='c dur'>1.5h</td></tr><tr><td class='c'>周三</td><td>电动机启动/制动/调速方法</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E7%94%B5%E6%9C%BA%20%E5%90%AF%E5%8A%A8%20%E5%88%B6%E5%8A%A8%20%E8%B0%83%E9%80%9F' target='_blank'>🔍 电机 启动 制动 调速</a></td><td class='c dur'>1.5h</td></tr><tr><td class='c'>周四</td><td>电动机点动与连续运转控制电路</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E7%94%B5%E6%9C%BA%20%E7%82%B9%E5%8A%A8%20%E8%87%AA%E9%94%81' target='_blank'>🔍 电机 点动 自锁</a></td><td class='c dur'>1.5h</td></tr><tr><td class='c'>周五</td><td>电动机正反转控制（接触器互锁）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E7%94%B5%E6%9C%BA%20%E6%AD%A3%E5%8F%8D%E8%BD%AC%20%E4%BA%92%E9%94%81' target='_blank'>🔍 电机 正反转 互锁</a></td><td class='c dur'>1.5h</td></tr><tr><td class='c'>周六</td><td>电动机自锁/双重互锁电路接线原理</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E7%94%B5%E6%9C%BA%20%E8%87%AA%E9%94%81%20%E5%8F%8C%E9%87%8D%E4%BA%92%E9%94%81' target='_blank'>🔍 电机 自锁 双重互锁</a></td><td class='c dur'>1.5h</td></tr><tr><td class='c'>周日</td><td>周末复盘：画控制电路图 + 口述</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E7%94%B5%E6%9C%BA%E6%AD%A3%E5%8F%8D%E8%BD%AC%20%E6%8E%A5%E7%BA%BF' target='_blank'>🔍 电机正反转 接线</a></td><td class='c dur'>1.5h</td></tr></tbody></table>
+<div class='jumprow'>📖 下方为本周概念精讲，配合上方每日安排阅读</div>
+<h3 class="ctitle" id="ch5">第5章 · 电机与控制电路</h3>
+
+<div class="links">
+<a href="https://search.bilibili.com/all?keyword=三相异步电动机工作原理" target="_blank">🔍 三相异步电机</a>
+<a href="https://search.bilibili.com/all?keyword=电机点动自锁控制电路" target="_blank">🔍 点动与自锁</a>
+<a href="https://search.bilibili.com/all?keyword=电机正反转互锁接线" target="_blank">🔍 正反转互锁</a>
+</div>
+
+<h4>5.1 三相异步电动机（对应：第5周·周二）</h4>
+<div class="card">
+<p><b>结构：</b>定子（机座+三相绕组）+ 转子（鼠笼条或绕线式）+ 端盖轴承。</p>
+<p><b>转动原理：</b>定子三相绕组通入三相交流 → 产生<b>旋转磁场</b> → 磁场扫过转子导体感应出电流 → 载流导体受磁场力 → 转子跟着磁场转（异步=转子始终略慢于磁场）。</p>
+<div class="formula">同步转速 n₀ = 60f / p　（f=50Hz，p=磁极对数）</div>
+<table>
+<tr><th>磁极</th><th>2极</th><th>4极</th><th>6极</th><th>8极</th></tr>
+<tr><td>n₀ (r/min)</td><td><b>3000</b></td><td><b>1500</b></td><td>1000</td><td>750</td></tr>
+</table>
+<p><b>转差率：</b>s = (n₀−n)/n₀，额定约 2%~6%。转子转速永远小于同步转速——所以叫"异步"。</p>
+<div class="eg"><b>铭牌解读（Y112M-4）：</b>Y=异步电机；112=中心高112mm；M=中机座；<b>4 极 → 同步转速 1500 r/min</b>；铭牌还有：额定功率、额定电压 380V、接法（△/Y，与电压对应）、绝缘等级（B/F 级）、防护等级（IP54）。</div>
+</div>
+
+<h4>5.2 启动 / 制动 / 调速（对应：第5周·周三）</h4>
+<div class="card">
+<table>
+<tr><th>方式</th><th>要点</th><th>记忆点</th></tr>
+<tr><td>直接（全压）启动</td><td>小电机（≤7.5kW 或变压器容量允许）</td><td>简单但启动电流 4~7 倍</td></tr>
+<tr><td><b>星三角 Y-△ 降压启动</b></td><td>启动时接 Y、转速接近额定后切 △</td><td>启动电流与转矩都降为<b>1/3</b></td></tr>
+<tr><td>自耦降压启动</td><td>抽头变压器降压</td><td>适合大电机，可调</td></tr>
+<tr><td>制动</td><td>反接制动 / 能耗制动</td><td>反接=瞬时反转拖住；能耗=切直流耗磁能</td></tr>
+<tr><td>调速</td><td>变极（双速）/ <b>变频</b></td><td>变频器：n = 60f/p(1−s)，改 f 即改转速</td></tr>
+</table>
+</div>
+
+<h4>5.3 点动与自锁控制（对应：第5周·周四）</h4>
+<div class="card">
+<p><b>点动：</b>按下 SB2 电机转、松开就停（没有自锁触点）——用于电动葫芦、机床对刀。</p>
+<p><b>自锁（自保）：</b>把 <b>KM 的一对辅助常开触点并联在启动按钮两端</b>——按下 SB2 线圈得电、辅助触点闭合；松手后辅助触点维持通路，电机连续运转。按停止按钮 SB1 才停。</p>
+<p><b>自锁的隐藏价值：</b>兼作<b>失压/欠压保护</b>——停电后 KM 释放，复电时不会自己转起来（必须重新按启动）。</p>
+</div>
+
+<svg viewBox="0 0 680 265" role="img" aria-label="自锁控制电路">
+<title>接触器自锁控制电路示意</title>
+<text x="100" y="44" font-size="12.5" fill="#334155">L（火线）</text>
+<text x="552" y="44" font-size="12.5" fill="#334155">N（零线）</text>
+<g stroke="#334155" stroke-width="1.6" fill="none">
+<path d="M100 60 V150 H160 M220 150 H260 M260 150 H300 M360 150 H400 M400 150 H456 M504 150 H580"/>
+<path d="M100 150 V240 M580 150 V240 M100 240 H580"/>
+<path d="M260 150 V100 H300 M360 100 H400 V150"/>
+</g>
+<circle cx="160" cy="150" r="3.5" fill="#334155"/><circle cx="220" cy="150" r="3.5" fill="#334155"/>
+<line x1="158" y1="142" x2="222" y2="142" stroke="#334155" stroke-width="1.6"/>
+<line x1="190" y1="142" x2="190" y2="132" stroke="#334155" stroke-width="1.6"/>
+<text x="190" y="122" text-anchor="middle" font-size="12" fill="#0C447C">SB1 停止（常闭）</text>
+<circle cx="300" cy="150" r="3.5" fill="#334155"/><circle cx="360" cy="150" r="3.5" fill="#334155"/>
+<line x1="303" y1="157" x2="357" y2="143" stroke="#334155" stroke-width="1.6"/>
+<text x="330" y="180" text-anchor="middle" font-size="12" fill="#0C447C">SB2 启动（常开）</text>
+<circle cx="300" cy="100" r="3.5" fill="#334155"/><circle cx="360" cy="100" r="3.5" fill="#334155"/>
+<line x1="303" y1="107" x2="357" y2="93" stroke="#334155" stroke-width="1.6"/>
+<text x="330" y="80" text-anchor="middle" font-size="12" fill="#3B6D11">KM 自锁触点（常开）</text>
+<circle cx="260" cy="150" r="4.5" fill="#185FA5"/><circle cx="400" cy="150" r="4.5" fill="#185FA5"/>
+<circle cx="480" cy="150" r="24" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.8"/>
+<text x="480" y="155" text-anchor="middle" font-size="13" fill="#0C447C">KM</text>
+<text x="480" y="196" text-anchor="middle" font-size="12" fill="#0C447C">接触器线圈</text>
+<text x="340" y="222" text-anchor="middle" font-size="12" fill="#334155">按下 SB2 → 线圈得电 → 主触点闭合（电机转）+ 自锁触点闭合</text>
+<text x="340" y="246" text-anchor="middle" font-size="12" fill="#334155">松开 SB2 → 自锁触点维持通路 → 连续运转；按 SB1 → 断电停机</text>
+</svg>
+
+<h4>5.4 正反转与互锁（对应：第5周·周五·周六）</h4>
+<div class="card">
+<p><b>原理：</b>三相电机转向由相序决定——<b>对调任意两根相线</b>即反转。用两个接触器 KM1（正转）、KM2（反转）分别接不同相序。</p>
+<div class="note">⚠ <b>为什么必须互锁：</b>若 KM1、KM2 同时吸合，两路不同相序的火线会在主电路<b>直接短路</b>（相间短路）！所以必须保证"吸合一个，另一个绝对吸不上"。</div>
+<table>
+<tr><th>互锁方式</th><th>做法</th><th>特点</th></tr>
+<tr><td>触点互锁（电气）</td><td>KM1 常闭触点串进 KM2 线圈回路（反之亦然）</td><td>安全但换向要按两次</td></tr>
+<tr><td>按钮互锁（机械）</td><td>用复合按钮：按正转先断反转回路</td><td>换向快</td></tr>
+<tr><td><b>双重互锁</b></td><td>触点互锁 + 按钮互锁</td><td><b>最可靠，实操考试标准答案</b></td></tr>
+</table>
+</div>
+
+<!-- ================= 第6章 ================= -->
+
+</section>
+
+<section class="week" id="week6">
+<div class="wkhead">
+  <span class="wknum">第6周</span><span class="wktitle">电气线路与照明</span>
+  <span class="wktime">每日 1.5h</span>
+  <a class="toplink" href="#top">↑ 顶部</a>
+</div>
+<table class="dtable">
+<thead><tr><th style="width:50px">星期</th><th>当日具体学习内容（点🔍看 B 站）</th><th style="width:168px">B 站对应</th><th style="width:56px">时长</th></tr></thead><tbody>
+<tr><td class='c'>周一</td><td>导线种类、截面积与选型（载流量）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E5%AF%BC%E7%BA%BF%E9%80%89%E5%9E%8B%20%E8%BD%BD%E6%B5%81%E9%87%8F' target='_blank'>🔍 导线选型 载流量</a></td><td class='c dur'>1.5h</td></tr><tr><td class='c'>周二</td><td>室内配线方式与导线连接工艺（绞接/压接）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E5%AE%A4%E5%86%85%E9%85%8D%E7%BA%BF%20%E5%AF%BC%E7%BA%BF%E8%BF%9E%E6%8E%A5' target='_blank'>🔍 室内配线 导线连接</a></td><td class='c dur'>1.5h</td></tr><tr><td class='c'>周三</td><td>照明方式与灯具安装要求</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E7%85%A7%E6%98%8E%20%E7%81%AF%E5%85%B7%20%E5%AE%89%E8%A3%85' target='_blank'>🔍 照明 灯具 安装</a></td><td class='c dur'>1.5h</td></tr><tr><td class='c'>周四</td><td>单控 / 双控灯接线实操原理</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E5%8D%95%E6%8E%A7%20%E5%8F%8C%E6%8E%A7%20%E7%81%AF%20%E6%8E%A5%E7%BA%BF' target='_blank'>🔍 单控 双控 灯 接线</a></td><td class='c dur'>1.5h</td></tr><tr><td class='c'>周五</td><td>插座接线规范（左零右火上地）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E6%8F%92%E5%BA%A7%20%E6%8E%A5%E7%BA%BF%20%E8%A7%84%E8%8C%83' target='_blank'>🔍 插座 接线 规范</a></td><td class='c dur'>1.5h</td></tr><tr><td class='c'>周六</td><td>配电箱结构与分路设计（照明/插座/空调）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E9%85%8D%E7%94%B5%E7%AE%B1%20%E5%88%86%E8%B7%AF%20%E8%AE%BE%E8%AE%A1' target='_blank'>🔍 配电箱 分路 设计</a></td><td class='c dur'>1.5h</td></tr><tr><td class='c'>周日</td><td>周末复盘 + 限时刷 <a class="qlink" href="#quiz3">练习卷三 ↓</a> 并对答案</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E5%AE%B6%E5%BA%AD%E7%94%B5%E8%B7%AF%20%E7%85%A7%E6%98%8E%20%E6%8F%92%E5%BA%A7%E6%8E%A5%E7%BA%BF' target='_blank'>🔍 家庭电路 照明 插座接线</a></td><td class='c dur'>1.5h</td></tr></tbody></table>
+<div class='jumprow'>📖 本周概念精讲在下方 ｜ ✍ 周日练习：<a href='#quiz3'>直达练习卷三</a>（复盘后限时闭卷完成）</div>
+<h3 class="ctitle" id="ch6">第6章 · 电气线路与照明</h3>
+
+<div class="links">
+<a href="https://search.bilibili.com/all?keyword=导线载流量选型颜色规范" target="_blank">🔍 导线选型</a>
+<a href="https://search.bilibili.com/all?keyword=家庭电路插座双控接线" target="_blank">🔍 插座与双控</a>
+</div>
+
+<h4>6.1 导线种类、载流量与颜色规范（对应：第6周·周一）</h4>
+<div class="card">
+<p><b>常见型号：</b>BV（单芯硬铜线，穿管暗敷）、BVR（多股软铜线，好弯折）、BVVB（护套线，明敷）、BLV（铝芯，逐步淘汰）。</p>
+<table>
+<tr><th>截面积</th><th>铜芯参考载流量</th><th>典型用途</th></tr>
+<tr><td>1.5 mm²</td><td>≈16A（配 10A 空开）</td><td>照明回路</td></tr>
+<tr><td><b>2.5 mm²</b></td><td>≈25A（配 16~20A）</td><td><b>普通插座</b></td></tr>
+<tr><td><b>4 mm²</b></td><td>≈32A</td><td>空调、厨房大功率专线</td></tr>
+<tr><td><b>6 mm²</b></td><td>≈40A</td><td>进户主线</td></tr>
+</table>
+<p class="small">口诀"2.5 带插座、4 带空调、6 做主线"；精确值以产品手册与环境温度为准。</p>
+<table>
+<tr><th>导线颜色</th><th>用途</th></tr>
+<tr><td>黄 / 绿 / 红</td><td>L1 / L2 / L3 三根相线</td></tr>
+<tr><td>淡蓝</td><td>N 工作零线</td></tr>
+<tr><td><b>黄绿双色</b></td><td><b>PE 保护地线（专用，严禁挪用）</b></td></tr>
+</table>
+</div>
+
+<h4>6.2 配线方式与导线连接工艺（对应：第6周·周二）</h4>
+<div class="card">
+<p><b>连接三工艺：</b>绞接（细线对绞+自身缠绕）、压接（压线帽/接线端子，规范首选）、锡焊（加挂锡防氧化）。<b>绝缘恢复：</b>胶带从完好绝缘层两倍宽度起、55° 斜叠压 1/2 缠绕、返回再缠一层。</p>
+<div class="kou">🧠 接头四不准：不准受力、不准埋墙直连、铜铝直接相连要过渡（电化学腐蚀）、绝缘层恢复必须 1/2 压叠。</div>
+</div>
+
+<h4>6.3 照明与开关：单控 / 双控（对应：第6周·周四）</h4>
+<div class="card">
+<p><b>单控：</b>一个开关控制一盏灯——开关必须断<b>火线</b>（开关串在火线上，关灯后灯座不带电，换灯泡才安全）。</p>
+<p><b>双控：</b>楼梯上下两地控一灯——用两个<b>单刀双掷</b>开关（每个开关有三个接线端：公共端+两个掷位），两开关之间走两根联络线。任何一个开关位置变化都翻转灯状态。</p>
+
+<svg viewBox="0 0 680 260" role="img" aria-label="两地双控开关接线图">
+<title>双控开关：两个单刀双掷开关控制一盏灯</title>
+<text x="40" y="60" font-size="12.5" fill="#A32D2D">L 火线</text>
+<line x1="85" y1="90" x2="150" y2="90" stroke="#A32D2D" stroke-width="2"/>
+<rect x="150" y="72" width="34" height="36" rx="6" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.4"/>
+<circle cx="167" cy="90" r="3" fill="#185FA5"/>
+<path d="M167 90 L185 74" stroke="#185FA5" stroke-width="1.8"/>
+<circle cx="185" cy="74" r="2.6" fill="#0C447C"/><circle cx="185" cy="106" r="2.6" fill="#0C447C"/>
+<text x="196" y="60" font-size="11" fill="#0C447C">开关 K1（单刀双掷）</text>
+<line x1="184" y1="74" x2="470" y2="74" stroke="#334155" stroke-width="1.4"/>
+<line x1="184" y1="106" x2="470" y2="106" stroke="#334155" stroke-width="1.4"/>
+<text x="330" y="66" text-anchor="middle" font-size="11" fill="#5F5E5A">联络线 ①②（两根）</text>
+<rect x="470" y="72" width="34" height="36" rx="6" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.4"/>
+<circle cx="487" cy="90" r="3" fill="#185FA5"/>
+<path d="M487 90 L470 106" stroke="#185FA5" stroke-width="1.8"/>
+<circle cx="469" cy="74" r="2.6" fill="#0C447C"/><circle cx="469" cy="106" r="2.6" fill="#0C447C"/>
+<text x="500" y="66" font-size="11" fill="#0C447C">开关 K2</text>
+<line x1="504" y1="90" x2="560" y2="90" stroke="#334155" stroke-width="1.6"/>
+<circle cx="578" cy="90" r="18" fill="#fff" stroke="#854F0B" stroke-width="1.6"/>
+<path d="M565 78 L591 102 M591 78 L565 102" stroke="#854F0B" stroke-width="1.4"/>
+<text x="578" y="126" text-anchor="middle" font-size="11.5" fill="#633806">灯</text>
+<line x1="578" y1="108" x2="578" y2="150" stroke="#185FA5" stroke-width="1.8"/>
+<text x="588" y="148" font-size="12.5" fill="#185FA5">N 零线</text>
+<path d="M578 150 H640" stroke="#185FA5" stroke-width="1.8"/>
+<path d="M150 130 H620" stroke="#B4B2A9" stroke-width="0.6" stroke-dasharray="2 3"/>
+<text x="340" y="200" text-anchor="middle" font-size="12.5" fill="#334155">火线 → K1 公共端 →（联络线①②）→ K2 → 灯 → 零线</text>
+<text x="340" y="222" text-anchor="middle" font-size="12.5" fill="#3B6D11">K1、K2 任意一个切换位置，灯状态立即翻转（楼梯上下双控）</text>
+<text x="340" y="244" text-anchor="middle" font-size="11.5" fill="#5F5E5A">每个开关 3 个接线端：1 个公共端（COM）+ 2 个掷位（L1/L2）</text>
+</svg>
+<p><b>灯具安装要点：</b>螺口灯座<b>火线接中心触点</b>、零线接螺纹壳（防止换灯泡摸壳触电）；灯具距地：一般室内≥2m，潮湿场所用防潮灯。</p>
+</div>
+
+<h4>6.4 插座接线与配电箱分路（对应：第6周·周五·周六）</h4>
+<div class="card">
+<div class="formula">插座口诀：<b>左零 N、右火 L、上地 E（PE）</b>　—— 面对插座看</div>
+<p><b>三孔插座为什么有地线：</b>电器漏电时外壳电流经 PE 线入地，配合漏保瞬间跳闸——地线是"保命线"。</p>
+</div>
+
+<svg viewBox="0 0 680 250" role="img" aria-label="插座左零右火上地">
+<title>三孔插座接线：左零右火上地</title>
+<rect x="240" y="30" width="200" height="200" rx="20" fill="#F8FAFC" stroke="#B4B2A9" stroke-width="1.5"/>
+<rect x="330" y="60" width="20" height="8" rx="3" fill="#97C459" stroke="#3B6D11" stroke-width="1"/>
+<rect x="285" y="115" width="20" height="50" rx="8" fill="#85B7EB" stroke="#185FA5" stroke-width="1"/>
+<rect x="375" y="115" width="20" height="50" rx="8" fill="#F0997B" stroke="#993C1D" stroke-width="1"/>
+<line x1="295" y1="165" x2="180" y2="200" stroke="#185FA5" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="60" y="196" text-anchor="end" font-size="13" fill="#0C447C">左：N 零线（淡蓝）</text>
+<line x1="385" y1="165" x2="500" y2="200" stroke="#993C1D" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="620" y="196" text-anchor="start" font-size="13" fill="#712B13">右：L 火线（红/棕）</text>
+<line x1="340" y1="60" x2="340" y2="22" stroke="#3B6D11" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="340" y="16" text-anchor="middle" font-size="13" fill="#27500A">上：E/PE 地线（黄绿双色）</text>
+<text x="340" y="243" text-anchor="middle" font-size="14" font-weight="600" fill="#334155">面对插座：左零 · 右火 · 上地</text>
+</svg>
+
+<div class="card">
+<p><b>典型家庭配电箱分路（对应：第6周·周六）：总开关 2P 40A（6mm² 进线）→ 照明 1P 10A ×2 路 → 普通插座 2P 20A 漏保 → 厨/卫 2P 20A 漏保 → 空调 2P 20A 漏保。</b></p>
+<div class="note">⚠ 规范记忆：照明回路可不装漏保，<b>插座回路必须装漏保</b>；配电箱内零线、地线分排汇流，不得混接。</div>
+</div>
+
+<!-- ================= 第7章 ================= -->
+
+<div class='fraglabel qz'>✍ 周日练习 · 限时闭卷 · 80 分合格（解析点击展开，自测时别偷看）</div>
+<div class='quizwrap' id='quiz3'>
+<h3 class="ctitle">练习卷三 · 电机控制与线路照明
+<span class="sub">对应：第5–6周学习内容 ｜ 建议在第6周周日完成 ｜ 用时 40 分钟 ｜ 判断每题 2 分、单选每题 5 分，满分 100 分，80 分合格</span></h3>
+<h4>一、判断题（共 25 题）</h4>
+<div class='q'><div class='qt'><span class='no'>1.</span> 三相异步电动机的转子转速等于同步转速。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：存在转差（额定转差率约 2%~6%），转子始终略慢于磁场。</div></details></div><div class='q'><div class='qt'><span class='no'>2.</span> 4 极三相异步电动机的同步转速为 1500 r/min。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：n₀=60f/p=60×50/2=1500 r/min。</div></details></div><div class='q'><div class='qt'><span class='no'>3.</span> 转差率 s=(n₀−n)/n₀。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：同步转速 n₀ 减去转子转速 n，再除以 n₀。</div></details></div><div class='q'><div class='qt'><span class='no'>4.</span> 星三角（Y-△）启动时，启动电流降为直接启动的 1/3。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：Y 接每相电压降为 1/√3，启动电流与转矩都降为约 1/3。</div></details></div><div class='q'><div class='qt'><span class='no'>5.</span> 星三角启动时，启动转矩保持不变。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：转矩同样降为 1/3，所以只适合空载或轻载启动。</div></details></div><div class='q'><div class='qt'><span class='no'>6.</span> 点动控制用于电动葫芦、机床对刀等场合。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：按住运行、松开即停，无自锁触点。</div></details></div><div class='q'><div class='qt'><span class='no'>7.</span> 自锁是把 KM 的常开辅助触点并联在启动按钮两端。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：松开按钮后由这对触点维持线圈通电。</div></details></div><div class='q'><div class='qt'><span class='no'>8.</span> 自锁电路同时具有失压（零压）保护作用。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：停电后自锁解除，复电时电机不会自行启动，需重新按启动。</div></details></div><div class='q'><div class='qt'><span class='no'>9.</span> 要使三相电机反转，需对调任意两根相线。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：改变相序即改变旋转磁场方向。</div></details></div><div class='q'><div class='qt'><span class='no'>10.</span> 正反转电路中，KM1、KM2 同时吸合会造成相间短路。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：两路不同相序的火线并联即短路，必须互锁。</div></details></div><div class='q'><div class='qt'><span class='no'>11.</span> 双重互锁 = 接触器触点互锁 + 复合按钮互锁。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：电气+机械双保险，实操考试标准答案。</div></details></div><div class='q'><div class='qt'><span class='no'>12.</span> 变频器通过改变电源频率实现调速。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：n=60f/p(1−s)，改变 f 即改变转速。</div></details></div><div class='q'><div class='qt'><span class='no'>13.</span> 面对插座，正确接线是「左零、右火、上地」。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：L 接右孔，N 接左孔，PE 接上孔。</div></details></div><div class='q'><div class='qt'><span class='no'>14.</span> PE 保护线必须使用黄绿双色导线。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：黄绿双色为 PE 专用，严禁挪作他用。</div></details></div><div class='q'><div class='qt'><span class='no'>15.</span> 照明开关应串接在零线上。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：开关必须断火线，关灯后灯座不带电，换灯泡才安全。</div></details></div><div class='q'><div class='qt'><span class='no'>16.</span> 螺口灯座接线时，火线应接螺纹金属壳。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：火线必须接中心触点，螺纹壳接零线，防止摸壳触电。</div></details></div><div class='q'><div class='qt'><span class='no'>17.</span> 两地控制一盏灯需使用两个单刀双掷开关。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：每个开关一个公共端+两个掷位，之间走两根联络线。</div></details></div><div class='q'><div class='qt'><span class='no'>18.</span> 普通插座回路通常选用 2.5mm² 铜芯线。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：2.5mm² 载流约 25A，配 16~20A 空开。</div></details></div><div class='q'><div class='qt'><span class='no'>19.</span> 4mm² 铜芯线一般用于照明回路。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：照明常用 1.5mm²；4mm² 用于空调、厨房等大功率专线。</div></details></div><div class='q'><div class='qt'><span class='no'>20.</span> 工作零线 N 应使用淡蓝色导线。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：色标规范：N 淡蓝、PE 黄绿双色。</div></details></div><div class='q'><div class='qt'><span class='no'>21.</span> 铜导线与铝导线可以直接绞接在一起。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：铜铝接头存在电化学腐蚀，必须采用铜铝过渡端子。</div></details></div><div class='q'><div class='qt'><span class='no'>22.</span> 导线压接完成后，必须按规范恢复绝缘层。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：胶带从完好绝缘层两倍宽度起、1/2 叠压缠绕两层。</div></details></div><div class='q'><div class='qt'><span class='no'>23.</span> 插座回路可以不装漏电保护器。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：规范要求插座回路（末端人身防护）必须装漏保。</div></details></div><div class='q'><div class='qt'><span class='no'>24.</span> 家庭照明回路通常选用 1P 断路器。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：照明回路可不装漏保，常用 1P 10A 空开。</div></details></div><div class='q'><div class='qt'><span class='no'>25.</span> 导线截面积越大，允许载流量越小。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：截面积越大载流量越大：1.5/2.5/4/6mm² 逐级增大。</div></details></div><h4>二、单选题（共 10 题）</h4><div class='q'><div class='qt'><span class='no'>1.</span> 2 极三相异步电动机的同步转速是</div><div class='opts'><span>A. 750 r/min</span><span>B. 1000 r/min</span><span>C. 1500 r/min</span><span>D. 3000 r/min</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>D</b>　｜　解疑：n₀=60×50/1=3000 r/min。</div></details></div><div class='q'><div class='qt'><span class='no'>2.</span> 公式 n₀=60f/p 中，p 表示</div><div class='opts'><span>A. 磁极对数</span><span>B. 磁极个数</span><span>C. 功率</span><span>D. 转差率</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>A</b>　｜　解疑：2 极电机 p=1，4 极电机 p=2。</div></details></div><div class='q'><div class='qt'><span class='no'>3.</span> 使三相电动机反转的方法是</div><div class='opts'><span>A. 升高电压</span><span>B. 对调任意两根相线</span><span>C. 降低频率</span><span>D. 增大电容</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：对调两相改变相序。</div></details></div><div class='q'><div class='qt'><span class='no'>4.</span> 正反转控制中最可靠的互锁方式是</div><div class='opts'><span>A. 只用触点互锁</span><span>B. 只用按钮互锁</span><span>C. 双重互锁</span><span>D. 不加互锁</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>C</b>　｜　解疑：触点互锁+复合按钮互锁双保险。</div></details></div><div class='q'><div class='qt'><span class='no'>5.</span> 实现自锁（连续运转）用的是 KM 的</div><div class='opts'><span>A. 主触点</span><span>B. 常开辅助触点</span><span>C. 常闭辅助触点</span><span>D. 线圈</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：常开辅助触点并联在启动按钮两端。</div></details></div><div class='q'><div class='qt'><span class='no'>6.</span> 普通插座回路的导线截面积通常选</div><div class='opts'><span>A. 1.0mm²</span><span>B. 1.5mm²</span><span>C. 2.5mm²</span><span>D. 6mm²</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>C</b>　｜　解疑：2.5mm² 配 16~20A 空开。</div></details></div><div class='q'><div class='qt'><span class='no'>7.</span> 家庭进户主线通常选用</div><div class='opts'><span>A. 1.5mm²</span><span>B. 2.5mm²</span><span>C. 4mm²</span><span>D. 6mm²</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>D</b>　｜　解疑：6mm² 约 40A，配 2P 40A 总空开。</div></details></div><div class='q'><div class='qt'><span class='no'>8.</span> 工作零线 N 的标准颜色是</div><div class='opts'><span>A. 红色</span><span>B. 淡蓝色</span><span>C. 黄绿双色</span><span>D. 黑色</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：N 淡蓝；PE 黄绿双色；相线黄/绿/红。</div></details></div><div class='q'><div class='qt'><span class='no'>9.</span> 螺口灯座中，火线应接在</div><div class='opts'><span>A. 螺纹金属壳</span><span>B. 中心触点</span><span>C. 任意位置</span><span>D. 灯座底部</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：中心触点深、不易触碰；螺纹壳接零线。</div></details></div><div class='q'><div class='qt'><span class='no'>10.</span> 星三角降压启动适用于</div><div class='opts'><span>A. 重载启动场合</span><span>B. 星形接法运转的电机</span><span>C. 正常运行时三角形接法、空载或轻载启动的电机</span><span>D. 频繁正反转的电机</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>C</b>　｜　解疑：Y-△ 启动要求电机正常运行为 △ 接；转矩降 1/3 只宜轻载。</div></details></div>
+<div class="key"><b>⚡ 答案速查（卷三）</b>
+<div class='krow' style='margin-top:6px;'>判断题</div><div class='krow'>1.×　2.√　3.√　4.√　5.×　6.√　7.√　8.√　9.√　10.√</div><div class='krow'>11.√　12.√　13.√　14.√　15.×　16.×　17.√　18.√　19.×　20.√</div><div class='krow'>21.×　22.√　23.×　24.√　25.×</div>
+<div class='krow'>单选题</div><div class='krow'>1.D　2.A　3.B　4.C　5.B　6.C　7.D　8.B　9.B　10.C</div></div>
+<div class="warn">📌 <b>本卷易错提醒：</b>① 照明开关必须断火线；② 星三角启动电流、转矩都降为 1/3；③ 正反转最可靠是双重互锁；④ 2.5 带插座、4 带空调、6 做主线。</div>
+
+<div style="margin-top:34px;"></div>
+
+</div>
+</section>
+
+<section class="week" id="week7">
+<div class="wkhead">
+  <span class="wknum">第7周</span><span class="wktitle">电工仪表</span>
+  <span class="wktime">每日 1.5h</span>
+  <a class="toplink" href="#top">↑ 顶部</a>
+</div>
+<table class="dtable">
+<thead><tr><th style="width:50px">星期</th><th>当日具体学习内容（点🔍看 B 站）</th><th style="width:168px">B 站对应</th><th style="width:56px">时长</th></tr></thead><tbody>
+<tr><td class='c'>周一</td><td>万用表结构 + 电压/电流/电阻测量</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%B8%87%E7%94%A8%E8%A1%A8%20%E4%BD%BF%E7%94%A8%20%E7%94%B5%E5%8E%8B%20%E7%94%B5%E9%98%BB' target='_blank'>🔍 万用表 使用 电压 电阻</a></td><td class='c dur'>1.5h</td></tr><tr><td class='c'>周二</td><td>万用表通断/二极管/电容测量练习</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%B8%87%E7%94%A8%E8%A1%A8%20%E9%80%9A%E6%96%AD%20%E7%94%B5%E5%AE%B9' target='_blank'>🔍 万用表 通断 电容</a></td><td class='c dur'>1.5h</td></tr><tr><td class='c'>周三</td><td>兆欧表（摇表）测绝缘电阻（120r/min）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E5%85%86%E6%AC%A7%E8%A1%A8%20%E7%BB%9D%E7%BC%98%E7%94%B5%E9%98%BB' target='_blank'>🔍 兆欧表 绝缘电阻</a></td><td class='c dur'>1.5h</td></tr><tr><td class='c'>周四</td><td>钳形电流表测电流（不开路）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E9%92%B3%E5%BD%A2%E7%94%B5%E6%B5%81%E8%A1%A8%20%E4%BD%BF%E7%94%A8' target='_blank'>🔍 钳形电流表 使用</a></td><td class='c dur'>1.5h</td></tr><tr><td class='c'>周五</td><td>接地电阻测试仪与电能表认知</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E6%8E%A5%E5%9C%B0%E7%94%B5%E9%98%BB%20%E6%B5%8B%E8%AF%95%E4%BB%AA%20%E7%94%B5%E8%83%BD%E8%A1%A8' target='_blank'>🔍 接地电阻 测试仪 电能表</a></td><td class='c dur'>1.5h</td></tr><tr><td class='c'>周六</td><td>仪表读数综合练习（错题纠偏）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E7%94%B5%E5%B7%A5%E4%BB%AA%E8%A1%A8%20%E8%AF%BB%E6%95%B0' target='_blank'>🔍 电工仪表 读数</a></td><td class='c dur'>1.5h</td></tr><tr><td class='c'>周日</td><td>周末复盘：仪表口述 + 看实操视频</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%B8%87%E7%94%A8%E8%A1%A8%20%E5%85%86%E6%AC%A7%E8%A1%A8%20%E9%92%B3%E5%BD%A2%E8%A1%A8%20%E4%BD%BF%E7%94%A8' target='_blank'>🔍 万用表 兆欧表 钳形表 使用</a></td><td class='c dur'>1.5h</td></tr></tbody></table>
+<div class='jumprow'>📖 下方为本周概念精讲，配合上方每日安排阅读</div>
+<h3 class="ctitle" id="ch7">第7章 · 电工仪表</h3>
+
+<div class="links">
+<a href="https://search.bilibili.com/all?keyword=万用表使用教学电压电流电阻" target="_blank">🔍 万用表</a>
+<a href="https://search.bilibili.com/all?keyword=兆欧表摇表绝缘电阻测量" target="_blank">🔍 兆欧表</a>
+<a href="https://search.bilibili.com/all?keyword=钳形电流表使用方法" target="_blank">🔍 钳形表</a>
+</div>
+
+<h4>7.1 万用表（对应：第7周·周一·周二）</h4>
+<div class="card">
+<table>
+<tr><th>测量</th><th>档位</th><th>接法</th><th>铁规矩</th></tr>
+<tr><td>电压</td><td>V～(交流)/V⎓(直流)</td><td><b>并联</b>到两点</td><td>量程从大到小试</td></tr>
+<tr><td>电流</td><td>mA/A</td><td><b>串联</b>进电路</td><td>必须串入，断开电路接</td></tr>
+<tr><td>电阻</td><td>Ω</td><td>跨接元件两端</td><td><b>必须断电</b>、脱离电路</td></tr>
+<tr><td>通断</td><td>蜂鸣档</td><td>两端搭接</td><td>响=通，查线路断点最快</td></tr>
+</table>
+<div class="note">⚠ 三大禁忌（实操考评直接扣分）：① <b>电流档误并联到电源两端 = 短路烧表</b>；② 带电测电阻；③ 测电容前不放电。</div>
+</div>
+
+<h4>7.2 兆欧表（摇表）（对应：第7周·周三）</h4>
+<div class="card">
+<p><b>用途：</b>测绝缘电阻（MΩ 级），低压设备用 <b>500V 摇表</b>。端子：<b>L</b>（接被测导体）、<b>E</b>（接外壳/地）、<b>G</b>（屏蔽，防表面泄漏）。</p>
+<div class="formula">操作要领：断电 → 摇至 <b>120 r/min 匀速</b>保持 1 分钟读数 → 先撤线后停摇 → 测后放电</div>
+<div class="tip">📌 合格标准：低压设备绝缘电阻<b>≥ 0.5MΩ</b>；测前测后都要对被测设备放电，雷雨天禁测，摇测时人体不得触碰 L 线。</div>
+</div>
+
+<h4>7.3 钳形电流表（对应：第7周·周四）</h4>
+<div class="card">
+<p><b>最大优点：不断电、不拆线</b>——钳口夹住<b>一根</b>导线即可读电流；夹两根（火+零）读数为 0（电流抵消，不是没电！）。</p>
+<p><b>用法：</b>量程从大到小 → 钳口闭合良好 → 只钳单根 → 绝缘破损裸线不直接钳。</p>
+</div>
+
+<h4>7.4 电能表与接地电阻仪（对应：第7周·周五）</h4>
+<div class="card">
+<p><b>电能表：</b>计量电能，1 度 = 1kWh；单相机械表口诀"<b>1、3 进，2、4 出</b>"（火线零线先进后出）。电子表直接按接线图。</p>
+<p><b>接地电阻测试仪：</b>测接地装置电阻，一般要求 ≤4Ω（变压器中性点工作接地）、≤10Ω（保护接地，具体以规范为准）；辅助接地桩布置成直线，雨后土壤过湿数据不准。</p>
+</div>
+
+<!-- ================= 第8章 ================= -->
+
+</section>
+
+<section class="week" id="week8">
+<div class="wkhead">
+  <span class="wknum">第8周</span><span class="wktitle">触电急救与消防</span>
+  <span class="wktime">每日 2h</span>
+  <a class="toplink" href="#top">↑ 顶部</a>
+</div>
+<table class="dtable">
+<thead><tr><th style="width:50px">星期</th><th>当日具体学习内容（点🔍看 B 站）</th><th style="width:168px">B 站对应</th><th style="width:56px">时长</th></tr></thead><tbody>
+<tr><td class='c'>周一</td><td>使触电者脱离电源的方法与注意事项</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E8%A7%A6%E7%94%B5%20%E8%84%B1%E7%A6%BB%E7%94%B5%E6%BA%90' target='_blank'>🔍 触电 脱离电源</a></td><td class='c dur'>2h</td></tr><tr><td class='c'>周二</td><td>触电急救：判断意识与呼吸</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E8%A7%A6%E7%94%B5%E6%80%A5%E6%95%91%20%E5%88%A4%E6%96%AD' target='_blank'>🔍 触电急救 判断</a></td><td class='c dur'>2h</td></tr><tr><td class='c'>周三</td><td>心肺复苏 CPR 标准流程（按压+吹气）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E5%BF%83%E8%82%BA%E5%A4%8D%E8%8B%8F%20CPR%20%E6%B5%81%E7%A8%8B' target='_blank'>🔍 心肺复苏 CPR 流程</a></td><td class='c dur'>2h</td></tr><tr><td class='c'>周四</td><td>CPR 节奏与深度（5–6cm / 100–120次/分）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E5%BF%83%E8%82%BA%E5%A4%8D%E8%8B%8F%20%E6%8C%89%E5%8E%8B%20%E6%B7%B1%E5%BA%A6' target='_blank'>🔍 心肺复苏 按压 深度</a></td><td class='c dur'>2h</td></tr><tr><td class='c'>周五</td><td>电气火灾扑救与灭火器使用（禁用水）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E7%94%B5%E6%B0%94%E7%81%AB%E7%81%BE%20%E7%81%AD%E7%81%AB%E5%99%A8' target='_blank'>🔍 电气火灾 灭火器</a></td><td class='c dur'>2h</td></tr><tr><td class='c'>周六</td><td>急救与消防综合口述演练</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%BD%8E%E5%8E%8B%E7%94%B5%E5%B7%A5%20%E5%BF%83%E8%82%BA%E5%A4%8D%E8%8B%8F%20CPR' target='_blank'>🔍 低压电工 心肺复苏 CPR</a></td><td class='c dur'>2h</td></tr><tr><td class='c'>周日</td><td>周末复盘 + 限时刷 <a class="qlink" href="#quiz4">练习卷四 ↓</a> 并对答案</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E8%A7%A6%E7%94%B5%E6%80%A5%E6%95%91%20%E5%BF%83%E8%82%BA%E5%A4%8D%E8%8B%8F' target='_blank'>🔍 触电急救 心肺复苏</a></td><td class='c dur'>2h</td></tr></tbody></table>
+<div class='jumprow'>📖 本周概念精讲在下方 ｜ ✍ 周日练习：<a href='#quiz4'>直达练习卷四</a>（复盘后限时闭卷完成）</div>
+<h3 class="ctitle" id="ch8">第8章 · 触电急救与消防</h3>
+
+<div class="links">
+<a href="https://search.bilibili.com/all?keyword=触电急救脱离电源方法" target="_blank">🔍 脱离电源</a>
+<a href="https://search.bilibili.com/all?keyword=心肺复苏CPR标准流程教学" target="_blank">🔍 心肺复苏</a>
+</div>
+
+<h4>8.1 使触电者脱离电源（对应：第8周·周一）</h4>
+<div class="card">
+<p><b>低压触电四法：</b></p>
+<table>
+<tr><th>方法</th><th>做法</th><th>注意</th></tr>
+<tr><td>拉</td><td><b>拉闸/拔插头</b>（最优先）</td><td>断电最彻底</td></tr>
+<tr><td>挑</td><td>用干燥木棍/竹竿<b>挑开</b>电线</td><td>绝缘物干燥</td></tr>
+<tr><td>拉</td><td>站干木板/干胶垫上<b>拉其干衣角</b></td><td>不可碰皮肤金属物</td></tr>
+<tr><td>切</td><td>用绝缘钳/断线钳<b>切断</b>电源线</td><td>一根一根剪，防短路</td></tr>
+</table>
+<div class="note">⚠ 两大禁止：① <b>禁止徒手直接拉触电者</b>（救人变两人触电）；② 夜间断电先顾及照明（先断照明以外回路，留照明救援）。</div>
+</div>
+
+<h4>8.2 判断意识与呼吸、高声呼救（对应：第8周·周二）</h4>
+<div class="card">
+<div class="formula">评估环境安全 → 拍双肩大声喊 → 看胸廓起伏 5~10 秒 → 呼救："你拨打120、你取AED"</div>
+<p>指定具体人打 120 和取 AED（不指定则没人动）；无呼吸（或仅有濒死叹息样呼吸）立即开始 CPR。</p>
+</div>
+
+<h4>8.3 心肺复苏 CPR（对应：第8周·周三·周四）</h4>
+<div class="card">
+<table>
+<tr><th>项目</th><th>标准（必背数字）</th></tr>
+<tr><td>按压位置</td><td>两乳头连线<b>中点</b>（胸骨下半段）</td></tr>
+<tr><td>按压深度</td><td><b>5~6cm</b>（成人）</td></tr>
+<tr><td>按压频率</td><td><b>100~120 次/分</b>（压《最炫民族风》节奏）</td></tr>
+<tr><td>按压:吹气</td><td><b>30 : 2</b> 为一个循环</td></tr>
+<tr><td>要点</td><td>每次压下后<b>完全回弹</b>、掌根不离开胸壁、中断≤10 秒</td></tr>
+</table>
+<p><b>吹气：</b>仰头抬颏开放气道 → 捏鼻 → 包紧口吹 1 秒看到胸廓起伏 → 松开。持续到：伤员恢复呼吸 / 120 到场接手 / 自己力竭。</p>
+<div class="tip">📌 实操考试口述+动作双查，节奏练到<b>肌肉记忆</b>；口诀"用力压、快速压、足回弹、少中断"。</div>
+
+<svg viewBox="0 0 680 330" role="img" aria-label="心肺复苏标准流程">
+<title>心肺复苏 CPR 流程：评估→判断→呼救→按压→吹气循环</title>
+<defs><marker id="cf" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#5F5E5A" stroke-width="1.5" stroke-linecap="round"/></marker></defs>
+<g font-size="12" fill="#334155">
+<rect x="40" y="50" width="180" height="72" rx="10" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.8"/>
+<circle cx="62" cy="72" r="11" fill="#185FA5"/><text x="62" y="76" text-anchor="middle" font-size="12" fill="#fff">1</text>
+<text x="112" y="72" text-anchor="middle" font-weight="600" fill="#0C447C">确认环境安全</text>
+<text x="112" y="96" text-anchor="middle" font-size="11" fill="#5F5E5A">先保己再救人</text>
+<rect x="250" y="50" width="180" height="72" rx="10" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.8"/>
+<circle cx="272" cy="72" r="11" fill="#185FA5"/><text x="272" y="76" text-anchor="middle" font-size="12" fill="#fff">2</text>
+<text x="322" y="72" text-anchor="middle" font-weight="600" fill="#0C447C">拍双肩·大声呼喊</text>
+<text x="322" y="96" text-anchor="middle" font-size="11" fill="#5F5E5A">判断意识</text>
+<rect x="460" y="50" width="180" height="72" rx="10" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.8"/>
+<circle cx="482" cy="72" r="11" fill="#185FA5"/><text x="482" y="76" text-anchor="middle" font-size="12" fill="#fff">3</text>
+<text x="532" y="72" text-anchor="middle" font-weight="600" fill="#0C447C">看胸廓起伏</text>
+<text x="532" y="96" text-anchor="middle" font-size="11" fill="#5F5E5A">5~10 秒判断呼吸</text>
+<rect x="40" y="190" width="180" height="72" rx="10" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.8"/>
+<circle cx="62" cy="212" r="11" fill="#854F0B"/><text x="62" y="216" text-anchor="middle" font-size="12" fill="#fff">4</text>
+<text x="116" y="212" text-anchor="middle" font-weight="600" fill="#633806">呼救并取 AED</text>
+<text x="116" y="236" text-anchor="middle" font-size="11" fill="#5F5E5A">指定人打 120</text>
+<rect x="250" y="190" width="180" height="72" rx="10" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.8"/>
+<circle cx="272" cy="212" r="11" fill="#A32D2D"/><text x="272" y="216" text-anchor="middle" font-size="12" fill="#fff">5</text>
+<text x="336" y="206" text-anchor="middle" font-weight="600" fill="#A32D2D">胸外按压 30 次</text>
+<text x="336" y="226" text-anchor="middle" font-size="11" fill="#A32D2D">深度 5~6cm</text>
+<text x="336" y="244" text-anchor="middle" font-size="11" fill="#A32D2D">100~120 次/分</text>
+<rect x="460" y="190" width="180" height="72" rx="10" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.8"/>
+<circle cx="482" cy="212" r="11" fill="#854F0B"/><text x="482" y="216" text-anchor="middle" font-size="12" fill="#fff">6</text>
+<text x="544" y="212" text-anchor="middle" font-weight="600" fill="#633806">人工呼吸 2 次</text>
+<text x="544" y="236" text-anchor="middle" font-size="11" fill="#5F5E5A">捏鼻·吹 1 秒·见胸起伏</text>
+</g>
+<path d="M220 86 H250" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#cf)" fill="none"/>
+<path d="M430 86 H460" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#cf)" fill="none"/>
+<path d="M550 122 V160 H130 V190" stroke="#5F5E5A" stroke-width="1.5" fill="none" marker-end="url(#cf)"/>
+<path d="M220 226 H250" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#cf)" fill="none"/>
+<path d="M430 226 H460" stroke="#5F5E5A" stroke-width="1.5" marker-end="url(#cf)" fill="none"/>
+<path d="M550 262 C620 300 420 300 372 268" stroke="#A32D2D" stroke-width="1.6" fill="none" stroke-dasharray="5 4" marker-end="url(#cf)"/>
+<text x="500" y="308" text-anchor="middle" font-size="11.5" fill="#A32D2D">30:2 循环，直至恢复 / 120 接手 / 力竭</text>
+<text x="340" y="322" text-anchor="middle" font-size="11.5" fill="#5F5E5A">按压点：两乳头连线中点（胸骨下半段）· 中断 ≤10 秒 · 每次压后完全回弹</text>
+</svg>
+</div>
+
+<h4>8.4 电气火灾扑救（对应：第8周·周五）</h4>
+<div class="card">
+<div class="formula">先断电 → 119 报警 → 干粉/CO₂ 对准火<b>根部</b>扫射 → 严禁水与泡沫</div>
+<p><b>无法及时断电时：</b>保持安全距离（10kV 及以下不小于 1 个灭火器长度 + 使用不导电灭火剂）；CO₂ 喷射防冻伤手、防窒息；救火同时向上级报告。</p>
+</div>
+
+<!-- ================= 第9章 ================= -->
+
+<div class='fraglabel qz'>✍ 周日练习 · 限时闭卷 · 80 分合格（解析点击展开，自测时别偷看）</div>
+<div class='quizwrap' id='quiz4'>
+<h3 class="ctitle">练习卷四 · 电工仪表与触电急救
+<span class="sub">对应：第7–8周学习内容 ｜ 建议在第8周周日完成 ｜ 用时 40 分钟 ｜ 判断每题 2 分、单选每题 5 分，满分 100 分，80 分合格</span></h3>
+<h4>一、判断题（共 25 题）</h4>
+<div class='q'><div class='qt'><span class='no'>1.</span> 用万用表测电压时，表笔应并联在被测两点。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：电压表并联；量程从大到小试。</div></details></div><div class='q'><div class='qt'><span class='no'>2.</span> 用万用表测电流时，必须把仪表串联接入电路。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：电流表串联：断开电路串入，「+」进「−」出。</div></details></div><div class='q'><div class='qt'><span class='no'>3.</span> 可以用电阻档带电测量在路电阻。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：带电测电阻读数错误且烧表；必须断电并脱开电路。</div></details></div><div class='q'><div class='qt'><span class='no'>4.</span> 把电流档误并在电源两端，相当于短路，会烧表。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：电流档内阻极小，并联即大电流放电。</div></details></div><div class='q'><div class='qt'><span class='no'>5.</span> 测量低压设备绝缘电阻，应选用 500V 兆欧表。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：低压设备用 500V 摇表。</div></details></div><div class='q'><div class='qt'><span class='no'>6.</span> 兆欧表的 L 端接被测导体、E 端接外壳或地。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：G 屏蔽端用于防止表面泄漏影响读数。</div></details></div><div class='q'><div class='qt'><span class='no'>7.</span> 摇测绝缘前、后，都应对被测设备放电。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：设备可能储有残余电荷，测前测后放电保证安全。</div></details></div><div class='q'><div class='qt'><span class='no'>8.</span> 低压设备绝缘电阻大于等于 0.5MΩ 为合格。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：低于 0.5MΩ 说明绝缘受潮或老化。</div></details></div><div class='q'><div class='qt'><span class='no'>9.</span> 钳形电流表可以把两根导线一起夹入测量。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：钳两根（火+零）电流抵消读数为 0；只能夹一根。</div></details></div><div class='q'><div class='qt'><span class='no'>10.</span> 钳形电流表的最大优点是不断电、不拆线即可测流。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：适合运行中线路的电流检测。</div></details></div><div class='q'><div class='qt'><span class='no'>11.</span> 电能表计量的 1 度电等于 1kWh。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：1 度 = 1 千瓦×1 小时。</div></details></div><div class='q'><div class='qt'><span class='no'>12.</span> 变压器中性点工作接地电阻一般要求不大于 4Ω。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：以当地规范为准，常用 ≤4Ω 判据。</div></details></div><div class='q'><div class='qt'><span class='no'>13.</span> 发现有人触电，第一步是使其迅速脱离电源。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：未脱离电源前施救，救人者也会触电。</div></details></div><div class='q'><div class='qt'><span class='no'>14.</span> 可以直接用手去拉拽触电者使其脱电。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：人体导电，徒手拉拽=救人者触电，严禁。</div></details></div><div class='q'><div class='qt'><span class='no'>15.</span> 挑开电线应使用干燥的木棍或竹竿。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：干燥木棍绝缘可靠；禁用金属杆和潮湿物。</div></details></div><div class='q'><div class='qt'><span class='no'>16.</span> 判断呼吸时，应观察胸廓起伏 5~10 秒。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：同时呼喊无反应+无正常呼吸即启动 CPR。</div></details></div><div class='q'><div class='qt'><span class='no'>17.</span> 成人心肺复苏的按压深度为 5~6cm。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：过浅无效，过深造成肋骨骨折。</div></details></div><div class='q'><div class='qt'><span class='no'>18.</span> 胸外按压频率为 100~120 次/分。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：约每秒 2 次，可用《最炫民族风》节奏练习。</div></details></div><div class='q'><div class='qt'><span class='no'>19.</span> 单人心肺复苏按压与吹气之比为 30:2。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：30 次按压+2 次吹气为一个循环。</div></details></div><div class='q'><div class='qt'><span class='no'>20.</span> 按压位置是两乳头连线中点（胸骨下半段）。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：掌根定位、双手交叠垂直下压。</div></details></div><div class='q'><div class='qt'><span class='no'>21.</span> 吹气前不需要开放气道。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：必须仰头抬颏开放气道，否则吹气无效。</div></details></div><div class='q'><div class='qt'><span class='no'>22.</span> 电气火灾应先断电，再用干粉或二氧化碳灭火器扑救。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：带电灭火仅允许用不导电灭火剂。</div></details></div><div class='q'><div class='qt'><span class='no'>23.</span> 泡沫灭火器可用于带电设备火灾。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：泡沫导电，带电使用会触电。</div></details></div><div class='q'><div class='qt'><span class='no'>24.</span> AED 到达现场后应尽早使用。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：早期除颤显著提高存活率，按语音提示操作。</div></details></div><div class='q'><div class='qt'><span class='no'>25.</span> 心肺复苏过程中，按压中断应尽量不超过 10 秒。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：长时间中断使脑供血骤降，抢救成功率大幅下降。</div></details></div><h4>二、单选题（共 10 题）</h4><div class='q'><div class='qt'><span class='no'>1.</span> 兆欧表测量时的转速应保持在约</div><div class='opts'><span>A. 60 r/min</span><span>B. 120 r/min</span><span>C. 180 r/min</span><span>D. 随意</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：120 r/min 匀速，摇 1 分钟读数。</div></details></div><div class='q'><div class='qt'><span class='no'>2.</span> 低压设备绝缘电阻的合格标准是</div><div class='opts'><span>A. ≥0.5MΩ</span><span>B. ≥0.5Ω</span><span>C. ≥50kΩ</span><span>D. ≥5Ω</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>A</b>　｜　解疑：用 500V 摇表测，≥0.5MΩ 合格。</div></details></div><div class='q'><div class='qt'><span class='no'>3.</span> 钳形表同时钳住火线与零线，读数为 0，说明</div><div class='opts'><span>A. 线路没电</span><span>B. 两线电流抵消（正常现象）</span><span>C. 表坏了</span><span>D. 电流过大</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：合成电流为零；测负载电流必须只钳一根线。</div></details></div><div class='q'><div class='qt'><span class='no'>4.</span> 万用表「蜂鸣通断档」的主要用途是</div><div class='opts'><span>A. 测电压</span><span>B. 快速查线路通断/断点</span><span>C. 测绝缘</span><span>D. 测频率</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：响=通；查导线断点最快。</div></details></div><div class='q'><div class='qt'><span class='no'>5.</span> 成人心肺复苏按压频率是</div><div class='opts'><span>A. 60~80 次/分</span><span>B. 80~100 次/分</span><span>C. 100~120 次/分</span><span>D. 140~160 次/分</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>C</b>　｜　解疑：100~120 次/分，压得够快才有效。</div></details></div><div class='q'><div class='qt'><span class='no'>6.</span> CPR「30:2」中的一个循环是指</div><div class='opts'><span>A. 30 次吹气+2 次按压</span><span>B. 30 次按压+2 次吹气</span><span>C. 30 秒按压+2 秒停</span><span>D. 30 分钟+2 分钟</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：30 次按压接 2 次人工呼吸，循环往复。</div></details></div><div class='q'><div class='qt'><span class='no'>7.</span> 电气火灾可使用的灭火器是</div><div class='opts'><span>A. 水基灭火器</span><span>B. 泡沫灭火器</span><span>C. 干粉或二氧化碳灭火器</span><span>D. 清水</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>C</b>　｜　解疑：干粉、CO₂ 不导电，可带电灭火。</div></details></div><div class='q'><div class='qt'><span class='no'>8.</span> 使低压触电者脱离电源最可靠的方法是</div><div class='opts'><span>A. 徒手拉开</span><span>B. 拉闸断电或拔掉插头</span><span>C. 大声喊叫</span><span>D. 泼水</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：断电最彻底；无法断电时用「挑、拉、切」。</div></details></div><div class='q'><div class='qt'><span class='no'>9.</span> 判断伤员有无意识的方法是</div><div class='opts'><span>A. 摇晃身体</span><span>B. 拍双肩并大声呼唤</span><span>C. 掐人中</span><span>D. 喂水</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：拍肩呼喊无反应即判定无意识。</div></details></div><div class='q'><div class='qt'><span class='no'>10.</span> 心肺复苏应坚持到</div><div class='opts'><span>A. 5 分钟后停止</span><span>B. 伤员恢复呼吸/120 接手/自身力竭</span><span>C. 按压 100 次后</span><span>D. 伤员睁眼即停</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：任何一项出现才可停止，中途换人不断按。</div></details></div>
+<div class="key"><b>⚡ 答案速查（卷四）</b>
+<div class='krow' style='margin-top:6px;'>判断题</div><div class='krow'>1.√　2.√　3.×　4.√　5.√　6.√　7.√　8.√　9.×　10.√</div><div class='krow'>11.√　12.√　13.√　14.×　15.√　16.√　17.√　18.√　19.√　20.√</div><div class='krow'>21.×　22.√　23.×　24.√　25.√</div>
+<div class='krow'>单选题</div><div class='krow'>1.B　2.A　3.B　4.B　5.C　6.B　7.C　8.B　9.B　10.B</div></div>
+<div class="warn">📌 <b>本卷易错提醒：</b>① 钳形表钳两根线读 0 不是没电；② 绝缘合格 ≥0.5MΩ；③ CPR 三参数 5–6cm/100–120/30:2；④ 严禁带电测电阻。</div>
+
+<div style="margin-top:34px;"></div>
+
+</div>
+</section>
+
+<section class="week" id="week9">
+<div class="wkhead">
+  <span class="wknum">第9周</span><span class="wktitle">理论刷题冲刺</span>
+  <span class="wktime">每日 2h</span>
+  <a class="toplink" href="#top">↑ 顶部</a>
+</div>
+<table class="dtable">
+<thead><tr><th style="width:50px">星期</th><th>当日具体学习内容（点🔍看 B 站）</th><th style="width:168px">B 站对应</th><th style="width:56px">时长</th></tr></thead><tbody>
+<tr><td class='c'>周一</td><td>模块一 电气安全技术（刷题+订正）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%BD%8E%E5%8E%8B%E7%94%B5%E5%B7%A5%20%E7%90%86%E8%AE%BA%E9%A2%98%E5%BA%93' target='_blank'>🔍 低压电工 理论题库</a></td><td class='c dur'>2h</td></tr><tr><td class='c'>周二</td><td>模块二 电工基础（刷题）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%BD%8E%E5%8E%8B%E7%94%B5%E5%B7%A5%20%E7%94%B5%E5%B7%A5%E5%9F%BA%E7%A1%80' target='_blank'>🔍 低压电工 电工基础</a></td><td class='c dur'>2h</td></tr><tr><td class='c'>周三</td><td>模块三 安全生产法规（记忆）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%BD%8E%E5%8E%8B%E7%94%B5%E5%B7%A5%20%E6%B3%95%E8%A7%84' target='_blank'>🔍 低压电工 法规</a></td><td class='c dur'>2h</td></tr><tr><td class='c'>周四</td><td>模块四 低压设备（刷题）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%BD%8E%E5%8E%8B%E7%94%B5%E5%B7%A5%20%E4%BD%8E%E5%8E%8B%E8%AE%BE%E5%A4%87' target='_blank'>🔍 低压电工 低压设备</a></td><td class='c dur'>2h</td></tr><tr><td class='c'>周五</td><td>模块五 应急急救处置（刷题）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%BD%8E%E5%8E%8B%E7%94%B5%E5%B7%A5%20%E5%BA%94%E6%80%A5%E6%80%A5%E6%95%91' target='_blank'>🔍 低压电工 应急急救</a></td><td class='c dur'>2h</td></tr><tr><td class='c'>周六</td><td>全真模拟考 1 套（限时）+ 订正</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%BD%8E%E5%8E%8B%E7%94%B5%E5%B7%A5%20%E6%A8%A1%E6%8B%9F%E8%80%83' target='_blank'>🔍 低压电工 模拟考</a></td><td class='c dur'>2h</td></tr><tr><td class='c'>周日</td><td>模拟考 2 套 + <a class="qlink" href="#quiz5">练习卷五 · 全真模拟（120 分钟）↓</a></td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E5%AE%89%E8%80%83%E9%80%9A%20%E4%B8%8A%E5%AD%A6%E5%90%A7%20%E7%94%B5%E5%B7%A5' target='_blank'>🔍 安考通 上学吧 电工</a></td><td class='c dur'>2h</td></tr></tbody></table>
+<div class='jumprow'>📖 本周概念精讲在下方 ｜ ✍ 周日练习：<a href='#quiz5'>直达练习卷五</a>（复盘后限时闭卷完成）</div>
+<div class='fraglabel'>📖 冲刺速记 · 高频数字表 + 总口诀（打印贴墙）</div>
+<h3 class="ctitle" id="ch9">第9章 · 高频数字速记表 + 总口诀</h3>
+<div class="card">
+<p><b>考前一页纸：把下面这串数字背熟，理论 30% 的题稳了。</b></p>
+<table>
+<tr><th>数字</th><th>含义</th><th>数字</th><th>含义</th></tr>
+<tr><td><b>80 分</b></td><td>理论/实操合格线</td><td><b>100 题</b></td><td>70判断+30单选/120分钟</td></tr>
+<tr><td><b>36V / 12V</b></td><td>干燥/潮湿安全电压</td><td><b>30mA·0.1s</b></td><td>漏保人身保护参数</td></tr>
+<tr><td><b>√2 ≈1.414</b></td><td>Um=√2×U → 311V</td><td><b>√3 ≈1.732</b></td><td>U线=√3×U相 → 380V</td></tr>
+<tr><td><b>50Hz / 0.02s</b></td><td>我国交流频率/周期</td><td><b>3000/1500</b></td><td>2极/4极同步转速</td></tr>
+<tr><td><b>1/3</b></td><td>Y-△启动电流、转矩</td><td><b>1.5~2.5 倍</b></td><td>熔断器≈电机额流倍数</td></tr>
+<tr><td><b>0.95~1.05</b></td><td>热继电器整定区间</td><td><b>≥0.5MΩ</b></td><td>低压绝缘合格值</td></tr>
+<tr><td><b>120 r/min</b></td><td>兆欧表摇速</td><td><b>5~6cm · 100~120/min · 30:2</b></td><td>CPR 三件套</td></tr>
+<tr><td><b>左零右火上地</b></td><td>插座接线</td><td><b>黄绿红 / 淡蓝 / 黄绿双色</b></td><td>L1L2L3 / N / PE</td></tr>
+</table>
+<div class="kou">
+🧠 <b>全篇总口诀：</b><br>
+"串等流、并等压；串相加、并倒数；<br>
+线压√3、峰值√2；星接有零、角接无零；<br>
+电容隔直通交、电感通直阻交；<br>
+漏保三毫安〇点一秒，插座回路必须装；<br>
+热继过载、熔断短路，二者搭配不能换；<br>
+按钮红停绿启，互锁双重最安全；<br>
+摇表一百二、绝缘零点五；电流钳单根；<br>
+先断电、再救人、后灭火，CPR压五深、百二速、三零二。"
+</div>
+</div>
+
+<div class="card">
+<b>B 站学习链接汇总（点击直达搜索）</b>
+<div class="links" style="margin-top:8px">
+<a href="https://search.bilibili.com/all?keyword=低压电工 电工基础" target="_blank">电工基础总览</a>
+<a href="https://search.bilibili.com/all?keyword=串并联电路计算例题" target="_blank">串并联例题</a>
+<a href="https://search.bilibili.com/all?keyword=三相交流电原理" target="_blank">三相电原理</a>
+<a href="https://search.bilibili.com/all?keyword=电气图纸符号识读" target="_blank">电气符号识读</a>
+<a href="https://search.bilibili.com/all?keyword=电气安全技术" target="_blank">电气安全</a>
+<a href="https://search.bilibili.com/all?keyword=低压电器元件讲解" target="_blank">低压电器</a>
+<a href="https://search.bilibili.com/all?keyword=电动机控制电路接线" target="_blank">电机控制</a>
+<a href="https://search.bilibili.com/all?keyword=家庭照明电路接线" target="_blank">照明电路</a>
+<a href="https://search.bilibili.com/all?keyword=电工仪表使用" target="_blank">电工仪表</a>
+<a href="https://search.bilibili.com/all?keyword=触电急救心肺复苏" target="_blank">触电急救</a>
+</div>
+</div>
+
+<div class="tip">📚 <b>使用建议：</b>每周按学习表推进时，先读本教程对应章节（每章约 10 分钟），再看 B 站视频建立画面，晚上做题巩固；周末把该章的口诀抄在本子上默写。第 9 章速记表建议打印贴墙，考前每天扫一眼。</div>
+<div class='fraglabel qz'>✍ 周日练习 · 限时闭卷 · 80 分合格（解析点击展开，自测时别偷看）</div>
+<div class='quizwrap' id='quiz5'>
+<h3 class="ctitle">练习卷五 · 全真模拟卷（五模块按真考比例）
+<span class="sub">对应：第9周学习内容 ｜ 建议在第9周冲刺期完成 ｜ 用时 120 分钟 ｜ 每题 1 分，满分 100 分，80 分合格（与真考一致）</span></h3>
+<h4>一、判断题（共 70 题）</h4>
+<div class='sec'>【模块一 · 电气安全技术（1–22）】</div><div class='q'><div class='qt'><span class='no'>1.</span> 特种作业人员无证不得上岗作业。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：电工作业属特种作业，必须持证上岗。</div></details></div><div class='q'><div class='qt'><span class='no'>2.</span> 电气设备着火时，应先切断电源再扑救。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：先断电防灭火者触电。</div></details></div><div class='q'><div class='qt'><span class='no'>3.</span> 雷雨天气禁止室外电气作业和摇测绝缘。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：雷电波及人身与设备安全。</div></details></div><div class='q'><div class='qt'><span class='no'>4.</span> 绝缘安全用具使用前应检查外观并确认检验有效期。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：三查：名称电压等级、外观、合格标签。</div></details></div><div class='q'><div class='qt'><span class='no'>5.</span> 遮栏与标示牌用于隔离和警示带电部位。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：屏护措施：防止误入、误碰。</div></details></div><div class='q'><div class='qt'><span class='no'>6.</span> 「禁止合闸，有人工作」标示牌应挂在开关操作把手上。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：防误合闸送电伤人。</div></details></div><div class='q'><div class='qt'><span class='no'>7.</span> 临时接地线应使用专用线夹连接，禁止缠绕。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：缠绕接触不可靠，且易发热松脱。</div></details></div><div class='q'><div class='qt'><span class='no'>8.</span> 带电作业必须设专人监护。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：监护人不得兼做其他工作。</div></details></div><div class='q'><div class='qt'><span class='no'>9.</span> 登高作业应系好安全带并有人监护。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：高挂低用、作业监护缺一不可。</div></details></div><div class='q'><div class='qt'><span class='no'>10.</span> 检修安全顺序：停电→验电→挂牌装设遮栏（接地线）。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：顺序颠倒即为违章，实操考试否决项。</div></details></div><div class='q'><div class='qt'><span class='no'>11.</span> 验电前应先在有电设备上确认验电器良好。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：验证验电器本身完好有效。</div></details></div><div class='q'><div class='qt'><span class='no'>12.</span> 室外发现导线断落，应离开 8m 以外并设置警戒。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：8~10m 内存在跨步电压危险。</div></details></div><div class='q'><div class='qt'><span class='no'>13.</span> 脱离跨步电压危险区的方法是单脚跳或双脚并拢小步走。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：减小两脚间电位差。</div></details></div><div class='q'><div class='qt'><span class='no'>14.</span> 电气设备金属外壳接地或接零是防止漏电伤人的保护措施。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：漏电时形成保护通路使保护动作。</div></details></div><div class='q'><div class='qt'><span class='no'>15.</span> PE 线上严禁装设开关和熔断器。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：PE 断开=外壳带电无保护，绝对禁止。</div></details></div><div class='q'><div class='qt'><span class='no'>16.</span> 漏电保护器跳闸后，未查明原因可以强行送电。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：强送可能扩大事故，必须先排查。</div></details></div><div class='q'><div class='qt'><span class='no'>17.</span> 漏电保护器的试验按钮应每月按一次。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：检查脱扣机构是否灵敏可靠。</div></details></div><div class='q'><div class='qt'><span class='no'>18.</span> 潮湿金属容器内作业，照明应使用 12V。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：特别危险场所取最低安全电压等级。</div></details></div><div class='q'><div class='qt'><span class='no'>19.</span> 手持电动工具可选用 II 类（双重绝缘）产品。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：双重绝缘无需接地，一般场所常用。</div></details></div><div class='q'><div class='qt'><span class='no'>20.</span> 安全用具可以临时挪作他用（如用绝缘杆挑挂衣物）。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：安全用具专具专用，挪用即损坏防护。</div></details></div><div class='q'><div class='qt'><span class='no'>21.</span> 发生触电事故时，首要任务是迅速使触电者脱离电源。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：救人先保己，先断电再施救。</div></details></div><div class='q'><div class='qt'><span class='no'>22.</span> 36V 安全电压在任何环境下都绝对安全。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：潮湿环境仍需降到 12V/24V。</div></details></div><div class='sec'>【模块二 · 电工基础（23–38）】</div><div class='q'><div class='qt'><span class='no'>23.</span> 电流表串联接入电路，电压表并联接入电路。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：接反会烧表或无读数。</div></details></div><div class='q'><div class='qt'><span class='no'>24.</span> 电阻串联起分压作用，并联起分流作用。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：分压/分流是两种连接方式的本质。</div></details></div><div class='q'><div class='qt'><span class='no'>25.</span> 220V 白炽灯接到 110V 电源上，实际功率为原来的 1/4。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：P=U²/R，电压减半功率降为 1/4。</div></details></div><div class='q'><div class='qt'><span class='no'>26.</span> 1 度电等于 1 千瓦时（1kWh）。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：电能单位，电表计量口径。</div></details></div><div class='q'><div class='qt'><span class='no'>27.</span> 焦耳定律 Q=I²Rt 表明电流越大发热越多。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：过载、短路起火的物理根源。</div></details></div><div class='q'><div class='qt'><span class='no'>28.</span> 交流有效值按热效应等效定义，铭牌标注均为有效值。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：与交流热效应相同的直流数值。</div></details></div><div class='q'><div class='qt'><span class='no'>29.</span> 我国交流电的频率是 60Hz。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：我国工频 50Hz（美日等部分国家 60Hz）。</div></details></div><div class='q'><div class='qt'><span class='no'>30.</span> 220V 交流电的最大值约为 311V。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：Um=√2×220≈311V。</div></details></div><div class='q'><div class='qt'><span class='no'>31.</span> 三相对称负载星形接法时，线电流等于相电流。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：Y 接：每相绕组与线路串联，电流相同。</div></details></div><div class='q'><div class='qt'><span class='no'>32.</span> 三角形接法时，线电压等于相电压。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：△接：每个绕组直接跨接两火线。</div></details></div><div class='q'><div class='qt'><span class='no'>33.</span> 零线断线可能烧毁单相用电器。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：断零后负载重新分压 380V，轻载相电压升高。</div></details></div><div class='q'><div class='qt'><span class='no'>34.</span> 电容储存电场能，电感储存磁场能。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：两大储能元件，各存一种场。</div></details></div><div class='q'><div class='qt'><span class='no'>35.</span> 电容充电初期电流最大，随后逐渐减小。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：充电近似完成时电流趋于零。</div></details></div><div class='q'><div class='qt'><span class='no'>36.</span> 换路瞬间电感中的电流不能突变。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：电感限「流」；强迫突变会产生高压拉弧。</div></details></div><div class='q'><div class='qt'><span class='no'>37.</span> 电动机铭牌上的额定功率是指输入电功率。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：指轴端输出的额定机械功率。</div></details></div><div class='q'><div class='qt'><span class='no'>38.</span> 功率因数低会增加线路损耗。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：同样有功功率下电流增大，线损 I²R 上升。</div></details></div><div class='sec'>【模块三 · 安全生产法规（39–53）】</div><div class='q'><div class='qt'><span class='no'>39.</span> 从业人员有权拒绝违章指挥和强令冒险作业。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：《安全生产法》赋予的法定权利。</div></details></div><div class='q'><div class='qt'><span class='no'>40.</span> 特种作业人员的培训考核由应急管理部门监督管理。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：特种作业操作证由应急管理部门核发监管。</div></details></div><div class='q'><div class='qt'><span class='no'>41.</span> 特种作业操作证可以转借给他人使用。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：转借、出租、伪造均属违法。</div></details></div><div class='q'><div class='qt'><span class='no'>42.</span> 用人单位不得安排无证人员从事特种作业。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：企业主体责任，违规将被处罚。</div></details></div><div class='q'><div class='qt'><span class='no'>43.</span> 操作证复审应在期满前 60 日内提出申请。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：逾期未复审，证书失效。</div></details></div><div class='q'><div class='qt'><span class='no'>44.</span> 特种作业操作证遗失的，可以依法申请补办。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：向原考核发证机关申请补发。</div></details></div><div class='q'><div class='qt'><span class='no'>45.</span> 操作证每 3 年复审一次，逾期不复审仍然有效。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：逾期不复审证书自动失效，需重新考核。</div></details></div><div class='q'><div class='qt'><span class='no'>46.</span> 无证上岗只是一般违规行为，不构成违法。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：属于违法行为，可依法处罚直至追刑责。</div></details></div><div class='q'><div class='qt'><span class='no'>47.</span> 发现事故隐患应及时报告并处理。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：隐患不排除，事故难避免。</div></details></div><div class='q'><div class='qt'><span class='no'>48.</span> 企业应为特种作业人员建立管理档案（台账）。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：持证、复审、培训记录留档可查。</div></details></div><div class='q'><div class='qt'><span class='no'>49.</span> 从业人员应当接受安全生产教育和培训。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：培训合格方可上岗。</div></details></div><div class='q'><div class='qt'><span class='no'>50.</span> 发现直接危及人身安全的紧急情况时，可以停止作业撤离。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：紧急避险权，法律保护。</div></details></div><div class='q'><div class='qt'><span class='no'>51.</span> 安全生产方针是「安全第一、预防为主、综合治理」。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：十二字方针。</div></details></div><div class='q'><div class='qt'><span class='no'>52.</span> 特种作业人员对安全规程可以有选择地执行。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：规程必须不折不扣执行，没有选择性。</div></details></div><div class='q'><div class='qt'><span class='no'>53.</span> 特种作业操作证有效期为 6 年，期满应换证。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：6 年一换证、3 年一复审。</div></details></div><div class='sec'>【模块四 · 低压设备（54–63）】</div><div class='q'><div class='qt'><span class='no'>54.</span> 低压断路器兼具过载保护和短路保护。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：热脱扣+磁脱扣双保护。</div></details></div><div class='q'><div class='qt'><span class='no'>55.</span> 熔断器主要用于短路保护。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：瞬时大电流熔断，不能替代过载保护。</div></details></div><div class='q'><div class='qt'><span class='no'>56.</span> 接触器适用于频繁启停的电机控制。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：远距离频繁通断主电路。</div></details></div><div class='q'><div class='qt'><span class='no'>57.</span> 热继电器动作跳闸后，应查明原因再手动复位。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：复位前先排除过载/断相故障。</div></details></div><div class='q'><div class='qt'><span class='no'>58.</span> 星三角启动适用于重载启动场合。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：启动转矩降为 1/3，只适合空载/轻载。</div></details></div><div class='q'><div class='qt'><span class='no'>59.</span> 自锁触点使电机实现连续运转。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：松开按钮后维持线圈通路。</div></details></div><div class='q'><div class='qt'><span class='no'>60.</span> 互锁的作用是防止正反转接触器同时吸合造成短路。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：相间短路保护的核心措施。</div></details></div><div class='q'><div class='qt'><span class='no'>61.</span> 变频器通过改变频率实现调速。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：f 变→同步转速变。</div></details></div><div class='q'><div class='qt'><span class='no'>62.</span> 插座回路应装设漏电保护器。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：末端人身防护的强制性要求。</div></details></div><div class='q'><div class='qt'><span class='no'>63.</span> 照明开关应控制零线。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：开关必须断火线。</div></details></div><div class='sec'>【模块五 · 触电急救（64–70）】</div><div class='q'><div class='qt'><span class='no'>64.</span> 触电急救的第一步是使触电者脱离电源。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：未脱离电源前不得直接接触伤员。</div></details></div><div class='q'><div class='qt'><span class='no'>65.</span> 在未断电前，可以徒手直接拖拽触电者。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：救人者立即触电，绝对禁止。</div></details></div><div class='q'><div class='qt'><span class='no'>66.</span> 判断呼吸应观察胸廓起伏 5~10 秒。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：无反应+无正常呼吸即开始 CPR。</div></details></div><div class='q'><div class='qt'><span class='no'>67.</span> 成人胸外按压深度为 5~6cm。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：按压后须完全回弹。</div></details></div><div class='q'><div class='qt'><span class='no'>68.</span> 按压与人工呼吸之比为 30:2。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：单人施救标准。</div></details></div><div class='q'><div class='qt'><span class='no'>69.</span> 按压中断应尽量不超过 10 秒。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>√</b>　｜　解疑：持续按压维持脑供血。</div></details></div><div class='q'><div class='qt'><span class='no'>70.</span> 电气火灾可以用水扑救。 <span class='slot'>（　）</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='no2'>×</b>　｜　解疑：水导电，先断电+干粉/CO₂。</div></details></div><h4>二、单选题（共 30 题）</h4><div class='sec'>【安全（1–13）】</div><div class='q'><div class='qt'><span class='no'>1.</span> 低压触电脱离电源的首选方法是</div><div class='opts'><span>A. 徒手拉开触电者</span><span>B. 拉闸断电或拔掉插头</span><span>C. 泼水</span><span>D. 喊他松手</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：断电最彻底、最安全。</div></details></div><div class='q'><div class='qt'><span class='no'>2.</span> 末端漏电保护器的动作时间应不超过</div><div class='opts'><span>A. 0.1s</span><span>B. 0.5s</span><span>C. 1s</span><span>D. 3s</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>A</b>　｜　解疑：30mA/0.1s 为人身防护参数。</div></details></div><div class='q'><div class='qt'><span class='no'>3.</span> 金属容器内作业照明电压应选</div><div class='opts'><span>A. 220V</span><span>B. 36V</span><span>C. 24V</span><span>D. 12V</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>D</b>　｜　解疑：特别危险场所 12V。</div></details></div><div class='q'><div class='qt'><span class='no'>4.</span> 检修时开关把手上应挂的标示牌是</div><div class='opts'><span>A. 在此工作</span><span>B. 禁止合闸，有人工作</span><span>C. 止步，高压危险</span><span>D. 从此上下</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：防止误送电。</div></details></div><div class='q'><div class='qt'><span class='no'>5.</span> 电气火灾应优先选用的灭火器是</div><div class='opts'><span>A. 清水</span><span>B. 泡沫</span><span>C. 干粉</span><span>D. 水基</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>C</b>　｜　解疑：干粉不导电、适用面广。</div></details></div><div class='q'><div class='qt'><span class='no'>6.</span> 兆欧表 G 端（屏蔽端）的作用是</div><div class='opts'><span>A. 接被测导体</span><span>B. 接地</span><span>C. 屏蔽表面泄漏电流</span><span>D. 接零线</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>C</b>　｜　解疑：排除表面电流对绝缘读数的干扰。</div></details></div><div class='q'><div class='qt'><span class='no'>7.</span> PE 保护线的颜色是</div><div class='opts'><span>A. 淡蓝</span><span>B. 黄绿双色</span><span>C. 红色</span><span>D. 黑色</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：黄绿双色专用，不得挪用。</div></details></div><div class='q'><div class='qt'><span class='no'>8.</span> 验证低压验电器好坏的方法是</div><div class='opts'><span>A. 在确认有电的设备上试验</span><span>B. 用手摸一下</span><span>C. 看外观</span><span>D. 摇一摇</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>A</b>　｜　解疑：先验有电处确认氖泡/声响正常。</div></details></div><div class='q'><div class='qt'><span class='no'>9.</span> 身处跨步电压危险区时，正确的离开方式是</div><div class='opts'><span>A. 大步快跑</span><span>B. 单脚跳离</span><span>C. 爬行</span><span>D. 原地蹲下不动</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：单脚（或并足小步）跳出 8~10m。</div></details></div><div class='q'><div class='qt'><span class='no'>10.</span> 漏电保护器安装的正确做法是</div><div class='opts'><span>A. 只穿相线</span><span>B. 相线与零线同穿互感器，PE 不穿</span><span>C. 相线零线 PE 全穿</span><span>D. 零线单独穿</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：PE 穿入则漏电无法检测。</div></details></div><div class='q'><div class='qt'><span class='no'>11.</span> 带电作业的安全要求是</div><div class='opts'><span>A. 可单人作业</span><span>B. 设专人监护</span><span>C. 穿拖鞋即可</span><span>D. 雨天照常</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：专人监护+合格用具。</div></details></div><div class='q'><div class='qt'><span class='no'>12.</span> 室外发现导线断落，人员应离开的距离是</div><div class='opts'><span>A. 1m</span><span>B. 3m</span><span>C. 8m 以外</span><span>D. 无所谓</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>C</b>　｜　解疑：8~10m 内有跨步电压。</div></details></div><div class='q'><div class='qt'><span class='no'>13.</span> 安全色红色的含义是</div><div class='opts'><span>A. 警告</span><span>B. 指令</span><span>C. 禁止、停止</span><span>D. 提示</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>C</b>　｜　解疑：红色=禁止停止消防。</div></details></div><div class='sec'>【基础（14–22）】</div><div class='q'><div class='qt'><span class='no'>14.</span> 4 极电动机的同步转速为</div><div class='opts'><span>A. 750 r/min</span><span>B. 1000 r/min</span><span>C. 1500 r/min</span><span>D. 3000 r/min</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>C</b>　｜　解疑：60×50/2=1500。</div></details></div><div class='q'><div class='qt'><span class='no'>15.</span> 最大值 311V 对应的有效值约为</div><div class='opts'><span>A. 110V</span><span>B. 220V</span><span>C. 380V</span><span>D. 500V</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：311÷√2≈220V。</div></details></div><div class='q'><div class='qt'><span class='no'>16.</span> 家庭照明回路常用的导线截面积是</div><div class='opts'><span>A. 1.0mm²</span><span>B. 1.5mm²</span><span>C. 2.5mm²</span><span>D. 4mm²</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：1.5mm² 配 10A 空开。</div></details></div><div class='q'><div class='qt'><span class='no'>17.</span> 电能表计量的单位是</div><div class='opts'><span>A. kW</span><span>B. kWh</span><span>C. kVA</span><span>D. A</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：千瓦时=度。</div></details></div><div class='q'><div class='qt'><span class='no'>18.</span> 公式 R=ρL/S 中，ρ 表示</div><div class='opts'><span>A. 电导率</span><span>B. 电阻率</span><span>C. 磁感应强度</span><span>D. 介电常数</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：材料本身的导电属性。</div></details></div><div class='q'><div class='qt'><span class='no'>19.</span> 6Ω 与 3Ω 并联后的总电阻为</div><div class='opts'><span>A. 9Ω</span><span>B. 2Ω</span><span>C. 3Ω</span><span>D. 18Ω</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：R=6×3/(6+3)=2Ω。</div></details></div><div class='q'><div class='qt'><span class='no'>20.</span> 220V、1000W 的电器工作电流约为</div><div class='opts'><span>A. 2.2A</span><span>B. 4.55A</span><span>C. 10A</span><span>D. 1A</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：I=P/U=1000/220≈4.55A。</div></details></div><div class='q'><div class='qt'><span class='no'>21.</span> 三相四线制中三根相线的标准颜色是</div><div class='opts'><span>A. 黄、绿、红</span><span>B. 红、蓝、黑</span><span>C. 黄、蓝、绿</span><span>D. 任意</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>A</b>　｜　解疑：L1 黄 L2 绿 L3 红。</div></details></div><div class='q'><div class='qt'><span class='no'>22.</span> 有功功率的单位是</div><div class='opts'><span>A. V</span><span>B. A</span><span>C. Ω</span><span>D. W</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>D</b>　｜　解疑：瓦特 W（kW=1000W）。</div></details></div><div class='sec'>【设备（23–27）】</div><div class='q'><div class='qt'><span class='no'>23.</span> 时间继电器的文字符号是</div><div class='opts'><span>A. KA</span><span>B. KT</span><span>C. KM</span><span>D. FR</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：KT 提供延时。</div></details></div><div class='q'><div class='qt'><span class='no'>24.</span> 自锁采用 KM 的</div><div class='opts'><span>A. 主触点</span><span>B. 常开辅助触点</span><span>C. 常闭辅助触点</span><span>D. 热元件</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：并联启动按钮两端。</div></details></div><div class='q'><div class='qt'><span class='no'>25.</span> 星三角启动电流降为直接启动的</div><div class='opts'><span>A. 1/2</span><span>B. 1/3</span><span>C. 2/3</span><span>D. 不变</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：相电压降 1/√3，电流、转矩约降 1/3。</div></details></div><div class='q'><div class='qt'><span class='no'>26.</span> 采用复合按钮互锁的正反转电路，其优点是</div><div class='opts'><span>A. 不可换向</span><span>B. 可直接换向操作</span><span>C. 更危险</span><span>D. 无需互锁</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：按反转按钮时先断开正转回路，换向快捷。</div></details></div><div class='q'><div class='qt'><span class='no'>27.</span> 断路器磁脱扣器动作对应的故障是</div><div class='opts'><span>A. 过载</span><span>B. 短路</span><span>C. 漏电</span><span>D. 欠压</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：电磁铁瞬时吸合分断大电流。</div></details></div><div class='sec'>【急救（28–30）】</div><div class='q'><div class='qt'><span class='no'>28.</span> 成人胸外按压频率为</div><div class='opts'><span>A. 60~80 次/分</span><span>B. 80~100 次/分</span><span>C. 100~120 次/分</span><span>D. 120~140 次/分</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>C</b>　｜　解疑：高频按压保证灌注。</div></details></div><div class='q'><div class='qt'><span class='no'>29.</span> 心肺复苏的一个循环是</div><div class='opts'><span>A. 15:2</span><span>B. 30:2</span><span>C. 30:1</span><span>D. 5:1</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>B</b>　｜　解疑：30 次按压+2 次吹气。</div></details></div><div class='q'><div class='qt'><span class='no'>30.</span> 电气火灾严禁使用的灭火剂是</div><div class='opts'><span>A. 干粉</span><span>B. 二氧化碳</span><span>C. 水和泡沫</span><span>D. 七氟丙烷</span></div><details><summary>答案与解析 ▾</summary><div class='ans'>答案：<b class='ok'>C</b>　｜　解疑：水、泡沫均导电。</div></details></div>
+<div class="key"><b>⚡ 答案速查（卷五）</b>
+<div class='krow' style='margin-top:6px;'>判断题</div><div class='krow'>1.√　2.√　3.√　4.√　5.√　6.√　7.√　8.√　9.√　10.√</div><div class='krow'>11.√　12.√　13.√　14.√　15.√　16.×　17.√　18.√　19.√　20.×</div><div class='krow'>21.√　22.×　23.√　24.√　25.√　26.√　27.√　28.√　29.×　30.√</div><div class='krow'>31.√　32.√　33.√　34.√　35.√　36.√　37.×　38.√　39.√　40.√</div><div class='krow'>41.×　42.√　43.√　44.√　45.×　46.×　47.√　48.√　49.√　50.√</div><div class='krow'>51.√　52.×　53.√　54.√　55.√　56.√　57.√　58.×　59.√　60.√</div><div class='krow'>61.√　62.√　63.×　64.√　65.×　66.√　67.√　68.√　69.√　70.×</div>
+<div class='krow'>单选题</div><div class='krow'>1.B　2.A　3.D　4.B　5.C　6.C　7.B　8.A　9.B　10.B</div><div class='krow'>11.B　12.C　13.C　14.C　15.B　16.B　17.B　18.B　19.B　20.B</div><div class='krow'>21.A　22.D　23.B　24.B　25.B　26.B　27.B　28.C　29.B　30.C</div></div>
+<div class="warn">📌 <b>本卷易错提醒：</b>判断题 70 分是及格基本盘：先保判断再攻单选；模块比例：安全35/基础25/法规15/设备15/急救10。</div>
+</div>
+</section>
+
+<section class="week" id="week10">
+<div class="wkhead warm">
+  <span class="wknum">第10周</span><span class="wktitle">实操集训 + 考试</span>
+  <span class="wktime">线下脱产 7.5 天</span>
+  <a class="toplink" href="#top">↑ 顶部</a>
+</div>
+<table class="dtable">
+<thead><tr><th style="width:50px">星期</th><th>当日具体学习内容（点🔍看 B 站）</th><th style="width:168px">B 站对应</th><th style="width:56px">时长</th></tr></thead><tbody>
+<tr style='background:#FFF7ED'><td class='c'>—</td><td>线下 Day1：安全用具使用与仪表测量（科目一）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%BD%8E%E5%8E%8B%E7%94%B5%E5%B7%A5%20%E5%AE%9E%E6%93%8D%20%E7%A7%91%E7%9B%AE%E4%B8%80' target='_blank'>🔍 低压电工 实操 科目一</a></td><td class='c dur'>脱产</td></tr><tr style='background:#FFF7ED'><td class='c'>—</td><td>线下 Day2：导线连接与照明/插座接线（科目二）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%BD%8E%E5%8E%8B%E7%94%B5%E5%B7%A5%20%E5%AE%9E%E6%93%8D%20%E7%A7%91%E7%9B%AE%E4%BA%8C' target='_blank'>🔍 低压电工 实操 科目二</a></td><td class='c dur'>脱产</td></tr><tr style='background:#FFF7ED'><td class='c'>—</td><td>线下 Day3：电动机点动/正反转接线（科目二）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E7%94%B5%E6%9C%BA%E6%AD%A3%E5%8F%8D%E8%BD%AC%20%E6%8E%A5%E7%BA%BF%20%E5%AE%9E%E6%93%8D' target='_blank'>🔍 电机正反转 接线 实操</a></td><td class='c dur'>脱产</td></tr><tr style='background:#FFF7ED'><td class='c'>—</td><td>线下 Day4：作业现场隐患排查（科目三）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%BD%8E%E5%8E%8B%E7%94%B5%E5%B7%A5%20%E5%AE%9E%E6%93%8D%20%E7%A7%91%E7%9B%AE%E4%B8%89' target='_blank'>🔍 低压电工 实操 科目三</a></td><td class='c dur'>脱产</td></tr><tr style='background:#FFF7ED'><td class='c'>—</td><td>线下 Day5：触电急救心肺复苏（科目四）</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%BD%8E%E5%8E%8B%E7%94%B5%E5%B7%A5%20%E5%BF%83%E8%82%BA%E5%A4%8D%E8%8B%8F%20%E5%AE%9E%E6%93%8D' target='_blank'>🔍 低压电工 心肺复苏 实操</a></td><td class='c dur'>脱产</td></tr><tr style='background:#FFF7ED'><td class='c'>—</td><td>线下 Day6：全真模拟演练 + 老师点评修正</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%BD%8E%E5%8E%8B%E7%94%B5%E5%B7%A5%20%E5%AE%9E%E6%93%8D%20%E6%A8%A1%E6%8B%9F' target='_blank'>🔍 低压电工 实操 模拟</a></td><td class='c dur'>脱产</td></tr><tr style='background:#FFF7ED'><td class='c'>—</td><td>线下 Day7：参加理论机考 + 实操考试，拿证！</td><td class='c'><a href='https://search.bilibili.com/all?keyword=%E4%BD%8E%E5%8E%8B%E7%94%B5%E5%B7%A5%20%E8%80%83%E8%AF%95' target='_blank'>🔍 低压电工 考试</a></td><td class='c dur'>脱产</td></tr></tbody></table>
+<div class='jumprow'>📖 下方为本周概念精讲，配合上方每日安排阅读</div>
+
+<div class="fraglabel">🛠 实操集训 · 四科目速览（深职训线下 7.5 天）</div>
+<div class="card">
+<table>
+<tr><th style="width:150px">科目</th><th style="width:70px">分值</th><th>考核要点</th></tr>
+<tr><td>科目一 · 安全用具使用</td><td>20 分</td><td style="text-align:left">绝缘手套检查与穿戴、验电器使用、标示牌口述（先在确认有电处验证验电器）</td></tr>
+<tr><td>科目二 · 安全接线操作</td><td>40 分</td><td style="text-align:left">导线连接与绝缘恢复、单控/双控灯、插座（左零右火上地）、电机点动/自锁/正反转接线</td></tr>
+<tr><td>科目三 · 隐患排查</td><td>20 分</td><td style="text-align:left">看图找隐患：插座回路无漏保、零线装熔断器、导线裸露、湿手操作、PE 挪用等</td></tr>
+<tr><td>科目四 · 应急处置</td><td>20 分</td><td style="text-align:left">脱离电源四法、判断意识呼吸、CPR（5–6cm · 100–120 次/分 · 30:2）、灭火器选用</td></tr>
+</table>
+</div>
+<div class="warn">⚠ <b>否决项（出现即不合格）：</b>带电接线、造成短路、安全流程顺序错误。标准流程：<b>断电 → 验电 → 接线 → 复检</b>，顺序错即否决。</div>
+</section>
+
+<div class="tipsbox"><h3>🔥 备考贴士</h3><ul>
+<li>理论先刷题库：80% 为重复题，考前 2 周每日 1 套模拟。</li>
+<li>实操记流程：断电 → 验电 → 接线 → 复检，顺序错即否决。</li>
+<li>CPR 必考：按压 5–6cm、100–120 次/分，反复练到肌肉记忆。</li>
+<li>错题当天清，周日复盘 + 限时刷卷（本页内嵌五套），错题回当周精讲复习。</li>
+<li>证件齐全：身份证、白底照、健康承诺书、学历（户口本可替代）。</li>
+<li>做完五套卷之后：低于 80 分的卷回当周精讲重学再测；考前一周把五套卷错题全部重做，仍错的做成「考前 10 分钟小抄」；卷五做两遍（间隔 3 天），第二遍目标 90+。</li>
+</ul></div>
+
+<footer>低压电工 · 一站式学习通关手册 —— 由《每日学习表》《电学基础教程》《电工基础概念全解》《五套练习卷》合并而成；数据按官方培训大纲与深职训公示信息整理，仅供备考参考，以当期考试机构通知为准。</footer>
+</div>
+
+<script>
+function setAll(open){document.querySelectorAll('details').forEach(function(d){d.open=open;});}
+window.addEventListener('beforeprint', function(){setAll(true);});
+</script>
+</body></html>

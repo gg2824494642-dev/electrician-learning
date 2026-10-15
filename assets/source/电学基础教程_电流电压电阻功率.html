@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>电学基础超详细教程 · 电流/电压/电阻/电功率</title>
+<style>
+  :root{
+    --blue:#185FA5; --blue-l:#E6F1FB; --blue-d:#0C447C;
+    --amber:#854F0B; --amber-l:#FAEEDA; --amber-d:#633806;
+    --red:#A32D2D; --green:#3B6D11; --gray:#5F5E5A;
+    --line:#D3D1C7; --bg:#FFFFFF; --text:#2C2C2A;
+  }
+  *{box-sizing:border-box;}
+  body{font-family:-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;color:var(--text);
+       line-height:1.75;max-width:960px;margin:0 auto;padding:24px 20px 60px;background:#F7F8FA;}
+  h1{font-size:26px;color:var(--blue-d);border-bottom:3px solid var(--blue);padding-bottom:10px;}
+  h2{font-size:20px;color:var(--blue-d);margin-top:40px;border-left:6px solid var(--amber);padding-left:12px;}
+  h3{font-size:16px;color:var(--amber-d);margin-top:24px;}
+  p{margin:10px 0;}
+  .lead{background:var(--blue-l);border-radius:12px;padding:16px 20px;color:var(--blue-d);}
+  .card{border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:18px 0;background:#fff;
+        box-shadow:0 1px 3px rgba(0,0,0,.04);}
+  .card.i{border-top:5px solid var(--blue);}
+  .card.u{border-top:5px solid var(--amber);}
+  .card.r{border-top:5px solid var(--green);}
+  .card.p{border-top:5px solid var(--red);}
+  .tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:20px;color:#fff;margin-right:8px;}
+  .tag.i{background:var(--blue);} .tag.u{background:var(--amber);}
+  .tag.r{background:var(--green);} .tag.p{background:var(--red);}
+  table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px;}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:center;}
+  th{background:var(--blue-l);color:var(--blue-d);font-weight:600;}
+  tr:nth-child(even) td{background:#FAFBFC;}
+  .formula{background:#0C447C;color:#fff;border-radius:10px;padding:12px 16px;font-size:17px;
+           text-align:center;letter-spacing:1px;margin:14px 0;font-family:"Consolas",monospace;}
+  .analogy{background:var(--amber-l);border-radius:10px;padding:12px 16px;color:var(--amber-d);}
+  .note{background:#FCEBEB;border-left:4px solid var(--red);padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0;}
+  .tip{background:#EAF3DE;border-left:4px solid var(--green);padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0;}
+  .kou{background:#FAEEDA;border:1px dashed var(--amber);border-radius:10px;padding:12px 16px;color:var(--amber-d);}
+  code{background:#EFEFEF;padding:1px 6px;border-radius:5px;font-family:"Consolas",monospace;}
+  .eg{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:12px 0;}
+  .eg b{color:var(--blue-d);}
+  svg{width:100%;height:auto;display:block;margin:12px 0;}
+  .links a{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;
+           padding:8px 14px;border-radius:8px;margin:6px 8px 6px 0;font-size:14px;}
+  .links a:hover{background:var(--blue-d);}
+  .toc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 22px;}
+  .toc a{color:var(--blue);text-decoration:none;}
+  .toc ol{margin:8px 0;padding-left:22px;}
+  .print-only{display:none;}
+  @media print{
+    body{background:#fff;max-width:none;}
+    .links{display:none;}
+    h2{page-break-before:auto;}
+    .card,.eg{page-break-inside:avoid;}
+  }
+  .small{font-size:13px;color:var(--gray);}
+</style>
+</head>
+<body>
+
+<h1>电学基础超详细教程<br><span style="font-size:16px;color:var(--gray)">电流 · 电压 · 电阻 · 电功率（零基础·低压电工考证版）</span></h1>
+
+<div class="lead">
+💡 <b>写给零基础学员：</b>这四大概念是低压电工证《理论考试》的命根子——安全技术、电工基础两大模块（合计占 60% 分值）全靠它们打底。本教程用<b>水路类比</b>帮你建立直觉，配<b>单位换算大表</b>和<b>考试例题</b>，逐字逐句讲透。每天看 1 个概念，10 分钟就能拿下。
+</div>
+
+<div class="toc">
+<b>目录</b>
+<ol>
+  <li><a href="#c1">一、总览：四兄弟一台戏（先建立全局观）</a></li>
+  <li><a href="#c2">二、电流 I —— 电在"跑"</a></li>
+  <li><a href="#c3">三、电压 U —— 电的"推力"</a></li>
+  <li><a href="#c4">四、电阻 R —— 电的"拦路虎"</a></li>
+  <li><a href="#c5">五、电功率 P —— 电干活的"快慢"</a></li>
+  <li><a href="#c6">六、欧姆定律：把三个量串起来</a></li>
+  <li><a href="#c7">七、单位换算速查大表</a></li>
+  <li><a href="#c8">八、经典考试例题（带步骤）</a></li>
+  <li><a href="#c9">九、记忆口诀 + 考试陷阱</a></li>
+  <li><a href="#c10">十、配套 B 站学习链接</a></li>
+</ol>
+</div>
+
+<!-- ============ 总览 ============ -->
+<h2 id="c1">一、总览：四兄弟一台戏</h2>
+<p>先记住一句话：<b>电压推着电流跑，电阻拦着电流跑，功率说明电干了多少活。</b> 四个量谁也离不了谁。</p>
+
+<table>
+<tr><th>名称</th><th>符号</th><th>单位</th><th>单位符号</th><th>一句话理解</th><th>水路类比</th></tr>
+<tr><td>电流</td><td>I</td><td>安培</td><td>A</td><td>电在导线里"流动"的快慢</td><td>水流（升/秒）</td></tr>
+<tr><td>电压</td><td>U</td><td>伏特</td><td>V</td><td>推着电跑的"力"</td><td>水压</td></tr>
+<tr><td>电阻</td><td>R</td><td>欧姆</td><td>Ω</td><td>导体拦电的"劲"</td><td>阀门/窄管</td></tr>
+<tr><td>电功率</td><td>P</td><td>瓦特</td><td>W</td><td>电每秒干多少活</td><td>水车做功</td></tr>
+</table>
+
+<div class="analogy">
+🏞️ <b>水路类比（贯穿全篇）：</b>把电路想成一条水路——<b>电池像水泵</b>（提供推力），<b>导线像水管</b>，<b>电流像水流</b>，<b>电压像水压</b>（推力大小），<b>电阻像阀门收窄</b>（越窄越难流），<b>电功率像水车转起来做的功</b>。水压越大、水管越粗（电阻小），水流就越急。
+</div>
+
+<svg viewBox="0 0 680 230" role="img" aria-label="四概念与水路对应">
+<defs><marker id="a1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect x="30" y="30" width="290" height="170" rx="14" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="175" y="56" text-anchor="middle" font-size="14" font-weight="600" fill="#0C447C">水路</text>
+<circle cx="90" cy="100" r="22" fill="#85B7EB" stroke="#185FA5" stroke-width="0.5"/><text x="90" y="100" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#042C53">水泵</text>
+<text x="170" y="92" font-size="13" fill="#5F5E5A">水压 →</text><text x="170" y="112" font-size="13" fill="#5F5E5A">水流 →</text>
+<rect x="200" y="86" width="60" height="26" rx="6" fill="#FAC775" stroke="#854F0B" stroke-width="0.5"/><text x="230" y="103" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#412402">窄阀</text>
+<rect x="360" y="30" width="290" height="170" rx="14" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text x="505" y="56" text-anchor="middle" font-size="14" font-weight="600" fill="#633806">电路</text>
+<circle cx="420" cy="100" r="22" fill="#EF9F27" stroke="#854F0B" stroke-width="0.5"/><text x="420" y="100" text-anchor="middle" dominant-baseline="central" font-size="12" fill="#412402">电池</text>
+<text x="500" y="92" font-size="13" fill="#5F5E5A">电压U →</text><text x="500" y="112" font-size="13" fill="#5F5E5A">电流I →</text>
+<rect x="540" y="86" width="60" height="26" rx="6" fill="#C0DD97" stroke="#3B6D11" stroke-width="0.5"/><text x="570" y="103" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#27500A">电阻R</text>
+<path d="M320 100 H360" stroke="#888780" stroke-width="1.5" fill="none" marker-end="url(#a1)"/>
+</svg>
+
+<!-- ============ 电流 ============ -->
+<h2 id="c2">二、电流 I —— 电在"跑"</h2>
+<div class="card i">
+<span class="tag i">电流</span><b>符号 I ｜ 单位 安培(A)</b>
+<h3>1. 它到底是什么？</h3>
+<p>电流是<b>电荷（电子）在导线里定向移动</b>形成的。你可以把它想成"水管里流动的水"。电子从电源负极出发，经过导线和用电器，回到正极，这一圈就叫"电流"。</p>
+
+<h3>2. 单位与换算</h3>
+<table>
+<tr><th>单位</th><th>符号</th><th>等于多少个安培(A)</th><th>生活例子</th></tr>
+<tr><td>千安</td><td>kA</td><td>1 kA = 1000 A</td><td>大型变电站</td></tr>
+<tr><td>安培（主单位）</td><td>A</td><td>1 A（基准）</td><td>一个 100W 灯泡约 0.45A</td></tr>
+<tr><td>毫安</td><td>mA</td><td>1 A = 1000 mA</td><td>手机充电约 2000 mA = 2A</td></tr>
+<tr><td>微安</td><td>μA</td><td>1 A = 1,000,000 μA</td><td>人体微弱生物电</td></tr>
+</table>
+<div class="formula">1 A = 1000 mA ｜ 1 mA = 1000 μA ｜ 小 → 大 ÷1000，大 → 小 ×1000</div>
+
+<h3>3. 电流的方向（考试常考！）</h3>
+<p>物理上规定：<b>正电荷移动的方向为电流方向</b>，即从电源<b>正极 → 负极</b>。但金属里真正跑的是<b>电子</b>，电子是<b>负极 → 正极</b>。考题里说的"电流方向"一律按<b>正电荷方向（正极到负极）</b>答，别和 electrons 搞混。</p>
+
+<h3>4. 怎么测量？</h3>
+<p>用<b>电流表（安培表）</b>，必须<b>串联</b>进电路（像把水表串进水管），且<b>电流从"+"接线柱进、"−"出</b>，否则指针反打会打弯。低压电工实操考"安全用具使用"会用到钳形表测电流——<b>钳形表不用断电、不用拆线</b>，直接夹住一根导线读数。</p>
+<div class="tip">📌 口诀：电流表"串"着走，+"进−"出别接反；测大电流用钳形表，夹一根线就行。</div>
+</div>
+
+<!-- ============ 电压 ============ -->
+<h2 id="c3">三、电压 U —— 电的"推力"</h2>
+<div class="card u">
+<span class="tag u">电压</span><b>符号 U ｜ 单位 伏特(V)</b>
+<h3>1. 它到底是什么？</h3>
+<p>电压也叫<b>电位差 / 电势差</b>。两点之间"电的推力差"就是电压。没有电压，电荷就不会动，就没有电流——<b>电压是形成电流的原因</b>。类比：没有水压，水就不会流。</p>
+
+<h3>2. 单位与换算</h3>
+<table>
+<tr><th>单位</th><th>符号</th><th>等于多少个伏特(V)</th><th>生活例子</th></tr>
+<tr><td>千伏</td><td>kV</td><td>1 kV = 1000 V</td><td>高压输电 10kV/110kV</td></tr>
+<tr><td>伏特（主单位）</td><td>V</td><td>1 V（基准）</td><td>干电池 1.5V、USB 5V</td></tr>
+<tr><td>毫伏</td><td>mV</td><td>1 V = 1000 mV</td><td>热电偶信号 mV 级</td></tr>
+<tr><td>微伏</td><td>μV</td><td>1 V = 1,000,000 μV</td><td>微弱传感器信号</td></tr>
+</table>
+<div class="formula">1 kV = 1000 V ｜ 1 V = 1000 mV ｜ 同样 ×1000 / ÷1000 规则</div>
+
+<h3>3. 常见电压值（考试背下来）</h3>
+<table>
+<tr><th>场景</th><th>电压</th><th>备注</th></tr>
+<tr><td>安全特低电压（SELV）</td><td>≤ 36 V</td><td>潮湿环境常用 12V/24V</td></tr>
+<tr><td>普通单相民用</td><td>220 V</td><td>我国家庭标准</td></tr>
+<tr><td>三相工业</td><td>380 V</td><td>线电压（相电压 220V）</td></tr>
+<tr><td>低压电工证范围</td><td>≤ 1000 V（交流）</td><td>证上写的作业范围</td></tr>
+</table>
+<div class="note">⚠️ 安全重点：<b>36V 是安全电压上限</b>（干燥环境）；潮湿、金属容器内必须用 <b>12V</b>。低压电工证只覆盖 <b>1kV 以下</b>，超过就是高压，无证绝对不能碰！</div>
+
+<h3>4. 怎么测量？</h3>
+<p>用<b>电压表（伏特表）</b>，必须<b>并联</b>在被测元件两端（像把水压表接在管子两头），同样"<b>+</b>进<b>−</b>出"。实测 household 插座：火线—零线 = 220V，火线—地线 ≈ 220V，零线—地线 ≈ 0V。</p>
+</div>
+
+<!-- ============ 电阻 ============ -->
+<h2 id="c4">四、电阻 R —— 电的"拦路虎"</h2>
+<div class="card r">
+<span class="tag r">电阻</span><b>符号 R ｜ 单位 欧姆(Ω)</b>
+<h3>1. 它到底是什么？</h3>
+<p>导体对电流的<b>阻碍作用</b>叫电阻。任何导线都有电阻，只是大小不同。类比：水管越细越长，水越难流——电阻越大。</p>
+
+<h3>2. 单位与换算（注意跨度大！）</h3>
+<table>
+<tr><th>单位</th><th>符号</th><th>等于多少个欧姆(Ω)</th><th>例子</th></tr>
+<tr><td>兆欧</td><td>MΩ</td><td>1 MΩ = 1,000,000 Ω</td><td>绝缘电阻（越大越安全）</td></tr>
+<tr><td>千欧</td><td>kΩ</td><td>1 kΩ = 1000 Ω</td><td>普通电阻标称 1kΩ~1MΩ</td></tr>
+<tr><td>欧姆（主单位）</td><td>Ω</td><td>1 Ω（基准）</td><td>1A 电流在 1V 下所受阻碍</td></tr>
+<tr><td>毫欧</td><td>mΩ</td><td>1 Ω = 1000 mΩ</td><td>导线、接头微小电阻</td></tr>
+</table>
+<div class="formula">1 MΩ = 1000 kΩ = 1,000,000 Ω ｜ 大→小 ×1000，小→大 ÷1000</div>
+
+<h3>3. 电阻由什么决定？（材料公式，考试常考）</h3>
+<div class="formula">R = ρ × L / S</div>
+<p>ρ（rho）= 电阻率（材料本身性质，铜小铝大）；L = 导线长度（越长电阻越大）；S = 横截面积（越粗电阻越小）。</p>
+<table>
+<tr><th>想让电阻变大</th><th>想让电阻变小</th></tr>
+<tr><td>用电阻率大的材料（如铁）</td><td>用电阻率小的材料（如铜、银）</td></tr>
+<tr><td>把导线拉长</td><td>把导线加粗（S 变大）</td></tr>
+<tr><td>温度升高（金属导体通常如此）</td><td>温度降低</td></tr>
+</table>
+
+<h3>4. 电阻与温度（易错点）</h3>
+<p>金属导体：温度↑ → 电阻↑；碳/半导体：温度↑ → 电阻↓。低压电工考"导线发热"就靠这条：<b>电流过大→发热→电阻再升→更热→烧断/起火</b>，所以过载保护很重要。</p>
+
+<h3>5. 怎么测量？</h3>
+<p>用<b>万用表电阻档（Ω）</b>或<b>兆欧表（摇表）</b>。关键：<b>必须断电、被测件脱离电路</b>再测！兆欧表专测绝缘电阻（MΩ 级），是电工上岗必会的安全检测。</p>
+<div class="tip">📌 口诀：电阻测量要"断电脱离"，Ω 档测通断，摇表测绝缘（MΩ 越大越安全）。</div>
+</div>
+
+<!-- ============ 功率 ============ -->
+<h2 id="c5">五、电功率 P —— 电干活的"快慢"</h2>
+<div class="card p">
+<span class="tag p">功率</span><b>符号 P ｜ 单位 瓦特(W)</b>
+<h3>1. 它到底是什么？</h3>
+<p>电功率表示<b>电流做功的快慢</b>，即<b>每秒消耗/转换多少电能</b>。类比：水车转得快不快、一秒能做多少功。灯泡 60W 比 20W 亮，就是功率大、干活快。</p>
+
+<h3>2. 单位与换算</h3>
+<table>
+<tr><th>单位</th><th>符号</th><th>等于多少个瓦特(W)</th><th>例子</th></tr>
+<tr><td>兆瓦</td><td>MW</td><td>1 MW = 1,000,000 W</td><td>发电站</td></tr>
+<tr><td>千瓦</td><td>kW</td><td>1 kW = 1000 W</td><td>空调 1.5kW、电热水器 2kW</td></tr>
+<tr><td>瓦特（主单位）</td><td>W</td><td>1 W（基准）</td><td>白炽灯 40~100W</td></tr>
+<tr><td>毫瓦</td><td>mW</td><td>1 W = 1000 mW</td><td>LED 指示灯、耳机</td></tr>
+</table>
+<div class="formula">1 kW = 1000 W ｜ 1 MW = 1000 kW ｜ 同样 ×1000 / ÷1000</div>
+
+<h3>3. 三大核心公式（必背！）</h3>
+<div class="formula">P = U × I &nbsp;&nbsp;（通用，任何电路）</div>
+<div class="formula">P = I² × R &nbsp;&nbsp;（已知电流、电阻时用）</div>
+<div class="formula">P = U² ÷ R &nbsp;&nbsp;（已知电压、电阻时用）</div>
+<p>这三个公式本质同一个：把欧姆定律 <code>U=IR</code> 代入 <code>P=UI</code> 就能推出后两个。低压电工最常用 <b>P=UI</b> 估算负载（比如一个 220V、10A 的回路能带多大功率）。</p>
+
+<h3>4. 功率、电能、电费的关系</h3>
+<div class="formula">电能 W = P × t &nbsp;（单位：千瓦时 kWh = "度"）</div>
+<p>1 度电 = 1 kW 的电器用 1 小时。例：2000W(=2kW) 电暖器开 5 小时 = 2×5 = 10 度电。</p>
+
+<h3>5. 焦耳定律（发热公式，安全必考）</h3>
+<div class="formula">Q = I² × R × t &nbsp;（电流流过电阻产生的热量）</div>
+<p>电流越大、电阻越大、时间越长，发热越猛。这就是<b>短路/过载会起火</b>的物理原因——短路时 R 极小、I 极大，Q 暴增。所以电路必须装<b>熔断器/断路器</b>。</p>
+<div class="note">⚠️ 考试高频：计算题常给额定电压/功率，求电阻或电流。记住"额定"三兄弟：<code>P额=U额×I额</code>、<code>R=U额²/P额</code>。</div>
+</div>
+
+<!-- ============ 欧姆定律 ============ -->
+<h2 id="c6">六、欧姆定律：把三个量串起来</h2>
+<p>这是全篇最核心的一条，把<b>电压、电流、电阻</b>用一个公式绑死：</p>
+<div class="formula">U = I × R &nbsp;（电压 = 电流 × 电阻）</div>
+<p>由此可推出两个变形（盖住谁就求谁）：</p>
+<div class="formula">I = U ÷ R &nbsp;&nbsp;&nbsp; R = U ÷ I</div>
+
+<svg viewBox="0 0 680 220" role="img" aria-label="欧姆定律三角记忆法">
+<defs><marker id="a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<polygon points="340,30 480,190 200,190" fill="#E6F1FB" stroke="#185FA5" stroke-width="1"/>
+<text x="340" y="70" text-anchor="middle" font-size="22" font-weight="600" fill="#0C447C">U</text>
+<text x="262" y="170" text-anchor="middle" font-size="20" fill="#042C53">I</text>
+<text x="418" y="170" text-anchor="middle" font-size="20" fill="#042C53">R</text>
+<text x="340" y="215" text-anchor="middle" font-size="13" fill="#5F5E5A">盖住谁，谁就在分子上（U 在顶，I、R 在底相乘）</text>
+</svg>
+
+<div class="kou">🔺 <b>三角记忆法：</b>画个倒三角，顶上是 U，底下左右是 I 和 R。<b>U = I × R</b>；盖住 I 得 <b>I = U ÷ R</b>；盖住 R 得 <b>R = U ÷ I</b>。考试时画这个三角，永远不慌。</div>
+
+<h3>串并联里的规律（考试小题）</h3>
+<table>
+<tr><th>连接方式</th><th>电流 I</th><th>电压 U</th><th>电阻 R</th></tr>
+<tr><td>串联</td><td>处处相等 I=I₁=I₂</td><td>分压 U=U₁+U₂</td><td>越串越大 R=R₁+R₂</td></tr>
+<tr><td>并联</td><td>分流 I=I₁+I₂</td><td>处处相等 U=U₁=U₂</td><td>越并越小 1/R=1/R₁+1/R₂</td></tr>
+</table>
+<div class="tip">📌 家庭用电都是<b>并联</b>——所以拔掉一个电器，其他照常工作；插座越多并联支路越多，总电阻越小、总电流越大，这就是要算"回路总负载"的原因。</div>
+
+<svg viewBox="0 0 680 300" role="img" aria-label="电流表串联与电压表并联接法">
+<title>电流表串联、电压表并联的正确接法对比</title>
+<rect x="30" y="50" width="300" height="200" rx="12" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<rect x="350" y="50" width="300" height="200" rx="12" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text x="180" y="76" text-anchor="middle" font-size="14" font-weight="600" fill="#0C447C">电流表 → 串联（断开电路串入）</text>
+<text x="500" y="76" text-anchor="middle" font-size="14" font-weight="600" fill="#633806">电压表 → 并联（跨接元件两端）</text>
+<g stroke="#334155" stroke-width="1.6" fill="none">
+<path d="M100 160 H150 M190 160 H240 M278 160 H310"/>
+<path d="M420 160 H470 M508 160 H560 M560 160 H620"/>
+<path d="M482 100 V132 M536 100 V132 M482 100 H536"/>
+</g>
+<circle cx="80" cy="160" r="20" fill="#fff" stroke="#185FA5" stroke-width="1.5"/>
+<text x="80" y="165" text-anchor="middle" font-size="12" fill="#0C447C">U</text>
+<circle cx="170" cy="160" r="20" fill="#fff" stroke="#A32D2D" stroke-width="2"/>
+<text x="170" y="165" text-anchor="middle" font-size="13" font-weight="600" fill="#A32D2D">A</text>
+<circle cx="258" cy="160" r="18" fill="#fff" stroke="#854F0B" stroke-width="1.5"/>
+<path d="M245 148 L271 172 M271 148 L245 172" stroke="#854F0B" stroke-width="1.4"/>
+<text x="258" y="196" text-anchor="middle" font-size="11" fill="#633806">灯</text>
+<circle cx="400" cy="160" r="20" fill="#fff" stroke="#854F0B" stroke-width="1.5"/>
+<text x="400" y="165" text-anchor="middle" font-size="12" fill="#633806">U</text>
+<circle cx="509" cy="132" r="4" fill="#334155"/><circle cx="509" cy="188" r="4" fill="#334155"/>
+<circle cx="489" cy="160" r="20" fill="#fff" stroke="#A32D2D" stroke-width="2"/>
+<text x="489" y="165" text-anchor="middle" font-size="13" font-weight="600" fill="#A32D2D">V</text>
+<path d="M509 188 V188" stroke="#334155"/>
+<path d="M470 160 H489 M509 160 H560" stroke="#334155" stroke-width="1.6" fill="none"/>
+<path d="M560 160 q10 -20 0 -38" stroke="#854F0B" stroke-width="1.6" fill="none"/>
+<circle cx="560" cy="118" r="18" fill="#fff" stroke="#854F0B" stroke-width="1.5"/>
+<path d="M547 106 L573 130 M573 106 L547 130" stroke="#854F0B" stroke-width="1.4"/>
+<text x="620" y="164" font-size="11" fill="#633806" text-anchor="end"></text>
+<text x="180" y="228" text-anchor="middle" font-size="12" fill="#334155">电流全部流过表 ·「+」进「−」出 · 量程从大到小</text>
+<text x="180" y="248" text-anchor="middle" font-size="11.5" fill="#A32D2D">⚠ 电流档误并联到电源 = 短路烧表</text>
+<text x="500" y="228" text-anchor="middle" font-size="12" fill="#334155">只取微小电流 · 并在灯两端测 220V</text>
+<text x="500" y="248" text-anchor="middle" font-size="11.5" fill="#3B6D11">口诀：测流串着走 · 测压并排搭</text>
+</svg>
+</div>
+
+<!-- ============ 换算大表 ============ -->
+<h2 id="c7">七、单位换算速查大表（打印贴墙）</h2>
+<table>
+<tr><th>物理量</th><th>小单位 → 主单位</th><th>主单位 → 大单位</th><th>主单位</th><th>大单位</th></tr>
+<tr><td>电流 I</td><td>mA÷1000, μA÷10⁶</td><td>A×1000=kA</td><td>安培 A</td><td>千安 kA</td></tr>
+<tr><td>电压 U</td><td>mV÷1000, μV÷10⁶</td><td>V×1000=kV</td><td>伏特 V</td><td>千伏 kV</td></tr>
+<tr><td>电阻 R</td><td>mΩ÷1000</td><td>Ω×1000=kΩ, ×10⁶=MΩ</td><td>欧姆 Ω</td><td>千欧 kΩ / 兆欧 MΩ</td></tr>
+<tr><td>功率 P</td><td>mW÷1000</td><td>W×1000=kW, ×10⁶=MW</td><td>瓦特 W</td><td>千瓦 kW / 兆瓦 MW</td></tr>
+</table>
+<div class="kou">🔢 <b>统一口诀：</b>"小换大，除 1000；大换小，乘 1000。" 电阻和功率跨到 M 级时多乘一次 1000（即 ×10⁶）。考试填空别漏写单位符号！</div>
+
+<!-- ============ 例题 ============ -->
+<h2 id="c8">八、经典考试例题（带步骤）</h2>
+
+<div class="eg">
+<b>例题 1（求电流）：</b>一个 220V 的电饭煲，电阻为 48.4Ω，求它通过电流是多少？<br>
+<b>解：</b>用欧姆定律 I = U ÷ R = 220 ÷ 48.4 = <b>4.55 A</b>。<br>
+<span class="small">考点：直接套 I=U/R，注意单位都已是 V 和 Ω，结果就是 A。</span>
+</div>
+
+<div class="eg">
+<b>例题 2（求功率）：</b>上题电饭煲的实际功率是多少瓦？每小时耗电多少度？<br>
+<b>解：</b>P = U × I = 220 × 4.55 ≈ <b>1000 W = 1 kW</b>；<br>
+每小时耗电 W = P × t = 1kW × 1h = <b>1 度</b>。<br>
+<span class="small">考点：P=UI 与电能换算，家用电器标称常给"220V 1000W"。</span>
+</div>
+
+<div class="eg">
+<b>例题 3（单位换算）：</b>测得某电路电流为 350 mA，换算成安培是多少？<br>
+<b>解：</b>小换大 ÷1000 → 350 ÷ 1000 = <b>0.35 A</b>。<br>
+<span class="small">考点：mA→A 必须 ÷1000，别写成 350A 或 0.035A。</span>
+</div>
+
+<div class="eg">
+<b>例题 4（安全计算）：</b>某插座回路额定电流 10A、电压 220V，最大能带多大功率的电器？<br>
+<b>解：</b>P = U × I = 220 × 10 = <b>2200 W = 2.2 kW</b>。<br>
+<span class="small">考点：估算回路负载上限，超过就过载跳闸，这是实操安全常识。</span>
+</div>
+
+<div class="eg">
+<b>例题 5（焦耳发热）：</b>一根导线电阻 2Ω，通过 5A 电流，1 分钟产生多少热量？<br>
+<b>解：</b>Q = I² × R × t = 5² × 2 × 60 = 25 × 2 × 60 = <b>3000 J（焦耳）</b>。<br>
+<span class="small">考点：t 要用秒（1 分钟=60 秒），Q 单位是焦耳 J。</span>
+</div>
+
+<!-- ============ 口诀陷阱 ============ -->
+<h2 id="c9">九、记忆口诀 + 考试陷阱</h2>
+<div class="kou">
+🧠 <b>四大概念口诀：</b><br>
+"电压推、电流跑、电阻拦、功率干；<br>
+U=IR 三角记，P=UI 不能忘；<br>
+小换大除千，大换小乘千；<br>
+测电流要串联，测电压要并联；<br>
+测电阻先断电，安全第一记心间。"
+</div>
+
+<div class="note">
+⚠️ <b>五大考试陷阱：</b>
+<ol>
+<li><b>电流方向</b>：考题按"正电荷方向（正→负）"，不是电子方向。</li>
+<li><b>安全电压</b>：干燥环境 ≤36V，潮湿/容器内用 12V，别混。</li>
+<li><b>低压范围</b>：证只管 ≤1000V 交流，高压不能碰。</li>
+<li><b>单位漏写/写错</b>：mA 写成 A、kΩ 写成 Ω，整题扣分。</li>
+<li><b>表笔接法</b>：电流表串联、电压表并联、"+"进"−"出，实操考评必查。</li>
+</ol>
+</div>
+
+<!-- ============ 链接 ============ -->
+<h2 id="c10">十、配套 B 站学习链接</h2>
+<p>下面用搜索关键词直达（B 站分集序号以播放列表实际为准，搜关键词最稳）：</p>
+<div class="links">
+<a href="https://search.bilibili.com/all?keyword=电流电压电阻电功率基础讲解" target="_blank">🔍 电流电压电阻功率基础讲解</a>
+<a href="https://search.bilibili.com/all?keyword=欧姆定律详细讲解例题" target="_blank">🔍 欧姆定律例题</a>
+<a href="https://search.bilibili.com/all?keyword=电工基础零基础电流电压" target="_blank">🔍 电工基础·零基础</a>
+<a href="https://search.bilibili.com/all?keyword=万用表测电流电压电阻" target="_blank">🔍 万用表测量教学</a>
+<a href="https://search.bilibili.com/all?keyword=低压电工理论考试电工基础" target="_blank">🔍 低压电工理论·电工基础</a>
+</div>
+
+<div class="tip">
+📚 <b>学习建议（配合你的 70 天计划）：</b>把本教程对应到计划第 1–2 周"电工基础"模块——通勤时用 B 站视频建立画面，晚上用本教程的例题动手算 2 题，周末用口诀复述一遍，基础就扎实了。
+</div>
+
+<p class="small">本教程为低压电工证备考配套资料，公式与安规以最新《低压电工作业》培训大纲及当地应急管理局公告为准。</p>
+
+</body>
+</html>
