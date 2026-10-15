@@ -327,12 +327,12 @@ select.inp{color:var(--ink2);font-family:inherit;outline:none}
 /* 课程封面里的实物图 */
 .cover-real{height:140px;border-radius:var(--r) var(--r) 0 0;overflow:hidden;background:#F4F9FF;
   display:flex;align-items:center;justify-content:center;position:relative;border-bottom:1px solid #DCE9F8}
-.cover-real img{max-height:120px;max-width:86%;display:block;filter:drop-shadow(0 6px 14px rgba(17,20,25,.14))}
+.cover-real img{width:100%;height:100%;object-fit:cover;display:block}
 .cover-real svg{width:100%;height:100%}
 .cover-real .tag{position:absolute;left:12px;top:12px}
 .cover-real-lg{height:230px;border-radius:14px;overflow:hidden;background:#F4F9FF;display:flex;
   align-items:center;justify-content:center;position:relative;border:1px solid #DCE9F8}
-.cover-real-lg img{max-height:200px;max-width:88%;display:block;filter:drop-shadow(0 8px 18px rgba(17,20,25,.16))}
+.cover-real-lg img{width:100%;height:100%;object-fit:cover;display:block}
 .cover-real-lg svg{width:100%;height:100%}
 
 /* ---------------- 无障碍与打印 ---------------- */
