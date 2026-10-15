@@ -1,8 +1,6 @@
 # 电工学堂 · E-LEARN
 
-纯公益、全站免费的电工学习网站。**在线访问：** https://<你的用户名>.github.io/electrician-learning/
-
-> 部署后请把上面这行 `<你的用户名>` 换成实际用户名（或在仓库设置里看到 Pages 地址后更新）。
+纯公益、全站免费的电工学习网站。**在线访问：** https://gg2824494642-dev.github.io/electrician-learning/
 
 - 12 门课程 / 50 节图文讲义（含 1 篇配图精讲）
 - 293 道题（判断 / 单选 / 多选，全部附解析）
@@ -95,6 +93,13 @@ python pipeline/build_data.py
 仓库根目录就是站点根目录，Pages 选择 `main` 分支 `/ (root)` 即可。
 若改了 `data/*.json`，记得先跑 `python pipeline/build_data.py` 再提交，否则页面读到的还是旧的 `data/*.js`。
 
+## 以后怎么更新网站
+
+```bash
+# 改完内容后
+python pipeline/build_data.py        # JSON -> JS
+python pipeline/deploy_github.py     # 提交并等待 Pages 生效（需要 GH_TOKEN 或 .gh_token）
+```n
 ## 免责声明
 
 本站为个人学习整理的公益站点，**非官方站点**。考试政策、报名时间、费用与考核标准请以当地应急管理部门、
