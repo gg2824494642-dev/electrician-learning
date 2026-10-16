@@ -4,52 +4,276 @@
   "order": 1,
   "intro": "这是「电工基础」的精讲合并版：把电流、电压、电阻三个基本量和欧姆定律一次讲透，并顺带讲清串联、并联和万用表的三种接法。基础课后面几节会把每个量再单独展开，建议先读这一篇建立整体印象。",
   "content": [
-    { "type": "h2", "text": "一、先记住一句话：电也像「自来水」" },
-    { "type": "p", "text": "把电想象成自来水，很多东西一下就通了：水泵负责把水推上去，水管让水流动，水管某处变细了水流就变小，水轮被水流推着转。电路里的角色一一对应——电池就是水泵，导线就是水管，电阻就是那截变细的管子，灯泡就是被推动的水轮。" },
-    { "type": "svg", "caption": "图 1　水的流动与电的流动，是同一套逻辑（水泵↔电池、水压↔电压、水流↔电流、窄管↔电阻、水轮↔灯泡）", "code": "<svg viewBox='0 0 920 430' xmlns='http://www.w3.org/2000/svg' font-family='Microsoft YaHei, sans-serif'><defs><marker id='a1' markerWidth='10' markerHeight='10' refX='7' refY='4' orient='auto'><path d='M0 0 L8 4 L0 8 z' fill='#2A4FE4'/></marker></defs><rect x='0' y='0' width='920' height='430' fill='#FAFBFD' rx='10'/><text x='24' y='34' font-size='15' font-weight='700' fill='#111114'>① 水的流动</text><rect x='40' y='62' width='96' height='74' rx='10' fill='#E8EDF8' stroke='#2A4FE4' stroke-width='2'/><text x='88' y='96' font-size='14' text-anchor='middle' fill='#111114'>水泵</text><text x='88' y='116' font-size='12' text-anchor='middle' fill='#5A6068'>（电源）</text><line x1='136' y1='84' x2='700' y2='84' stroke='#8FA0BE' stroke-width='12' stroke-linecap='round'/><line x1='380' y1='84' x2='440' y2='84' stroke='#8FA0BE' stroke-width='5' stroke-linecap='round'/><line x1='136' y1='120' x2='740' y2='120' stroke='#8FA0BE' stroke-width='12' stroke-linecap='round'/><text x='410' y='60' font-size='13' text-anchor='middle' fill='#3C4048'>窄管 = 电阻</text><path d='M250 84 L300 84' stroke='#2A4FE4' stroke-width='4' marker-end='url(#a1)'/><text x='275' y='70' font-size='13' text-anchor='middle' fill='#2A4FE4'>水流</text><circle cx='740' cy='100' r='32' fill='#fff' stroke='#2A4FE4' stroke-width='3'/><path d='M740 70 L740 130 M710 100 L770 100 M720 80 L760 120 M760 80 L720 120' stroke='#2A4FE4' stroke-width='2'/><text x='740' y='164' font-size='13' text-anchor='middle' fill='#3C4048'>水轮</text><rect x='150' y='150' width='150' height='28' rx='14' fill='#E8EDF8'/><text x='225' y='169' font-size='13' text-anchor='middle' fill='#1B3AC2'>水压 = 电压</text><text x='24' y='256' font-size='15' font-weight='700' fill='#111114'>② 电的流动</text><rect x='40' y='280' width='96' height='74' rx='10' fill='#2A4FE4'/><text x='88' y='314' font-size='14' text-anchor='middle' fill='#fff'>电池</text><text x='88' y='336' font-size='12' text-anchor='middle' fill='#C9D6FF'>＋　－</text><line x1='136' y1='302' x2='700' y2='302' stroke='#2A4FE4' stroke-width='4' stroke-linecap='round'/><line x1='136' y1='340' x2='740' y2='340' stroke='#2A4FE4' stroke-width='4' stroke-linecap='round'/><rect x='378' y='288' width='64' height='28' rx='5' fill='#fff' stroke='#2A4FE4' stroke-width='2'/><text x='410' y='307' font-size='12' text-anchor='middle' fill='#1B3AC2'>电阻 R</text><path d='M250 302 L300 302' stroke='#2A4FE4' stroke-width='4' marker-end='url(#a1)'/><text x='275' y='288' font-size='13' text-anchor='middle' fill='#2A4FE4'>电流 I</text><circle cx='740' cy='318' r='32' fill='#FFF6DF' stroke='#F7B500' stroke-width='3'/><path d='M726 304 L754 332 M754 304 L726 332' stroke='#F7B500' stroke-width='3'/><text x='740' y='380' font-size='13' text-anchor='middle' fill='#3C4048'>灯泡</text><path d='M88 140 L88 276' stroke='#C3C8CF' stroke-width='2' stroke-dasharray='5 5'/><path d='M410 140 L410 284' stroke='#C3C8CF' stroke-width='2' stroke-dasharray='5 5'/><path d='M740 136 L740 282' stroke='#C3C8CF' stroke-width='2' stroke-dasharray='5 5'/><text x='88' y='196' font-size='12' text-anchor='middle' fill='#8B9096'>↕ 对应</text><text x='410' y='196' font-size='12' text-anchor='middle' fill='#8B9096'>↕ 对应</text><text x='740' y='196' font-size='12' text-anchor='middle' fill='#8B9096'>↕ 对应</text><text x='24' y='410' font-size='13' fill='#5A6068'>水泵提供「推动力」→ 电池提供电动势；水流被推动 → 电流被推动；窄管阻碍水流 → 电阻阻碍电流。</text></svg>" },
-
-    { "type": "h2", "text": "二、电流 I —— 电在「跑」" },
-    { "type": "p", "text": "电流就是电荷在导线上有方向的移动。水管里我们关心「每秒流过多少水」，电路里我们关心「每秒流过多少电荷」，这个量就是电流，用字母 I 表示，单位是安培（A）。" },
-    { "type": "p", "text": "电流的大小可以很直观地想象：手电筒里大约 0.3 A，一只 100 W 白炽灯大约 0.45 A，一台家用空调启动时可能到 5 A 以上。所以家里的导线粗细、空气开关的大小，本质都是围着「电流」转的。" },
-    { "type": "svg", "caption": "图 2　电流的方向与大小：习惯上把正电荷移动的方向规定为电流方向（电源正极 → 外电路 → 负极），而导线里真正跑的电子方向正好相反", "code": "<svg viewBox='0 0 920 360' xmlns='http://www.w3.org/2000/svg' font-family='Microsoft YaHei, sans-serif'><defs><marker id='a2' markerWidth='10' markerHeight='10' refX='7' refY='4' orient='auto'><path d='M0 0 L8 4 L0 8 z' fill='#2A4FE4'/></marker><marker id='a3' markerWidth='10' markerHeight='10' refX='7' refY='4' orient='auto'><path d='M0 0 L8 4 L0 8 z' fill='#E5484D'/></marker></defs><rect width='920' height='360' fill='#FAFBFD' rx='10'/><rect x='70' y='120' width='110' height='80' rx='10' fill='#2A4FE4'/><text x='125' y='152' font-size='14' fill='#fff' text-anchor='middle'>电池</text><text x='100' y='182' font-size='15' fill='#fff'>＋</text><text x='150' y='182' font-size='15' fill='#fff'>－</text><path d='M180 136 L700 136' stroke='#2A4FE4' stroke-width='4'/><path d='M180 184 L700 184' stroke='#2A4FE4' stroke-width='4'/><circle cx='760' cy='160' r='34' fill='#FFF6DF' stroke='#F7B500' stroke-width='3'/><path d='M746 146 L774 174 M774 146 L746 174' stroke='#F7B500' stroke-width='3'/><text x='760' y='216' font-size='13' text-anchor='middle' fill='#3C4048'>灯泡</text><path d='M300 136 L360 136' stroke='#2A4FE4' stroke-width='5' marker-end='url(#a2)'/><path d='M460 136 L520 136' stroke='#2A4FE4' stroke-width='5' marker-end='url(#a2)'/><text x='410' y='120' font-size='13' text-anchor='middle' fill='#2A4FE4'>电流方向（规定）</text><path d='M520 184 L460 184' stroke='#E5484D' stroke-width='5' marker-end='url(#a3)'/><text x='410' y='206' font-size='13' text-anchor='middle' fill='#E5484D'>电子实际移动方向</text><text x='24' y='40' font-size='15' font-weight='700' fill='#111114'>电流的方向</text><rect x='620' y='240' width='276' height='96' rx='10' fill='#fff' stroke='#E3E6EA'/><text x='640' y='266' font-size='13' font-weight='700' fill='#111114'>单位换算</text><text x='640' y='292' font-size='13' fill='#3C4048'>1 A ＝ 1000 mA</text><text x='640' y='314' font-size='13' fill='#3C4048'>1 mA ＝ 1000 μA</text><text x='24' y='266' font-size='13' fill='#5A6068'>电流表（万用表电流档）要「串」在电路里，</text><text x='24' y='290' font-size='13' fill='#5A6068'>让电流从表里流过才能测出大小；</text><text x='24' y='314' font-size='13' fill='#E5484D'>绝不能把电流档直接并在电源两端，会短路！</text></svg>" },
-    { "type": "table", "head": ["常见电流", "大约数值", "说明"], "rows": [["手电筒小灯泡", "0.2 ~ 0.3 A", "两节干电池供电"], ["100 W 白炽灯", "约 0.45 A", "220 V 电压下"], ["1 匹空调（制冷）", "约 4 ~ 5 A", "启动瞬间更大"], ["人体致命电流", "50 mA 以上", "通过人体即可致命，安全电压因此存在"]] },
-    { "type": "example", "title": "例题 1（单位换算）", "text": "某照明回路电流为 0.8 A，合多少毫安？", "steps": ["记住 1 A ＝ 1000 mA", "0.8 A × 1000 ＝ 800 mA"], "answer": "800 mA" },
-
-    { "type": "h2", "text": "三、电压 U —— 电的「推力」" },
-    { "type": "p", "text": "光有水管，水不会自己流动，必须要有「水位差」或水压。电路也一样：有电压，电流才会流动。电压用字母 U 表示，单位是伏特（V）。" },
-    { "type": "p", "text": "关键点：电压永远是「两点之间」的差值。就像说「这层楼比那层楼高 3 米」，不谈两点就没有意义。同一根导线上（同一个等电位点）电压为 0，这也是为什么人站在地上摸一根不带电的线不会触电。" },
-    { "type": "svg", "caption": "图 3　电压是两点之间的「压力差」：水塔越高水位差越大，水流越急；电压越高，同样的电阻下电流越大", "code": "<svg viewBox='0 0 920 340' xmlns='http://www.w3.org/2000/svg' font-family='Microsoft YaHei, sans-serif'><defs><marker id='a4' markerWidth='10' markerHeight='10' refX='7' refY='4' orient='auto'><path d='M0 0 L8 4 L0 8 z' fill='#2A4FE4'/></marker></defs><rect width='920' height='340' fill='#FAFBFD' rx='10'/><text x='24' y='38' font-size='15' font-weight='700' fill='#111114'>① 水位差越大，水流越急</text><rect x='60' y='70' width='150' height='110' rx='8' fill='#DCE7FA' stroke='#2A4FE4'/><rect x='60' y='120' width='150' height='60' rx='8' fill='#8FA9E8'/><text x='135' y='156' font-size='13' text-anchor='middle' fill='#fff'>高水位</text><rect x='300' y='120' width='150' height='60' rx='8' fill='#DCE7FA' stroke='#2A4FE4'/><rect x='300' y='140' width='150' height='40' rx='8' fill='#8FA9E8'/><text x='375' y='166' font-size='13' text-anchor='middle' fill='#fff'>低水位</text><path d='M215 150 L295 150' stroke='#2A4FE4' stroke-width='4' marker-end='url(#a4)'/><text x='255' y='136' font-size='12' text-anchor='middle' fill='#2A4FE4'>水位差</text><text x='24' y='214' font-size='15' font-weight='700' fill='#111114'>② 电压差越大，电流越大</text><rect x='60' y='240' width='60' height='56' rx='8' fill='#2A4FE4'/><text x='90' y='274' font-size='13' text-anchor='middle' fill='#fff'>U</text><path d='M120 268 L280 268' stroke='#2A4FE4' stroke-width='4' marker-end='url(#a4)'/><rect x='280' y='252' width='60' height='32' rx='5' fill='#fff' stroke='#2A4FE4' stroke-width='2'/><text x='310' y='273' font-size='12' text-anchor='middle' fill='#1B3AC2'>R</text><text x='200' y='256' font-size='12' text-anchor='middle' fill='#2A4FE4'>电流 I = U / R</text><rect x='480' y='60' width='410' height='240' rx='10' fill='#fff' stroke='#E3E6EA'/><text x='504' y='92' font-size='14' font-weight='700' fill='#111114'>这些电压值要记住</text><text x='504' y='126' font-size='13.5' fill='#3C4048'>一节干电池　　<tspan font-weight='700'>1.5 V</tspan></text><text x='504' y='156' font-size='13.5' fill='#3C4048'>家用单相插座　<tspan font-weight='700'>220 V</tspan></text><text x='504' y='186' font-size='13.5' fill='#3C4048'>工业三相电　　<tspan font-weight='700'>380 V</tspan></text><text x='504' y='216' font-size='13.5' fill='#3C4048'>安全电压等级　<tspan font-weight='700'>42 / 36 / 24 / 12 / 6 V</tspan></text><text x='504' y='246' font-size='13' fill='#A67900'>一般人体的安全电压是 36 V 以下；</text><text x='504' y='270' font-size='13' fill='#A67900'>潮湿、狭窄等危险场所要用 12 V。</text><text x='504' y='294' font-size='12.5' fill='#8B9096'>注：具体数值以现行标准与教材为准。</text></svg>" },
-    { "type": "note", "text": "记住一句：电压是「两点之间」的差。测量电压时，万用表的两支表笔要分别接在这两个点上，也就是并联在被测元件两端。" },
-    { "type": "warn", "title": "安全提醒", "text": "220 V 电压下 50 mA 就能致命。所有带电作业前必须断电、验电，并挂接地线；不要相信「开关关了就没电」这句话，必须验电确认。" },
-
-    { "type": "h2", "text": "四、电阻 R —— 电的「拦路虎」" },
-    { "type": "p", "text": "电阻是导体对电流的阻碍作用，用字母 R 表示，单位是欧姆（Ω）。同样的电压下，电阻越大，电流越小——就像水管越细、越长，水就越难流。" },
-    { "type": "svg", "caption": "图 4　影响电阻的四个因素：材料、长度、横截面积、温度（金属导体温度升高，电阻变大）", "code": "<svg viewBox='0 0 920 320' xmlns='http://www.w3.org/2000/svg' font-family='Microsoft YaHei, sans-serif'><defs><marker id='a5' markerWidth='10' markerHeight='10' refX='7' refY='4' orient='auto'><path d='M0 0 L8 4 L0 8 z' fill='#2A4FE4'/></marker></defs><rect width='920' height='320' fill='#FAFBFD' rx='10'/><text x='24' y='36' font-size='15' font-weight='700' fill='#111114'>同样粗细的管子，越长越难流水</text><path d='M60 80 L380 80' stroke='#8FA0BE' stroke-width='14' stroke-linecap='round'/><path d='M470 80 L800 80' stroke='#8FA0BE' stroke-width='14' stroke-linecap='round'/><text x='220' y='116' font-size='13' text-anchor='middle' fill='#3C4048'>短管：电阻小</text><text x='635' y='116' font-size='13' text-anchor='middle' fill='#3C4048'>长管：电阻大（R 与长度成正比）</text><text x='24' y='176' font-size='15' font-weight='700' fill='#111114'>同样长度，管子越细越难流水</text><path d='M60 210 L380 210' stroke='#8FA0BE' stroke-width='18' stroke-linecap='round'/><path d='M470 210 L800 210' stroke='#8FA0BE' stroke-width='6' stroke-linecap='round'/><text x='220' y='246' font-size='13' text-anchor='middle' fill='#3C4048'>粗管：电阻小</text><text x='635' y='246' font-size='13' text-anchor='middle' fill='#3C4048'>细管：电阻大（与横截面积成反比）</text><text x='60' y='292' font-size='13' fill='#5A6068'>材料也有影响：铜的电阻比铝小，所以同样载流量，铜线更细；铁、镍铬合金电阻更大，用来做发热丝。</text><text x='60' y='312' font-size='13' fill='#8B9096'>单位：1 kΩ ＝ 1000 Ω　｜　1 MΩ ＝ 1000 kΩ ＝ 1 000 000 Ω</text></svg>" },
-    { "type": "ul", "items": ["材料：铜 < 铝，铜导电最好，所以导线多用铜", "长度：导线越长电阻越大", "横截面积：导线越粗（截面积越大）电阻越小", "温度：金属导体温度升高时电阻变大"] },
-    { "type": "note", "text": "为什么家里的空调要用更粗的线？因为空调电流大，如果线太细（电阻大），一方面会发热烧线，另一方面线路压降大、电器电压不够。这就是「导线选型」要按载流量算的原因。" },
-
-    { "type": "h2", "text": "五、欧姆定律：把三个量串起来" },
-    { "type": "p", "text": "欧姆定律是整个电工基础里最重要的一条公式：在同一个电路中，电流等于电压除以电阻。写成公式就是 I ＝ U ÷ R。只要知道其中两个量，就能算出第三个。" },
-    { "type": "svg", "caption": "图 5　欧姆定律三兄弟：把要算的量遮住，剩下的两个量怎么组合就是公式（U 在上面，I 和 R 在下面）", "code": "<svg viewBox='0 0 920 340' xmlns='http://www.w3.org/2000/svg' font-family='Microsoft YaHei, sans-serif'><rect width='920' height='340' fill='#FAFBFD' rx='10'/><path d='M200 60 L360 60 L280 200 z' fill='#fff' stroke='#2A4FE4' stroke-width='3'/><text x='280' y='112' font-size='30' font-weight='700' text-anchor='middle' fill='#2A4FE4'>U</text><line x1='200' y1='200' x2='360' y2='200' stroke='#2A4FE4' stroke-width='3'/><line x1='280' y1='200' x2='280' y2='270' stroke='#2A4FE4' stroke-width='3'/><text x='237' y='248' font-size='30' font-weight='700' text-anchor='middle' fill='#111114'>I</text><text x='325' y='248' font-size='30' font-weight='700' text-anchor='middle' fill='#111114'>R</text><text x='280' y='308' font-size='13' text-anchor='middle' fill='#8B9096'>遮住要算的那个量</text><rect x='430' y='56' width='450' height='60' rx='10' fill='#fff' stroke='#E3E6EA'/><text x='452' y='94' font-size='16' fill='#111114'>U ＝ I × R　　（求电压）</text><rect x='430' y='130' width='450' height='60' rx='10' fill='#fff' stroke='#E3E6EA'/><text x='452' y='168' font-size='16' fill='#111114'>I ＝ U ÷ R　　（求电流）</text><rect x='430' y='204' width='450' height='60' rx='10' fill='#fff' stroke='#E3E6EA'/><text x='452' y='242' font-size='16' fill='#111114'>R ＝ U ÷ I　　（求电阻）</text><text x='430' y='296' font-size='13' fill='#2A4FE4'>单位对应：U 用 V、I 用 A、R 用 Ω（三者单位必须配套）</text></svg>" },
-    { "type": "example", "title": "例题 2（求电阻）", "text": "一只 220 V / 100 W 的白炽灯，正常工作时电流约 0.45 A，求灯丝的电阻。", "steps": ["写出已知：U ＝ 220 V，I ＝ 0.45 A", "选公式：R ＝ U ÷ I", "代入计算：R ＝ 220 ÷ 0.45 ≈ 489 Ω"], "answer": "约 489 Ω" },
-    { "type": "example", "title": "例题 3（求电流）", "text": "某电阻为 55 Ω 的电热丝接在 220 V 电源上，正常工作电流是多少？", "steps": ["写出已知：U ＝ 220 V，R ＝ 55 Ω", "选公式：I ＝ U ÷ R", "代入计算：I ＝ 220 ÷ 55 ＝ 4 A"], "answer": "4 A" },
-    { "type": "tip", "title": "记忆口诀", "text": "「U 在上，I、R 在下；遮住谁，算谁。」要算电压就把 I 和 R 相乘，要算电流或电阻就用 U 去除——上面除以下面，永远是除法。" },
-
-    { "type": "h2", "text": "六、串联与并联：两种最基本的接法" },
-    { "type": "p", "text": "两个（或多个）元件，只有两条路可走：首尾相连叫串联，两端并在一起叫并联。这两种接法的电流电压关系完全不同，是考试和实际接线的高频考点。" },
-    { "type": "svg", "caption": "图 6　串联：电流只有一条路（处处相等），电压分配；并联：电压相同，电流分配。串联一灯坏全灭，并联一灯坏其他照常亮", "code": "<svg viewBox='0 0 920 400' xmlns='http://www.w3.org/2000/svg' font-family='Microsoft YaHei, sans-serif'><defs><marker id='a6' markerWidth='10' markerHeight='10' refX='7' refY='4' orient='auto'><path d='M0 0 L8 4 L0 8 z' fill='#2A4FE4'/></marker></defs><rect width='920' height='400' fill='#FAFBFD' rx='10'/><text x='30' y='36' font-size='15' font-weight='700' fill='#111114'>串联</text><rect x='40' y='120' width='70' height='60' rx='8' fill='#2A4FE4'/><text x='75' y='156' font-size='12' text-anchor='middle' fill='#fff'>电源</text><path d='M110 130 L600 130 M110 170 L600 170' stroke='#2A4FE4' stroke-width='4'/><path d='M600 130 L600 170' stroke='#2A4FE4' stroke-width='4'/><circle cx='260' cy='130' r='26' fill='#FFF6DF' stroke='#F7B500' stroke-width='3'/><text x='260' y='96' font-size='12' text-anchor='middle' fill='#3C4048'>灯泡1</text><circle cx='440' cy='130' r='26' fill='#FFF6DF' stroke='#F7B500' stroke-width='3'/><text x='440' y='96' font-size='12' text-anchor='middle' fill='#3C4048'>灯泡2</text><path d='M150 130 L200 130' stroke='#2A4FE4' stroke-width='5' marker-end='url(#a6)'/><text x='175' y='118' font-size='12' text-anchor='middle' fill='#2A4FE4'>I</text><text x='30' y='228' font-size='13.5' fill='#3C4048'>电流：I ＝ I₁ ＝ I₂（处处相等）</text><text x='30' y='254' font-size='13.5' fill='#3C4048'>电压：U ＝ U₁ ＋ U₂（分压）</text><text x='30' y='280' font-size='13.5' fill='#3C4048'>电阻：R ＝ R₁ ＋ R₂（越串越大）</text><text x='30' y='306' font-size='13.5' fill='#E5484D'>特点：一处断开，全部不工作</text><text x='30' y='332' font-size='13' fill='#8B9096'>应用：开关、熔断器、电流表串在电路里</text><line x1='460' y1='40' x2='460' y2='360' stroke='#E3E6EA' stroke-width='2'/><text x='490' y='36' font-size='15' font-weight='700' fill='#111114'>并联</text><rect x='500' y='120' width='70' height='60' rx='8' fill='#2A4FE4'/><text x='535' y='156' font-size='12' text-anchor='middle' fill='#fff'>电源</text><path d='M570 130 L860 130 M570 170 L860 170' stroke='#2A4FE4' stroke-width='4'/><path d='M570 130 L570 170' stroke='#2A4FE4' stroke-width='4'/><path d='M700 130 L700 170 M800 130 L800 170' stroke='#2A4FE4' stroke-width='4'/><circle cx='700' cy='130' r='24' fill='#FFF6DF' stroke='#F7B500' stroke-width='3'/><circle cx='800' cy='130' r='24' fill='#FFF6DF' stroke='#F7B500' stroke-width='3'/><text x='700' y='96' font-size='12' text-anchor='middle' fill='#3C4048'>灯泡1</text><text x='800' y='96' font-size='12' text-anchor='middle' fill='#3C4048'>灯泡2</text><path d='M600 130 L650 130' stroke='#2A4FE4' stroke-width='5' marker-end='url(#a6)'/><text x='625' y='118' font-size='12' text-anchor='middle' fill='#2A4FE4'>I</text><text x='490' y='228' font-size='13.5' fill='#3C4048'>电压：U ＝ U₁ ＝ U₂（相同）</text><text x='490' y='254' font-size='13.5' fill='#3C4048'>电流：I ＝ I₁ ＋ I₂（分流）</text><text x='490' y='280' font-size='13.5' fill='#3C4048'>电阻：1/R ＝ 1/R₁ ＋ 1/R₂（越并越小）</text><text x='490' y='306' font-size='13.5' fill='#16A34A'>特点：一路断开，其他照常工作</text><text x='490' y='332' font-size='13' fill='#8B9096'>应用：家里的灯和插座都是并联</text></svg>" },
-    { "type": "table", "head": ["对比项", "串联", "并联"], "rows": [["电流", "处处相等 I ＝ I₁ ＝ I₂", "分流 I ＝ I₁ ＋ I₂"], ["电压", "分压 U ＝ U₁ ＋ U₂", "处处相等 U ＝ U₁ ＝ U₂"], ["总电阻", "R ＝ R₁ ＋ R₂（变大）", "1/R ＝ 1/R₁ ＋ 1/R₂（变小）"], ["一路断开", "全部停止工作", "其他支路不受影响"], ["生活实例", "开关、熔断器、电流表", "家里的电灯、插座"]] },
-    { "type": "example", "title": "例题 4（串联计算）", "text": "两个电阻 R₁ ＝ 10 Ω、R₂ ＝ 20 Ω 串联接在 6 V 电源上，求总电阻和电流。", "steps": ["串联总电阻：R ＝ R₁ ＋ R₂ ＝ 30 Ω", "电流：I ＝ U ÷ R ＝ 6 ÷ 30 ＝ 0.2 A", "验证：U₁ ＝ I×R₁ ＝ 2 V，U₂ ＝ I×R₂ ＝ 4 V，2＋4＝6 V ✓"], "answer": "总电阻 30 Ω，电流 0.2 A" },
-
-    { "type": "h2", "text": "七、怎么用万用表把这三个量量出来" },
-    { "type": "p", "text": "看懂电路之后，就要会用仪表验证。电压、电流、电阻三个量的测量接法完全不同，这也是实操考核（科目一）最常考的地方：电压要并联，电流要串联，电阻必须断电测量。" },
-    { "type": "svg", "caption": "图 7　万用表的三种接法：测电压并联、测电流串联（需断开电路接入）、测电阻必须断电并把元件从电路里脱开", "code": "<svg viewBox='0 0 920 340' xmlns='http://www.w3.org/2000/svg' font-family='Microsoft YaHei, sans-serif'><rect width='920' height='340' fill='#FAFBFD' rx='10'/><text x='30' y='34' font-size='14' font-weight='700' fill='#2A4FE4'>① 测电压：并联</text><rect x='60' y='150' width='70' height='50' rx='6' fill='#2A4FE4'/><text x='95' y='181' font-size='11' text-anchor='middle' fill='#fff'>电源</text><path d='M130 160 L340 160 M130 190 L340 190' stroke='#2A4FE4' stroke-width='3'/><rect x='230' y='152' width='50' height='46' rx='6' fill='#fff' stroke='#2A4FE4' stroke-width='2'/><text x='255' y='180' font-size='11' text-anchor='middle' fill='#1B3AC2'>负载</text><path d='M255 160 L255 100 L200 100' stroke='#F7B500' stroke-width='3' fill='none'/><path d='M255 198 L255 248 L200 248' stroke='#F7B500' stroke-width='3' fill='none'/><rect x='120' y='84' width='76' height='32' rx='5' fill='#FFF6DF' stroke='#F7B500' stroke-width='2'/><text x='158' y='105' font-size='11' text-anchor='middle' fill='#A67900'>万用表</text><text x='60' y='300' font-size='12.5' fill='#5A6068'>两表笔接在被测元件两端，表与被测元件「并」在一起</text><text x='330' y='34' font-size='14' font-weight='700' fill='#2A4FE4'>② 测电流：串联</text><rect x='360' y='150' width='60' height='50' rx='6' fill='#2A4FE4'/><text x='390' y='181' font-size='11' text-anchor='middle' fill='#fff'>电源</text><path d='M420 160 L470 160 M420 190 L640 190' stroke='#2A4FE4' stroke-width='3'/><path d='M470 160 L500 160' stroke='#2A4FE4' stroke-width='3'/><circle cx='540' cy='160' r='18' fill='#FFF6DF' stroke='#F7B500' stroke-width='2'/><path d='M585 160 L640 160' stroke='#2A4FE4' stroke-width='3'/><path d='M585 160 L585 160' stroke='#2A4FE4'/><rect x='496' y='196' width='90' height='34' rx='5' fill='#FFF6DF' stroke='#F7B500' stroke-width='2'/><text x='541' y='218' font-size='11' text-anchor='middle' fill='#A67900'>万用表（电流档）</text><path d='M500 160 L500 196 M582 160 L582 196' stroke='#F7B500' stroke-width='3'/><text x='360' y='300' font-size='12.5' fill='#5A6068'>必须断开电路，把表「串」进去，电流从表里流过</text><text x='650' y='34' font-size='14' font-weight='700' fill='#2A4FE4'>③ 测电阻：先断电</text><rect x='680' y='150' width='60' height='50' rx='6' fill='#C3C8CF'/><text x='710' y='181' font-size='11' text-anchor='middle' fill='#fff'>断电</text><rect x='790' y='152' width='60' height='46' rx='6' fill='#fff' stroke='#2A4FE4' stroke-width='2' stroke-dasharray='4 3'/><text x='820' y='180' font-size='11' text-anchor='middle' fill='#1B3AC2'>拆下</text><path d='M760 175 L788 175' stroke='#E5484D' stroke-width='3' stroke-dasharray='4 3'/><rect x='700' y='240' width='90' height='34' rx='5' fill='#FFF6DF' stroke='#F7B500' stroke-width='2'/><text x='745' y='262' font-size='11' text-anchor='middle' fill='#A67900'>万用表（电阻档）</text><path d='M745 240 L745 200 L790 200' stroke='#F7B500' stroke-width='3' fill='none'/><text x='660' y='300' font-size='12.5' fill='#E5484D'>带电测电阻：读数不准，还可能烧表、触电</text></svg>" },
-    { "type": "ul", "items": ["测电压：选交流电压档（测市电）或直流电压档（测电池），表笔并联在被测元件两端", "测电流：选电流档，断开电路把表串联接入；测量时手不要碰到金属表笔", "测电阻：必须断电，最好把元件从电路上脱开，否则并联的其他支路会影响读数", "每次测量前先确认档位与量程；不确定就先用最大量程试测"] },
-    { "type": "warn", "title": "安全禁忌", "text": "严禁用电阻档或电流档去测电压，会直接烧表甚至引起弧光短路；严禁带电拆接导线；严禁使用绝缘破损、表笔线老化的仪表。" },
-
-    { "type": "h2", "text": "八、这一课要拿走的 8 个点" },
-    { "type": "ul", "items": ["电流 I：电荷的定向移动，单位 A，1 A ＝ 1000 mA", "电流方向按规定为正电荷移动方向（电源正极 → 外电路 → 负极），电子实际方向相反", "电压 U：两点之间的电位差，是电流的「推力」，单位 V", "安全电压等级：42 / 36 / 24 / 12 / 6 V，一般场所 36 V 以下，潮湿场所 12 V", "电阻 R：对电流的阻碍，单位 Ω，与材料、长度、横截面积、温度有关", "欧姆定律：I ＝ U ÷ R，U ＝ I × R，R ＝ U ÷ I（单位必须配套）", "串联：电流相等、电压分配、总电阻相加；并联：电压相等、电流分配、总电阻变小", "测电压并联、测电流串联、测电阻断电——这三句是实操考核的送分点"] },
-    { "type": "tip", "title": "下一课学什么", "text": "下一课我们把「电功率」和「电功」讲清楚：为什么 1 度电 ＝ 1 kW·h，家里的空气开关和导线到底按什么选。掌握这一课之后，你就能自己算一个回路该配多粗的线、多大的开关。" }
+    {
+      "type": "h2",
+      "text": "一、先记住一句话：电也像「自来水」"
+    },
+    {
+      "type": "p",
+      "text": "把电想象成自来水，很多东西一下就通了：水泵负责把水推上去，水管让水流动，水管某处变细了水流就变小，水轮被水流推着转。电路里的角色一一对应——电池就是水泵，导线就是水管，电阻就是那截变细的管子，灯泡就是被推动的水轮。"
+    },
+    {
+      "type": "svg",
+      "caption": "图 1　水的流动与电的流动，是同一套逻辑（水泵↔电池、水压↔电压、水流↔电流、窄管↔电阻、水轮↔灯泡）",
+      "code": "<svg viewBox='0 0 920 430' xmlns='http://www.w3.org/2000/svg' font-family='Microsoft YaHei, sans-serif'><defs><marker id='a1' markerWidth='10' markerHeight='10' refX='7' refY='4' orient='auto'><path d='M0 0 L8 4 L0 8 z' fill='#2A4FE4'/></marker></defs><rect x='0' y='0' width='920' height='430' fill='#FAFBFD' rx='10'/><text x='24' y='34' font-size='15' font-weight='700' fill='#111114'>① 水的流动</text><rect x='40' y='62' width='96' height='74' rx='10' fill='#E8EDF8' stroke='#2A4FE4' stroke-width='2'/><text x='88' y='96' font-size='14' text-anchor='middle' fill='#111114'>水泵</text><text x='88' y='116' font-size='12' text-anchor='middle' fill='#5A6068'>（电源）</text><line x1='136' y1='84' x2='700' y2='84' stroke='#8FA0BE' stroke-width='12' stroke-linecap='round'/><line x1='380' y1='84' x2='440' y2='84' stroke='#8FA0BE' stroke-width='5' stroke-linecap='round'/><line x1='136' y1='120' x2='740' y2='120' stroke='#8FA0BE' stroke-width='12' stroke-linecap='round'/><text x='410' y='60' font-size='13' text-anchor='middle' fill='#3C4048'>窄管 = 电阻</text><path d='M250 84 L300 84' stroke='#2A4FE4' stroke-width='4' marker-end='url(#a1)'/><text x='275' y='70' font-size='13' text-anchor='middle' fill='#2A4FE4'>水流</text><circle cx='740' cy='100' r='32' fill='#fff' stroke='#2A4FE4' stroke-width='3'/><path d='M740 70 L740 130 M710 100 L770 100 M720 80 L760 120 M760 80 L720 120' stroke='#2A4FE4' stroke-width='2'/><text x='740' y='164' font-size='13' text-anchor='middle' fill='#3C4048'>水轮</text><rect x='150' y='150' width='150' height='28' rx='14' fill='#E8EDF8'/><text x='225' y='169' font-size='13' text-anchor='middle' fill='#1B3AC2'>水压 = 电压</text><text x='24' y='256' font-size='15' font-weight='700' fill='#111114'>② 电的流动</text><rect x='40' y='280' width='96' height='74' rx='10' fill='#2A4FE4'/><text x='88' y='314' font-size='14' text-anchor='middle' fill='#fff'>电池</text><text x='88' y='336' font-size='12' text-anchor='middle' fill='#C9D6FF'>＋　－</text><line x1='136' y1='302' x2='700' y2='302' stroke='#2A4FE4' stroke-width='4' stroke-linecap='round'/><line x1='136' y1='340' x2='740' y2='340' stroke='#2A4FE4' stroke-width='4' stroke-linecap='round'/><rect x='378' y='288' width='64' height='28' rx='5' fill='#fff' stroke='#2A4FE4' stroke-width='2'/><text x='410' y='307' font-size='12' text-anchor='middle' fill='#1B3AC2'>电阻 R</text><path d='M250 302 L300 302' stroke='#2A4FE4' stroke-width='4' marker-end='url(#a1)'/><text x='275' y='288' font-size='13' text-anchor='middle' fill='#2A4FE4'>电流 I</text><circle cx='740' cy='318' r='32' fill='#FFF6DF' stroke='#F7B500' stroke-width='3'/><path d='M726 304 L754 332 M754 304 L726 332' stroke='#F7B500' stroke-width='3'/><text x='740' y='380' font-size='13' text-anchor='middle' fill='#3C4048'>灯泡</text><path d='M88 140 L88 276' stroke='#C3C8CF' stroke-width='2' stroke-dasharray='5 5'/><path d='M410 140 L410 284' stroke='#C3C8CF' stroke-width='2' stroke-dasharray='5 5'/><path d='M740 136 L740 282' stroke='#C3C8CF' stroke-width='2' stroke-dasharray='5 5'/><text x='88' y='196' font-size='12' text-anchor='middle' fill='#8B9096'>↕ 对应</text><text x='410' y='196' font-size='12' text-anchor='middle' fill='#8B9096'>↕ 对应</text><text x='740' y='196' font-size='12' text-anchor='middle' fill='#8B9096'>↕ 对应</text><text x='24' y='410' font-size='13' fill='#5A6068'>水泵提供「推动力」→ 电池提供电动势；水流被推动 → 电流被推动；窄管阻碍水流 → 电阻阻碍电流。</text></svg>"
+    },
+    {
+      "type": "h2",
+      "text": "二、电流 I —— 电在「跑」"
+    },
+    {
+      "type": "p",
+      "text": "电流就是电荷在导线上有方向的移动。水管里我们关心「每秒流过多少水」，电路里我们关心「每秒流过多少电荷」，这个量就是电流，用字母 I 表示，单位是安培（A）。"
+    },
+    {
+      "type": "p",
+      "text": "电流的大小可以很直观地想象：手电筒里大约 0.3 A，一只 100 W 白炽灯大约 0.45 A，一台家用空调启动时可能到 5 A 以上。所以家里的导线粗细、空气开关的大小，本质都是围着「电流」转的。"
+    },
+    {
+      "type": "svg",
+      "caption": "图 2　电流的方向与大小：习惯上把正电荷移动的方向规定为电流方向（电源正极 → 外电路 → 负极），而导线里真正跑的电子方向正好相反",
+      "code": "<svg viewBox='0 0 920 360' xmlns='http://www.w3.org/2000/svg' font-family='Microsoft YaHei, sans-serif'><defs><marker id='a2' markerWidth='10' markerHeight='10' refX='7' refY='4' orient='auto'><path d='M0 0 L8 4 L0 8 z' fill='#2A4FE4'/></marker><marker id='a3' markerWidth='10' markerHeight='10' refX='7' refY='4' orient='auto'><path d='M0 0 L8 4 L0 8 z' fill='#E5484D'/></marker></defs><rect width='920' height='360' fill='#FAFBFD' rx='10'/><rect x='70' y='120' width='110' height='80' rx='10' fill='#2A4FE4'/><text x='125' y='152' font-size='14' fill='#fff' text-anchor='middle'>电池</text><text x='100' y='182' font-size='15' fill='#fff'>＋</text><text x='150' y='182' font-size='15' fill='#fff'>－</text><path d='M180 136 L700 136' stroke='#2A4FE4' stroke-width='4'/><path d='M180 184 L700 184' stroke='#2A4FE4' stroke-width='4'/><circle cx='760' cy='160' r='34' fill='#FFF6DF' stroke='#F7B500' stroke-width='3'/><path d='M746 146 L774 174 M774 146 L746 174' stroke='#F7B500' stroke-width='3'/><text x='760' y='216' font-size='13' text-anchor='middle' fill='#3C4048'>灯泡</text><path d='M300 136 L360 136' stroke='#2A4FE4' stroke-width='5' marker-end='url(#a2)'/><path d='M460 136 L520 136' stroke='#2A4FE4' stroke-width='5' marker-end='url(#a2)'/><text x='410' y='120' font-size='13' text-anchor='middle' fill='#2A4FE4'>电流方向（规定）</text><path d='M520 184 L460 184' stroke='#E5484D' stroke-width='5' marker-end='url(#a3)'/><text x='410' y='206' font-size='13' text-anchor='middle' fill='#E5484D'>电子实际移动方向</text><text x='24' y='40' font-size='15' font-weight='700' fill='#111114'>电流的方向</text><rect x='620' y='240' width='276' height='96' rx='10' fill='#fff' stroke='#E3E6EA'/><text x='640' y='266' font-size='13' font-weight='700' fill='#111114'>单位换算</text><text x='640' y='292' font-size='13' fill='#3C4048'>1 A ＝ 1000 mA</text><text x='640' y='314' font-size='13' fill='#3C4048'>1 mA ＝ 1000 μA</text><text x='24' y='266' font-size='13' fill='#5A6068'>电流表（万用表电流档）要「串」在电路里，</text><text x='24' y='290' font-size='13' fill='#5A6068'>让电流从表里流过才能测出大小；</text><text x='24' y='314' font-size='13' fill='#E5484D'>绝不能把电流档直接并在电源两端，会短路！</text></svg>"
+    },
+    {
+      "type": "table",
+      "head": [
+        "常见电流",
+        "大约数值",
+        "说明"
+      ],
+      "rows": [
+        [
+          "手电筒小灯泡",
+          "0.2 ~ 0.3 A",
+          "两节干电池供电"
+        ],
+        [
+          "100 W 白炽灯",
+          "约 0.45 A",
+          "220 V 电压下"
+        ],
+        [
+          "1 匹空调（制冷）",
+          "约 4 ~ 5 A",
+          "启动瞬间更大"
+        ],
+        [
+          "人体致命电流",
+          "50 mA 以上",
+          "通过人体即可致命，安全电压因此存在"
+        ]
+      ]
+    },
+    {
+      "type": "example",
+      "title": "例题 1（单位换算）",
+      "text": "某照明回路电流为 0.8 A，合多少毫安？",
+      "steps": [
+        "记住 1 A ＝ 1000 mA",
+        "0.8 A × 1000 ＝ 800 mA"
+      ],
+      "answer": "800 mA"
+    },
+    {
+      "type": "h2",
+      "text": "三、电压 U —— 电的「推力」"
+    },
+    {
+      "type": "p",
+      "text": "光有水管，水不会自己流动，必须要有「水位差」或水压。电路也一样：有电压，电流才会流动。电压用字母 U 表示，单位是伏特（V）。"
+    },
+    {
+      "type": "p",
+      "text": "关键点：电压永远是「两点之间」的差值。就像说「这层楼比那层楼高 3 米」，不谈两点就没有意义。同一根导线上（同一个等电位点）电压为 0，这也是为什么人站在地上摸一根不带电的线不会触电。"
+    },
+    {
+      "type": "svg",
+      "caption": "图 3　电压是两点之间的「压力差」：水塔越高水位差越大，水流越急；电压越高，同样的电阻下电流越大",
+      "code": "<svg viewBox='0 0 920 340' xmlns='http://www.w3.org/2000/svg' font-family='Microsoft YaHei, sans-serif'><defs><marker id='a4' markerWidth='10' markerHeight='10' refX='7' refY='4' orient='auto'><path d='M0 0 L8 4 L0 8 z' fill='#2A4FE4'/></marker></defs><rect width='920' height='340' fill='#FAFBFD' rx='10'/><text x='24' y='38' font-size='15' font-weight='700' fill='#111114'>① 水位差越大，水流越急</text><rect x='60' y='70' width='150' height='110' rx='8' fill='#DCE7FA' stroke='#2A4FE4'/><rect x='60' y='120' width='150' height='60' rx='8' fill='#8FA9E8'/><text x='135' y='156' font-size='13' text-anchor='middle' fill='#fff'>高水位</text><rect x='300' y='120' width='150' height='60' rx='8' fill='#DCE7FA' stroke='#2A4FE4'/><rect x='300' y='140' width='150' height='40' rx='8' fill='#8FA9E8'/><text x='375' y='166' font-size='13' text-anchor='middle' fill='#fff'>低水位</text><path d='M215 150 L295 150' stroke='#2A4FE4' stroke-width='4' marker-end='url(#a4)'/><text x='255' y='136' font-size='12' text-anchor='middle' fill='#2A4FE4'>水位差</text><text x='24' y='214' font-size='15' font-weight='700' fill='#111114'>② 电压差越大，电流越大</text><rect x='60' y='240' width='60' height='56' rx='8' fill='#2A4FE4'/><text x='90' y='274' font-size='13' text-anchor='middle' fill='#fff'>U</text><path d='M120 268 L280 268' stroke='#2A4FE4' stroke-width='4' marker-end='url(#a4)'/><rect x='280' y='252' width='60' height='32' rx='5' fill='#fff' stroke='#2A4FE4' stroke-width='2'/><text x='310' y='273' font-size='12' text-anchor='middle' fill='#1B3AC2'>R</text><text x='200' y='256' font-size='12' text-anchor='middle' fill='#2A4FE4'>电流 I = U / R</text><rect x='480' y='60' width='410' height='240' rx='10' fill='#fff' stroke='#E3E6EA'/><text x='504' y='92' font-size='14' font-weight='700' fill='#111114'>这些电压值要记住</text><text x='504' y='126' font-size='13.5' fill='#3C4048'>一节干电池　　<tspan font-weight='700'>1.5 V</tspan></text><text x='504' y='156' font-size='13.5' fill='#3C4048'>家用单相插座　<tspan font-weight='700'>220 V</tspan></text><text x='504' y='186' font-size='13.5' fill='#3C4048'>工业三相电　　<tspan font-weight='700'>380 V</tspan></text><text x='504' y='216' font-size='13.5' fill='#3C4048'>安全电压等级　<tspan font-weight='700'>42 / 36 / 24 / 12 / 6 V</tspan></text><text x='504' y='246' font-size='13' fill='#A67900'>一般人体的安全电压是 36 V 以下；</text><text x='504' y='270' font-size='13' fill='#A67900'>潮湿、狭窄等危险场所要用 12 V。</text><text x='504' y='294' font-size='12.5' fill='#8B9096'>注：具体数值以现行标准与教材为准。</text></svg>"
+    },
+    {
+      "type": "note",
+      "text": "记住一句：电压是「两点之间」的差。测量电压时，万用表的两支表笔要分别接在这两个点上，也就是并联在被测元件两端。"
+    },
+    {
+      "type": "warn",
+      "title": "安全提醒",
+      "text": "220 V 电压下 50 mA 就能致命。所有带电作业前必须断电、验电，并挂接地线；不要相信「开关关了就没电」这句话，必须验电确认。"
+    },
+    {
+      "type": "h2",
+      "text": "四、电阻 R —— 电的「拦路虎」"
+    },
+    {
+      "type": "p",
+      "text": "电阻是导体对电流的阻碍作用，用字母 R 表示，单位是欧姆（Ω）。同样的电压下，电阻越大，电流越小——就像水管越细、越长，水就越难流。"
+    },
+    {
+      "type": "svg",
+      "caption": "图 4　影响电阻的四个因素：材料、长度、横截面积、温度（金属导体温度升高，电阻变大）",
+      "code": "<svg viewBox='0 0 920 320' xmlns='http://www.w3.org/2000/svg' font-family='Microsoft YaHei, sans-serif'><defs><marker id='a5' markerWidth='10' markerHeight='10' refX='7' refY='4' orient='auto'><path d='M0 0 L8 4 L0 8 z' fill='#2A4FE4'/></marker></defs><rect width='920' height='320' fill='#FAFBFD' rx='10'/><text x='24' y='36' font-size='15' font-weight='700' fill='#111114'>同样粗细的管子，越长越难流水</text><path d='M60 80 L380 80' stroke='#8FA0BE' stroke-width='14' stroke-linecap='round'/><path d='M470 80 L800 80' stroke='#8FA0BE' stroke-width='14' stroke-linecap='round'/><text x='220' y='116' font-size='13' text-anchor='middle' fill='#3C4048'>短管：电阻小</text><text x='635' y='116' font-size='13' text-anchor='middle' fill='#3C4048'>长管：电阻大（R 与长度成正比）</text><text x='24' y='176' font-size='15' font-weight='700' fill='#111114'>同样长度，管子越细越难流水</text><path d='M60 210 L380 210' stroke='#8FA0BE' stroke-width='18' stroke-linecap='round'/><path d='M470 210 L800 210' stroke='#8FA0BE' stroke-width='6' stroke-linecap='round'/><text x='220' y='246' font-size='13' text-anchor='middle' fill='#3C4048'>粗管：电阻小</text><text x='635' y='246' font-size='13' text-anchor='middle' fill='#3C4048'>细管：电阻大（与横截面积成反比）</text><text x='60' y='292' font-size='13' fill='#5A6068'>材料也有影响：铜的电阻比铝小，所以同样载流量，铜线更细；铁、镍铬合金电阻更大，用来做发热丝。</text><text x='60' y='312' font-size='13' fill='#8B9096'>单位：1 kΩ ＝ 1000 Ω　｜　1 MΩ ＝ 1000 kΩ ＝ 1 000 000 Ω</text></svg>"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "材料：铜 < 铝，铜导电最好，所以导线多用铜",
+        "长度：导线越长电阻越大",
+        "横截面积：导线越粗（截面积越大）电阻越小",
+        "温度：金属导体温度升高时电阻变大"
+      ]
+    },
+    {
+      "type": "note",
+      "text": "为什么家里的空调要用更粗的线？因为空调电流大，如果线太细（电阻大），一方面会发热烧线，另一方面线路压降大、电器电压不够。这就是「导线选型」要按载流量算的原因。"
+    },
+    {
+      "type": "h2",
+      "text": "五、欧姆定律：把三个量串起来"
+    },
+    {
+      "type": "p",
+      "text": "欧姆定律是整个电工基础里最重要的一条公式：在同一个电路中，电流等于电压除以电阻。写成公式就是 I ＝ U ÷ R。只要知道其中两个量，就能算出第三个。"
+    },
+    {
+      "type": "svg",
+      "caption": "图 5　欧姆定律三兄弟：把要算的量遮住，剩下的两个量怎么组合就是公式（U 在上面，I 和 R 在下面）",
+      "code": "<svg viewBox='0 0 920 340' xmlns='http://www.w3.org/2000/svg' font-family='Microsoft YaHei, sans-serif'><rect width='920' height='340' fill='#FAFBFD' rx='10'/><path d='M200 60 L360 60 L280 200 z' fill='#fff' stroke='#2A4FE4' stroke-width='3'/><text x='280' y='112' font-size='30' font-weight='700' text-anchor='middle' fill='#2A4FE4'>U</text><line x1='200' y1='200' x2='360' y2='200' stroke='#2A4FE4' stroke-width='3'/><line x1='280' y1='200' x2='280' y2='270' stroke='#2A4FE4' stroke-width='3'/><text x='237' y='248' font-size='30' font-weight='700' text-anchor='middle' fill='#111114'>I</text><text x='325' y='248' font-size='30' font-weight='700' text-anchor='middle' fill='#111114'>R</text><text x='280' y='308' font-size='13' text-anchor='middle' fill='#8B9096'>遮住要算的那个量</text><rect x='430' y='56' width='450' height='60' rx='10' fill='#fff' stroke='#E3E6EA'/><text x='452' y='94' font-size='16' fill='#111114'>U ＝ I × R　　（求电压）</text><rect x='430' y='130' width='450' height='60' rx='10' fill='#fff' stroke='#E3E6EA'/><text x='452' y='168' font-size='16' fill='#111114'>I ＝ U ÷ R　　（求电流）</text><rect x='430' y='204' width='450' height='60' rx='10' fill='#fff' stroke='#E3E6EA'/><text x='452' y='242' font-size='16' fill='#111114'>R ＝ U ÷ I　　（求电阻）</text><text x='430' y='296' font-size='13' fill='#2A4FE4'>单位对应：U 用 V、I 用 A、R 用 Ω（三者单位必须配套）</text></svg>"
+    },
+    {
+      "type": "example",
+      "title": "例题 2（求电阻）",
+      "text": "一只 220 V / 100 W 的白炽灯，正常工作时电流约 0.45 A，求灯丝的电阻。",
+      "steps": [
+        "写出已知：U ＝ 220 V，I ＝ 0.45 A",
+        "选公式：R ＝ U ÷ I",
+        "代入计算：R ＝ 220 ÷ 0.45 ≈ 489 Ω"
+      ],
+      "answer": "约 489 Ω"
+    },
+    {
+      "type": "example",
+      "title": "例题 3（求电流）",
+      "text": "某电阻为 55 Ω 的电热丝接在 220 V 电源上，正常工作电流是多少？",
+      "steps": [
+        "写出已知：U ＝ 220 V，R ＝ 55 Ω",
+        "选公式：I ＝ U ÷ R",
+        "代入计算：I ＝ 220 ÷ 55 ＝ 4 A"
+      ],
+      "answer": "4 A"
+    },
+    {
+      "type": "tip",
+      "title": "记忆口诀",
+      "text": "「U 在上，I、R 在下；遮住谁，算谁。」要算电压就把 I 和 R 相乘，要算电流或电阻就用 U 去除——上面除以下面，永远是除法。"
+    },
+    {
+      "type": "h2",
+      "text": "六、串联与并联：两种最基本的接法"
+    },
+    {
+      "type": "p",
+      "text": "两个（或多个）元件，只有两条路可走：首尾相连叫串联，两端并在一起叫并联。这两种接法的电流电压关系完全不同，是考试和实际接线的高频考点。"
+    },
+    {
+      "type": "svg",
+      "caption": "图 6　串联：电流只有一条路（处处相等），电压分配；并联：电压相同，电流分配。串联一灯坏全灭，并联一灯坏其他照常亮",
+      "code": "<svg viewBox='0 0 920 400' xmlns='http://www.w3.org/2000/svg' font-family='Microsoft YaHei, sans-serif'><defs><marker id='a6' markerWidth='10' markerHeight='10' refX='7' refY='4' orient='auto'><path d='M0 0 L8 4 L0 8 z' fill='#2A4FE4'/></marker></defs><rect width='920' height='400' fill='#FAFBFD' rx='10'/><text x='30' y='36' font-size='15' font-weight='700' fill='#111114'>串联</text><rect x='40' y='120' width='70' height='60' rx='8' fill='#2A4FE4'/><text x='75' y='156' font-size='12' text-anchor='middle' fill='#fff'>电源</text><path d='M110 130 L600 130 M110 170 L600 170' stroke='#2A4FE4' stroke-width='4'/><path d='M600 130 L600 170' stroke='#2A4FE4' stroke-width='4'/><circle cx='260' cy='130' r='26' fill='#FFF6DF' stroke='#F7B500' stroke-width='3'/><text x='260' y='96' font-size='12' text-anchor='middle' fill='#3C4048'>灯泡1</text><circle cx='440' cy='130' r='26' fill='#FFF6DF' stroke='#F7B500' stroke-width='3'/><text x='440' y='96' font-size='12' text-anchor='middle' fill='#3C4048'>灯泡2</text><path d='M150 130 L200 130' stroke='#2A4FE4' stroke-width='5' marker-end='url(#a6)'/><text x='175' y='118' font-size='12' text-anchor='middle' fill='#2A4FE4'>I</text><text x='30' y='228' font-size='13.5' fill='#3C4048'>电流：I ＝ I₁ ＝ I₂（处处相等）</text><text x='30' y='254' font-size='13.5' fill='#3C4048'>电压：U ＝ U₁ ＋ U₂（分压）</text><text x='30' y='280' font-size='13.5' fill='#3C4048'>电阻：R ＝ R₁ ＋ R₂（越串越大）</text><text x='30' y='306' font-size='13.5' fill='#E5484D'>特点：一处断开，全部不工作</text><text x='30' y='332' font-size='13' fill='#8B9096'>应用：开关、熔断器、电流表串在电路里</text><line x1='460' y1='40' x2='460' y2='360' stroke='#E3E6EA' stroke-width='2'/><text x='490' y='36' font-size='15' font-weight='700' fill='#111114'>并联</text><rect x='500' y='120' width='70' height='60' rx='8' fill='#2A4FE4'/><text x='535' y='156' font-size='12' text-anchor='middle' fill='#fff'>电源</text><path d='M570 130 L860 130 M570 170 L860 170' stroke='#2A4FE4' stroke-width='4'/><path d='M570 130 L570 170' stroke='#2A4FE4' stroke-width='4'/><path d='M700 130 L700 170 M800 130 L800 170' stroke='#2A4FE4' stroke-width='4'/><circle cx='700' cy='130' r='24' fill='#FFF6DF' stroke='#F7B500' stroke-width='3'/><circle cx='800' cy='130' r='24' fill='#FFF6DF' stroke='#F7B500' stroke-width='3'/><text x='700' y='96' font-size='12' text-anchor='middle' fill='#3C4048'>灯泡1</text><text x='800' y='96' font-size='12' text-anchor='middle' fill='#3C4048'>灯泡2</text><path d='M600 130 L650 130' stroke='#2A4FE4' stroke-width='5' marker-end='url(#a6)'/><text x='625' y='118' font-size='12' text-anchor='middle' fill='#2A4FE4'>I</text><text x='490' y='228' font-size='13.5' fill='#3C4048'>电压：U ＝ U₁ ＝ U₂（相同）</text><text x='490' y='254' font-size='13.5' fill='#3C4048'>电流：I ＝ I₁ ＋ I₂（分流）</text><text x='490' y='280' font-size='13.5' fill='#3C4048'>电阻：1/R ＝ 1/R₁ ＋ 1/R₂（越并越小）</text><text x='490' y='306' font-size='13.5' fill='#16A34A'>特点：一路断开，其他照常工作</text><text x='490' y='332' font-size='13' fill='#8B9096'>应用：家里的灯和插座都是并联</text></svg>"
+    },
+    {
+      "type": "table",
+      "head": [
+        "对比项",
+        "串联",
+        "并联"
+      ],
+      "rows": [
+        [
+          "电流",
+          "处处相等 I ＝ I₁ ＝ I₂",
+          "分流 I ＝ I₁ ＋ I₂"
+        ],
+        [
+          "电压",
+          "分压 U ＝ U₁ ＋ U₂",
+          "处处相等 U ＝ U₁ ＝ U₂"
+        ],
+        [
+          "总电阻",
+          "R ＝ R₁ ＋ R₂（变大）",
+          "1/R ＝ 1/R₁ ＋ 1/R₂（变小）"
+        ],
+        [
+          "一路断开",
+          "全部停止工作",
+          "其他支路不受影响"
+        ],
+        [
+          "生活实例",
+          "开关、熔断器、电流表",
+          "家里的电灯、插座"
+        ]
+      ]
+    },
+    {
+      "type": "example",
+      "title": "例题 4（串联计算）",
+      "text": "两个电阻 R₁ ＝ 10 Ω、R₂ ＝ 20 Ω 串联接在 6 V 电源上，求总电阻和电流。",
+      "steps": [
+        "串联总电阻：R ＝ R₁ ＋ R₂ ＝ 30 Ω",
+        "电流：I ＝ U ÷ R ＝ 6 ÷ 30 ＝ 0.2 A",
+        "验证：U₁ ＝ I×R₁ ＝ 2 V，U₂ ＝ I×R₂ ＝ 4 V，2＋4＝6 V ✓"
+      ],
+      "answer": "总电阻 30 Ω，电流 0.2 A"
+    },
+    {
+      "type": "h2",
+      "text": "七、怎么用万用表把这三个量量出来"
+    },
+    {
+      "type": "p",
+      "text": "看懂电路之后，就要会用仪表验证。电压、电流、电阻三个量的测量接法完全不同，这也是实操考核（科目一）最常考的地方：电压要并联，电流要串联，电阻必须断电测量。"
+    },
+    {
+      "type": "svg",
+      "caption": "图 7　万用表的三种接法：测电压并联、测电流串联（需断开电路接入）、测电阻必须断电并把元件从电路里脱开",
+      "code": "<svg viewBox='0 0 920 340' xmlns='http://www.w3.org/2000/svg' font-family='Microsoft YaHei, sans-serif'><rect width='920' height='340' fill='#FAFBFD' rx='10'/><text x='30' y='34' font-size='14' font-weight='700' fill='#2A4FE4'>① 测电压：并联</text><rect x='60' y='150' width='70' height='50' rx='6' fill='#2A4FE4'/><text x='95' y='181' font-size='11' text-anchor='middle' fill='#fff'>电源</text><path d='M130 160 L340 160 M130 190 L340 190' stroke='#2A4FE4' stroke-width='3'/><rect x='230' y='152' width='50' height='46' rx='6' fill='#fff' stroke='#2A4FE4' stroke-width='2'/><text x='255' y='180' font-size='11' text-anchor='middle' fill='#1B3AC2'>负载</text><path d='M255 160 L255 100 L200 100' stroke='#F7B500' stroke-width='3' fill='none'/><path d='M255 198 L255 248 L200 248' stroke='#F7B500' stroke-width='3' fill='none'/><rect x='120' y='84' width='76' height='32' rx='5' fill='#FFF6DF' stroke='#F7B500' stroke-width='2'/><text x='158' y='105' font-size='11' text-anchor='middle' fill='#A67900'>万用表</text><text x='60' y='300' font-size='12.5' fill='#5A6068'>两表笔接在被测元件两端，表与被测元件「并」在一起</text><text x='330' y='34' font-size='14' font-weight='700' fill='#2A4FE4'>② 测电流：串联</text><rect x='360' y='150' width='60' height='50' rx='6' fill='#2A4FE4'/><text x='390' y='181' font-size='11' text-anchor='middle' fill='#fff'>电源</text><path d='M420 160 L470 160 M420 190 L640 190' stroke='#2A4FE4' stroke-width='3'/><path d='M470 160 L500 160' stroke='#2A4FE4' stroke-width='3'/><circle cx='540' cy='160' r='18' fill='#FFF6DF' stroke='#F7B500' stroke-width='2'/><path d='M585 160 L640 160' stroke='#2A4FE4' stroke-width='3'/><path d='M585 160 L585 160' stroke='#2A4FE4'/><rect x='496' y='196' width='90' height='34' rx='5' fill='#FFF6DF' stroke='#F7B500' stroke-width='2'/><text x='541' y='218' font-size='11' text-anchor='middle' fill='#A67900'>万用表（电流档）</text><path d='M500 160 L500 196 M582 160 L582 196' stroke='#F7B500' stroke-width='3'/><text x='360' y='300' font-size='12.5' fill='#5A6068'>必须断开电路，把表「串」进去，电流从表里流过</text><text x='650' y='34' font-size='14' font-weight='700' fill='#2A4FE4'>③ 测电阻：先断电</text><rect x='680' y='150' width='60' height='50' rx='6' fill='#C3C8CF'/><text x='710' y='181' font-size='11' text-anchor='middle' fill='#fff'>断电</text><rect x='790' y='152' width='60' height='46' rx='6' fill='#fff' stroke='#2A4FE4' stroke-width='2' stroke-dasharray='4 3'/><text x='820' y='180' font-size='11' text-anchor='middle' fill='#1B3AC2'>拆下</text><path d='M760 175 L788 175' stroke='#E5484D' stroke-width='3' stroke-dasharray='4 3'/><rect x='700' y='240' width='90' height='34' rx='5' fill='#FFF6DF' stroke='#F7B500' stroke-width='2'/><text x='745' y='262' font-size='11' text-anchor='middle' fill='#A67900'>万用表（电阻档）</text><path d='M745 240 L745 200 L790 200' stroke='#F7B500' stroke-width='3' fill='none'/><text x='660' y='300' font-size='12.5' fill='#E5484D'>带电测电阻：读数不准，还可能烧表、触电</text></svg>"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "测电压：选交流电压档（测市电）或直流电压档（测电池），表笔并联在被测元件两端",
+        "测电流：选电流档，断开电路把表串联接入；测量时手不要碰到金属表笔",
+        "测电阻：必须断电，最好把元件从电路上脱开，否则并联的其他支路会影响读数",
+        "每次测量前先确认档位与量程；不确定就先用最大量程试测"
+      ]
+    },
+    {
+      "type": "warn",
+      "title": "安全禁忌",
+      "text": "严禁用电阻档或电流档去测电压，会直接烧表甚至引起弧光短路；严禁带电拆接导线；严禁使用绝缘破损、表笔线老化的仪表。"
+    },
+    {
+      "type": "h2",
+      "text": "八、这一课要拿走的 8 个点"
+    },
+    {
+      "type": "ul",
+      "items": [
+        "电流 I：电荷的定向移动，单位 A，1 A ＝ 1000 mA",
+        "电流方向按规定为正电荷移动方向（电源正极 → 外电路 → 负极），电子实际方向相反",
+        "电压 U：两点之间的电位差，是电流的「推力」，单位 V",
+        "安全电压等级：42 / 36 / 24 / 12 / 6 V，一般场所 36 V 以下，潮湿场所 12 V",
+        "电阻 R：对电流的阻碍，单位 Ω，与材料、长度、横截面积、温度有关",
+        "欧姆定律：I ＝ U ÷ R，U ＝ I × R，R ＝ U ÷ I（单位必须配套）",
+        "串联：电流相等、电压分配、总电阻相加；并联：电压相等、电流分配、总电阻变小",
+        "测电压并联、测电流串联、测电阻断电——这三句是实操考核的送分点"
+      ]
+    },
+    {
+      "type": "tip",
+      "title": "下一课学什么",
+      "text": "下一课我们把「电功率」和「电功」讲清楚：为什么 1 度电 ＝ 1 kW·h，家里的空气开关和导线到底按什么选。掌握这一课之后，你就能自己算一个回路该配多粗的线、多大的开关。"
+    }
   ],
   "keyPoints": [
     "电压是「两点之间」的差值，没有两点就没有电压",
@@ -65,5 +289,13 @@
     "计算题套路：先写已知量 → 选公式 → 代数字 → 写单位，单位不写会扣分",
     "判断题常见陷阱：「电流越大电压越高」——只有在电阻不变时才成立",
     "实操送分点：测电阻前必须断电；测电流必须串联；测电压必须并联"
+  ],
+  "keyPointImages": [
+    "assets/source/keypoints/l-c-basic-l1-1.jpg",
+    "assets/source/keypoints/l-c-basic-l1-2.jpg",
+    "assets/source/keypoints/l-c-basic-l1-3.jpg",
+    "assets/source/keypoints/l-c-basic-l1-4.jpg",
+    "assets/source/keypoints/l-c-basic-l1-5.jpg",
+    "assets/source/keypoints/l-c-basic-l1-6.jpg"
   ]
 }

@@ -238,7 +238,7 @@ const Pages = (function () {
           ${lesson.summary ? `<p class="mut" style="margin-top:10px">${E(lesson.summary)}</p>` : ''}
           ${detail && detail.intro ? `<div class="callout note" style="margin-top:20px"><span class="lb">📖 先看这一句</span>${E(detail.intro)}</div>` : ''}
           ${bl(content)}
-          ${kps.length ? `<div class="keypoints"><h4>本节必须记住</h4><ul>${kps.map(k => `<li>${E(k)}</li>`).join('')}</ul></div>` : ''}
+          ${kps.length ? `<div class="keypoints"><h4>本节必须记住</h4><ul>${kps.map((k, i) => `<li>${E(k)}${(detail && detail.keyPointImages && detail.keyPointImages[i]) ? `<img class="kp-img" src="${detail.keyPointImages[i]}" alt="要点配图" loading="lazy">` : ''}</li>`).join('')}</ul></div>` : ''}
           ${tips.length ? `<div class="callout tip"><span class="lb">💡 考点与易错点</span>${tips.map(t => E(t)).join('<br>')}</div>` : ''}
         </article>
 
@@ -767,7 +767,7 @@ const Pages = (function () {
         ${App.figureHtml('know:' + one.id)}
         ${one.summary ? `<div class="callout note" style="margin-top:18px"><span class="lb">📖 一句话回答</span>${E(one.summary)}</div>` : ''}
         <article class="article" style="margin-top:18px">${(one.body || []).map(x => `<p>${E(x)}</p>`).join('')}
-          ${(one.keyPoints || []).length ? `<div class="keypoints"><h4>要记住的点</h4><ul>${one.keyPoints.map(k => `<li>${E(k)}</li>`).join('')}</ul></div>` : ''}
+          ${(one.keyPoints || []).length ? `<div class="keypoints"><h4>要记住的点</h4><ul>${one.keyPoints.map((k, i) => `<li>${E(k)}${(one.keyPointImages && one.keyPointImages[i]) ? `<img class="kp-img" src="${one.keyPointImages[i]}" alt="要点配图" loading="lazy">` : ''}</li>`).join('')}</ul></div>` : ''}
         </article>
         <div style="display:flex;gap:12px;margin-top:20px;flex-wrap:wrap">
           <a class="btn o" href="knowledge.html">← 返回知识库</a>

@@ -20,7 +20,13 @@
         "断零会让部分用户电压升高，造成电器成批烧毁",
         "验电笔测零线孔发亮时，拔掉负载再测，用来区分线路断点还是电器串电"
       ],
-      "courseHint": "家庭电路故障排查 · 零线带电"
+      "courseHint": "家庭电路故障排查 · 零线带电",
+      "keyPointImages": [
+        "assets/source/keypoints/k-1-1.jpg",
+        "assets/source/keypoints/k-1-2.jpg",
+        "assets/source/keypoints/k-1-3.jpg",
+        "assets/source/keypoints/k-1-4.jpg"
+      ]
     },
     {
       "id": "k-2",
@@ -38,7 +44,13 @@
         "一路一路试送，锁定故障回路后再逐个排查电器",
         "严禁靠换大电流开关「压住」跳闸，那会失去保护作用"
       ],
-      "courseHint": "家庭电路故障排查 · 一合闸就爆总闸"
+      "courseHint": "家庭电路故障排查 · 一合闸就爆总闸",
+      "keyPointImages": [
+        "assets/source/keypoints/k-2-1.jpg",
+        "assets/source/keypoints/k-2-2.jpg",
+        "assets/source/keypoints/k-2-3.jpg",
+        "assets/source/keypoints/k-2-4.jpg"
+      ]
     },
     {
       "id": "k-3",
@@ -56,7 +68,13 @@
         "支路电流方向可以先假设，负号表示实际方向相反",
         "欧姆定律管单回路，基尔霍夫定律管多回路，两者配合使用"
       ],
-      "courseHint": "基尔霍夫定律与复杂电路分析"
+      "courseHint": "基尔霍夫定律与复杂电路分析",
+      "keyPointImages": [
+        "assets/source/keypoints/k-3-1.jpg",
+        "assets/source/keypoints/k-3-2.jpg",
+        "assets/source/keypoints/k-3-3.jpg",
+        "assets/source/keypoints/k-3-4.jpg"
+      ]
     },
     {
       "id": "k-4",
@@ -74,7 +92,13 @@
         "充电器 = 降压（变压器/高频开关变换）+ 整流（二极管）+ 滤波（电容）",
         "直流线圈并续流二极管是为了吸收断电瞬间的自感电动势"
       ],
-      "courseHint": "变压器与二极管的应用"
+      "courseHint": "变压器与二极管的应用",
+      "keyPointImages": [
+        "assets/source/keypoints/k-4-1.jpg",
+        "assets/source/keypoints/k-4-2.jpg",
+        "assets/source/keypoints/k-4-3.jpg",
+        "assets/source/keypoints/k-4-4.jpg"
+      ]
     },
     {
       "id": "k-5",
@@ -92,7 +116,13 @@
         "启动电容约为运行电容的 2~3 倍，启动后切除",
         "改单相后功率约剩 60%~70%；电容耐压≥450V，接线前先放电"
       ],
-      "courseHint": "三相电机改单相：方法与功率计算"
+      "courseHint": "三相电机改单相：方法与功率计算",
+      "keyPointImages": [
+        "assets/source/keypoints/k-5-1.jpg",
+        "assets/source/keypoints/k-5-2.jpg",
+        "assets/source/keypoints/k-5-3.jpg",
+        "assets/source/keypoints/k-5-4.jpg"
+      ]
     },
     {
       "id": "k-6",
@@ -110,7 +140,13 @@
         "两个接触器必须电气互锁，防止同时吸合造成相间短路",
         "限位之外还要设极限保护；挡块松动会导致设备「冲出头」"
       ],
-      "courseHint": "自动往返行程控制电路"
+      "courseHint": "自动往返行程控制电路",
+      "keyPointImages": [
+        "assets/source/keypoints/k-6-1.jpg",
+        "assets/source/keypoints/k-6-2.jpg",
+        "assets/source/keypoints/k-6-3.jpg",
+        "assets/source/keypoints/k-6-4.jpg"
+      ]
     },
     {
       "id": "k-7",
@@ -128,7 +164,13 @@
         "电容测前必须放电，指针摆动幅度反映容量大小",
         "三极管按两个 PN 结的单向性判断基极和类型"
       ],
-      "courseHint": "电阻与电容的识别、检测 / 万用表检测电子元器件"
+      "courseHint": "电阻与电容的识别、检测 / 万用表检测电子元器件",
+      "keyPointImages": [
+        "assets/source/keypoints/k-7-1.jpg",
+        "assets/source/keypoints/k-7-2.jpg",
+        "assets/source/keypoints/k-7-3.jpg",
+        "assets/source/keypoints/k-7-4.jpg"
+      ]
     },
     {
       "id": "k-8",
@@ -146,7 +188,13 @@
         "开关额定电流不得大于所保护导线的载流量",
         "级差做对，故障只跳故障那一回路，不会越级全屋停电"
       ],
-      "courseHint": "家用配电箱设计与接线 · 分路与级差保护"
+      "courseHint": "家用配电箱设计与接线 · 分路与级差保护",
+      "keyPointImages": [
+        "assets/source/keypoints/k-8-1.jpg",
+        "assets/source/keypoints/k-8-2.jpg",
+        "assets/source/keypoints/k-8-3.jpg",
+        "assets/source/keypoints/k-8-4.jpg"
+      ]
     },
     {
       "id": "k-9",
@@ -164,7 +212,13 @@
         "动力、照明、检修电源分开供电，回路标识清楚",
         "保护要有选择性，一处短路不应造成全厂停电"
       ],
-      "courseHint": "工厂配电柜进线与选线"
+      "courseHint": "工厂配电柜进线与选线",
+      "keyPointImages": [
+        "assets/source/keypoints/k-9-1.jpg",
+        "assets/source/keypoints/k-9-2.jpg",
+        "assets/source/keypoints/k-9-3.jpg",
+        "assets/source/keypoints/k-9-4.jpg"
+      ]
     },
     {
       "id": "k-10",
@@ -182,7 +236,13 @@
         "PE 线上严禁装开关、熔断器，也不得与 N 线混接",
         "用插座测试仪确认上孔真的接地，别用两孔转三孔的土办法"
       ],
-      "courseHint": "整栋楼地线被剪：一次漏电排查"
+      "courseHint": "整栋楼地线被剪：一次漏电排查",
+      "keyPointImages": [
+        "assets/source/keypoints/k-10-1.jpg",
+        "assets/source/keypoints/k-10-2.jpg",
+        "assets/source/keypoints/k-10-3.jpg",
+        "assets/source/keypoints/k-10-4.jpg"
+      ]
     },
     {
       "id": "k-11",
@@ -200,7 +260,13 @@
         "插排不放在床边沙发边，避免长线拖地",
         "潮湿场所插座加防溅盒；家长的动作就是孩子的示范"
       ],
-      "courseHint": "儿童用电安全：从插线板手链说起"
+      "courseHint": "儿童用电安全：从插线板手链说起",
+      "keyPointImages": [
+        "assets/source/keypoints/k-11-1.jpg",
+        "assets/source/keypoints/k-11-2.jpg",
+        "assets/source/keypoints/k-11-3.jpg",
+        "assets/source/keypoints/k-11-4.jpg"
+      ]
     },
     {
       "id": "k-12",
@@ -218,7 +284,13 @@
         "案例视频重点学「排查顺序」，而不是只记结论",
         "课程只是辅助，动手前必须断电验电、有资质人员现场指导"
       ],
-      "courseHint": "B 站名师团 / 低压电工实操"
+      "courseHint": "B 站名师团 / 低压电工实操",
+      "keyPointImages": [
+        "assets/source/keypoints/k-12-1.jpg",
+        "assets/source/keypoints/k-12-2.jpg",
+        "assets/source/keypoints/k-12-3.jpg",
+        "assets/source/keypoints/k-12-4.jpg"
+      ]
     }
   ]
 }

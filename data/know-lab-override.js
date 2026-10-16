@@ -19,7 +19,7 @@ window.APP_DATA.figures["know:k-12"] = "<div class='diagram-img'><img src='asset
 
 // ===== 实操图解 lab:* 模块0 - 安全用具与仪表 =====
 window.APP_DATA.figures["lab:0"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-0.jpg' style='width:100%;display:block;border-radius:8px' alt='绝缘用具三查'></div>";
-window.APP_DATA.figures["lab:0:0"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-0.jpg' style='width:100%;display:block;border-radius:8px' alt='绝缘用具检查'></div>";
+window.APP_DATA.figures["lab:0:0"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-0-0.jpg' style='width:100%;display:block;border-radius:8px' alt='绝缘用具检查'></div>";
 window.APP_DATA.figures["lab:0:1"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-0-1.jpg' style='width:100%;display:block;border-radius:8px' alt='验电器使用'></div>";
 window.APP_DATA.figures["lab:0:2"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-0-2.jpg' style='width:100%;display:block;border-radius:8px' alt='万用表测量'></div>";
 window.APP_DATA.figures["lab:0:3"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-0-3.jpg' style='width:100%;display:block;border-radius:8px' alt='钳形电流表'></div>";
@@ -28,23 +28,23 @@ window.APP_DATA.figures["lab:0:4"] = "<div class='diagram-img'><img src='assets/
 // ===== 实操图解 lab:* 模块1 - 接线与照明 =====
 window.APP_DATA.figures["lab:1"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-1.jpg' style='width:100%;display:block;border-radius:8px' alt='双控开关电路'></div>";
 window.APP_DATA.figures["lab:1:0"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-1-0.jpg' style='width:100%;display:block;border-radius:8px' alt='剥线与连接'></div>";
-window.APP_DATA.figures["lab:1:1"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-1.jpg' style='width:100%;display:block;border-radius:8px' alt='双控开关接线'></div>";
+window.APP_DATA.figures["lab:1:1"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-1-1.jpg' style='width:100%;display:block;border-radius:8px' alt='双控开关接线'></div>";
 window.APP_DATA.figures["lab:1:2"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-1-2.jpg' style='width:100%;display:block;border-radius:8px' alt='插座接线'></div>";
 window.APP_DATA.figures["lab:1:3"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-1-3.jpg' style='width:100%;display:block;border-radius:8px' alt='启停控制'></div>";
-window.APP_DATA.figures["lab:1:4"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-1-3.jpg' style='width:100%;display:block;border-radius:8px' alt='电机正转'></div>";
+window.APP_DATA.figures["lab:1:4"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-1-4.jpg' style='width:100%;display:block;border-radius:8px' alt='电动机正反转'></div>";
 
 // ===== 实操图解 lab:* 模块2 - 配电箱与安全 =====
 window.APP_DATA.figures["lab:2"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-2.jpg' style='width:100%;display:block;border-radius:8px' alt='家用配电箱'></div>";
-window.APP_DATA.figures["lab:2:0"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-2.jpg' style='width:100%;display:block;border-radius:8px' alt='配电箱配置'></div>";
+window.APP_DATA.figures["lab:2:0"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-2-0.jpg' style='width:100%;display:block;border-radius:8px' alt='查找违规接线'></div>";
 window.APP_DATA.figures["lab:2:1"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-2-1.jpg' style='width:100%;display:block;border-radius:8px' alt='漏保测试'></div>";
-window.APP_DATA.figures["lab:2:2"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-2.jpg' style='width:100%;display:block;border-radius:8px' alt='线径选择'></div>";
+window.APP_DATA.figures["lab:2:2"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-2-2.jpg' style='width:100%;display:block;border-radius:8px' alt='线径与负载匹配'></div>";
 window.APP_DATA.figures["lab:2:3"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-2-3.jpg' style='width:100%;display:block;border-radius:8px' alt='安全标示牌'></div>";
-window.APP_DATA.figures["lab:2:4"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-2-3.jpg' style='width:100%;display:block;border-radius:8px' alt='临时用电安全'></div>";
+window.APP_DATA.figures["lab:2:4"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-2-4.jpg' style='width:100%;display:block;border-radius:8px' alt='临时用电安全'></div>";
 
 // ===== 实操图解 lab:* 模块3 - 触电急救与消防 =====
 window.APP_DATA.figures["lab:3"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-3.jpg' style='width:100%;display:block;border-radius:8px' alt='脱离电源'></div>";
-window.APP_DATA.figures["lab:3:0"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-3.jpg' style='width:100%;display:block;border-radius:8px' alt='脱离电源方法'></div>";
+window.APP_DATA.figures["lab:3:0"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-3-0.jpg' style='width:100%;display:block;border-radius:8px' alt='使触电者脱离电源'></div>";
 window.APP_DATA.figures["lab:3:1"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-3-1.jpg' style='width:100%;display:block;border-radius:8px' alt='判断意识'></div>";
-window.APP_DATA.figures["lab:3:2"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-3-1.jpg' style='width:100%;display:block;border-radius:8px' alt='胸外按压'></div>";
-window.APP_DATA.figures["lab:3:3"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-3-1.jpg' style='width:100%;display:block;border-radius:8px' alt='心肺复苏循环'></div>";
+window.APP_DATA.figures["lab:3:2"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-3-2.jpg' style='width:100%;display:block;border-radius:8px' alt='胸外按压'></div>";
+window.APP_DATA.figures["lab:3:3"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-3-3.jpg' style='width:100%;display:block;border-radius:8px' alt='心肺复苏循环'></div>";
 window.APP_DATA.figures["lab:3:4"] = "<div class='diagram-img'><img src='assets/source/diagrams/lab-3-4.jpg' style='width:100%;display:block;border-radius:8px' alt='电气灭火'></div>";
