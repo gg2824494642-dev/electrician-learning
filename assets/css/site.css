@@ -338,6 +338,8 @@ select.inp{color:var(--ink2);font-family:inherit;outline:none}
   align-items:center;justify-content:center;position:relative;border:1px solid #DCE9F8}
 .cover-real-lg img{width:100%;height:100%;object-fit:cover;display:block}
 .cover-real-lg svg{width:100%;height:100%}
+/* 知识/实操图解（自托管 AI 图，全宽全高显示不裁切） */
+.diagram-img img{width:100%;height:auto;display:block;border-radius:8px}
 
 /* =============================================================
    移动端适配
