@@ -15,8 +15,8 @@ const Quiz = (function () {
     };
 
     root.innerHTML = `
-      <div style="display:flex;gap:26px;align-items:flex-start">
-        <div style="flex:1;min-width:0">
+      <div class="qlayout">
+        <div class="lay-main">
           <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
             <span class="pill">${App.esc(opt.badge || '练习')}</span>
             <span class="mut small">${App.esc(opt.title || '')}</span>
@@ -24,9 +24,9 @@ const Quiz = (function () {
             ${st.exam ? '<span class="pill y" id="qTimer">--:--</span>' : '<span class="pill k" id="qTimer">--:--</span>'}
           </div>
           <div class="progress" style="margin:14px 0 24px"><i id="qBar" style="width:0%"></i></div>
-          <div class="card" style="padding:28px 32px" id="qCard"></div>
+          <div class="card qcard-pad" id="qCard"></div>
         </div>
-        <div style="width:320px;flex:none">
+        <div class="qside">
           <div class="card pad">
             <div style="display:flex;align-items:center"><b style="font-size:15px">答题卡</b>
               <span class="mut small" style="margin-left:auto" id="qStat"></span></div>
@@ -170,7 +170,7 @@ const Quiz = (function () {
       if (st.exam) { const id = App.exams.save(rec); location.href = 'result.html?id=' + id; return; }
       // 练习模式：页内结果
       const wrongList = detail.filter(d => !d.right);
-      root.innerHTML = `<div class="card" style="padding:32px 36px">
+      root.innerHTML = `<div class="card qresult-pad">
         <div class="slash">/ practice result</div>
         <h2 class="display" style="font-size:30px;margin:10px 0 18px">本轮练习完成${auto ? '（超时自动交卷）' : ''}</h2>
         <div style="display:flex;gap:44px;flex-wrap:wrap">

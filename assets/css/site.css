@@ -277,6 +277,10 @@ select.inp{color:var(--ink2);font-family:inherit;outline:none}
 .side-item:hover{background:#F5F7FB}
 .side-item.on{background:var(--blueT);color:var(--blue);font-weight:700}
 .side-item .n{margin-left:auto;color:var(--muted);font-weight:400;font-size:12px}
+.side-item{flex-wrap:wrap;row-gap:2px}
+.wk-grid{display:grid;grid-template-columns:repeat(5,1fr)}
+@media(max-width:960px){.wk-grid{grid-template-columns:repeat(3,1fr);gap:8px}}
+@media(max-width:560px){.wk-grid{grid-template-columns:repeat(2,1fr);gap:8px}}
 
 /* ---------------- 配图与视频链接 ---------------- */
 .fig{margin:0;background:#FAFBFD;border:1px solid var(--line);border-radius:var(--r);padding:12px;display:block}
@@ -334,6 +338,177 @@ select.inp{color:var(--ink2);font-family:inherit;outline:none}
   align-items:center;justify-content:center;position:relative;border:1px solid #DCE9F8}
 .cover-real-lg img{width:100%;height:100%;object-fit:cover;display:block}
 .cover-real-lg svg{width:100%;height:100%}
+
+/* =============================================================
+   移动端适配
+   ≤1080px：横排菜单 → 汉堡菜单 + 搜索按钮
+   ≤960px ：双栏布局侧栏堆叠为单栏
+   ≤720px ：紧凑排版
+   ≤560px ：超小屏微调
+   ============================================================= */
+
+/* ---------------- 布局工具类 ---------------- */
+.lay-main{flex:1;min-width:0}
+.lay-side{width:320px;flex:none}
+.cside{width:420px;flex:none;max-width:100%}
+.padtop{padding:26px 32px 0}
+.padtop-b{padding:26px 32px 60px}
+.qlayout{display:flex;gap:26px;align-items:flex-start;flex-wrap:wrap}
+.qside{width:320px;flex:none}
+.qcard-pad{padding:28px 32px}
+.qresult-pad{padding:32px 36px}
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:16px 0;
+  border:1px solid var(--line);border-radius:var(--r)}
+.table-scroll table{width:100%;border-collapse:collapse;font-size:14px;min-width:520px}
+.table-scroll th{background:#F7F8FA;color:#6B7280;text-align:left;padding:11px 14px;
+  border-bottom:1px solid var(--line);font-size:13px;white-space:nowrap}
+.table-scroll td{padding:11px 14px;border-bottom:1px solid #F1F2F4;color:#2C3038}
+.table-scroll tr:last-child td{border-bottom:0}
+
+/* ---------------- 汉堡按钮 / 搜索按钮 / 移动菜单（桌面端隐藏） ---------------- */
+.navtoggle{display:none;width:40px;height:40px;border:0;background:transparent;cursor:pointer;
+  flex:none;border-radius:8px;padding:0}
+.navtoggle span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px;
+  transition:transform .18s,opacity .18s;margin:5px auto}
+.navtoggle:hover{background:#F1F3F7}
+.navtoggle.on span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.navtoggle.on span:nth-child(2){opacity:0}
+.navtoggle.on span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.navsearch-btn{display:none;width:40px;height:40px;border:0;background:transparent;cursor:pointer;
+  flex:none;border-radius:8px;padding:0;align-items:center;justify-content:center}
+.navsearch-btn i{width:15px;height:15px;border:2px solid var(--ink2);border-radius:50%;
+  position:relative;display:block}
+.navsearch-btn i:after{content:"";position:absolute;width:7px;height:2px;background:var(--ink2);
+  transform:rotate(45deg);right:-5px;bottom:-2px}
+.navsearch-btn:hover{background:#F1F3F7}
+.mobile-menu{display:none}
+
+/* ≤1080px：切换为汉堡导航（sticky 导航即定位基准，面板贴在导航条下方） */
+@media(max-width:1080px){
+  .menu{display:none}
+  .searchbox{display:none}
+  .navtoggle{display:block}
+  .navsearch-btn{display:flex}
+  .nav{gap:14px}
+  .mobile-menu{display:none;position:absolute;top:72px;left:0;right:0;z-index:55;
+    height:calc(100vh - 72px);height:calc(100dvh - 72px);
+    background:#fff;border-top:1px solid var(--line);box-shadow:0 24px 44px rgba(17,20,25,.14);
+    flex-direction:column;padding:14px 18px 48px;overflow-y:auto}
+  body.menu-open .mobile-menu{display:flex}
+  body.menu-open{overflow:hidden}
+  .mobile-menu a{padding:15px 6px;font-size:16px;font-weight:700;color:var(--ink2);
+    border-bottom:1px solid #F1F2F4}
+  .mobile-menu a.on{color:var(--blue)}
+  .mobile-menu .mm-search{display:flex;align-items:center;gap:10px;height:46px;
+    border:1.5px solid var(--line);border-radius:10px;padding:0 14px;background:#F7F8FA;margin-bottom:10px}
+  .mobile-menu .mm-search i{width:14px;height:14px;border:2px solid #A8AEB6;border-radius:50%;
+    position:relative;display:block;flex:none}
+  .mobile-menu .mm-search i:after{content:"";position:absolute;width:7px;height:2px;background:#A8AEB6;
+    transform:rotate(45deg);right:-5px;bottom:-2px}
+  .mobile-menu .mm-search input{border:0;background:transparent;outline:none;font-size:15px;
+    width:100%;font-family:inherit;color:var(--ink)}
+  /* 搜索浮层：点击搜索按钮后在导航条下方展开 */
+  body.search-open .searchbox{display:flex;position:absolute;top:72px;left:0;right:0;z-index:55;
+    width:auto;height:54px;border-radius:0;border-width:0 0 1px 0;padding:0 18px;background:#fff;
+    box-shadow:0 18px 34px rgba(17,20,25,.12)}
+  body.search-open .searchbox input{font-size:15px}
+}
+
+/* ≤960px：双栏 → 单栏堆叠 */
+@media(max-width:960px){
+  .lay-side,.qside{width:100%}
+  .cside{width:100%;max-width:560px}
+  .cover-real{height:160px}
+  .cover-real-lg{height:210px}
+  .hero{padding:52px 0 46px}
+  .sec{padding:44px 0}
+  .article{padding:26px 22px}
+  .cal{grid-template-columns:repeat(5,1fr)}
+  /* 宽表格改为横向滚动，避免右侧列被裁切 */
+  .table-card{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
+  table.list{min-width:520px}
+}
+
+/* ≤720px：紧凑排版 */
+@media(max-width:720px){
+  .wrap{padding:0 16px}
+  .nav{padding:0 14px}
+  .hero{padding:40px 0 36px}
+  .hero h1{font-size:32px}
+  .hero .sub{font-size:15px;margin-top:14px}
+  .kpis{gap:24px}
+  .sec{padding:34px 0}
+  .sechead{margin-bottom:20px}
+  .sechead h2{font-size:23px}
+  .pagehead{padding:22px 0 14px}
+  .pagehead h1{font-size:27px}
+  .article{padding:20px 16px}
+  .article h2{font-size:20px;margin:26px 0 12px}
+  .article h3{font-size:16.5px}
+  .article p{font-size:15px}
+  .article li{font-size:14.5px}
+  .card.pad{padding:18px 16px}
+  .qcard-pad{padding:20px 16px}
+  .qresult-pad{padding:22px 18px}
+  .opt{padding:13px 14px;gap:12px;font-size:14.5px}
+  .opt .k{width:26px;height:26px;font-size:12px}
+  .answer-grid{gap:6px}
+  .qno{width:28px;height:28px;font-size:11.5px}
+  .cal{gap:6px}
+  .cal a{height:38px;font-size:11.5px}
+  .stat b{font-size:24px}
+  .btn{height:42px;padding:0 18px}
+  .btn.s{height:32px}
+  .warnbar{flex-wrap:wrap}
+  .footer{padding:40px 0 22px;margin-top:40px}
+  .footer .cols{gap:24px}
+  .figcard{padding:18px 16px 16px}
+  .figcard .fc-row{font-size:14.5px;padding:10px 13px}
+  .figcard .fc-arrows{display:none}
+  .figcard .fc-hero{min-height:140px}
+  .vlink{flex-wrap:wrap}
+  .vlink .vt{max-width:none;white-space:normal}
+  .vlink .vm{margin-left:0}
+  .cover-real{height:150px}
+  .cover-real-lg{height:180px}
+  .empty{padding:44px 16px}
+  .toast{width:calc(100% - 32px);text-align:center}
+}
+
+/* ≤560px：超小屏微调 */
+@media(max-width:560px){
+  .wrap{padding:0 14px}
+  .nav .logo b{font-size:17px}
+  .hero h1{font-size:28px}
+  .hero .sub{font-size:14px}
+  .kpis{gap:18px}
+  .pagehead h1{font-size:24px}
+  .sechead h2{font-size:20px}
+  .article{padding:16px 13px}
+  .article h2{font-size:18px;padding-left:10px;border-left-width:3px}
+  .article code{font-size:13px}
+  .card.pad{padding:15px 13px}
+  .qcard-pad{padding:16px 13px}
+  .qresult-pad{padding:18px 14px}
+  .opt{padding:12px;gap:10px;font-size:14px}
+  .opt .k{width:24px;height:24px;font-size:11.5px}
+  .cal a{height:34px;font-size:11px;border-radius:6px}
+  .qno{width:26px;height:26px;font-size:11px}
+  .btn{height:40px;font-size:13.5px;padding:0 16px}
+  .footer .cols{grid-template-columns:1fr}
+  .footer .btm{flex-direction:column;gap:6px;margin-top:26px}
+  .figcard .fc-hero img{max-height:200px}
+  .day-row .wd{width:44px}
+  .day-row{flex-wrap:wrap}
+  .lesson-row{padding:11px 13px;flex-wrap:wrap}
+  .lesson-row .ttl{flex:1;min-width:0}
+  .chapter .ch-head{padding:13px 14px;flex-wrap:wrap}
+  .week .wk-head{padding:13px 14px;flex-wrap:wrap}
+  .toc .th{padding:12px 14px}
+  .toc .ch{padding:10px 13px}
+  .table-scroll table{min-width:460px}
+  .srcbar{gap:6px}
+}
 
 /* ---------------- 无障碍与打印 ---------------- */
 :focus-visible{outline:2.5px solid var(--blue);outline-offset:2px;border-radius:4px}

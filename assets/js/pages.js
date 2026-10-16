@@ -152,11 +152,11 @@ const Pages = (function () {
     <div class="wrap pagehead">
       <div class="breadcrumb"><a href="index.html">首页</a> / <a href="courses.html">课程中心</a> / ${E(c.title)}</div>
       <div style="display:flex;gap:30px;flex-wrap:wrap">
-        <div style="width:420px;flex:none">
+        <div class="cside">
           <div style="position:relative">${(App.figure('cover:' + c.id) || '').replace("class='cover-real'", "class='cover-real-lg'")}
             <span class="pill tag" style="position:absolute;left:16px;top:16px;background:#fff">${E(c.level || '入门')}</span></div>
         </div>
-        <div style="flex:1;min-width:300px">
+        <div class="lay-main">
           <h1 class="display" style="font-size:34px">${E(c.title)}</h1>
           <p class="mut" style="margin-top:14px;font-size:15px;line-height:1.9">${E(c.subtitle || '')}</p>
           <div class="meta" style="margin-top:16px;font-size:13px"><span>${lessons.length} 节课</span>
@@ -169,7 +169,7 @@ const Pages = (function () {
       </div>
     </div>
     <div class="wrap" style="display:flex;gap:28px;padding-bottom:60px;align-items:flex-start;flex-wrap:wrap">
-      <div style="flex:1;min-width:320px">
+      <div class="lay-main">
         ${c.objectives && c.objectives.length ? `<div class="keypoints" style="margin-top:0"><h4>学完这门课你能</h4>
           <ul>${c.objectives.map(o => `<li>${E(o)}</li>`).join('')}</ul></div>` : ''}
         <h3 style="margin:24px 0 14px;font-size:18px">课程大纲</h3>
@@ -184,7 +184,7 @@ const Pages = (function () {
                 <span class="dur">${l.minutes || 15} 分钟</span></a>`).join('')}
           </div>`).join('')}
       </div>
-      <div style="width:320px;flex:none">
+      <div class="lay-side">
         <div class="sidebox"><h4>学习进度</h4>
           <div class="bar"><i style="width:${lessons.length ? (done / lessons.length * 100) : 0}%"></i></div>
           <p class="mut small" style="margin-top:10px">已学 ${done} / ${lessons.length} 节</p>
@@ -220,12 +220,12 @@ const Pages = (function () {
     const related = App.questions().filter(x => x.chapter && lesson.title && (x.stem.includes(lesson.title.slice(0, 2)) || false)).slice(0, 6);
     const done = App.progress.done(lesson.id);
     M().innerHTML = `
-    <div class="wrap" style="padding:26px 32px 0">
+    <div class="wrap padtop">
       <div class="breadcrumb"><a href="index.html">首页</a> / <a href="courses.html">课程中心</a> /
         <a href="course.html?id=${encodeURIComponent(course.id)}">${E(course.title)}</a> / ${E(lesson.title)}</div>
     </div>
     <div class="wrap" style="display:flex;gap:26px;padding-bottom:60px;align-items:flex-start;flex-wrap:wrap">
-      <div style="flex:1;min-width:320px">
+      <div class="lay-main">
         <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px">
           <span class="pill">${E(chapter.title)}</span>
           ${detail ? '<span class="pill y">精讲 · 配图</span>' : ''}
@@ -265,7 +265,7 @@ const Pages = (function () {
           ${next ? `<a class="btn p" style="margin-left:auto" href="lesson.html?c=${encodeURIComponent(next.course.id)}&l=${encodeURIComponent(next.lesson.id)}">下一课：${E(next.lesson.title)} →</a>` : ''}
         </div>
       </div>
-      <div style="width:320px;flex:none">
+      <div class="lay-side">
         <div class="toc">
           <div class="th">${E(course.title)}</div>
           ${(course.chapters || []).flatMap(ch => (ch.lessons || []).map(l => `
@@ -319,7 +319,7 @@ const Pages = (function () {
     </div>
     <div class="wrap" style="padding-bottom:60px">
       <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start">
-        <div style="flex:1;min-width:320px">
+        <div class="lay-main">
           <h3 style="font-size:18px;margin-bottom:14px">按模块练习</h3>
           <div class="grid c2">
             ${Object.entries(byChapter).sort((a, b) => b[1] - a[1]).map(([ch, n]) => `
@@ -330,7 +330,7 @@ const Pages = (function () {
                 <span class="btn s p" style="margin-top:12px;display:inline-flex">开始练习</span></a>`).join('')}
           </div>
         </div>
-        <div style="width:330px;flex:none">
+        <div class="lay-side">
           <div class="card pad"><h4 style="font-size:15px">我的刷题数据</h4>
             <div class="grid c2" style="gap:12px;margin-top:14px">
               <div class="stat"><b>${wrongN}</b><span>错题本</span></div>
@@ -396,7 +396,7 @@ const Pages = (function () {
       const n = +(App.q('n') || 20);
       list = shuffle(qs.slice()).slice(0, n); title = '随机刷题'; badge = '随机练习';
     }
-    M().innerHTML = `<div class="wrap" style="padding:26px 32px 60px">
+    M().innerHTML = `<div class="wrap padtop-b">
       <div class="breadcrumb"><a href="index.html">首页</a> / <a href="quiz.html">题库系统</a> / ${E(title)}</div>
       ${exam ? `<div class="warnbar" style="margin-bottom:18px"><span class="ic">!</span>
         <div><b>考试须知</b>：共 ${list.length} 题，限时 ${minutes} 分钟，满分 100 分，60 分及格；
@@ -418,7 +418,7 @@ const Pages = (function () {
     const byCh = {};
     (rec.detail || []).forEach(d => { const k = d.chapter || '未分类'; byCh[k] = byCh[k] || { n: 0, r: 0 }; byCh[k].n++; if (d.right) byCh[k].r++; });
     const wrongs = (rec.detail || []).filter(d => !d.right);
-    M().innerHTML = `<div class="wrap" style="padding:26px 32px 60px">
+    M().innerHTML = `<div class="wrap padtop-b">
       <div class="breadcrumb"><a href="index.html">首页</a> / <a href="quiz.html">题库系统</a> / 考试结果</div>
       <div class="card" style="padding:34px 38px;display:flex;gap:44px;align-items:center;flex-wrap:wrap">
         ${App.ring(rec.score, rec.score, '总分 100')}
@@ -453,7 +453,7 @@ const Pages = (function () {
             <a class="btn s o" href="courses.html">回课程中心</a>
             <a class="btn s o" href="hands-on.html">实操专区</a></div></div>
       </div>
-      <div class="card" style="margin-top:20px;overflow:hidden">
+      <div class="card" style="margin-top:20px;overflow-x:auto">
         <table class="list">
           <tr><th style="width:60px">序号</th><th>题目</th><th style="width:110px">你的答案</th><th style="width:110px">正确答案</th><th style="width:150px">模块</th></tr>
           ${wrongs.map((d, i) => `<tr><td class="nowrap">${i + 1}</td><td>${E(d.stem)}</td>
@@ -651,7 +651,7 @@ const Pages = (function () {
       <div class="sechead"><div><div class="slash">/ question bank</div><h2>免费题库与模拟考</h2></div>
         <a class="more" href="quiz.html">进入题库 →</a></div>
       <div style="display:flex;gap:26px;flex-wrap:wrap;align-items:center">
-        <div class="card pad" style="flex:1;min-width:300px">
+        <div class="card pad lay-main">
           <b style="font-size:16px">四种刷题模式</b>
           <div style="margin-top:14px">
             ${[['章节练习', '按模块做题，做完即看解析', 'practice.html?mode=chapter'],
@@ -663,7 +663,7 @@ const Pages = (function () {
                 <span class="blue small" style="margin-left:auto;font-weight:700">进入 →</span></a>`).join('')}
           </div>
         </div>
-        <div class="sidebox" style="width:320px">
+        <div class="sidebox lay-side">
           <h4>可下载 / 打印资料</h4>
           ${docs.map(d => `<a class="kv" href="${E(d.path)}" target="_blank"><span>${E(d.title)}</span>
             <span class="blue small">打开</span></a>`).join('') || '<p class="mut small">资料整理中…</p>'}
@@ -715,7 +715,7 @@ const Pages = (function () {
           <p style="margin-top:8px;font-size:13.5px;line-height:1.85">打勾记录保存在本机浏览器，换设备不会同步。</p></div>
       </div>
       <div class="toc" style="margin-bottom:22px"><div class="th">10 周主题一览</div>
-        <div style="display:grid;grid-template-columns:repeat(5,1fr)">
+        <div class="wk-grid">
         ${weeks.map(w => `<a class="side-item" href="#w${w.week}"><b style="color:#2A4FE4">第 ${w.week} 周</b>
           <span class="mut small" style="margin-left:8px">${E(w.theme || '')}</span></a>`).join('')}</div></div>
       ${weeks.map(w => `

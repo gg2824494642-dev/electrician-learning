@@ -133,9 +133,15 @@ const App = (function () {
     const items = MENU.map(([t, h]) => `<a href="${h}" class="${t === active ? 'on' : ''}">${t}</a>`).join('');
     return `<div class="nav">
       <a class="logo" href="index.html"><span class="mark"></span><span><b>电工学堂</b><small>E-LEARN</small></span></a>
-      <nav class="menu">${items}</nav>
+      <nav class="menu" id="navMenu">${items}</nav>
       <div class="navr">
         <div class="searchbox"><i></i><input id="navSearch" placeholder="搜索课程 / 题目 / 资料" autocomplete="off"></div>
+        <button class="navsearch-btn" id="navSearchBtn" aria-label="搜索"><i></i></button>
+        <button class="navtoggle" id="navToggle" aria-label="菜单"><span></span><span></span><span></span></button>
+      </div>
+      <div class="mobile-menu" id="mobileMenu">
+        <div class="mm-search"><i></i><input id="navSearchM" placeholder="搜索课程 / 题目 / 资料" autocomplete="off"></div>
+        ${MENU.map(([t, h]) => `<a href="${h}" class="${t === active ? 'on' : ''}">${t}</a>`).join('')}
       </div></div>`;
   }
   function footer() {
@@ -158,6 +164,46 @@ const App = (function () {
     if (si) si.addEventListener('keydown', e => {
       if (e.key === 'Enter' && si.value.trim()) location.href = 'search.html?q=' + encodeURIComponent(si.value.trim());
     });
+    const sim = document.getElementById('navSearchM');
+    if (sim) sim.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && sim.value.trim()) location.href = 'search.html?q=' + encodeURIComponent(sim.value.trim());
+    });
+    // 移动端：汉堡菜单 / 搜索展开
+    const tg = document.getElementById('navToggle');
+    const mm = document.getElementById('mobileMenu');
+    if (tg && mm) {
+      tg.addEventListener('click', e => {
+        e.stopPropagation();
+        document.body.classList.toggle('menu-open');
+        tg.classList.toggle('on');
+      });
+      mm.addEventListener('click', e => { if (e.target.tagName === 'A') { document.body.classList.remove('menu-open'); tg.classList.remove('on'); } });
+      document.addEventListener('click', e => {
+        if (document.body.classList.contains('menu-open') && !mm.contains(e.target) && e.target !== tg && !tg.contains(e.target)) {
+          document.body.classList.remove('menu-open'); tg.classList.remove('on');
+        }
+      });
+    }
+    const sb = document.getElementById('navSearchBtn');
+    if (sb) sb.addEventListener('click', e => {
+      e.stopPropagation();
+      document.body.classList.toggle('search-open');
+      const s = document.getElementById('navSearch');
+      if (s && document.body.classList.contains('search-open')) s.focus();
+    });
+    // 点击空白处 / Esc 关闭移动菜单与搜索浮层
+    document.addEventListener('click', e => {
+      if (document.body.classList.contains('search-open') && !e.target.closest('.navr')) {
+        document.body.classList.remove('search-open');
+      }
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        document.body.classList.remove('menu-open', 'search-open');
+        const t2 = document.getElementById('navToggle');
+        if (t2) t2.classList.remove('on');
+      }
+    });
   }
 
   /* ---------------- 讲义内容块渲染 ---------------- */
@@ -169,8 +215,8 @@ const App = (function () {
         case 'p': return `<p>${esc(b.text)}</p>`;
         case 'ul': return `<ul>${(b.items || []).map(i => `<li>${esc(i)}</li>`).join('')}</ul>`;
         case 'ol': return `<ul>${(b.items || []).map((i, n) => `<li>${n + 1}. ${esc(i)}</li>`).join('')}</ul>`;
-        case 'table': return `<table><tr>${(b.head || []).map(h => `<th>${esc(h)}</th>`).join('')}</tr>
-            ${(b.rows || []).map(r => `<tr>${r.map(c => `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</table>`;
+        case 'table': return `<div class="table-scroll"><table><tr>${(b.head || []).map(h => `<th>${esc(h)}</th>`).join('')}</tr>
+            ${(b.rows || []).map(r => `<tr>${r.map(c => `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</table></div>`;
         case 'note': return `<div class="callout note"><span class="lb">📘 说明</span>${esc(b.text)}</div>`;
         case 'tip': return `<div class="callout tip"><span class="lb">💡 ${esc(b.title || '记忆口诀 / 考点提示')}</span>${esc(b.text)}</div>`;
         case 'warn': return `<div class="callout warn"><span class="lb">⚠️ ${esc(b.title || '安全提醒')}</span>${esc(b.text)}</div>`;
