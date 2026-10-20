@@ -1,29 +1,533 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>课程中心</title>
-<meta name="description" content="低压电工系统课程：电工基础、安全用电、低压电器、电机控制、电工仪表、触电急救。">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232A4FE4'/><path d='M56 14 30 56h18l-6 30 26-42H50z' fill='%23fff'/></svg>">
-<link rel="stylesheet" href="assets/css/site.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>课程学习 · 电工学堂</title>
+<style>
+:root{
+  --bg:#F0F2F5; --card:#FFFFFF; --ink:#1D2129; --ink2:#5A6068; --muted:#86909C; --line:#E5E6EB;
+  --blue:#2B6CB0; --blueD:#1E4E8C; --blueL:#4A90D9; --blueT:#E8F0FE;
+  --yellow:#F0B429; --yellowT:#FFF8E6;
+  --green:#3FA64B; --greenT:#E9F6EC;
+  --red:#E03A2E; --redT:#FDECEA;
+  --orange:#F07C1E; --purple:#7C4DFF; --cyan:#00ACC1;
+  --shadow:0 2px 10px rgba(20,32,48,.06);
+  --r:12px; --r-sm:8px;
+  --sidebar-w:220px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+  color:var(--ink);background:var(--bg);font-size:14px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+
+/* ========== 侧边栏 ========== */
+.sidebar{
+  position:fixed;left:0;top:0;bottom:0;width:var(--sidebar-w);
+  background:#fff;border-right:1px solid var(--line);
+  display:flex;flex-direction:column;overflow-y:auto;z-index:50;
+}
+.brand{
+  display:flex;align-items:center;gap:10px;padding:18px 16px 16px;
+  border-bottom:1px solid var(--line);
+}
+.brand-logo{
+  width:38px;height:38px;border-radius:10px;
+  background:linear-gradient(135deg,var(--blue),var(--blueL));
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:16px;flex:none;
+}
+.brand-name{font-size:15px;font-weight:700;line-height:1.2}
+.brand-tag{font-size:10.5px;color:var(--muted);margin-top:2px}
+
+.nav-group-label{
+  font-size:10.5px;color:var(--muted);padding:16px 16px 6px;
+  letter-spacing:.5px;font-weight:600;
+}
+.nav-list{display:flex;flex-direction:column;gap:2px;padding:0 10px}
+.nav-item{
+  display:flex;align-items:center;gap:10px;padding:10px 12px;
+  border-radius:9px;font-size:13.5px;color:var(--ink);cursor:pointer;
+  font-weight:500;text-align:left;width:100%;
+  background:none;border:none;font-family:inherit;transition:background .12s;
+}
+.nav-item .ni-ico{width:20px;height:20px;flex:none;display:flex;align-items:center;justify-content:center;font-size:15px}
+.nav-item:hover{background:#F2F5F9}
+.nav-item.on{background:var(--blueT);color:var(--blue);font-weight:700}
+
+.sidebar-foot{
+  margin-top:auto;padding:14px 16px;font-size:11px;color:var(--muted);
+  line-height:1.7;border-top:1px solid var(--line);
+}
+
+/* ========== 主内容区 ========== */
+.main-area{
+  margin-left:var(--sidebar-w);
+  min-height:100vh;
+}
+.content{
+  max-width:1100px;width:100%;margin:0 auto;
+  padding:20px 24px 60px;
+}
+
+/* ========== 移动端顶部栏 ========== */
+.mobile-topbar{
+  display:none;position:sticky;top:0;z-index:60;height:52px;
+  align-items:center;gap:12px;padding:0 16px;
+  background:#fff;border-bottom:1px solid var(--line);
+}
+.mb-logo{font-weight:800;font-size:15px;color:var(--blue)}
+.mb-title{flex:1;font-size:14.5px;font-weight:600}
+.mb-toggle{
+  width:36px;height:36px;border:0;background:#F4F6F9;border-radius:8px;
+  cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;
+}
+
+/* ========== 移动端底部 Tab ========== */
+.mobile-tabbar{
+  display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;
+  background:#fff;border-top:1px solid var(--line);
+  padding:6px 0 calc(6px + env(safe-area-inset-bottom));
+}
+.mtab{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;
+  padding:4px 0;cursor:pointer;color:var(--muted);font-size:10.5px;font-weight:500;
+}
+.mtab .mt-ico{font-size:18px}
+.mtab.on{color:var(--blue);font-weight:700}
+
+/* ========== 页面头 ========== */
+.pagehead{
+  padding:8px 0 20px;
+}
+.pagehead h1{
+  font-size:24px;font-weight:800;
+}
+.pagehead p{
+  font-size:13.5px;color:var(--muted);margin-top:6px;
+}
+
+/* ========== 筛选标签 ========== */
+.seg{
+  display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;
+}
+.seg button{
+  padding:8px 16px;border-radius:18px;background:#fff;
+  border:1px solid var(--line);font-size:13px;
+  color:var(--muted);font-weight:600;cursor:pointer;
+  transition:all .15s;
+}
+.seg button.on{
+  background:var(--blue);color:#fff;border-color:var(--blue);
+}
+.seg button:hover:not(.on){
+  border-color:var(--blue);color:var(--blue);
+}
+
+/* ========== 课程卡片 ========== */
+.course-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:16px;
+}
+.course-card{
+  background:#fff;border-radius:var(--r);overflow:hidden;
+  box-shadow:var(--shadow);cursor:pointer;transition:all .2s;
+}
+.course-card:hover{
+  transform:translateY(-2px);box-shadow:0 6px 20px rgba(20,32,48,.1);
+}
+.cc-cover{
+  height:120px;display:flex;align-items:center;justify-content:center;
+  font-size:40px;color:#fff;font-weight:800;
+  position:relative;
+}
+.cc-tag{
+  position:absolute;top:12px;left:12px;
+  background:rgba(255,255,255,.25);backdrop-filter:blur(4px);
+  padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700;
+}
+.cc-body{
+  padding:16px;
+}
+.cc-title{
+  font-size:15.5px;font-weight:700;margin-bottom:6px;
+}
+.cc-desc{
+  font-size:12.5px;color:var(--muted);line-height:1.6;margin-bottom:12px;
+}
+.cc-meta{
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:11.5px;color:var(--muted);
+}
+.cc-progress{
+  flex:1;margin:0 12px;
+}
+.cc-progress .bar{
+  height:5px;background:#EDF1F6;border-radius:3px;overflow:hidden;
+}
+.cc-progress .bar i{
+  display:block;height:100%;background:var(--blue);border-radius:3px;
+}
+.cc-progress-text{
+  font-size:11px;color:var(--blue);font-weight:600;white-space:nowrap;
+}
+
+/* ========== Toast ========== */
+.toast{
+  position:fixed;bottom:40px;left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:rgba(29,41,57,.92);color:#fff;
+  padding:10px 18px;border-radius:20px;
+  font-size:12.5px;opacity:0;pointer-events:none;
+  transition:all .25s;z-index:999;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ========== 移动端适配 ========== */
+@media(max-width:960px){
+  .sidebar{display:none}
+  .main-area{margin-left:0}
+  .mobile-topbar{display:flex}
+  .mobile-tabbar{display:flex}
+  .content{padding:14px 14px 80px}
+  .course-grid{grid-template-columns:1fr}
+  .pagehead h1{font-size:20px}
+  .cc-cover{height:100px;font-size:32px}
+}
+</style>
 </head>
-<body data-page="courses">
-<div id="nav"></div>
-<main id="main"></main>
-<div id="footer"></div>
-<script src="data/courses.js"></script>
-<script src="data/questions.js"></script>
-<script src="data/plan.js"></script>
-<script src="data/docs.js"></script>
-<script src="data/news.js"></script>
-<script src="data/knowledge.js"></script>
-<script src="data/upmasters.js"></script>
-<script src="data/videos.js"></script>
-<script src="data/figures.js"></script>
-<script src="data/lessons.js"></script>
-<script src="assets/js/core.js"></script>
-<script src="assets/js/quiz.js"></script>
-<script src="assets/js/pages.js"></script>
+<body>
+
+<!-- ========== 侧边栏（PC 端） ========== -->
+<aside class="sidebar">
+  <div class="brand">
+    <div class="brand-logo">电</div>
+    <div>
+      <div class="brand-name">电工学堂</div>
+      <div class="brand-tag">E-LEARN · 公益免费</div>
+    </div>
+  </div>
+  <div class="nav-group-label">主导航</div>
+  <nav class="nav-list">
+    <a href="index.html" class="nav-item"><span class="ni-ico">🏠</span>今日学习</a>
+    <a href="courses.html" class="nav-item on"><span class="ni-ico">📚</span>课程学习</a>
+    <a href="lab.html" class="nav-item"><span class="ni-ico">⚡</span>实操仿真</a>
+    <a href="quiz.html" class="nav-item"><span class="ni-ico">✏️</span>考试刷题</a>
+    <a href="mine.html" class="nav-item"><span class="ni-ico">👤</span>我的</a>
+  </nav>
+  <div class="nav-group-label">全局工具</div>
+  <nav class="nav-list">
+    <a href="search.html" class="nav-item"><span class="ni-ico">🔍</span>元件百科</a>
+    <a href="search.html" class="nav-item"><span class="ni-ico">🔎</span>全局搜索</a>
+  </nav>
+  <div class="sidebar-foot">
+    70 天计划 · 第 18/70 天<br>
+    数据保存在本机浏览器
+  </div>
+</aside>
+
+<!-- ========== 主内容区 ========== -->
+<div class="main-area">
+
+  <!-- 移动端顶部栏 -->
+  <div class="mobile-topbar">
+    <span class="mb-logo">⚡ 电工学堂</span>
+    <span class="mb-title">课程学习</span>
+    <button class="mb-toggle" onclick="toast('菜单功能开发中')">☰</button>
+  </div>
+
+  <div class="content">
+
+    <!-- 页面头 -->
+    <div class="pagehead">
+      <h1>课程学习</h1>
+      <p>12 门系统课程 · 50+ 图文讲义 · 从零基础到持证上岗</p>
+    </div>
+
+    <!-- 筛选标签 -->
+    <div class="seg">
+      <button class="on" onclick="filterCourses(this,'all')">全部</button>
+      <button onclick="filterCourses(this,'入门')">入门</button>
+      <button onclick="filterCourses(this,'基础')">基础</button>
+      <button onclick="filterCourses(this,'安全')">安全</button>
+      <button onclick="filterCourses(this,'设备')">设备</button>
+      <button onclick="filterCourses(this,'考证')">考证</button>
+    </div>
+
+    <!-- 课程卡片列表 -->
+    <div class="course-grid" id="courseGrid">
+
+      <div class="course-card" data-level="入门" onclick="toast('打开课程：电工入门基础')">
+        <div class="cc-cover" style="background:linear-gradient(135deg,#4A90D9,#2B6CB0)">
+          ⚡
+          <span class="cc-tag">入门</span>
+        </div>
+        <div class="cc-body">
+          <div class="cc-title">电工入门基础</div>
+          <div class="cc-desc">电压电流电阻、欧姆定律、串并联电路、电工常用工具使用</div>
+          <div class="cc-meta">
+            <span>6节 · 180分钟</span>
+            <div class="cc-progress">
+              <div class="bar"><i style="width:100%"></i></div>
+            </div>
+            <span class="cc-progress-text">已完成</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card" data-level="入门" onclick="toast('打开课程：常用工具与仪表')">
+        <div class="cc-cover" style="background:linear-gradient(135deg,#00ACC1,#00838F)">
+          🔧
+          <span class="cc-tag">入门</span>
+        </div>
+        <div class="cc-body">
+          <div class="cc-title">常用工具与仪表</div>
+          <div class="cc-desc">万用表、钳形表、验电笔、剥线钳等工具的使用方法与注意事项</div>
+          <div class="cc-meta">
+            <span>5节 · 150分钟</span>
+            <div class="cc-progress">
+              <div class="bar"><i style="width:100%"></i></div>
+            </div>
+            <span class="cc-progress-text">已完成</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card" data-level="基础" onclick="toast('打开课程：直流交流电路')">
+        <div class="cc-cover" style="background:linear-gradient(135deg,#7C4DFF,#5E35B1)">
+          📊
+          <span class="cc-tag">基础</span>
+        </div>
+        <div class="cc-body">
+          <div class="cc-title">直流与交流电路</div>
+          <div class="cc-desc">直流电路、单相交流、三相交流、正弦波形、功率因数</div>
+          <div class="cc-meta">
+            <span>7节 · 210分钟</span>
+            <div class="cc-progress">
+              <div class="bar"><i style="width:100%"></i></div>
+            </div>
+            <span class="cc-progress-text">已完成</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card" data-level="基础" onclick="toast('打开课程：电磁感应基础')">
+        <div class="cc-cover" style="background:linear-gradient(135deg,#5A6B7E,#37474F)">
+          🧲
+          <span class="cc-tag">基础</span>
+        </div>
+        <div class="cc-body">
+          <div class="cc-title">电磁感应基础</div>
+          <div class="cc-desc">磁场、电磁感应、变压器原理、电动机基本结构</div>
+          <div class="cc-meta">
+            <span>4节 · 120分钟</span>
+            <div class="cc-progress">
+              <div class="bar"><i style="width:100%"></i></div>
+            </div>
+            <span class="cc-progress-text">已完成</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card" data-level="安全" onclick="toast('打开课程：安全用电基础')">
+        <div class="cc-cover" style="background:linear-gradient(135deg,#F07C1E,#E65100)">
+          🛡️
+          <span class="cc-tag">安全</span>
+        </div>
+        <div class="cc-body">
+          <div class="cc-title">安全用电基础</div>
+          <div class="cc-desc">触电类型、安全电压、接地与接零保护、漏电保护器、防火防爆</div>
+          <div class="cc-meta">
+            <span>5节 · 150分钟</span>
+            <div class="cc-progress">
+              <div class="bar"><i style="width:60%"></i></div>
+            </div>
+            <span class="cc-progress-text">3/5 节</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card" data-level="安全" onclick="toast('打开课程：安全用具与标识')">
+        <div class="cc-cover" style="background:linear-gradient(135deg,#F0B429,#EF6C00)">
+          🧤
+          <span class="cc-tag">安全</span>
+        </div>
+        <div class="cc-body">
+          <div class="cc-title">安全用具与标识</div>
+          <div class="cc-desc">绝缘手套靴、验电器、接地线、安全色与安全标志分类</div>
+          <div class="cc-meta">
+            <span>4节 · 110分钟</span>
+            <div class="cc-progress">
+              <div class="bar"><i style="width:0%"></i></div>
+            </div>
+            <span class="cc-progress-text">未开始</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card" data-level="设备" onclick="toast('打开课程：低压电器')">
+        <div class="cc-cover" style="background:linear-gradient(135deg,#3FA64B,#2E7D32)">
+          🔌
+          <span class="cc-tag">设备</span>
+        </div>
+        <div class="cc-body">
+          <div class="cc-title">低压电器：开关·保护·接触器</div>
+          <div class="cc-desc">刀开关、断路器、熔断器、接触器、继电器的原理与选型</div>
+          <div class="cc-meta">
+            <span>5节 · 160分钟</span>
+            <div class="cc-progress">
+              <div class="bar"><i style="width:0%"></i></div>
+            </div>
+            <span class="cc-progress-text">未开始</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card" data-level="设备" onclick="toast('打开课程：照明与室内线路')">
+        <div class="cc-cover" style="background:linear-gradient(135deg,#FFC107,#FF8F00)">
+          💡
+          <span class="cc-tag">设备</span>
+        </div>
+        <div class="cc-body">
+          <div class="cc-title">照明与室内线路</div>
+          <div class="cc-desc">灯具安装、单控/双控接线、插座回路、室内布线规范</div>
+          <div class="cc-meta">
+            <span>6节 · 180分钟</span>
+            <div class="cc-progress">
+              <div class="bar"><i style="width:0%"></i></div>
+            </div>
+            <span class="cc-progress-text">未开始</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card" data-level="设备" onclick="toast('打开课程：电动机控制线路')">
+        <div class="cc-cover" style="background:linear-gradient(135deg,#00ACC1,#00695C)">
+          ⚙️
+          <span class="cc-tag">设备</span>
+        </div>
+        <div class="cc-body">
+          <div class="cc-title">电动机控制线路</div>
+          <div class="cc-desc">启动/停止/正反转/星三角降压启动、自锁互锁回路</div>
+          <div class="cc-meta">
+            <span>6节 · 200分钟</span>
+            <div class="cc-progress">
+              <div class="bar"><i style="width:0%"></i></div>
+            </div>
+            <span class="cc-progress-text">未开始</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card" data-level="设备" onclick="toast('打开课程：变压器与配电系统')">
+        <div class="cc-cover" style="background:linear-gradient(135deg,#5C6BC0,#3949AB)">
+          🏭
+          <span class="cc-tag">设备</span>
+        </div>
+        <div class="cc-body">
+          <div class="cc-title">变压器与配电系统</div>
+          <div class="cc-desc">电力变压器、高低压配电屏、母线槽、接地系统</div>
+          <div class="cc-meta">
+            <span>4节 · 130分钟</span>
+            <div class="cc-progress">
+              <div class="bar"><i style="width:0%"></i></div>
+            </div>
+            <span class="cc-progress-text">未开始</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card" data-level="考证" onclick="toast('打开课程：理论考点精讲')">
+        <div class="cc-cover" style="background:linear-gradient(135deg,#E03A2E,#B71C1C)">
+          📝
+          <span class="cc-tag">考证</span>
+        </div>
+        <div class="cc-body">
+          <div class="cc-title">理论考点精讲</div>
+          <div class="cc-desc">低压电工证考试高频考点、易错点、真题解析</div>
+          <div class="cc-meta">
+            <span>8节 · 240分钟</span>
+            <div class="cc-progress">
+              <div class="bar"><i style="width:0%"></i></div>
+            </div>
+            <span class="cc-progress-text">未开始</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="course-card" data-level="考证" onclick="toast('打开课程：实操考试指南')">
+        <div class="cc-cover" style="background:linear-gradient(135deg,#8E24AA,#6A1B9A)">
+          🎯
+          <span class="cc-tag">考证</span>
+        </div>
+        <div class="cc-body">
+          <div class="cc-title">实操考试指南</div>
+          <div class="cc-desc">考试项目拆解、评分标准、注意事项、常见扣分点</div>
+          <div class="cc-meta">
+            <span>5节 · 150分钟</span>
+            <div class="cc-progress">
+              <div class="bar"><i style="width:0%"></i></div>
+            </div>
+            <span class="cc-progress-text">未开始</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- 移动端底部 Tab -->
+<div class="mobile-tabbar">
+  <a href="index.html" class="mtab">
+    <div class="mt-ico">🏠</div>今日学习
+  </a>
+  <a href="courses.html" class="mtab on">
+    <div class="mt-ico">📚</div>课程学习
+  </a>
+  <a href="lab.html" class="mtab">
+    <div class="mt-ico">⚡</div>实操仿真
+  </a>
+  <a href="quiz.html" class="mtab">
+    <div class="mt-ico">✏️</div>考试刷题
+  </a>
+  <a href="mine.html" class="mtab">
+    <div class="mt-ico">👤</div>我的
+  </a>
+</div>
+
+<script>
+function toast(msg) {
+  let t = document.getElementById('globalToast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'globalToast';
+    t.className = 'toast';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._tm);
+  t._tm = setTimeout(() => t.classList.remove('show'), 1900);
+}
+
+function filterCourses(btn, level) {
+  document.querySelectorAll('.seg button').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  const cards = document.querySelectorAll('.course-card');
+  cards.forEach(card => {
+    if (level === 'all' || card.dataset.level === level) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>
+
 </body>
 </html>
