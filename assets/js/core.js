@@ -1,5 +1,5 @@
 /* =============================================================
-   电工学堂 · 站点核心脚本（v3 布局：左侧边栏导航 · 简化版）
+   电工学堂 · 站点核心脚本（v3 布局：左侧边栏导航 · 修复版）
    ============================================================= */
 window.APP_DATA = window.APP_DATA || { courses: { courses: [] }, questions: { questions: [] } };
 
@@ -136,7 +136,7 @@ const App = (function () {
   };
 
   /* ---------------- 侧边栏导航 HTML ---------------- */
-  function nav(active) {
+  function sidebarHtml(active) {
     const navItems = MENU.map(m =>
       `<a href="${m.href}" class="nav-item ${m.key === active ? 'on' : ''}" data-nav-key="${m.key}">
         <span class="ni-ico">${m.icon}</span>${m.label}</a>`
@@ -169,8 +169,8 @@ const App = (function () {
     `;
   }
 
-  /* ---------------- 移动端顶部导航 + 底部 Tab ---------------- */
-  function mobileNav(active) {
+  /* ---------------- 移动端导航 HTML ---------------- */
+  function mobileNavHtml(active) {
     const tabItems = MENU.map(m =>
       `<a href="${m.href}" class="mtab ${m.key === active ? 'on' : ''}">
         <div class="mt-ico">${m.icon}</div>${m.label}</a>`
@@ -198,30 +198,29 @@ const App = (function () {
     </div>`;
   }
 
-  function footer() {
-    return `<div class="footer-inner">
-      <div style="margin-bottom:16px;font-size:13px;color:#9AA0A8">© 2026 电工学堂 · 公益免费学习平台 · 本站资料仅供学习参考</div>
-    </div>`;
+  /* ---------------- 页脚 HTML ---------------- */
+  function footerHtml() {
+    return `<div style="text-align:center;padding:20px;font-size:12px;color:#9AA0A8">© 2026 电工学堂 · 公益免费学习平台 · 本站资料仅供学习参考</div>`;
   }
 
-  /* ---------------- 页面挂载：极简版 ---------------- */
+  /* ---------------- 页面挂载 ---------------- */
   function mount(active) {
     // 1. 往 #nav 里填充侧边栏导航
-    const n = document.getElementById('nav');
-    if (n) n.innerHTML = nav(active);
+    const navHolder = document.getElementById('nav');
+    if (navHolder) navHolder.innerHTML = sidebarHtml(active);
 
     // 2. 注入移动端导航（body 最前面）
     const mobileHolder = document.createElement('div');
     mobileHolder.id = 'mobileNavHolder';
-    mobileHolder.innerHTML = mobileNav(active);
+    mobileHolder.innerHTML = mobileNavHtml(active);
     document.body.insertBefore(mobileHolder, document.body.firstChild);
 
     // 3. 给 body 加 class，控制内容区左边距
     document.body.classList.add('has-sidebar');
 
     // 4. 页脚
-    const f = document.getElementById('footer');
-    if (f) { f.className = 'site-footer'; f.innerHTML = footer(); }
+    const footerEl = document.getElementById('footer');
+    if (footerEl) { footerEl.className = 'site-footer'; footerEl.innerHTML = footerHtml(); }
 
     // 5. 移动端抽屉事件
     const drawerToggle = document.getElementById('drawerToggle');
