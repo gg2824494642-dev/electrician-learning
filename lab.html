@@ -24,7 +24,6 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 a{color:inherit;text-decoration:none}
-
 .sidebar{
   position:fixed;left:0;top:0;bottom:0;width:var(--sidebar-w);
   background:#fff;border-right:1px solid var(--line);
@@ -153,6 +152,8 @@ a{color:inherit;text-decoration:none}
 .btn:hover{transform:translateY(-1px)}
 .btn.p{background:var(--blue);color:#fff}
 .btn.p:hover{background:var(--blueD)}
+.btn.o{border:1.5px solid var(--line);color:var(--ink);background:#fff}
+.btn.o:hover{border-color:var(--blue);color:var(--blue)}
 .toast{
   position:fixed;bottom:40px;left:50%;
   transform:translateX(-50%) translateY(20px);
@@ -241,7 +242,7 @@ a{color:inherit;text-decoration:none}
       </div>
       <div class="card" style="display:flex;flex-direction:column;justify-content:center;align-items:center">
         <div style="font-size:13px;color:var(--muted);margin-bottom:10px">下一关：双控开关两地控制</div>
-        <button class="btn p" onclick="toast('进入接线仿真画布（即将上线）')">开始下一关</button>
+        <button class="btn p" onclick="location.href='lab-canvas.html'">进入仿真工作台</button>
       </div>
     </div>
 
@@ -249,56 +250,56 @@ a{color:inherit;text-decoration:none}
       <h3>关卡列表 <span style="font-size:12px;color:var(--muted);font-weight:400">共 8 关</span></h3>
       <div class="level-grid">
 
-        <div class="level-card done" onclick="toast('关卡1：单灯单控（已完成）')">
+        <div class="level-card done" onclick="location.href='lab-canvas.html'">
           <div class="lc-num">1</div>
           <div class="lc-title">单灯单控</div>
           <div class="lc-desc">最基础的照明回路，一个开关控制一盏灯</div>
           <div class="lc-status done">✓ 已完成</div>
         </div>
 
-        <div class="level-card done" onclick="toast('关卡2：两灯并联（已完成）')">
+        <div class="level-card done" onclick="location.href='lab-canvas.html'">
           <div class="lc-num">2</div>
           <div class="lc-title">两灯并联</div>
           <div class="lc-desc">两个灯具并联，一个总开关控制</div>
           <div class="lc-status done">✓ 已完成</div>
         </div>
 
-        <div class="level-card done" onclick="toast('关卡3：插座回路（已完成）')">
+        <div class="level-card done" onclick="location.href='lab-canvas.html'">
           <div class="lc-num">3</div>
           <div class="lc-title">插座回路</div>
           <div class="lc-desc">五孔插座接线，火线零线地线正确连接</div>
           <div class="lc-status done">✓ 已完成</div>
         </div>
 
-        <div class="level-card" onclick="toast('关卡4：双控开关两地控制')">
+        <div class="level-card" onclick="location.href='lab-canvas.html'">
           <div class="lc-num">4</div>
           <div class="lc-title">双控开关</div>
           <div class="lc-desc">两个位置都能控制同一盏灯，考试高频考点</div>
           <div class="lc-status doing">▶ 进行中</div>
         </div>
 
-        <div class="level-card locked" onclick="toast('请先通关上一关')">
+        <div class="level-card locked" onclick="location.href='lab-canvas.html'">
           <div class="lc-num">5</div>
           <div class="lc-title">星三角启动</div>
           <div class="lc-desc">电动机降压启动经典线路</div>
           <div class="lc-status locked">🔒 未解锁</div>
         </div>
 
-        <div class="level-card locked" onclick="toast('请先通关上一关')">
+        <div class="level-card locked" onclick="location.href='lab-canvas.html'">
           <div class="lc-num">6</div>
           <div class="lc-title">正反转控制</div>
           <div class="lc-desc">接触器互锁实现电机正反转</div>
           <div class="lc-status locked">🔒 未解锁</div>
         </div>
 
-        <div class="level-card locked" onclick="toast('请先通关上一关')">
+        <div class="level-card locked" onclick="location.href='lab-canvas.html'">
           <div class="lc-num">7</div>
           <div class="lc-title">带过载保护</div>
           <div class="lc-desc">热继电器保护回路</div>
           <div class="lc-status locked">🔒 未解锁</div>
         </div>
 
-        <div class="level-card locked" onclick="toast('请先通关上一关')">
+        <div class="level-card locked" onclick="location.href='lab-canvas.html'">
           <div class="lc-num">8</div>
           <div class="lc-title">考试综合题</div>
           <div class="lc-desc">模拟实操考试完整项目</div>
@@ -317,7 +318,7 @@ a{color:inherit;text-decoration:none}
         4. 通关当前关卡后自动解锁下一关<br>
         <br>
         <span style="color:var(--muted);font-size:12px">
-          提示：接线大师完整仿真功能正在迁移中，后续将逐步上线全部关卡。
+          提示：点击任意关卡即可进入接线大师完整仿真工作台。
         </span>
       </div>
     </div>
