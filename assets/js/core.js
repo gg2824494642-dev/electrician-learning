@@ -1,5 +1,5 @@
 /* =============================================================
-   电工学堂 · 站点核心脚本（v3 布局：左侧边栏导航）
+   电工学堂 · 站点核心脚本（v3 布局：左侧边栏导航 · 简化版）
    ============================================================= */
 window.APP_DATA = window.APP_DATA || { courses: { courses: [] }, questions: { questions: [] } };
 
@@ -142,116 +142,94 @@ const App = (function () {
         <span class="ni-ico">${m.icon}</span>${m.label}</a>`
     ).join('');
     const subItems = (MENU_SUB[active] || []).map(([t, h]) =>
-      `<a href="${h}" class="nav-item" style="padding-left:38px;font-size:12.5px">${t}</a>`
+      `<a href="${h}" class="nav-item nav-sub">${t}</a>`
     ).join('');
-    return `<aside class="sidebar" id="sidebarNav">
-      <div class="brand">
-        <div class="logo">电</div>
-        <div><div class="bt">电工学堂</div><div class="bs">E-LEARN · 公益免费</div></div>
-      </div>
-      <div class="nav-group-label">主导航</div>
-      <nav class="nav">${navItems}</nav>
-      ${subItems ? `<div class="nav-group-label">更多</div><nav class="nav">${subItems}</nav>` : ''}
-      <div class="nav-group-label">全局工具</div>
-      <nav class="nav">
-        <a href="search.html" class="nav-item"><span class="ni-ico">🔍</span>元件百科</a>
-        <a href="search.html" class="nav-item"><span class="ni-ico">🔎</span>全局搜索</a>
-      </nav>
-      <div class="side-foot">
-        70 天计划 · 第 18/70 天<br>
-        数据保存在本机浏览器
-      </div>
-    </aside>`;
+    return `
+      <aside class="sidebar" id="sidebarNav">
+        <div class="brand">
+          <div class="brand-logo">电</div>
+          <div class="brand-text">
+            <div class="brand-name">电工学堂</div>
+            <div class="brand-tag">E-LEARN · 公益免费</div>
+          </div>
+        </div>
+        <div class="nav-group-label">主导航</div>
+        <nav class="nav-list">${navItems}</nav>
+        ${subItems ? `<div class="nav-group-label">更多</div><nav class="nav-list">${subItems}</nav>` : ''}
+        <div class="nav-group-label">全局工具</div>
+        <nav class="nav-list">
+          <a href="search.html" class="nav-item"><span class="ni-ico">🔍</span>元件百科</a>
+          <a href="search.html" class="nav-item"><span class="ni-ico">🔎</span>全局搜索</a>
+        </nav>
+        <div class="sidebar-foot">
+          70 天计划 · 第 18/70 天<br>
+          数据保存在本机浏览器
+        </div>
+      </aside>
+    `;
   }
 
   /* ---------------- 移动端顶部导航 + 底部 Tab ---------------- */
   function mobileNav(active) {
     const tabItems = MENU.map(m =>
-      `<div class="mtab ${m.key === active ? 'on' : ''}" onclick="location.href='${m.href}'">
-        <div class="mt-ico">${m.icon}</div>${m.label}</div>`
+      `<a href="${m.href}" class="mtab ${m.key === active ? 'on' : ''}">
+        <div class="mt-ico">${m.icon}</div>${m.label}</a>`
     ).join('');
     const current = MENU.find(m => m.key === active);
     return `
-    <div class="mobile-nav">
-      <span class="mb-logo">⚡</span>
-      <span class="mb-title">${current ? current.label : '电工学堂'}</span>
-      <button class="mb-toggle" id="drawerToggle" aria-label="菜单">
-        <span></span><span></span><span></span>
-      </button>
+    <div class="mobile-topbar">
+      <span class="mb-logo">⚡ 电工学堂</span>
+      <span class="mb-title">${current ? current.label : ''}</span>
+      <button class="mb-toggle" id="drawerToggle" aria-label="菜单">☰</button>
     </div>
     <div class="mobile-tabbar">${tabItems}</div>
     <div class="mobile-drawer" id="mobileDrawer">
       <div class="md-panel">
-        <div style="display:flex;align-items:center;gap:10px;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:10px">
-          <div class="logo" style="width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--blueL));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800">电</div>
+        <div class="md-brand">
+          <div class="brand-logo">电</div>
           <div><div style="font-weight:700;font-size:15px">电工学堂</div><div style="font-size:11px;color:var(--muted)">公益免费学习平台</div></div>
         </div>
-        <div class="nav-group-label" style="padding-left:0">主导航</div>
-        <nav class="nav">
+        <div class="nav-group-label">主导航</div>
+        <nav class="nav-list">
           ${MENU.map(m => `<a href="${m.href}" class="nav-item ${m.key === active ? 'on' : ''}"><span class="ni-ico">${m.icon}</span>${m.label}</a>`).join('')}
         </nav>
-        ${MENU_SUB.mine ? `<div class="nav-group-label" style="padding-left:0">更多</div><nav class="nav">${MENU_SUB.mine.map(([t, h]) => `<a href="${h}" class="nav-item" style="padding-left:38px;font-size:12.5px">${t}</a>`).join('')}</nav>` : ''}
+        ${MENU_SUB.mine ? `<div class="nav-group-label">更多</div><nav class="nav-list">${MENU_SUB.mine.map(([t, h]) => `<a href="${h}" class="nav-item nav-sub">${t}</a>`).join('')}</nav>` : ''}
       </div>
     </div>`;
   }
 
   function footer() {
-    const col = (t, xs) => `<div><h4>${t}</h4><ul>${xs.map(x => `<li>${x}</li>`).join('')}</ul></div>`;
-    return `<div class="wrap" style="max-width:1200px;margin:0 auto;padding:0 24px"><div class="cols">
-        <div><h4 style="font-size:15px">电工学堂 / E-LEARN</h4>
-          <p style="font-size:12px;line-height:1.9;color:#9AA0A8;margin-top:8px">纯公益、全站免费的电工学习资源站。<br>
-          内容整理自《低压电工一站式学习手册》<br>与五套练习卷，仅供学习参考。</p></div>
-        ${col('学习模块', ['<a href="courses.html">课程学习</a>', '<a href="lab.html">实操仿真</a>', '<a href="quiz.html">考试刷题</a>', '<a href="docs.html">资料下载</a>'])}
-        ${col('考证与计划', ['<a href="cert.html">低压电工证专区</a>', '<a href="plan.html">70 天学习计划</a>', '<a href="quiz.html#exam">模拟考试</a>', '<a href="wrong.html">我的错题本</a>'])}
-        ${col('关于本站', ['本站为个人学习整理，非官方站点', '考试政策以当地应急管理部门为准', '内容纠错：issue 反馈', '免责声明'])}
-      </div>
-      <div class="btm"><span>© 2026 电工学堂 · 公益免费学习平台</span>
-      <span style="margin-left:auto">本站资料仅供学习参考，正式考试请以官方要求为准</span></div></div>`;
+    return `<div class="footer-inner">
+      <div style="margin-bottom:16px;font-size:13px;color:#9AA0A8">© 2026 电工学堂 · 公益免费学习平台 · 本站资料仅供学习参考</div>
+    </div>`;
   }
 
-  /* ---------------- 页面挂载：动态调整布局 ---------------- */
+  /* ---------------- 页面挂载：极简版 ---------------- */
   function mount(active) {
-    // 1. 注入侧边栏导航
+    // 1. 往 #nav 里填充侧边栏导航
     const n = document.getElementById('nav');
     if (n) n.innerHTML = nav(active);
 
-    // 2. 注入移动端导航
-    const mobileNavHolder = document.createElement('div');
-    mobileNavHolder.innerHTML = mobileNav(active);
-    document.body.insertBefore(mobileNavHolder, document.body.firstChild);
+    // 2. 注入移动端导航（body 最前面）
+    const mobileHolder = document.createElement('div');
+    mobileHolder.id = 'mobileNavHolder';
+    mobileHolder.innerHTML = mobileNav(active);
+    document.body.insertBefore(mobileHolder, document.body.firstChild);
 
-    // 3. 包裹主内容区（把 #main 和 #footer 包进 .main-area）
-    const mainArea = document.createElement('div');
-    mainArea.className = 'main-area';
-    const main = document.getElementById('main');
-    const footer = document.getElementById('footer');
-    if (main) {
-      mainArea.appendChild(main);
-      main.classList.add('content');
-      if (footer) mainArea.appendChild(footer);
-      document.body.appendChild(mainArea);
-    }
+    // 3. 给 body 加 class，控制内容区左边距
+    document.body.classList.add('has-sidebar');
 
-    // 4. body 加上 .layout 类
-    document.body.classList.add('layout');
-
-    // 5. 页脚样式
+    // 4. 页脚
     const f = document.getElementById('footer');
-    if (f) { f.className = 'footer'; f.innerHTML = footer(); }
+    if (f) { f.className = 'site-footer'; f.innerHTML = footer(); }
 
-    // 6. 移动端抽屉事件
+    // 5. 移动端抽屉事件
     const drawerToggle = document.getElementById('drawerToggle');
     const drawer = document.getElementById('mobileDrawer');
     if (drawerToggle && drawer) {
-      drawerToggle.addEventListener('click', () => {
-        drawer.classList.add('open');
-      });
-      drawer.addEventListener('click', e => {
-        if (e.target === drawer) drawer.classList.remove('open');
-      });
+      drawerToggle.addEventListener('click', () => drawer.classList.add('open'));
+      drawer.addEventListener('click', e => { if (e.target === drawer) drawer.classList.remove('open'); });
     }
-
-    // 7. 搜索框回车跳转
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && drawer) drawer.classList.remove('open');
     });
