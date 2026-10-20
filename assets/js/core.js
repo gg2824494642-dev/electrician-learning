@@ -12,7 +12,7 @@ const App = (function () {
   };
 
   /* ---------------- 基础工具 ---------------- */
-  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const esc = s => String(s == null ? '' : s).replace(/[&<>'"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const $ = sel => document.querySelector(sel);
   const q = name => new URLSearchParams(location.search).get(name);
   const money = n => n;
@@ -125,12 +125,27 @@ const App = (function () {
   }
 
   /* ---------------- 公共组件 ---------------- */
+  // v3 框架：5 个主入口
   const MENU = [
-    ['首页', 'index.html'], ['课程中心', 'courses.html'], ['题库系统', 'quiz.html'], ['实操专区', 'hands-on.html'],
-    ['知识库', 'knowledge.html'], ['考证专区', 'cert.html'], ['学习计划', 'plan.html'], ['资料下载', 'docs.html'], ['行业资讯', 'news.html']
+    ['今日学习', 'index.html', 'home'],
+    ['课程学习', 'courses.html', 'course'],
+    ['实操仿真', 'lab.html', 'lab'],
+    ['考试刷题', 'quiz.html', 'quiz'],
+    ['我的', 'mine.html', 'mine']
   ];
+  // 我的页面下的子页面链接
+  const MENU_SUB = {
+    mine: [
+      ['70 天学习计划', 'plan.html'],
+      ['资料下载', 'docs.html'],
+      ['行业资讯', 'news.html'],
+      ['考证专区', 'cert.html'],
+      ['知识库', 'knowledge.html']
+    ]
+  };
+
   function nav(active) {
-    const items = MENU.map(([t, h]) => `<a href="${h}" class="${t === active ? 'on' : ''}">${t}</a>`).join('');
+    const items = MENU.map(([t, h, key]) => `<a href="${h}" class="${key === active ? 'on' : ''}" data-nav-key="${key}">${t}</a>`).join('');
     return `<div class="nav">
       <a class="logo" href="index.html"><span class="mark"></span><span><b>电工学堂</b><small>E-LEARN</small></span></a>
       <nav class="menu" id="navMenu">${items}</nav>
@@ -141,7 +156,9 @@ const App = (function () {
       </div>
       <div class="mobile-menu" id="mobileMenu">
         <div class="mm-search"><i></i><input id="navSearchM" placeholder="搜索课程 / 题目 / 资料" autocomplete="off"></div>
-        ${MENU.map(([t, h]) => `<a href="${h}" class="${t === active ? 'on' : ''}">${t}</a>`).join('')}
+        ${MENU.map(([t, h, key]) => `<a href="${h}" class="${key === active ? 'on' : ''}">${t}</a>`).join('')}
+        <div style="padding:12px 16px 4px;font-size:12px;color:#9AA0A8;border-top:1px solid var(--line);margin-top:8px">更多</div>
+        ${(MENU_SUB.mine || []).map(([t, h]) => `<a href="${h}" style="font-size:13px;padding-left:28px">${t}</a>`).join('')}
       </div></div>`;
   }
   function footer() {
@@ -150,7 +167,7 @@ const App = (function () {
         <div><h4 style="font-size:17px">电工学堂 / E-LEARN</h4>
           <p style="font-size:12.5px;line-height:2">纯公益、全站免费的电工学习资源站。<br>
           内容整理自《低压电工一站式学习手册》《低压电工每日学习表》<br>与五套练习卷，仅供学习参考。</p></div>
-        ${col('学习模块', ['<a href="courses.html">课程中心</a>', '<a href="quiz.html">题库系统</a>', '<a href="hands-on.html">实操专区</a>', '<a href="docs.html">资料下载</a>'])}
+        ${col('学习模块', ['<a href="courses.html">课程学习</a>', '<a href="lab.html">实操仿真</a>', '<a href="quiz.html">考试刷题</a>', '<a href="docs.html">资料下载</a>'])}
         ${col('考证与计划', ['<a href="cert.html">低压电工证专区</a>', '<a href="plan.html">70 天学习计划</a>', '<a href="quiz.html#exam">模拟考试</a>', '<a href="wrong.html">我的错题本</a>'])}
         ${col('关于本站', ['本站为个人学习整理，非官方站点', '考试政策以当地应急管理部门为准', '内容纠错：issue 反馈', '免责声明'])}
       </div>
