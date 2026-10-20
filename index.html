@@ -1,29 +1,523 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>电工学堂 · 从零基础到持证上岗</title>
-<meta name="description" content="公益免费的电工学习站：课程讲义、免费题库、实操要点、70 天备考计划。">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232A4FE4'/><path d='M56 14 30 56h18l-6 30 26-42H50z' fill='%23fff'/></svg>">
-<link rel="stylesheet" href="assets/css/site.css">
+<style>
+:root{
+  --bg:#F0F2F5; --card:#FFFFFF; --ink:#1D2129; --ink2:#5A6068; --muted:#86909C; --line:#E5E6EB;
+  --blue:#2B6CB0; --blueD:#1E4E8C; --blueL:#4A90D9; --blueT:#E8F0FE;
+  --yellow:#F0B429; --yellowT:#FFF8E6;
+  --green:#3FA64B; --greenT:#E9F6EC;
+  --red:#E03A2E; --redT:#FDECEA;
+  --orange:#F07C1E; --purple:#7C4DFF; --cyan:#00ACC1;
+  --shadow:0 2px 10px rgba(20,32,48,.06);
+  --r:12px; --r-sm:8px;
+  --sidebar-w:220px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+  color:var(--ink);background:var(--bg);font-size:14px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+
+/* ========== 侧边栏 ========== */
+.sidebar{
+  position:fixed;left:0;top:0;bottom:0;width:var(--sidebar-w);
+  background:#fff;border-right:1px solid var(--line);
+  display:flex;flex-direction:column;overflow-y:auto;z-index:50;
+}
+.brand{
+  display:flex;align-items:center;gap:10px;padding:18px 16px 16px;
+  border-bottom:1px solid var(--line);
+}
+.brand-logo{
+  width:38px;height:38px;border-radius:10px;
+  background:linear-gradient(135deg,var(--blue),var(--blueL));
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:16px;flex:none;
+}
+.brand-name{font-size:15px;font-weight:700;line-height:1.2}
+.brand-tag{font-size:10.5px;color:var(--muted);margin-top:2px}
+
+.nav-group-label{
+  font-size:10.5px;color:var(--muted);padding:16px 16px 6px;
+  letter-spacing:.5px;font-weight:600;
+}
+.nav-list{display:flex;flex-direction:column;gap:2px;padding:0 10px}
+.nav-item{
+  display:flex;align-items:center;gap:10px;padding:10px 12px;
+  border-radius:9px;font-size:13.5px;color:var(--ink);cursor:pointer;
+  font-weight:500;text-align:left;width:100%;
+  background:none;border:none;font-family:inherit;transition:background .12s;
+}
+.nav-item .ni-ico{width:20px;height:20px;flex:none;display:flex;align-items:center;justify-content:center;font-size:15px}
+.nav-item:hover{background:#F2F5F9}
+.nav-item.on{background:var(--blueT);color:var(--blue);font-weight:700}
+.nav-item.nav-sub{padding-left:38px;font-size:12.5px}
+
+.sidebar-foot{
+  margin-top:auto;padding:14px 16px;font-size:11px;color:var(--muted);
+  line-height:1.7;border-top:1px solid var(--line);
+}
+
+/* ========== 主内容区 ========== */
+.main-area{
+  margin-left:var(--sidebar-w);
+  min-height:100vh;
+}
+.content{
+  max-width:1100px;width:100%;margin:0 auto;
+  padding:20px 24px 60px;
+}
+
+/* ========== 移动端顶部栏 ========== */
+.mobile-topbar{
+  display:none;position:sticky;top:0;z-index:60;height:52px;
+  align-items:center;gap:12px;padding:0 16px;
+  background:#fff;border-bottom:1px solid var(--line);
+}
+.mb-logo{font-weight:800;font-size:15px;color:var(--blue)}
+.mb-title{flex:1;font-size:14.5px;font-weight:600}
+.mb-toggle{
+  width:36px;height:36px;border:0;background:#F4F6F9;border-radius:8px;
+  cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;
+}
+
+/* ========== 移动端底部 Tab ========== */
+.mobile-tabbar{
+  display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;
+  background:#fff;border-top:1px solid var(--line);
+  padding:6px 0 calc(6px + env(safe-area-inset-bottom));
+}
+.mtab{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;
+  padding:4px 0;cursor:pointer;color:var(--muted);font-size:10.5px;font-weight:500;
+}
+.mtab .mt-ico{font-size:18px}
+.mtab.on{color:var(--blue);font-weight:700}
+
+/* ========== 卡片 ========== */
+.card{
+  background:#fff;border-radius:var(--r);padding:18px;margin-bottom:14px;
+  box-shadow:var(--shadow);
+}
+.card h3{
+  font-size:14.5px;font-weight:700;margin-bottom:12px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.card h3 .more{font-size:12px;color:var(--blue);font-weight:500;cursor:pointer}
+
+/* ========== Hero ========== */
+.hero{
+  background:linear-gradient(135deg,var(--blue) 0%,var(--blueL) 100%);
+  color:#fff;border-radius:var(--r);padding:22px;margin-bottom:14px;
+  position:relative;overflow:hidden;
+}
+.hero::after{
+  content:'';position:absolute;right:-30px;bottom:-40px;width:180px;height:180px;
+  background:rgba(255,255,255,.08);border-radius:50%;
+}
+.hero .h-sub{font-size:12px;opacity:.85}
+.hero h2{font-size:22px;margin:6px 0 4px;font-weight:800;position:relative;z-index:1}
+.hero .h-date{font-size:12.5px;opacity:.9;position:relative;z-index:1}
+.hero-stats{
+  display:flex;margin-top:16px;background:rgba(255,255,255,.12);
+  border-radius:9px;padding:10px 0;position:relative;z-index:1;
+}
+.hero-stats div{
+  flex:1;text-align:center;border-right:1px solid rgba(255,255,255,.15);cursor:pointer;
+}
+.hero-stats div:last-child{border-right:none}
+.hero-stats div:hover{background:rgba(255,255,255,.08)}
+.hero-stats b{display:block;font-size:20px;font-weight:800}
+.hero-stats span{font-size:11px;opacity:.85}
+
+/* ========== 任务项 ========== */
+.task-item{
+  display:flex;align-items:center;gap:12px;padding:11px 0;
+  border-bottom:1px solid #F0F2F5;cursor:pointer;
+}
+.task-item:last-child{border-bottom:none}
+.task-check{
+  width:20px;height:20px;border-radius:50%;
+  border:2px solid var(--muted);flex:none;
+}
+.task-check.done{
+  background:var(--green);border-color:var(--green);position:relative;
+}
+.task-check.done::after{
+  content:'';position:absolute;left:5px;top:1px;width:5px;height:10px;
+  border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);
+}
+.task-main{flex:1;min-width:0}
+.task-t{font-size:13.5px;font-weight:600}
+.task-d{font-size:11.5px;color:var(--muted);margin-top:2px}
+.task-tag{
+  font-size:10.5px;padding:3px 9px;border-radius:5px;
+  background:#F2F5F9;color:var(--ink2);flex:none;
+}
+.task-tag.doing{background:var(--blueT);color:var(--blue)}
+.task-tag.done{background:var(--greenT);color:var(--green)}
+
+/* ========== 快捷宫格 ========== */
+.quick-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:10px;
+}
+.quick{
+  background:#F7F9FC;border:1px solid var(--line);border-radius:10px;
+  padding:14px 8px;text-align:center;cursor:pointer;transition:all .15s;
+}
+.quick:hover{
+  border-color:var(--blue);background:#fff;transform:translateY(-1px);
+}
+.quick .q-ico{
+  width:38px;height:38px;margin:0 auto 6px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:17px;color:#fff;font-weight:700;
+}
+.quick .q-name{font-size:12px;font-weight:600}
+.quick .q-desc{font-size:10px;color:var(--muted);margin-top:2px}
+
+/* ========== 双栏 ========== */
+.two-col{
+  display:grid;grid-template-columns:1.4fr 1fr;gap:14px;
+}
+
+/* ========== 学习路径 ========== */
+.path{
+  display:flex;gap:0;margin-top:8px;
+}
+.path-step{
+  flex:1;text-align:center;position:relative;padding:0 4px;cursor:pointer;
+}
+.path-step .dot{
+  width:30px;height:30px;border-radius:50%;
+  background:#E8EEF7;color:var(--blue);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;margin:0 auto 6px;
+  border:2px solid #fff;box-shadow:0 0 0 1px var(--line);
+}
+.path-step.done .dot{background:var(--green);color:#fff}
+.path-step.now .dot{
+  background:var(--blue);color:#fff;
+  box-shadow:0 0 0 3px rgba(43,108,176,.2);
+}
+.path-step .pn{font-size:11.5px;font-weight:600}
+.path-step .pd{font-size:10px;color:var(--muted)}
+
+/* ========== 进度条 ========== */
+.bar{
+  height:6px;background:#EDF1F6;border-radius:3px;
+  overflow:hidden;margin-top:6px;
+}
+.bar i{display:block;height:100%;background:var(--blue);border-radius:3px}
+.bar.green i{background:var(--green)}
+.bar.orange i{background:var(--orange)}
+
+/* ========== 课程行 ========== */
+.course-row{
+  display:flex;align-items:center;gap:12px;padding:11px 0;
+  border-bottom:1px solid #F0F2F5;cursor:pointer;
+}
+.course-row:last-child{border-bottom:none}
+.cr-ico{
+  width:40px;height:40px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:17px;flex:none;
+}
+.cr-main{flex:1;min-width:0}
+.cr-t{font-size:13.5px;font-weight:600}
+.cr-d{font-size:11.5px;color:var(--muted);margin-top:2px}
+.cr-meta{font-size:11px;color:var(--muted);text-align:right;flex:none}
+.cr-meta b{display:block;font-size:13px;color:var(--ink)}
+
+/* ========== Toast ========== */
+.toast{
+  position:fixed;bottom:40px;left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:rgba(29,41,57,.92);color:#fff;
+  padding:10px 18px;border-radius:20px;
+  font-size:12.5px;opacity:0;pointer-events:none;
+  transition:all .25s;z-index:999;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ========== 移动端适配 ========== */
+@media(max-width:960px){
+  .sidebar{display:none}
+  .main-area{margin-left:0}
+  .mobile-topbar{display:flex}
+  .mobile-tabbar{display:flex}
+  .content{padding:14px 14px 80px}
+  .two-col{grid-template-columns:1fr}
+  .quick-grid{grid-template-columns:repeat(2,1fr)}
+  .hero h2{font-size:19px}
+  .hero-stats b{font-size:17px}
+  .path{flex-wrap:wrap;gap:10px}
+  .path-step{flex:0 0 30%}
+}
+</style>
 </head>
-<body data-page="home">
-<div id="nav"></div>
-<main id="main"></main>
-<div id="footer"></div>
-<script src="data/courses.js"></script>
-<script src="data/questions.js"></script>
-<script src="data/plan.js"></script>
-<script src="data/docs.js"></script>
-<script src="data/news.js"></script>
-<script src="data/knowledge.js"></script>
-<script src="data/upmasters.js"></script>
-<script src="data/videos.js"></script>
-<script src="data/figures.js"></script>
-<script src="data/lessons.js"></script>
-<script src="assets/js/core.js"></script>
-<script src="assets/js/quiz.js"></script>
-<script src="assets/js/pages.js"></script>
+<body>
+
+<!-- ========== 侧边栏（PC 端） ========== -->
+<aside class="sidebar">
+  <div class="brand">
+    <div class="brand-logo">电</div>
+    <div>
+      <div class="brand-name">电工学堂</div>
+      <div class="brand-tag">E-LEARN · 公益免费</div>
+    </div>
+  </div>
+  <div class="nav-group-label">主导航</div>
+  <nav class="nav-list">
+    <a href="index.html" class="nav-item on"><span class="ni-ico">🏠</span>今日学习</a>
+    <a href="courses.html" class="nav-item"><span class="ni-ico">📚</span>课程学习</a>
+    <a href="lab.html" class="nav-item"><span class="ni-ico">⚡</span>实操仿真</a>
+    <a href="quiz.html" class="nav-item"><span class="ni-ico">✏️</span>考试刷题</a>
+    <a href="mine.html" class="nav-item"><span class="ni-ico">👤</span>我的</a>
+  </nav>
+  <div class="nav-group-label">全局工具</div>
+  <nav class="nav-list">
+    <a href="search.html" class="nav-item"><span class="ni-ico">🔍</span>元件百科</a>
+    <a href="search.html" class="nav-item"><span class="ni-ico">🔎</span>全局搜索</a>
+  </nav>
+  <div class="sidebar-foot">
+    70 天计划 · 第 18/70 天<br>
+    数据保存在本机浏览器
+  </div>
+</aside>
+
+<!-- ========== 主内容区 ========== -->
+<div class="main-area">
+
+  <!-- 移动端顶部栏 -->
+  <div class="mobile-topbar">
+    <span class="mb-logo">⚡ 电工学堂</span>
+    <span class="mb-title">今日学习</span>
+    <button class="mb-toggle" onclick="toast('菜单功能开发中')">☰</button>
+  </div>
+
+  <div class="content">
+
+    <!-- Hero 区 -->
+    <div class="hero">
+      <div class="h-sub">公益免费 · 从零基础到持证上岗</div>
+      <h2>今天：安全用电基础 + 双控接线练习</h2>
+      <div class="h-date">周三 · 第 18/70 天 · 建议 90 分钟</div>
+      <div class="hero-stats">
+        <div onclick="location.href='courses.html'"><b>12</b><span>系统课程</span></div>
+        <div onclick="location.href='courses.html'"><b>50+</b><span>图文讲义</span></div>
+        <div onclick="location.href='quiz.html'"><b>500+</b><span>合并题库</span></div>
+        <div><b>0元</b><span>全站免费</span></div>
+      </div>
+    </div>
+
+    <!-- 今日任务 -->
+    <div class="card">
+      <h3>今日任务（3 项）<span class="more" onclick="location.href='plan.html'">查看完整 70 天计划 →</span></h3>
+      <div class="task-item" onclick="toast('打开课程：安全用电基础 第3节')">
+        <div class="task-check done"></div>
+        <div class="task-main">
+          <div class="task-t">看课：《安全用电基础》第 3 节 · 接地与接零保护</div>
+          <div class="task-d">图文讲义 15 分钟 · 对应课程第 c-safe 章</div>
+        </div>
+        <span class="task-tag done">已完成</span>
+      </div>
+      <div class="task-item" onclick="location.href='lab.html'">
+        <div class="task-check"></div>
+        <div class="task-main">
+          <div class="task-t">实操：接线练习「双控开关两地控制」</div>
+          <div class="task-d">仿真画布接线，提交后自动校验评分 · 考试高频考点</div>
+        </div>
+        <span class="task-tag doing">进行中</span>
+      </div>
+      <div class="task-item" onclick="location.href='practice.html?mode=random&n=10'">
+        <div class="task-check"></div>
+        <div class="task-main">
+          <div class="task-t">刷题：电气安全技术模块 10 题</div>
+          <div class="task-d">错题自动收入错题本 · 当前阶段重点</div>
+        </div>
+        <span class="task-tag">待完成</span>
+      </div>
+    </div>
+
+    <!-- 快捷入口 -->
+    <div class="card">
+      <h3>快捷入口</h3>
+      <div class="quick-grid">
+        <div class="quick" onclick="location.href='courses.html'">
+          <div class="q-ico" style="background:var(--blue)">▶</div>
+          <div class="q-name">继续看课</div>
+          <div class="q-desc">上次断点</div>
+        </div>
+        <div class="quick" onclick="location.href='lab.html'">
+          <div class="q-ico" style="background:var(--green)">⚡</div>
+          <div class="q-name">开始接线</div>
+          <div class="q-desc">仿真画布</div>
+        </div>
+        <div class="quick" onclick="location.href='practice.html?mode=exam'">
+          <div class="q-ico" style="background:var(--purple)">📝</div>
+          <div class="q-name">模拟考试</div>
+          <div class="q-desc">40题/60分</div>
+        </div>
+        <div class="quick" onclick="location.href='wrong.html'">
+          <div class="q-ico" style="background:var(--red)">✗</div>
+          <div class="q-name">错题本</div>
+          <div class="q-desc">23 道待攻克</div>
+        </div>
+        <div class="quick" onclick="location.href='docs.html'">
+          <div class="q-ico" style="background:#5A6B7E">📄</div>
+          <div class="q-name">资料下载</div>
+          <div class="q-desc">手册/练习卷</div>
+        </div>
+        <div class="quick" onclick="location.href='cert.html'">
+          <div class="q-ico" style="background:var(--cyan)">📋</div>
+          <div class="q-name">考证专区</div>
+          <div class="q-desc">报考指南</div>
+        </div>
+        <div class="quick" onclick="location.href='knowledge.html'">
+          <div class="q-ico" style="background:var(--orange)">💡</div>
+          <div class="q-name">知识库</div>
+          <div class="q-desc">通俗解释</div>
+        </div>
+        <div class="quick" onclick="location.href='news.html'">
+          <div class="q-ico" style="background:#F57C00">📰</div>
+          <div class="q-name">政策资讯</div>
+          <div class="q-desc">法规更新</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 双栏：学习路径 + 进度 -->
+    <div class="two-col">
+      <div class="card">
+        <h3>学习路径：5 阶段 <span class="more">第 3 阶段「安全」进行中</span></h3>
+        <div class="path">
+          <div class="path-step done">
+            <div class="dot">1</div>
+            <div class="pn">入门</div>
+            <div class="pd">已完成</div>
+          </div>
+          <div class="path-step done">
+            <div class="dot">2</div>
+            <div class="pn">基础</div>
+            <div class="pd">已完成</div>
+          </div>
+          <div class="path-step now">
+            <div class="dot">3</div>
+            <div class="pn">安全</div>
+            <div class="pd">进行中</div>
+          </div>
+          <div class="path-step">
+            <div class="dot">4</div>
+            <div class="pn">设备</div>
+            <div class="pd">未开始</div>
+          </div>
+          <div class="path-step">
+            <div class="dot">5</div>
+            <div class="pn">考证</div>
+            <div class="pd">未开始</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>学习进度</h3>
+        <div class="course-row">
+          <div class="cr-main">
+            <div class="cr-t" style="font-size:12.5px">全站课程进度</div>
+            <div class="bar"><i style="width:35%"></i></div>
+          </div>
+          <span class="task-tag">35%</span>
+        </div>
+        <div class="course-row">
+          <div class="cr-main">
+            <div class="cr-t" style="font-size:12.5px">70 天计划打卡</div>
+            <div class="bar green"><i style="width:25%"></i></div>
+          </div>
+          <span class="task-tag">18/70天</span>
+        </div>
+        <div class="course-row">
+          <div class="cr-main">
+            <div class="cr-t" style="font-size:12.5px">错题本待复习</div>
+            <div class="bar orange"><i style="width:46%"></i></div>
+          </div>
+          <span class="task-tag">23 道</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 继续学习 -->
+    <div class="card">
+      <h3>继续学习：安全用电阶段 <span class="more" onclick="location.href='courses.html'">进入课程中心 →</span></h3>
+      <div class="course-row" onclick="toast('打开课程：安全用电基础')">
+        <div class="cr-ico" style="background:#FDECEA;color:var(--orange)">🛡️</div>
+        <div class="cr-main">
+          <div class="cr-t">安全用电基础</div>
+          <div class="cr-d">5节 · 150分钟 · 触电类型/安全电压/接地接零/漏电保护</div>
+        </div>
+        <div class="cr-meta"><b>3/5</b>进行中</div>
+      </div>
+      <div class="course-row" onclick="toast('打开课程：安全用具与标识')">
+        <div class="cr-ico" style="background:#E8F0FE;color:var(--blue)">🧤</div>
+        <div class="cr-main">
+          <div class="cr-t">安全用具与标识</div>
+          <div class="cr-d">4节 · 110分钟 · 验电器/接地线/安全色四类标识</div>
+        </div>
+        <div class="cr-meta"><b>0/4</b>未开始</div>
+      </div>
+      <div class="course-row" onclick="toast('打开课程：低压电器')">
+        <div class="cr-ico" style="background:#E9F6EC;color:var(--green)">🔌</div>
+        <div class="cr-main">
+          <div class="cr-t">低压电器：开关·保护·接触器·继电器</div>
+          <div class="cr-d">5节 · 160分钟 · 第4阶段内容，可提前预习</div>
+        </div>
+        <div class="cr-meta"><b>0/5</b>未开始</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 移动端底部 Tab -->
+<div class="mobile-tabbar">
+  <a href="index.html" class="mtab on">
+    <div class="mt-ico">🏠</div>今日学习
+  </a>
+  <a href="courses.html" class="mtab">
+    <div class="mt-ico">📚</div>课程学习
+  </a>
+  <a href="lab.html" class="mtab">
+    <div class="mt-ico">⚡</div>实操仿真
+  </a>
+  <a href="quiz.html" class="mtab">
+    <div class="mt-ico">✏️</div>考试刷题
+  </a>
+  <a href="mine.html" class="mtab">
+    <div class="mt-ico">👤</div>我的
+  </a>
+</div>
+
+<script>
+function toast(msg) {
+  let t = document.getElementById('globalToast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'globalToast';
+    t.className = 'toast';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._tm);
+  t._tm = setTimeout(() => t.classList.remove('show'), 1900);
+}
+</script>
+
 </body>
 </html>
