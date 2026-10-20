@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>考试须知 · 电工学堂</title>
+<style>
+:root{--bg:#F0F2F5;--card:#FFFFFF;--ink:#1D2129;--ink2:#5A6068;--muted:#86909C;--line:#E5E6EB;--blue:#2B6CB0;--blueD:#1E4E8C;--blueL:#4A90D9;--blueT:#E8F0FE;--green:#3FA64B;--greenT:#E9F6EC;--orange:#E67E22;--orangeT:#FDF2E5;--red:#E03A2E;--redT:#FDECEA;--shadow:0 2px 10px rgba(20,32,48,.06);--r:12px;--r-sm:8px;--sidebar-w:220px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;color:var(--ink);background:var(--bg);font-size:14px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sidebar-w);background:#fff;border-right:1px solid var(--line);display:flex;flex-direction:column;overflow-y:auto;z-index:50}
+.brand{display:flex;align-items:center;gap:10px;padding:18px 16px 16px;border-bottom:1px solid var(--line)}
+.brand-logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--blueL));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex:none}
+.brand-name{font-size:15px;font-weight:700}
+.brand-tag{font-size:10.5px;color:var(--muted);margin-top:2px}
+.nav-group-label{font-size:10.5px;color:var(--muted);padding:16px 16px 6px;letter-spacing:.5px;font-weight:600}
+.nav-list{display:flex;flex-direction:column;gap:2px;padding:0 10px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:9px;font-size:13.5px;color:var(--ink);cursor:pointer;font-weight:500;text-align:left;width:100%;background:none;border:none;font-family:inherit}
+.nav-item .ni-ico{width:20px;height:20px;flex:none;font-size:15px}
+.nav-item:hover{background:#F2F5F9}
+.nav-item.on{background:var(--blueT);color:var(--blue);font-weight:700}
+.sidebar-foot{margin-top:auto;padding:14px 16px;font-size:11px;color:var(--muted);line-height:1.7;border-top:1px solid var(--line)}
+.main-area{margin-left:var(--sidebar-w);min-height:100vh}
+.content{max-width:800px;width:100%;margin:0 auto;padding:20px 24px 60px}
+.mobile-topbar{display:none;position:sticky;top:0;z-index:60;height:52px;align-items:center;gap:12px;padding:0 16px;background:#fff;border-bottom:1px solid var(--line)}
+.mb-logo{font-weight:800;font-size:15px;color:var(--blue)}
+.mb-title{flex:1;font-size:14.5px;font-weight:600}
+.mb-toggle{width:36px;height:36px;border:0;background:#F4F6F9;border-radius:8px;cursor:pointer;font-size:18px}
+.mobile-tabbar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;background:#fff;border-top:1px solid var(--line);padding:6px 0 calc(6px + env(safe-area-inset-bottom))}
+.mtab{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 0;cursor:pointer;color:var(--muted);font-size:10.5px;font-weight:500}
+.mtab .mt-ico{font-size:18px}
+.mtab.on{color:var(--blue);font-weight:700}
+.pagehead{padding:8px 0 20px}
+.pagehead h1{font-size:24px;font-weight:800}
+.pagehead p{font-size:13.5px;color:var(--muted);margin-top:6px}
+.notice-card{background:#fff;border-radius:var(--r);padding:20px;margin-bottom:14px;box-shadow:var(--shadow)}
+.notice-card h3{font-size:15px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.notice-list{list-style:none}
+.notice-list li{padding:8px 0;font-size:13.5px;color:var(--ink2);line-height:1.7;padding-left:20px;position:relative}
+.notice-list li::before{content:'•';position:absolute;left:0;color:var(--blue);font-weight:700}
+.warning-box{background:var(--redT);border-radius:var(--r-sm);padding:14px;margin-top:14px}
+.warning-box h4{font-size:13px;font-weight:700;color:var(--red);margin-bottom:8px}
+.warning-box p{font-size:12.5px;color:var(--ink2);line-height:1.7}
+.info-box{background:var(--blueT);border-radius:var(--r-sm);padding:14px;margin-top:14px}
+.info-box h4{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:8px}
+.info-box p{font-size:12.5px;color:var(--ink2);line-height:1.7}
+.toast{position:fixed;bottom:40px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(29,41,57,.92);color:#fff;padding:10px 18px;border-radius:20px;font-size:12.5px;opacity:0;transition:all .25s;z-index:999}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:960px){.sidebar{display:none}.main-area{margin-left:0}.mobile-topbar{display:flex}.mobile-tabbar{display:flex}.content{padding:14px 14px 80px}.pagehead h1{font-size:20px}}
+</style>
+</head>
+<body>
+<aside class="sidebar">
+<div class="brand"><div class="brand-logo">电</div><div><div class="brand-name">电工学堂</div><div class="brand-tag">E-LEARN · 公益免费</div></div></div>
+<div class="nav-group-label">主导航</div>
+<nav class="nav-list">
+<a href="index.html" class="nav-item"><span class="ni-ico">🏠</span>今日学习</a>
+<a href="courses.html" class="nav-item"><span class="ni-ico">📚</span>课程学习</a>
+<a href="lab.html" class="nav-item"><span class="ni-ico">⚡</span>实操仿真</a>
+<a href="quiz.html" class="nav-item on"><span class="ni-ico">✏️</span>考试刷题</a>
+<a href="mine.html" class="nav-item"><span class="ni-ico">👤</span>我的</a>
+</nav>
+<div class="nav-group-label">全局工具</div>
+<nav class="nav-list">
+<a href="search.html" class="nav-item"><span class="ni-ico">🔍</span>元件百科</a>
+<a href="search.html" class="nav-item"><span class="ni-ico">🔎</span>全局搜索</a>
+</nav>
+<div class="sidebar-foot">70 天计划 · 第 18/70 天<br>数据保存在本机浏览器</div>
+</aside>
+<div class="main-area">
+<div class="mobile-topbar"><span class="mb-logo">⚡ 电工学堂</span><span class="mb-title">考试须知</span><button class="mb-toggle" onclick="toast('菜单功能开发中')">☰</button></div>
+<div class="content">
+<div class="pagehead"><h1>考试须知</h1><p>低压电工证考试注意事项，考前必看</p></div>
+<div class="notice-card">
+<h3>📋 考前准备</h3>
+<ul class="notice-list">
+<li>携带本人身份证原件，准考证提前打印好</li>
+<li>提前 30 分钟到达考场，迟到 15 分钟不得入场</li>
+<li>黑色签字笔、2B 铅笔、橡皮必备</li>
+<li>手机关机并放在指定位置，不得带入座位</li>
+</ul>
+</div>
+<div class="notice-card">
+<h3>📝 理论考试</h3>
+<ul class="notice-list">
+<li>机考，100 道题，满分 100 分，60 分合格</li>
+<li>考试时间 90 分钟，时间到自动交卷</li>
+<li>题型：单选题 60 道 + 判断题 40 道</li>
+<li>考试过程中电脑蓝屏、死机等异常举手示意</li>
+</ul>
+<div class="info-box">
+<h4>💡 小提示</h4>
+<p>考试题目大部分来自安监局统一题库，平时多刷题库通过率很高。注意判断题的"一定""必须""所有"等绝对化表述，多数是错的。</p>
+</div>
+</div>
+<div class="notice-card">
+<h3>🔧 实操考试</h3>
+<ul class="notice-list">
+<li>满分 100 分，60 分合格</li>
+<li>考试内容：安全用具使用、安全操作技术、作业现场安全隐患排除、作业现场应急处理</li>
+<li>穿长袖工作服、绝缘鞋，女生头发扎起</li>
+<li>严格按操作流程来，安全第一，动作规范比速度重要</li>
+</ul>
+<div class="warning-box">
+<h4>⚠️ 特别注意</h4>
+<p>实操考试中，接线前必须先验电！这是最基本的安全操作，忘了直接扣分。接完线要先自查，再举手请考官检查。</p>
+</div>
+</div>
+<div class="notice-card">
+<h3>❌ 违纪处理</h3>
+<ul class="notice-list">
+<li>夹带资料、偷看他人答案：本次考试成绩作废</li>
+<li>替考：取消考试资格，1 年内不得再次报考</li>
+<li>辱骂考官、扰乱考场秩序：取消考试资格</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="mobile-tabbar">
+<a href="index.html" class="mtab"><div class="mt-ico">🏠</div>今日学习</a>
+<a href="courses.html" class="mtab"><div class="mt-ico">📚</div>课程学习</a>
+<a href="lab.html" class="mtab"><div class="mt-ico">⚡</div>实操仿真</a>
+<a href="quiz.html" class="mtab on"><div class="mt-ico">✏️</div>考试刷题</a>
+<a href="mine.html" class="mtab"><div class="mt-ico">👤</div>我的</a>
+</div>
+<script>function toast(msg){let t=document.getElementById('globalToast');if(!t){t=document.createElement('div');t.id='globalToast';t.className='toast';document.body.appendChild(t);}t.textContent=msg;t.classList.add('show');clearTimeout(t._tm);t._tm=setTimeout(()=>t.classList.remove('show'),1900);}</script>
+</body>
+</html>

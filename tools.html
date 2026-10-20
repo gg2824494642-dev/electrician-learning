@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>实用工具 · 电工学堂</title>
+<style>
+:root{--bg:#F0F2F5;--card:#FFFFFF;--ink:#1D2129;--ink2:#5A6068;--muted:#86909C;--line:#E5E6EB;--blue:#2B6CB0;--blueD:#1E4E8C;--blueL:#4A90D9;--blueT:#E8F0FE;--green:#3FA64B;--greenT:#E9F6EC;--orange:#E67E22;--orangeT:#FDF2E5;--red:#E03A2E;--shadow:0 2px 10px rgba(20,32,48,.06);--r:12px;--r-sm:8px;--sidebar-w:220px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;color:var(--ink);background:var(--bg);font-size:14px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sidebar-w);background:#fff;border-right:1px solid var(--line);display:flex;flex-direction:column;overflow-y:auto;z-index:50}
+.brand{display:flex;align-items:center;gap:10px;padding:18px 16px 16px;border-bottom:1px solid var(--line)}
+.brand-logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--blueL));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex:none}
+.brand-name{font-size:15px;font-weight:700}
+.brand-tag{font-size:10.5px;color:var(--muted);margin-top:2px}
+.nav-group-label{font-size:10.5px;color:var(--muted);padding:16px 16px 6px;letter-spacing:.5px;font-weight:600}
+.nav-list{display:flex;flex-direction:column;gap:2px;padding:0 10px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:9px;font-size:13.5px;color:var(--ink);cursor:pointer;font-weight:500;text-align:left;width:100%;background:none;border:none;font-family:inherit}
+.nav-item .ni-ico{width:20px;height:20px;flex:none;font-size:15px}
+.nav-item:hover{background:#F2F5F9}
+.nav-item.on{background:var(--blueT);color:var(--blue);font-weight:700}
+.sidebar-foot{margin-top:auto;padding:14px 16px;font-size:11px;color:var(--muted);line-height:1.7;border-top:1px solid var(--line)}
+.main-area{margin-left:var(--sidebar-w);min-height:100vh}
+.content{max-width:1000px;width:100%;margin:0 auto;padding:20px 24px 60px}
+.mobile-topbar{display:none;position:sticky;top:0;z-index:60;height:52px;align-items:center;gap:12px;padding:0 16px;background:#fff;border-bottom:1px solid var(--line)}
+.mb-logo{font-weight:800;font-size:15px;color:var(--blue)}
+.mb-title{flex:1;font-size:14.5px;font-weight:600}
+.mb-toggle{width:36px;height:36px;border:0;background:#F4F6F9;border-radius:8px;cursor:pointer;font-size:18px}
+.mobile-tabbar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;background:#fff;border-top:1px solid var(--line);padding:6px 0 calc(6px + env(safe-area-inset-bottom))}
+.mtab{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 0;cursor:pointer;color:var(--muted);font-size:10.5px;font-weight:500}
+.mtab .mt-ico{font-size:18px}
+.mtab.on{color:var(--blue);font-weight:700}
+.pagehead{padding:8px 0 20px}
+.pagehead h1{font-size:24px;font-weight:800}
+.pagehead p{font-size:13.5px;color:var(--muted);margin-top:6px}
+.tool-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.tool-card{background:#fff;border-radius:var(--r);padding:20px;box-shadow:var(--shadow)}
+.tool-icon{width:48px;height:48px;border-radius:12px;background:var(--blueT);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px}
+.tool-title{font-size:15px;font-weight:700;margin-bottom:6px}
+.tool-desc{font-size:12.5px;color:var(--ink2);line-height:1.6;margin-bottom:14px}
+.tool-input{width:100%;height:40px;border:1.5px solid var(--line);border-radius:8px;padding:0 12px;font-size:14px;margin-bottom:10px}
+.tool-input:focus{outline:none;border-color:var(--blue)}
+.tool-result{background:#F7F9FC;border-radius:8px;padding:12px;font-size:14px;font-weight:600;color:var(--blue);text-align:center;margin-top:10px}
+.btn{height:40px;border-radius:var(--r-sm);display:inline-flex;align-items:center;justify-content:center;padding:0 20px;font-size:13.5px;font-weight:600;cursor:pointer;border:0;font-family:inherit;width:100%}
+.btn.p{background:var(--blue);color:#fff}
+.toast{position:fixed;bottom:40px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(29,41,57,.92);color:#fff;padding:10px 18px;border-radius:20px;font-size:12.5px;opacity:0;transition:all .25s;z-index:999}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:960px){.sidebar{display:none}.main-area{margin-left:0}.mobile-topbar{display:flex}.mobile-tabbar{display:flex}.content{padding:14px 14px 80px}.pagehead h1{font-size:20px}.tool-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<aside class="sidebar">
+<div class="brand"><div class="brand-logo">电</div><div><div class="brand-name">电工学堂</div><div class="brand-tag">E-LEARN · 公益免费</div></div></div>
+<div class="nav-group-label">主导航</div>
+<nav class="nav-list">
+<a href="index.html" class="nav-item"><span class="ni-ico">🏠</span>今日学习</a>
+<a href="courses.html" class="nav-item"><span class="ni-ico">📚</span>课程学习</a>
+<a href="lab.html" class="nav-item"><span class="ni-ico">⚡</span>实操仿真</a>
+<a href="quiz.html" class="nav-item"><span class="ni-ico">✏️</span>考试刷题</a>
+<a href="mine.html" class="nav-item"><span class="ni-ico">👤</span>我的</a>
+</nav>
+<div class="nav-group-label">全局工具</div>
+<nav class="nav-list">
+<a href="search.html" class="nav-item on"><span class="ni-ico">🔍</span>元件百科</a>
+<a href="tools.html" class="nav-item"><span class="ni-ico">🧮</span>实用工具</a>
+</nav>
+<div class="sidebar-foot">70 天计划 · 第 18/70 天<br>数据保存在本机浏览器</div>
+</aside>
+<div class="main-area">
+<div class="mobile-topbar"><span class="mb-logo">⚡ 电工学堂</span><span class="mb-title">实用工具</span><button class="mb-toggle" onclick="toast('菜单功能开发中')">☰</button></div>
+<div class="content">
+<div class="pagehead"><h1>实用工具</h1><p>电工常用计算工具，随身备用</p></div>
+<div class="tool-grid">
+<div class="tool-card">
+<div class="tool-icon">⚡</div>
+<div class="tool-title">电流功率计算</div>
+<div class="tool-desc">根据电压和功率计算工作电流，选择合适的空气开关</div>
+<input type="number" class="tool-input" id="power" placeholder="功率（瓦 W）" value="2200">
+<input type="number" class="tool-input" id="voltage" placeholder="电压（伏 V）" value="220">
+<button class="btn p" onclick="calcCurrent()">计算电流</button>
+<div class="tool-result" id="currentResult">电流 ≈ 10.0 A</div>
+</div>
+<div class="tool-card">
+<div class="tool-icon">📏</div>
+<div class="tool-title">导线截面积选择</div>
+<div class="tool-desc">根据电流大小估算需要的铜芯线截面积</div>
+<input type="number" class="tool-input" id="current2" placeholder="工作电流（安 A）" value="20">
+<button class="btn p" onclick="calcWire()">推荐线径</button>
+<div class="tool-result" id="wireResult">建议 ≥ 2.5 mm² 铜线</div>
+</div>
+<div class="tool-card">
+<div class="tool-icon">🔢</div>
+<div class="tool-title">欧姆定律计算</div>
+<div class="tool-desc">电压、电流、电阻三者互算</div>
+<input type="number" class="tool-input" id="ohmV" placeholder="电压（伏 V）" value="220">
+<input type="number" class="tool-input" id="ohmR" placeholder="电阻（欧 Ω）" value="48.4">
+<button class="btn p" onclick="calcOhm()">计算电流</button>
+<div class="tool-result" id="ohmResult">电流 ≈ 4.55 A</div>
+</div>
+<div class="tool-card">
+<div class="tool-icon">💰</div>
+<div class="tool-title">电费估算</div>
+<div class="tool-desc">根据电器功率和使用时间估算电费</div>
+<input type="number" class="tool-input" id="watt" placeholder="电器功率（瓦 W）" value="1000">
+<input type="number" class="tool-input" id="hours" placeholder="每天使用小时" value="5">
+<button class="btn p" onclick="calcBill()">计算月电费</button>
+<div class="tool-result" id="billResult">月电费 ≈ 75 元</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mobile-tabbar">
+<a href="index.html" class="mtab"><div class="mt-ico">🏠</div>今日学习</a>
+<a href="courses.html" class="mtab"><div class="mt-ico">📚</div>课程学习</a>
+<a href="lab.html" class="mtab"><div class="mt-ico">⚡</div>实操仿真</a>
+<a href="quiz.html" class="mtab"><div class="mt-ico">✏️</div>考试刷题</a>
+<a href="mine.html" class="mtab"><div class="mt-ico">👤</div>我的</a>
+</div>
+<script>
+function toast(msg){let t=document.getElementById('globalToast');if(!t){t=document.createElement('div');t.id='globalToast';t.className='toast';document.body.appendChild(t);}t.textContent=msg;t.classList.add('show');clearTimeout(t._tm);t._tm=setTimeout(()=>t.classList.remove('show'),1900);}
+function calcCurrent(){let p=parseFloat(document.getElementById('power').value)||0;let v=parseFloat(document.getElementById('voltage').value)||220;let i=p/v;document.getElementById('currentResult').textContent='电流 ≈ '+i.toFixed(1)+' A';}
+function calcWire(){let i=parseFloat(document.getElementById('current2').value)||0;let size=i<10?'1.5 mm²':i<20?'2.5 mm²':i<32?'4 mm²':i<50?'6 mm²':'10 mm²';document.getElementById('wireResult').textContent='建议 ≥ '+size+' 铜线';}
+function calcOhm(){let v=parseFloat(document.getElementById('ohmV').value)||0;let r=parseFloat(document.getElementById('ohmR').value)||1;let i=v/r;document.getElementById('ohmResult').textContent='电流 ≈ '+i.toFixed(2)+' A';}
+function calcBill(){let w=parseFloat(document.getElementById('watt').value)||0;let h=parseFloat(document.getElementById('hours').value)||0;let day=w*h/1000;let month=day*30;let bill=month*0.5;document.getElementById('billResult').textContent='月电费 ≈ '+bill.toFixed(0)+' 元';}
+</script>
+</body>
+</html>
