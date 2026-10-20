@@ -6,53 +6,94 @@ const Pages = (function () {
   const E = App.esc, S = s => (s == null ? '' : String(s));
   const bl = App.blocks;
 
-  /* ---------------- 首页 ---------------- */
+  /* ---------------- 今日学习（首页仪表盘） ---------------- */
   function home() {
-    App.mount('首页');
-    const cs = App.courses(), qn = App.questions().length, dl = (App.D.docs && App.D.docs.docs) || [];
+    App.mount('home');
+    const cs = App.courses(), qn = App.questions().length;
     const lessons = App.lessonCount();
     const plan = App.D.plan || {};
-    const news = (App.D.news && App.D.news.articles) || [];
-    const top = cs.slice(0, 4);
-    const quick = [
-      ['零基础入门', '从电流电压电阻开始，一步步看懂电路', 'courses.html'],
-      ['低压电工证', '理论 + 实操全流程备考专区', 'cert.html'],
-      ['70 天学习计划', '每日 1~2h，跟着表格走就行', 'plan.html'],
-      ['理论题库', `共 ${qn} 道判断 / 单选 / 多选，附解析`, 'quiz.html'],
-      ['实操四科目', '安全用具 · 接线 · 隐患排查 · 触电急救', 'hands-on.html'],
-      ['模拟考试', '限时答题，自动判分生成错题报告', 'practice.html?mode=exam'],
-      ['资料下载', '手册 · 练习卷 · 学习表，可直接打印', 'docs.html'],
-      ['我的错题本', '自动收录做错的题，反复练到会', 'wrong.html']
-    ];
+    const doneN = App.progress.count();
+    const totalLessons = lessons;
+    const pct = totalLessons ? Math.round(doneN / totalLessons * 100) : 0;
+    const wrongN = App.wrong.ids().length;
+    const exams = App.exams.all();
+    const last = exams[0];
+    const planDoneN = App.planDone.count();
+    const planWeeks = (plan.weeks || []).length;
+    const planTotalDays = (plan.weeks || []).reduce((n, w) => n + (w.days || []).length, 0);
+
+    // 找最近学过的课（按进度里最后更新的）
+    const prog = App.progress.all();
+    const sortedIds = Object.keys(prog).sort((a, b) => prog[b] - prog[a]);
+    let continueLesson = null;
+    for (const lid of sortedIds) {
+      const hit = App.allLessons().find(x => x.lesson.id === lid);
+      if (hit) { continueLesson = hit; break; }
+    }
+    if (!continueLesson) continueLesson = App.allLessons()[0];
+
+    // 推荐课程（前 3 门未学的）
+    const notStarted = cs.filter(c => {
+      const ls = (c.chapters || []).flatMap(ch => ch.lessons || []);
+      return !ls.some(l => App.progress.done(l.id));
+    }).slice(0, 3);
+
     M().innerHTML = `
-    <section class="hero"><div class="wrap">
-      <div class="slash">/ free &amp; open · 公益免费学习平台</div>
-      <h1 class="display">系统学电工<br><span class="blue">从零基础到持证上岗</span></h1>
-      <div class="sub">把《低压电工一站式学习手册》《低压电工每日学习表》和五套练习卷整理成
-        课程讲义 + 免费题库 + 实操要点 + 70 天计划，全部免费开放，登录只用来自动记住你的学习进度。</div>
-      <div class="cta">
-        <a class="btn p" href="courses.html">开始学习</a>
-        <a class="btn o" href="practice.html?mode=random&n=10">随机练 10 题</a>
-      </div>
-      <div class="kpis">
-        <div class="stat"><b>${cs.length}</b><span>门系统课程</span></div>
-        <div class="stat"><b>${lessons}</b><span>节图文讲义</span></div>
-        <div class="stat"><b>${qn}</b><span>道免费题目</span></div>
-        <div class="stat"><b>0<span style="font-size:18px">元</span></b><span>全站免费</span></div>
-      </div>
-      <div class="heroart"><span class="hb h1"></span><span class="ring"></span><span class="hb h2"></span><span class="hb h3"></span></div>
+    <section class="hero" style="padding:40px 0 30px"><div class="wrap">
+      <div class="slash">/ 今日学习 · 继续你的电工之路</div>
+      <h1 class="display" style="font-size:38px">系统学电工<br><span class="blue">从零基础到持证上岗</span></h1>
+      <div class="sub" style="max-width:560px">课程讲义 + 免费题库 + 实操仿真 + 70 天计划，全部免费开放。</div>
     </div></section>
 
-    <section class="sec"><div class="wrap">
-      <div class="sechead"><div><div class="slash">/ quick access</div><h2>快捷入口</h2></div></div>
-      <div class="grid c4">${quick.map(([t, d, h], i) => `
-        <a class="qcard" href="${h}"><span class="no">${String(i + 1).padStart(2, '0')}</span>
-          <div><b>${t}</b><p>${d}</p></div></a>`).join('')}</div>
+    <section class="sec" style="padding-top:10px"><div class="wrap">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch;flex-wrap:wrap">
+        <div class="card pad" style="display:flex;align-items:center;gap:24px;min-width:280px">
+          ${App.ring(pct, pct + '%', '总进度')}
+          <div style="flex:1">
+            <b style="font-size:17px">全站学习进度</b>
+            <div class="meta" style="margin-top:8px;font-size:13.5px">
+              <span>${doneN} / ${totalLessons} 节已学</span>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
+              ${continueLesson ? `<a class="btn p" href="lesson.html?c=${encodeURIComponent(continueLesson.course.id)}&l=${encodeURIComponent(continueLesson.lesson.id)}">继续学习</a>` : ''}
+              <a class="btn o" href="courses.html">全部课程</a>
+            </div>
+          </div>
+        </div>
+        <div class="card pad" style="display:flex;flex-direction:column;justify-content:center">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div><div class="stat"><b>${cs.length}</b><span>门课程</span></div></div>
+            <div><div class="stat"><b>${qn}</b><span>道题库</span></div></div>
+            <div><div class="stat"><b>${wrongN}</b><span>错题本</span></div></div>
+            <div><div class="stat"><b>${planDoneN}/${planTotalDays}</b><span>计划打卡</span></div></div>
+          </div>
+          ${last ? `<div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:13px">
+            上次模拟考：<b class="blue">${last.score} 分</b>
+            <a class="blue" href="result.html?id=${last.id}" style="margin-left:10px">查看报告 →</a></div>` : ''}
+        </div>
+      </div>
     </div></section>
 
     <section class="sec g"><div class="wrap">
-      <div class="sechead"><div><div class="slash">/ learning roadmap</div><h2>可视化学习路径</h2></div>
-        <a class="more" href="plan.html">查看 70 天详细计划 →</a></div>
+      <div class="sechead"><div><div class="slash">/ quick access</div><h2>快捷入口</h2></div></div>
+      <div class="grid c4">
+        <a class="qcard" href="courses.html"><span class="no">01</span><div><b>课程学习</b><p>${cs.length} 门课 · ${lessons} 节讲义</p></div></a>
+        <a class="qcard" href="lab.html"><span class="no">02</span><div><b>实操仿真</b><p>自由接线 · 练习闯关 · 进阶仿真</p></div></a>
+        <a class="qcard" href="quiz.html"><span class="no">03</span><div><b>考试刷题</b><p>${qn} 道题 · 模拟考 · 错题本</p></div></a>
+        <a class="qcard" href="mine.html"><span class="no">04</span><div><b>我的</b><p>学习计划 · 资料下载 · 设置</p></div></a>
+      </div>
+    </div></section>
+
+    <section class="sec"><div class="wrap">
+      <div class="sechead"><div><div class="slash">/ recommend</div><h2>推荐课程</h2></div>
+        <a class="more" href="courses.html">全部课程 →</a></div>
+      <div class="grid c3">${notStarted.map(courseCard).join('') || cs.slice(0, 3).map(courseCard).join('')}
+      </div>
+    </div></section>
+
+    <section class="sec g"><div class="wrap">
+      <div class="sechead"><div><div class="slash">/ learning roadmap</div><h2>学习路径</h2></div>
+        <a class="more" href="plan.html">70 天计划 →</a></div>
       <div class="grid c5">
         ${[
         ['01', '入门', '2–3 周', ['认识电流电压电阻功率', '会用万用表测电压电阻', '看懂最简单的电路'], '能读懂家用电路'],
@@ -64,32 +105,6 @@ const Pages = (function () {
         <div class="rw">建议周期 ${w}</div><ul>${ps.map(x => `<li>${x}</li>`).join('')}</ul>
         <div class="meta"><span class="pill g">${g}</span></div></div>`).join('')}
       </div>
-    </div></section>
-
-    <section class="sec"><div class="wrap">
-      <div class="sechead"><div><div class="slash">/ courses</div><h2>精品课程</h2></div>
-        <a class="more" href="courses.html">进入课程中心 →</a></div>
-      <div class="grid c4">${top.map(courseCard).join('') || '<div class="empty">课程数据加载中…</div>'}</div>
-    </div></section>
-
-    <section class="sec g"><div class="wrap">
-      <div class="sechead"><div><div class="slash">/ plan</div><h2>70 天备考计划</h2></div>
-        <a class="more" href="plan.html">打开每日学习表 →</a></div>
-      <div class="grid c3">
-        <div class="card pad"><div class="pill">节奏</div><p style="margin-top:12px">${E(plan.meta ? plan.meta.daily_rhythm : '每周一个主题，每天 1~2 小时')}</p></div>
-        <div class="card pad"><div class="pill k">考试</div><p style="margin-top:12px">${E(plan.exam ? plan.exam.theory : '理论机考 100 题，80 分合格')}</p></div>
-        <div class="card pad"><div class="pill k">实操</div><p style="margin-top:12px">${E(plan.exam ? plan.exam.practice : '实操四科目：安全用具 / 接线 / 隐患排查 / 急救')}</p></div>
-      </div>
-    </div></section>
-
-    <section class="sec"><div class="wrap">
-      <div class="sechead"><div><div class="slash">/ news</div><h2>行业资讯</h2></div>
-        <a class="more" href="news.html">全部资讯 →</a></div>
-      <div>${news.slice(0, 4).map((a, i) => `<a class="kv" href="news.html?id=${a.id}" style="align-items:center">
-        <span style="width:34px;font-family:Arial Black;color:#C3C8CF">${String(i + 1).padStart(2, '0')}</span>
-        <span style="font-weight:700;color:#111">${E(a.title)}</span>
-        <span class="pill k" style="margin-left:14px">${E(a.category)}</span>
-        <span class="mut small" style="margin-left:auto">${E(a.date)}</span></a>`).join('') || '<div class="empty">资讯整理中…</div>'}</div>
     </div></section>`;
   }
 
@@ -108,13 +123,13 @@ const Pages = (function () {
 
   /* ---------------- 课程中心 ---------------- */
   function courses() {
-    App.mount('课程中心');
+    App.mount('course');
     const cs = App.courses();
     const levels = ['全部', ...Array.from(new Set(cs.map(c => c.level || '其他')))];
     M().innerHTML = `
     <div class="wrap pagehead">
-      <div class="breadcrumb"><a href="index.html">首页</a> / 课程中心</div>
-      <h1>课程中心</h1>
+      <div class="breadcrumb"><a href="index.html">今日学习</a> / 课程学习</div>
+      <h1>课程学习</h1>
       <p class="mut" style="margin-top:10px">共 ${cs.length} 门课 · ${App.lessonCount()} 节图文讲义，全部免费开放</p>
     </div>
     <div class="wrap" style="padding-bottom:60px">
@@ -145,12 +160,12 @@ const Pages = (function () {
   function course() {
     const c = App.courseById(App.q('id')) || App.courses()[0];
     if (!c) { M().innerHTML = '<div class="wrap empty">课程不存在</div>'; return; }
-    App.mount('课程中心');
+    App.mount('course');
     const lessons = (c.chapters || []).flatMap(ch => ch.lessons || []);
     const done = lessons.filter(l => App.progress.done(l.id)).length;
     M().innerHTML = `
     <div class="wrap pagehead">
-      <div class="breadcrumb"><a href="index.html">首页</a> / <a href="courses.html">课程中心</a> / ${E(c.title)}</div>
+      <div class="breadcrumb"><a href="index.html">今日学习</a> / <a href="courses.html">课程学习</a> / ${E(c.title)}</div>
       <div style="display:flex;gap:30px;flex-wrap:wrap">
         <div class="cside">
           <div style="position:relative">${(App.figure('cover:' + c.id) || '').replace("class='cover-real'", "class='cover-real-lg'")}
@@ -208,7 +223,7 @@ const Pages = (function () {
     let hit = App.lessonById(cid, lid);
     if (!hit) { const all = App.allLessons(); hit = all[0]; }
     if (!hit) { M().innerHTML = '<div class="wrap empty">讲义数据加载中…</div>'; return; }
-    App.mount('课程中心');
+    App.mount('course');
     const { course, chapter, lesson } = hit;
     const flat = App.allLessons();
     const idx = flat.findIndex(x => x.lesson.id === lesson.id);
@@ -221,7 +236,7 @@ const Pages = (function () {
     const done = App.progress.done(lesson.id);
     M().innerHTML = `
     <div class="wrap padtop">
-      <div class="breadcrumb"><a href="index.html">首页</a> / <a href="courses.html">课程中心</a> /
+      <div class="breadcrumb"><a href="index.html">今日学习</a> / <a href="courses.html">课程学习</a> /
         <a href="course.html?id=${encodeURIComponent(course.id)}">${E(course.title)}</a> / ${E(lesson.title)}</div>
     </div>
     <div class="wrap" style="display:flex;gap:26px;padding-bottom:60px;align-items:flex-start;flex-wrap:wrap">
@@ -297,7 +312,7 @@ const Pages = (function () {
 
   /* ---------------- 题库首页 ---------------- */
   function bank() {
-    App.mount('题库系统');
+    App.mount('quiz');
     const qs = App.questions();
     const byChapter = {};
     qs.forEach(x => { const k = x.chapter || '未分类'; byChapter[k] = (byChapter[k] || 0) + 1; });
@@ -308,8 +323,8 @@ const Pages = (function () {
     const last = exams[0];
     M().innerHTML = `
     <div class="wrap pagehead">
-      <div class="breadcrumb"><a href="index.html">首页</a> / 题库系统</div>
-      <h1>题库系统</h1>
+      <div class="breadcrumb"><a href="index.html">今日学习</a> / 考试刷题</div>
+      <h1>考试刷题</h1>
       <p class="mut" style="margin-top:10px">共 ${qs.length} 道题（判断 ${types.judge || 0} · 单选 ${types.single || 0} · 多选 ${types.multi || 0}），全部免费、附解析</p>
       <div class="callout note" style="margin-top:14px"><span class="lb">📘 题库说明（请务必阅读）</span>
         本站题目按<b>官方低压电工考试大纲的知识点范围</b>整理，题型对齐官方理论机考（判断题 + 单选题），
@@ -354,7 +369,6 @@ const Pages = (function () {
   }
 
   /* ---------------- 练习 / 考试 ---------------- */
-  /** 把课程映射到题库的模块（题库模块名来自源资料的五大模块划分） */
   function mapCourseChapter(c) {
     const t = (c.title || '') + (c.subtitle || '') + (c.summary || '');
     const rules = [
@@ -371,7 +385,7 @@ const Pages = (function () {
   }
 
   function practice() {
-    App.mount('题库系统');
+    App.mount('quiz');
     const mode = App.q('mode') || 'random';
     const qs = App.questions();
     let list = [], title = '', badge = '练习', exam = false, minutes = 60;
@@ -397,7 +411,7 @@ const Pages = (function () {
       list = shuffle(qs.slice()).slice(0, n); title = '随机刷题'; badge = '随机练习';
     }
     M().innerHTML = `<div class="wrap padtop-b">
-      <div class="breadcrumb"><a href="index.html">首页</a> / <a href="quiz.html">题库系统</a> / ${E(title)}</div>
+      <div class="breadcrumb"><a href="index.html">今日学习</a> / <a href="quiz.html">考试刷题</a> / ${E(title)}</div>
       ${exam ? `<div class="warnbar" style="margin-bottom:18px"><span class="ic">!</span>
         <div><b>考试须知</b>：共 ${list.length} 题，限时 ${minutes} 分钟，满分 100 分，60 分及格；
         交卷后自动判分并生成错题报告，做错的题会自动进入错题本。</div></div>` : ''}
@@ -411,7 +425,7 @@ const Pages = (function () {
 
   /* ---------------- 考试结果 ---------------- */
   function result() {
-    App.mount('题库系统');
+    App.mount('quiz');
     const rec = App.exams.byId(App.q('id')) || App.exams.all()[0];
     if (!rec) { M().innerHTML = '<div class="wrap empty">还没有考试记录，<a class="blue" href="practice.html?mode=exam">去做一套模拟考</a>。</div>'; return; }
     const pass = rec.score >= 60;
@@ -419,7 +433,7 @@ const Pages = (function () {
     (rec.detail || []).forEach(d => { const k = d.chapter || '未分类'; byCh[k] = byCh[k] || { n: 0, r: 0 }; byCh[k].n++; if (d.right) byCh[k].r++; });
     const wrongs = (rec.detail || []).filter(d => !d.right);
     M().innerHTML = `<div class="wrap padtop-b">
-      <div class="breadcrumb"><a href="index.html">首页</a> / <a href="quiz.html">题库系统</a> / 考试结果</div>
+      <div class="breadcrumb"><a href="index.html">今日学习</a> / <a href="quiz.html">考试刷题</a> / 考试结果</div>
       <div class="card" style="padding:34px 38px;display:flex;gap:44px;align-items:center;flex-wrap:wrap">
         ${App.ring(rec.score, rec.score, '总分 100')}
         <div style="flex:1;min-width:280px">
@@ -467,12 +481,12 @@ const Pages = (function () {
 
   /* ---------------- 错题本 / 收藏 ---------------- */
   function wrongPage() {
-    App.mount('题库系统');
+    App.mount('quiz');
     const tab = App.q('tab') || 'wrong';
     const wrongIds = App.wrong.ids(), favIds = Object.keys(App.fav.all());
     const list = (tab === 'fav' ? favIds : wrongIds).map(App.questionById).filter(Boolean);
     M().innerHTML = `<div class="wrap pagehead">
-        <div class="breadcrumb"><a href="index.html">首页</a> / <a href="quiz.html">题库系统</a> / 学习记录</div>
+        <div class="breadcrumb"><a href="index.html">今日学习</a> / <a href="quiz.html">考试刷题</a> / 学习记录</div>
         <h1>错题本与收藏</h1>
         <p class="mut" style="margin-top:10px">记录保存在本机浏览器里 · 错题 ${wrongIds.length} 道 · 收藏 ${favIds.length} 道</p></div>
       <div class="wrap" style="padding-bottom:60px">
@@ -511,7 +525,7 @@ const Pages = (function () {
     if (cw) cw.onclick = () => { if (confirm('确定清空全部错题吗？')) { App.wrong.clear(); wrongPage(); } };
   }
 
-  /* ---------------- 实操专区 ---------------- */
+  /* ---------------- 实操专区（文字版） ---------------- */
   const HANDS = [
     ['科目一', '安全用具使用与仪表测量', '20 分', ['绝缘手套 / 绝缘鞋 / 安全帽的检查与佩戴', '验电器、临时接地线的正确使用', '万用表测量电压、电阻、通断', '钳形电流表测量电流（不断开电路）', '兆欧表测量绝缘电阻（120 r/min）'],
       ['检查用具是否在检验有效期内', '测量前先确认档位与量程', '带电测量时单手操作，人体不接触金属部分']],
@@ -530,17 +544,18 @@ const Pages = (function () {
   }
 
   function handsOn() {
-    App.mount('实操专区');
+    App.mount('lab');
     const only = App.q('sub');
     const subs = (only === null || only === '' || isNaN(+only))
       ? HANDS.map((h, i) => h.concat([i]))
       : [HANDS[+only].concat([+only])];
     M().innerHTML = `
     <div class="wrap pagehead">
-      <div class="breadcrumb"><a href="index.html">首页</a> / 实操专区</div>
-      <h1>实操专区</h1>
+      <div class="breadcrumb"><a href="index.html">今日学习</a> / <a href="lab.html">实操仿真</a> / 实操要点</div>
+      <h1>实操要点（文字版）</h1>
       <p class="mut" style="margin-top:10px">低压电工实操四科目 · 共 100 分 · 每个考核要点都配了图和已核实视频（点开即播）</p>
       <div class="toolbar" style="margin-top:16px">
+        <a class="pill" href="lab.html" style="margin-right:8px">← 返回实操仿真</a>
         ${HANDS.map(([no, title, score], si) => `<a class="pill" href="#lab${si}">${no} ${title}（${score}）</a>`).join('')}
       </div>
     </div>
@@ -571,31 +586,12 @@ const Pages = (function () {
             <div class="callout warn" style="margin-top:14px"><span class="lb">⚠️ 安全禁忌</span>${warns.map(w => E(w)).join('<br>')}</div>
           </div>
         </section>`).join('')}
-
-      <div class="sechead" style="margin-top:40px"><div><div class="slash">/ videos</div><h2>配套视频课程（全部已核实）</h2></div>
-        <a class="more" href="docs.html">全部资源 →</a></div>
-      <div class="grid c3">
-        ${((App.D.docs || {}).docs || []).filter(d => d.category === '视频课程').slice(0, 6).map(d => `
-          <a class="card pad" href="${E(d.path)}" target="_blank">
-            <span class="pill k">视频课程</span>
-            <b style="display:block;font-size:15px;margin:10px 0 8px">${E(d.title)}</b>
-            <p class="mut small" style="line-height:1.75">${E((d.desc || '').slice(0, 56))}</p>
-            <span class="blue small" style="font-weight:700;display:inline-block;margin-top:10px">打开 ↗</span></a>`).join('')
-        || '<div class="empty">视频课程链接整理中…</div>'}
-      </div>
-
-      <div class="sechead" style="margin-top:40px"><div><div class="slash">/ related</div><h2>相关课程与练习</h2></div></div>
-      <div class="grid c3">
-        <a class="card pad" href="courses.html"><b>电工仪表</b><p class="mut small" style="margin-top:8px">万用表、兆欧表、钳形表的使用与读数，是科目一的基础。</p><span class="btn s p" style="margin-top:12px;display:inline-flex">去看课程</span></a>
-        <a class="card pad" href="courses.html"><b>电气线路与照明</b><p class="mut small" style="margin-top:8px">单控双控、插座接线、配电箱分路，对应科目二。</p><span class="btn s p" style="margin-top:12px;display:inline-flex">去看课程</span></a>
-        <a class="card pad" href="practice.html?mode=chapter&chapter=${encodeURIComponent('应急急救处置')}"><b>触电急救刷题</b><p class="mut small" style="margin-top:8px">急救流程与数字最容易考，刷题记牢。</p><span class="btn s p" style="margin-top:12px;display:inline-flex">去做题</span></a>
-      </div>
     </div>`;
   }
 
   /* ---------------- 低压电工证专区 ---------------- */
   function cert() {
-    App.mount('考证专区');
+    App.mount('mine');
     const plan = App.D.plan || {}, exam = plan.exam || {}, fees = plan.fees || [];
     const cs = App.courses();
     const docs = ((App.D.docs && App.D.docs.docs) || []).filter(d => d.local);
@@ -608,7 +604,6 @@ const Pages = (function () {
       <div class="cta">
         <a class="btn p" href="courses.html">开始学习</a>
         <a class="btn o" href="practice.html?mode=exam">进入模拟考试</a></div>
-      <div class="heroart"><span class="hb h1"></span><span class="ring"></span><span class="hb h2"></span></div>
     </div></section>
 
     <section class="sec"><div class="wrap">
@@ -627,81 +622,21 @@ const Pages = (function () {
           <b style="display:block;font-size:16px;margin:10px 0 8px">参考费用</b>
           <p class="mut small" style="line-height:1.85">${fees.map(f => `${E(f.item)} ${E(f.amount)}`).join(' · ') || '以当地培训机构与考核机构公布为准'}</p></div>
       </div>
-      <div class="callout note" style="margin-top:18px"><span class="lb">📘 说明</span>
-        以上信息整理自已有学习资料，政策与费用请以当地应急管理部门、培训机构最新公布为准。</div>
-    </div></section>
-
-    <section class="sec g"><div class="wrap">
-      <div class="sechead"><div><div class="slash">/ course system</div><h2>阶梯式课程体系</h2></div>
-        <a class="more" href="courses.html">全部课程 →</a></div>
-      <div class="grid c3">
-        ${cs.slice(0, 6).map(c => {
-          const n = (c.chapters || []).reduce((a, ch) => a + (ch.lessons || []).length, 0);
-          return `<a class="card pad" href="course.html?id=${encodeURIComponent(c.id)}">
-            <div style="display:flex;align-items:center"><span class="pill">${E(c.level || '入门')}</span>
-              <span class="pill k" style="margin-left:auto">${n} 节</span></div>
-            <b style="display:block;font-size:16.5px;margin:12px 0 8px">${E(c.title)}</b>
-            <p class="mut small" style="line-height:1.8">${E((c.summary || '').slice(0, 52))}</p>
-            <span class="btn s p" style="margin-top:14px;display:inline-flex">进入学习</span></a>`;
-        }).join('') || '<div class="empty">课程数据加载中…</div>'}
-      </div>
-    </div></section>
-
-    <section class="sec"><div class="wrap">
-      <div class="sechead"><div><div class="slash">/ question bank</div><h2>免费题库与模拟考</h2></div>
-        <a class="more" href="quiz.html">进入题库 →</a></div>
-      <div style="display:flex;gap:26px;flex-wrap:wrap;align-items:center">
-        <div class="card pad lay-main">
-          <b style="font-size:16px">四种刷题模式</b>
-          <div style="margin-top:14px">
-            ${[['章节练习', '按模块做题，做完即看解析', 'practice.html?mode=chapter'],
-              ['随机刷题', '碎片时间随时刷 20 题', 'practice.html?mode=random&n=20'],
-              ['模拟考试', '限时 40 题，自动判分', 'practice.html?mode=exam'],
-              ['错题重练', '只做做错的题，直到做对', 'practice.html?mode=wrong']].map(([t, d, h]) => `
-              <a class="kv" href="${h}" style="align-items:center"><span style="font-weight:700">${t}</span>
-                <span class="mut small" style="margin-left:14px">${d}</span>
-                <span class="blue small" style="margin-left:auto;font-weight:700">进入 →</span></a>`).join('')}
-          </div>
-        </div>
-        <div class="sidebox lay-side">
-          <h4>可下载 / 打印资料</h4>
-          ${docs.map(d => `<a class="kv" href="${E(d.path)}" target="_blank"><span>${E(d.title)}</span>
-            <span class="blue small">打开</span></a>`).join('') || '<p class="mut small">资料整理中…</p>'}
-          <a class="btn o block" style="margin-top:12px" href="docs.html">全部资料</a></div>
-      </div>
-      <div class="callout note" style="margin-top:18px"><span class="lb">📘 关于「和官方题库一样」</span>
-        官方低压电工考题库不对外公开、也有版权限制，任何第三方都无法做到「与官方题库实时同步」。
-        本站能保证的是：<b>题型与官方一致（判断 + 单选）、考点范围按官方大纲覆盖、每题都有解析</b>，
-        并提供了导入脚本，拿到新题随时自行更新。请勿把它当作押题工具。</div>
-    </div></section>
-
-    <section class="sec g"><div class="wrap">
-      <div class="sechead"><div><div class="slash">/ exam news</div><h2>考试资讯</h2></div>
-        <a class="more" href="news.html">全部资讯 →</a></div>
-      <div class="card" style="overflow:hidden">
-        ${news.map(a => `<a class="kv" href="news.html?id=${a.id}" style="padding:16px 22px">
-          <span class="pill k">${E(a.category)}</span>
-          <span style="font-weight:700;margin-left:14px">${E(a.title)}</span>
-          <span class="mut small" style="margin-left:auto">${E(a.date)}</span></a>`).join('') || '<div class="empty">资讯整理中…</div>'}
-      </div>
     </div></section>`;
   }
 
   /* ---------------- 学习计划 ---------------- */
   function plan() {
-    App.mount('学习计划');
+    App.mount('mine');
     const p = App.D.plan || {}, weeks = p.weeks || [], meta = p.meta || {};
     const totalDays = weeks.reduce((n, w) => n + (w.days || []).length, 0);
     const doneN = App.planDone.count();
     M().innerHTML = `
     <div class="wrap pagehead">
-      <div class="breadcrumb"><a href="index.html">首页</a> / 学习计划</div>
+      <div class="breadcrumb"><a href="index.html">今日学习</a> / <a href="mine.html">我的</a> / 70 天学习计划</div>
       <h1>70 天学习计划</h1>
       <p class="mut" style="margin-top:10px">${E(meta.total_days || 70)} 天 / ${E(meta.weeks || 10)} 周 ·
         ${E(meta.daily_rhythm || '每天 1~2 小时')} · 已打卡 ${doneN} / ${totalDays} 天</p>
-      <div class="callout note" style="margin-top:14px"><span class="lb">📺 视频链接说明</span>
-        每天下面挂的视频都是<b>已逐条核实</b>的真实链接，点开即播，不用自己去 B 站搜；
-        少数主题（如接地电阻测试仪、登高用具）确实没有找到可信的专门视频，这些天给的是搜索入口。</div>
     </div>
     <div class="wrap" style="padding-bottom:60px">
       <div class="grid c4" style="margin-bottom:26px">
@@ -714,10 +649,6 @@ const Pages = (function () {
         <div class="card pad"><div class="mut small">打卡说明</div>
           <p style="margin-top:8px;font-size:13.5px;line-height:1.85">打勾记录保存在本机浏览器，换设备不会同步。</p></div>
       </div>
-      <div class="toc" style="margin-bottom:22px"><div class="th">10 周主题一览</div>
-        <div class="wk-grid">
-        ${weeks.map(w => `<a class="side-item" href="#w${w.week}"><b style="color:#2A4FE4">第 ${w.week} 周</b>
-          <span class="mut small" style="margin-left:8px">${E(w.theme || '')}</span></a>`).join('')}</div></div>
       ${weeks.map(w => `
         <div class="week" id="w${w.week}">
           <div class="wk-head"><span class="pill">第 ${w.week} 周</span><b>${E(w.theme || '')}</b>
@@ -725,25 +656,16 @@ const Pages = (function () {
           <div class="wk-body">
             ${(w.days || []).map(d => {
               const key = 'w' + w.week + 'd' + d.day, on = App.planDone.has(key);
-              const vids = App.videosFor((d.task || '') + ' ' + (w.theme || ''), 2);
               return `<div class="day-row ${on ? 'done' : ''}" style="align-items:flex-start">
                 <input type="checkbox" data-day="${key}" ${on ? 'checked' : ''} style="margin-top:8px">
                 <span class="wd" style="margin-top:4px">${E(d.weekday || '')}</span>
                 <span class="tk" style="flex:1">
                   <span style="display:block">第 ${d.day} 天 · ${E(d.task || '')}</span>
-                  <span style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
-                    ${vids.map(vmini).join('') || (d.link
-                      ? `<a class="vlink" href="${E(d.link)}" target="_blank" rel="noopener" style="margin:0;padding:5px 10px">
-                           <span class="vp" style="padding:2px 7px">▶</span>
-                           <span class="vt" style="font-size:12px">这一天暂无核实视频，可在 B 站按关键词找</span></a>` : '')}
-                  </span>
                 </span>
                 <span class="du" style="margin-top:4px">${E(d.minutes || '')}</span>
               </div>`; }).join('')}
           </div>
         </div>`).join('') || '<div class="empty">计划数据加载中…</div>'}
-      ${(p.tips || []).length ? `<div class="callout tip" style="margin-top:20px"><span class="lb">💡 备考贴士</span>
-        ${p.tips.map(t => E(t)).join('<br>')}</div>` : ''}
     </div>`;
     M().querySelectorAll('[data-day]').forEach(cb => cb.onchange = () => {
       App.planDone.toggle(cb.dataset.day);
@@ -754,150 +676,114 @@ const Pages = (function () {
 
   /* ---------------- 通俗知识库 ---------------- */
   function knowledge() {
-    App.mount('知识库');
+    App.mount('mine');
     const list = ((App.D.knowledge || {}).entries) || [];
-    const cats = ['全部', ...Array.from(new Set(list.map(x => x.category)))];
-    const id = App.q('id');
-    const one = list.find(x => x.id === id);
-    if (one) {
-      M().innerHTML = `<div class="wrap" style="padding:30px 32px 60px;max-width:900px">
-        <div class="breadcrumb"><a href="index.html">首页</a> / <a href="knowledge.html">知识库</a> / ${E(one.title)}</div>
-        <div class="meta"><span class="pill k">${E(one.category)}</span><span>${list.length} 条知识</span></div>
-        <h1 style="font-size:32px;font-weight:900;line-height:1.45;margin-top:12px">${E(one.title)}</h1>
-        ${App.figureHtml('know:' + one.id)}
-        ${one.summary ? `<div class="callout note" style="margin-top:18px"><span class="lb">📖 一句话回答</span>${E(one.summary)}</div>` : ''}
-        <article class="article" style="margin-top:18px">${(one.body || []).map(x => `<p>${E(x)}</p>`).join('')}
-          ${(one.keyPoints || []).length ? `<div class="keypoints"><h4>要记住的点</h4><ul>${one.keyPoints.map((k, i) => `<li>${E(k)}${(one.keyPointImages && one.keyPointImages[i]) ? `<img class="kp-img" src="${one.keyPointImages[i]}" alt="要点配图" loading="lazy">` : ''}</li>`).join('')}</ul></div>` : ''}
-        </article>
-        <div style="display:flex;gap:12px;margin-top:20px;flex-wrap:wrap">
-          <a class="btn o" href="knowledge.html">← 返回知识库</a>
-          ${one.courseHint ? `<a class="btn p" href="courses.html">去找相关课程</a>` : ''}</div></div>`;
-      return;
-    }
     M().innerHTML = `
     <div class="wrap pagehead">
-      <div class="breadcrumb"><a href="index.html">首页</a> / 通俗知识库</div>
+      <div class="breadcrumb"><a href="index.html">今日学习</a> / <a href="mine.html">我的</a> / 知识库</div>
       <h1>通俗知识库</h1>
       <p class="mut" style="margin-top:10px">用大白话回答电工学习里最容易卡住的问题 · 共 ${list.length} 条</p>
-      <div class="callout note" style="margin-top:16px"><span class="lb">📘 内容说明</span>
-        这里的条目是在已有学习资料基础上重新整理的通俗解释，用来帮助理解；涉及数值与规程时，以课程正文、源资料与官方标准为准。</div>
     </div>
     <div class="wrap" style="padding-bottom:60px">
-      <div class="toolbar">${cats.map((c, i) => `<span class="pill ${i === 0 ? '' : 'k'}" data-kcat="${c}" style="cursor:pointer">${c}</span>`).join('')}</div>
-      <div class="grid" id="kGrid" style="grid-template-columns:1fr;gap:22px">
-        ${list.map(x => `<a class="card pad" data-kcat="${E(x.category)}" href="knowledge.html?id=${x.id}">
-          <div style="display:flex;align-items:center;gap:10px">
-            <span class="pill k">${E(x.category)}</span></div>
-          ${App.figureHtml('know:' + x.id)}
+      <div class="grid" style="grid-template-columns:1fr;gap:22px">
+        ${list.map(x => `<a class="card pad" href="knowledge.html?id=${x.id}">
           <b style="display:block;font-size:16.5px;margin:12px 0 8px">${E(x.title)}</b>
           <p class="mut" style="font-size:13px;line-height:1.8">${E(x.summary || (x.body || [''])[0] || '').slice(0, 72)}</p>
-          <span class="blue small" style="font-weight:700;display:inline-block;margin-top:10px">看详细讲解 →</span></a>`).join('')
-        || '<div class="empty">知识库内容整理中…</div>'}
+        </a>`).join('') || '<div class="empty">知识库内容整理中…</div>'}
       </div>
     </div>`;
-    M().querySelectorAll('[data-kcat]').forEach(el => {
-      if (el.tagName !== 'SPAN') return;
-      el.onclick = () => {
-        const c = el.dataset.kcat;
-        M().querySelectorAll('.toolbar [data-kcat]').forEach(x => { x.className = 'pill ' + (x.dataset.kcat === c ? '' : 'k'); x.style.cursor = 'pointer'; });
-        M().querySelectorAll('#kGrid [data-kcat]').forEach(card => card.style.display = (c === '全部' || card.dataset.kcat === c) ? '' : 'none');
-      };
-    });
   }
 
   /* ---------------- 资料下载 ---------------- */
   function docs() {
-    App.mount('资料下载');
+    App.mount('mine');
     const list = (App.D.docs && App.D.docs.docs) || [];
-    const cats = ['全部', ...Array.from(new Set(list.map(d => d.category)))];
     M().innerHTML = `
     <div class="wrap pagehead">
-      <div class="breadcrumb"><a href="index.html">首页</a> / 资料下载</div>
+      <div class="breadcrumb"><a href="index.html">今日学习</a> / <a href="mine.html">我的</a> / 资料下载</div>
       <h1>资料下载</h1>
       <p class="mut" style="margin-top:10px">共 ${list.length} 项 · 本地资料可直接打开或打印（Ctrl+P 可存为 PDF）</p>
-      ${App.videos().length ? `<div class="callout note" style="margin-top:14px"><span class="lb">📺 已验证视频资源</span>
-        本站在 B 站共收录 <b>${App.videos().length} 条逐条核实过的视频</b>（打开后即播，不需要自己搜）。
-        按主题看：<br>${['电流', '欧姆定律', '串并联', '三相', '安全电压', '接地', '漏电保护器', '接触器', '电机', '导线', '双控', '插座', '万用表', '兆欧表', '心肺复苏', '灭火']
-          .map(k => { const v = App.videosFor(k, 1)[0]; return v ? `<a href="${v.url}" target="_blank" rel="noopener" style="display:inline-block;margin:6px 10px 0 0">${E(k)} · ${E(v.title.slice(0, 18))}…</a>` : ''; }).join('')}
-      </div>` : ''}
     </div>
     <div class="wrap" style="padding-bottom:60px">
-      <div class="toolbar">${cats.map((c, i) => `<span class="pill ${i === 0 ? '' : 'k'}" data-cat="${c}" style="cursor:pointer">${c}</span>`).join('')}</div>
       <div class="table-card"><table class="list" id="docTable">
         <tr><th style="width:70px">格式</th><th>资料名称</th><th style="width:120px">分类</th><th style="width:90px">大小</th><th style="width:220px">说明</th><th style="width:90px">操作</th></tr>
-        ${list.map(d => `<tr data-cat="${E(d.category)}"><td class="nowrap"><span class="pill k">${E(d.format)}</span></td>
+        ${list.map(d => `<tr><td class="nowrap"><span class="pill k">${E(d.format)}</span></td>
           <td><b style="color:#111">${E(d.title)}</b></td><td class="nowrap mut">${E(d.category)}</td>
           <td class="nowrap mut">${E(d.size || '')}</td><td class="mut" style="font-size:12.5px">${E(d.desc || '')}</td>
           <td class="nowrap"><a class="blue" style="font-weight:700" href="${E(d.path)}" target="_blank">${d.local ? '打开' : '前往'}</a></td></tr>`).join('')}
       </table></div>
-      <div class="callout note" style="margin-top:18px"><span class="lb">📘 使用建议</span>
-        把「一站式学习手册」和「每日学习表」用浏览器打印成 PDF 存到手机里，通勤时看；练习卷可以打印出来当纸质卷子做，效果比一直盯屏幕好。</div>
-      ${((App.D.upmasters || {}).upmasters || []).length ? `
-      <div class="sechead" style="margin-top:40px"><div><div class="slash">/ bilibili</div><h2>B 站名师推荐</h2></div></div>
-      <div class="grid c3">
-        ${(App.D.upmasters.upmasters).map(u => `<div class="card pad">
-          <div style="display:flex;align-items:center;gap:10px">
-            <span style="width:34px;height:34px;border-radius:50%;background:var(--blueT);color:var(--blue);
-              display:flex;align-items:center;justify-content:center;font-weight:900;flex:none">${E(u.name.slice(0, 1))}</span>
-            <div><b style="font-size:15.5px">${E(u.name)}</b>
-              <div class="mut" style="font-size:12px">${E(u.fans || '')}${u.tag ? ' · ' + E(u.tag) : ''}</div></div></div>
-          ${(u.works || []).length ? `<ul style="margin-top:12px">${u.works.map(w => `<li style="font-size:13px;line-height:1.85;list-style:none;padding-left:16px;position:relative;color:#3C4048"><span style="position:absolute;left:0;color:#9AA0A8">·</span>${E(w)}</li>`).join('')}</ul>` : ''}
-          ${u.fit ? `<p class="mut" style="font-size:12.5px;line-height:1.8;margin-top:10px">适合：${E(u.fit)}</p>` : ''}
-          ${u.url ? `<a class="btn s o" style="margin-top:12px" href="${E(u.url)}" target="_blank">进入 B 站主页 ↗</a>` : ''}
-        </div>`).join('')}</div>` : ''}
     </div>`;
-    M().querySelectorAll('[data-cat]').forEach(el => el.onclick = () => {
-      const c = el.dataset.cat;
-      M().querySelectorAll('.toolbar [data-cat]').forEach(x => x.className = 'pill ' + (x.dataset.cat === c ? '' : 'k'));
-      M().querySelectorAll('.toolbar [data-cat]').forEach(x => x.style.cursor = 'pointer');
-      M().querySelectorAll('#docTable tr[data-cat]').forEach(tr => tr.style.display = (c === '全部' || tr.dataset.cat === c) ? '' : 'none');
-    });
   }
 
   /* ---------------- 行业资讯 ---------------- */
   function news() {
-    App.mount('行业资讯');
+    App.mount('mine');
     const list = (App.D.news && App.D.news.articles) || [];
-    const id = App.q('id');
-    const one = list.find(a => a.id === id);
-    if (one) {
-      M().innerHTML = `<div class="wrap" style="padding:30px 32px 60px;max-width:900px">
-        <div class="breadcrumb"><a href="index.html">首页</a> / <a href="news.html">行业资讯</a> / ${E(one.title)}</div>
-        <h1 style="font-size:32px;font-weight:900;line-height:1.45">${E(one.title)}</h1>
-        <div class="meta" style="margin-top:14px"><span class="pill k">${E(one.category)}</span><span>${E(one.date)}</span>
-          <span class="mut">${E(one.source || '本站整理')}</span></div>
-        <article class="article" style="margin-top:22px">${(one.body || []).map(p => `<p>${E(p)}</p>`).join('')}</article>
-        <div style="display:flex;gap:12px;margin-top:20px;flex-wrap:wrap">
-          ${one.url ? `<a class="btn p" href="${E(one.url)}" target="_blank" rel="noopener">查看官方原文 ↗</a>` : ''}
-          <a class="btn o" href="news.html">← 返回资讯列表</a></div></div>`;
-      return;
-    }
     M().innerHTML = `
     <div class="wrap pagehead">
-      <div class="breadcrumb"><a href="index.html">首页</a> / 行业资讯</div>
+      <div class="breadcrumb"><a href="index.html">今日学习</a> / <a href="mine.html">我的</a> / 行业资讯</div>
       <h1>行业资讯</h1>
-      <p class="mut" style="margin-top:10px">报考政策 · 考试大纲 · 安全警示（实时抓取自官方渠道）</p>
+      <p class="mut" style="margin-top:10px">报考政策 · 考试大纲 · 安全警示</p>
     </div>
     <div class="wrap" style="padding-bottom:60px">
-      <div class="card pad" style="margin-bottom:20px">
-        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
-          <span class="pill g">数据更新时间：${E((App.D.news.meta || {}).updated || '—')}</span>
-          <span class="mut small">共 ${list.length} 条 · 来源：应急管理部与各省应急管理厅等官方渠道</span></div>
-        <p class="mut small" style="margin-top:12px;line-height:1.9">
-          这是<b>「运行一次更新一次」</b>：在项目目录执行 <code>python scripts/update_news.py</code> 抓取最新资讯，
-          再执行 <code>python scripts/build_site_data.py</code> 生成页面数据，刷新浏览器即可看到新内容。
-          想立刻看官方原文，用下面的实时入口。</p>
-        <div class="srcbar" style="margin-top:12px"><span>官方来源实时入口：</span>
-          ${((App.D.news.meta || {}).sources || []).map(s => `<a href="${E(s.url)}" target="_blank" rel="noopener">${E(s.name)} ↗</a>`).join('')}</div>
-      </div>
-      ${list.map((a, i) => `<a class="card pad" href="news.html?id=${a.id}" style="display:block;margin-bottom:14px">
+      ${list.map(a => `<a class="card pad" href="news.html?id=${a.id}" style="display:block;margin-bottom:14px">
         <div style="display:flex;align-items:center;gap:12px">
-          <span class="display" style="font-size:20px;color:#C3C8CF">${String(i + 1).padStart(2, '0')}</span>
           <span class="pill k">${E(a.category)}</span>
           <b style="font-size:17px">${E(a.title)}</b>
-          <span class="mut small" style="margin-left:auto">${E(a.date)} · ${E(a.source || '')}</span></div>
+          <span class="mut small" style="margin-left:auto">${E(a.date)}</span></div>
         <p class="mut" style="margin-top:10px;font-size:13.5px;line-height:1.85">${E(a.summary || '')}</p>
       </a>`).join('') || '<div class="empty">资讯整理中…</div>'}
+    </div>`;
+  }
+
+  /* ---------------- 我的（个人中心） ---------------- */
+  function mine() {
+    App.mount('mine');
+    const doneN = App.progress.count();
+    const totalLessons = App.lessonCount();
+    const pct = totalLessons ? Math.round(doneN / totalLessons * 100) : 0;
+    const wrongN = App.wrong.ids().length;
+    const favN = Object.keys(App.fav.all()).length;
+    const planDoneN = App.planDone.count();
+    const exams = App.exams.all();
+    M().innerHTML = `
+    <div class="wrap pagehead">
+      <div class="breadcrumb"><a href="index.html">今日学习</a> / 我的</div>
+      <h1>我的</h1>
+      <p class="mut" style="margin-top:10px">学习记录保存在本机浏览器，换设备不会同步</p>
+    </div>
+    <div class="wrap" style="padding-bottom:60px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;flex-wrap:wrap;margin-bottom:26px">
+        <div class="card pad" style="display:flex;align-items:center;gap:24px">
+          ${App.ring(pct, pct + '%', '总进度')}
+          <div style="flex:1">
+            <b style="font-size:17px">全站学习进度</b>
+            <div class="meta" style="margin-top:8px;font-size:13.5px">
+              <span>${doneN} / ${totalLessons} 节已学</span>
+            </div>
+          </div>
+        </div>
+        <div class="card pad">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+            <div><div class="stat"><b>${wrongN}</b><span>错题本</span></div></div>
+            <div><div class="stat"><b>${favN}</b><span>收藏题</span></div></div>
+            <div><div class="stat"><b>${planDoneN}</b><span>计划打卡天数</span></div></div>
+            <div><div class="stat"><b>${exams.length}</b><span>模拟考次数</span></div></div>
+          </div>
+        </div>
+      </div>
+      <h3 style="font-size:18px;margin-bottom:14px">学习工具</h3>
+      <div class="grid c3" style="margin-bottom:26px">
+        <a class="card pad" href="plan.html"><b>70 天学习计划</b><p class="mut small" style="margin-top:8px">每日打卡，按周推进备考节奏。</p><span class="btn s p" style="margin-top:12px;display:inline-flex">打开计划</span></a>
+        <a class="card pad" href="docs.html"><b>资料下载</b><p class="mut small" style="margin-top:8px">手册、练习卷、学习表，可打印。</p><span class="btn s p" style="margin-top:12px;display:inline-flex">全部资料</span></a>
+        <a class="card pad" href="wrong.html"><b>错题本</b><p class="mut small" style="margin-top:8px">自动收录做错的题，反复练到会。</p><span class="btn s p" style="margin-top:12px;display:inline-flex">错题重练</span></a>
+        <a class="card pad" href="cert.html"><b>考证专区</b><p class="mut small" style="margin-top:8px">报考常识、考试信息速查。</p><span class="btn s p" style="margin-top:12px;display:inline-flex">查看详情</span></a>
+        <a class="card pad" href="knowledge.html"><b>知识库</b><p class="mut small" style="margin-top:8px">用大白话回答电工学习里的问题。</p><span class="btn s p" style="margin-top:12px;display:inline-flex">浏览知识</span></a>
+        <a class="card pad" href="news.html"><b>行业资讯</b><p class="mut small" style="margin-top:8px">报考政策、考试大纲、安全警示。</p><span class="btn s p" style="margin-top:12px;display:inline-flex">全部资讯</span></a>
+      </div>
+      <div class="callout note" style="margin-top:20px"><span class="lb">📘 关于数据同步</span>
+        本站所有学习进度、笔记、错题、收藏都保存在你当前浏览器的 localStorage 里，<b>不会上传到服务器</b>。
+        换设备或清除浏览器数据后会丢失，建议重要笔记自己另外备份。</div>
     </div>`;
   }
 
@@ -909,11 +795,9 @@ const Pages = (function () {
     const total = r.courses.length + r.lessons.length + r.questions.length + r.docs.length + r.news.length;
     M().innerHTML = `
     <div class="wrap pagehead">
-      <div class="breadcrumb"><a href="index.html">首页</a> / 站内搜索</div>
+      <div class="breadcrumb"><a href="index.html">今日学习</a> / 站内搜索</div>
       <h1>搜索「${E(kw)}」</h1>
       <p class="mut" style="margin-top:10px">共找到 ${total} 条结果</p>
-      <div class="searchbox" style="width:100%;max-width:520px;margin-top:16px;height:44px">
-        <i></i><input id="pageSearch" value="${E(kw)}" placeholder="搜索课程 / 讲义 / 题目 / 资料"></div>
     </div>
     <div class="wrap" style="padding-bottom:60px">
       ${section('课程', r.courses.map(c => `<a class="kv" href="course.html?id=${encodeURIComponent(c.id)}"><span style="font-weight:700">${E(c.title)}</span><span class="mut small">${E(c.level || '')}</span></a>`))}
@@ -921,17 +805,15 @@ const Pages = (function () {
       ${section('题目', r.questions.map(x => `<a class="kv" href="practice.html?mode=chapter&chapter=${encodeURIComponent(x.chapter || '')}"><span>${E(x.stem).slice(0, 60)}</span><span class="mut small">${E(x.chapter || '')}</span></a>`))}
       ${section('资料', r.docs.map(d => `<a class="kv" href="${E(d.path)}" target="_blank"><span>${E(d.title)}</span><span class="mut small">${E(d.category)}</span></a>`))}
       ${section('资讯', r.news.map(a => `<a class="kv" href="news.html?id=${a.id}"><span>${E(a.title)}</span><span class="mut small">${E(a.date)}</span></a>`))}
-      ${total ? '' : '<div class="card empty">没有找到相关内容，换个关键词试试（例如：欧姆定律 / 漏电保护 / 心肺复苏）。</div>'}
+      ${total ? '' : '<div class="card empty">没有找到相关内容，换个关键词试试。</div>'}
     </div>`;
-    const inp = document.getElementById('pageSearch');
-    inp.addEventListener('keydown', e => { if (e.key === 'Enter') location.href = 'search.html?q=' + encodeURIComponent(inp.value.trim()); });
     function section(t, rows) {
       if (!rows.length) return '';
       return `<h3 style="margin:26px 0 10px;font-size:17px">${t}（${rows.length}）</h3><div class="card pad">${rows.join('')}</div>`;
     }
   }
 
-  const MAP = { home, courses, course, lesson, bank, practice, result, wrong: wrongPage, handsOn, cert, plan, docs, news, search, knowledge };
+  const MAP = { home, courses, course, lesson, bank, practice, result, wrong: wrongPage, handsOn, cert, plan, docs, news, search, knowledge, mine };
   function boot() {
     const page = document.body.dataset.page;
     try { (MAP[page] || home)(); }
