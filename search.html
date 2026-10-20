@@ -1,29 +1,111 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>站内搜索</title>
-<meta name="description" content="在课程、讲义、题目、资料与资讯中搜索。">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232A4FE4'/><path d='M56 14 30 56h18l-6 30 26-42H50z' fill='%23fff'/></svg>">
-<link rel="stylesheet" href="assets/css/site.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>元件百科 · 电工学堂</title>
+<style>
+:root{--bg:#F0F2F5;--card:#FFFFFF;--ink:#1D2129;--ink2:#5A6068;--muted:#86909C;--line:#E5E6EB;--blue:#2B6CB0;--blueD:#1E4E8C;--blueL:#4A90D9;--blueT:#E8F0FE;--shadow:0 2px 10px rgba(20,32,48,.06);--r:12px;--r-sm:8px;--sidebar-w:220px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;color:var(--ink);background:var(--bg);font-size:14px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sidebar-w);background:#fff;border-right:1px solid var(--line);display:flex;flex-direction:column;overflow-y:auto;z-index:50}
+.brand{display:flex;align-items:center;gap:10px;padding:18px 16px 16px;border-bottom:1px solid var(--line)}
+.brand-logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--blueL));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex:none}
+.brand-name{font-size:15px;font-weight:700}
+.brand-tag{font-size:10.5px;color:var(--muted);margin-top:2px}
+.nav-group-label{font-size:10.5px;color:var(--muted);padding:16px 16px 6px;letter-spacing:.5px;font-weight:600}
+.nav-list{display:flex;flex-direction:column;gap:2px;padding:0 10px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:9px;font-size:13.5px;color:var(--ink);cursor:pointer;font-weight:500;text-align:left;width:100%;background:none;border:none;font-family:inherit}
+.nav-item .ni-ico{width:20px;height:20px;flex:none;font-size:15px}
+.nav-item:hover{background:#F2F5F9}
+.nav-item.on{background:var(--blueT);color:var(--blue);font-weight:700}
+.sidebar-foot{margin-top:auto;padding:14px 16px;font-size:11px;color:var(--muted);line-height:1.7;border-top:1px solid var(--line)}
+.main-area{margin-left:var(--sidebar-w);min-height:100vh}
+.content{max-width:1100px;width:100%;margin:0 auto;padding:20px 24px 60px}
+.mobile-topbar{display:none;position:sticky;top:0;z-index:60;height:52px;align-items:center;gap:12px;padding:0 16px;background:#fff;border-bottom:1px solid var(--line)}
+.mb-logo{font-weight:800;font-size:15px;color:var(--blue)}
+.mb-title{flex:1;font-size:14.5px;font-weight:600}
+.mb-toggle{width:36px;height:36px;border:0;background:#F4F6F9;border-radius:8px;cursor:pointer;font-size:18px}
+.mobile-tabbar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;background:#fff;border-top:1px solid var(--line);padding:6px 0 calc(6px + env(safe-area-inset-bottom))}
+.mtab{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 0;cursor:pointer;color:var(--muted);font-size:10.5px;font-weight:500}
+.mtab .mt-ico{font-size:18px}
+.mtab.on{color:var(--blue);font-weight:700}
+.pagehead{padding:8px 0 20px}
+.pagehead h1{font-size:24px;font-weight:800}
+.pagehead p{font-size:13.5px;color:var(--muted);margin-top:6px}
+.search-box{display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid var(--line);border-radius:var(--r-sm);padding:0 14px;height:44px;margin-bottom:16px}
+.search-box input{flex:1;border:0;outline:0;font-size:14px;font-family:inherit}
+.search-box input::placeholder{color:var(--muted)}
+.search-box button{background:var(--blue);color:#fff;border:0;border-radius:6px;height:32px;padding:0 16px;font-size:13px;cursor:pointer;font-weight:600}
+.filter-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.tag{padding:6px 14px;border-radius:16px;font-size:12px;background:#fff;border:1px solid var(--line);cursor:pointer;color:var(--ink2)}
+.tag.on{background:var(--blueT);color:var(--blue);border-color:var(--blue);font-weight:600}
+.card{background:#fff;border-radius:var(--r);padding:18px;margin-bottom:14px;box-shadow:var(--shadow)}
+.card h3{font-size:14.5px;font-weight:700;margin-bottom:12px}
+.comp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.comp-item{background:#F7F9FC;border:1px solid var(--line);border-radius:10px;padding:14px;cursor:pointer;transition:all .15s}
+.comp-item:hover{border-color:var(--blue);background:#fff;transform:translateY(-1px)}
+.comp-icon{font-size:24px;margin-bottom:8px}
+.comp-name{font-size:13px;font-weight:600;margin-bottom:4px}
+.comp-desc{font-size:11.5px;color:var(--muted);line-height:1.5}
+.toast{position:fixed;bottom:40px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(29,41,57,.92);color:#fff;padding:10px 18px;border-radius:20px;font-size:12.5px;opacity:0;transition:all .25s;z-index:999}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:960px){.sidebar{display:none}.main-area{margin-left:0}.mobile-topbar{display:flex}.mobile-tabbar{display:flex}.content{padding:14px 14px 80px}.comp-grid{grid-template-columns:repeat(2,1fr)}.pagehead h1{font-size:20px}}
+</style>
 </head>
-<body data-page="search">
-<div id="nav"></div>
-<main id="main"></main>
-<div id="footer"></div>
-<script src="data/courses.js"></script>
-<script src="data/questions.js"></script>
-<script src="data/plan.js"></script>
-<script src="data/docs.js"></script>
-<script src="data/news.js"></script>
-<script src="data/knowledge.js"></script>
-<script src="data/upmasters.js"></script>
-<script src="data/videos.js"></script>
-<script src="data/figures.js"></script>
-<script src="data/lessons.js"></script>
-<script src="assets/js/core.js"></script>
-<script src="assets/js/quiz.js"></script>
-<script src="assets/js/pages.js"></script>
+<body>
+<aside class="sidebar">
+<div class="brand"><div class="brand-logo">电</div><div><div class="brand-name">电工学堂</div><div class="brand-tag">E-LEARN · 公益免费</div></div></div>
+<div class="nav-group-label">主导航</div>
+<nav class="nav-list">
+<a href="index.html" class="nav-item"><span class="ni-ico">🏠</span>今日学习</a>
+<a href="courses.html" class="nav-item"><span class="ni-ico">📚</span>课程学习</a>
+<a href="lab.html" class="nav-item"><span class="ni-ico">⚡</span>实操仿真</a>
+<a href="quiz.html" class="nav-item"><span class="ni-ico">✏️</span>考试刷题</a>
+<a href="mine.html" class="nav-item"><span class="ni-ico">👤</span>我的</a>
+</nav>
+<div class="nav-group-label">全局工具</div>
+<nav class="nav-list">
+<a href="search.html" class="nav-item on"><span class="ni-ico">🔍</span>元件百科</a>
+<a href="search.html" class="nav-item"><span class="ni-ico">🔎</span>全局搜索</a>
+</nav>
+<div class="sidebar-foot">70 天计划 · 第 18/70 天<br>数据保存在本机浏览器</div>
+</aside>
+<div class="main-area">
+<div class="mobile-topbar"><span class="mb-logo">⚡ 电工学堂</span><span class="mb-title">元件百科</span><button class="mb-toggle" onclick="toast('菜单功能开发中')">☰</button></div>
+<div class="content">
+<div class="pagehead"><h1>元件百科</h1><p>196 种常用电工元件 · 符号 · 参数 · 用途 · 随查随用</p></div>
+<div class="search-box"><input type="text" placeholder="搜索元件名称，如：接触器、断路器、热继电器..."><button onclick="toast('搜索功能开发中')">搜索</button></div>
+<div class="filter-tags">
+<span class="tag on">全部</span>
+<span class="tag">开关类</span>
+<span class="tag">保护类</span>
+<span class="tag">控制类</span>
+<span class="tag">测量类</span>
+<span class="tag">电机类</span>
+<span class="tag">照明类</span>
+</div>
+<div class="card"><h3>常用元件（部分）</h3><div class="comp-grid">
+<div class="comp-item" onclick="toast('查看：交流接触器')"><div class="comp-icon">🔘</div><div class="comp-name">交流接触器</div><div class="comp-desc">频繁通断主电路，电磁驱动，常开常闭触点</div></div>
+<div class="comp-item" onclick="toast('查看：低压断路器')"><div class="comp-icon">🔌</div><div class="comp-name">低压断路器</div><div class="comp-desc">短路、过载、欠压保护，可重复使用</div></div>
+<div class="comp-item" onclick="toast('查看：熔断器')"><div class="comp-icon">💥</div><div class="comp-name">熔断器</div><div class="comp-desc">短路保护，一次性，熔丝熔断后更换</div></div>
+<div class="comp-item" onclick="toast('查看：热继电器')"><div class="comp-icon">🌡️</div><div class="comp-name">热继电器</div><div class="comp-desc">电动机过载保护，双金属片热变形原理</div></div>
+<div class="comp-item" onclick="toast('查看：中间继电器')"><div class="comp-icon">⚙️</div><div class="comp-name">中间继电器</div><div class="comp-desc">触点扩展、信号放大，控制电路中转</div></div>
+<div class="comp-item" onclick="toast('查看：按钮开关')"><div class="comp-icon">🔘</div><div class="comp-name">按钮开关</div><div class="comp-desc">手动操作，常开常闭，自复位</div></div>
+<div class="comp-item" onclick="toast('查看：转换开关')"><div class="comp-icon">🔄</div><div class="comp-name">转换开关</div><div class="comp-desc">多档位切换，电路选择、正反转切换</div></div>
+<div class="comp-item" onclick="toast('查看：行程开关')"><div class="comp-icon">🚪</div><div class="comp-name">行程开关</div><div class="comp-desc">位置检测，机械碰撞触发，限位保护</div></div>
+<div class="comp-item" onclick="toast('查看：漏电保护器')"><div class="comp-icon">⚡</div><div class="comp-name">漏电保护器</div><div class="comp-desc">人身触电保护，剩余电流检测，30mA动作</div></div>
+</div></div>
+</div>
+</div>
+<div class="mobile-tabbar">
+<a href="index.html" class="mtab"><div class="mt-ico">🏠</div>今日学习</a>
+<a href="courses.html" class="mtab"><div class="mt-ico">📚</div>课程学习</a>
+<a href="lab.html" class="mtab"><div class="mt-ico">⚡</div>实操仿真</a>
+<a href="quiz.html" class="mtab"><div class="mt-ico">✏️</div>考试刷题</a>
+<a href="mine.html" class="mtab"><div class="mt-ico">👤</div>我的</a>
+</div>
+<script>function toast(msg){let t=document.getElementById('globalToast');if(!t){t=document.createElement('div');t.id='globalToast';t.className='toast';document.body.appendChild(t);}t.textContent=msg;t.classList.add('show');clearTimeout(t._tm);t._tm=setTimeout(()=>t.classList.remove('show'),1900);}</script>
 </body>
 </html>

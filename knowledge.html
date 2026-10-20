@@ -1,30 +1,99 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>通俗知识库</title>
-<meta name="description" content="用大白话回答电工学习里最容易卡住的问题。">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232A4FE4'/><path d='M56 14 30 56h18l-6 30 26-42H50z' fill='%23fff'/></svg>">
-<link rel="stylesheet" href="assets/css/site.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>知识库 · 电工学堂</title>
+<style>
+:root{--bg:#F0F2F5;--card:#FFFFFF;--ink:#1D2129;--ink2:#5A6068;--muted:#86909C;--line:#E5E6EB;--blue:#2B6CB0;--blueD:#1E4E8C;--blueL:#4A90D9;--blueT:#E8F0FE;--shadow:0 2px 10px rgba(20,32,48,.06);--r:12px;--r-sm:8px;--sidebar-w:220px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;color:var(--ink);background:var(--bg);font-size:14px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sidebar-w);background:#fff;border-right:1px solid var(--line);display:flex;flex-direction:column;overflow-y:auto;z-index:50}
+.brand{display:flex;align-items:center;gap:10px;padding:18px 16px 16px;border-bottom:1px solid var(--line)}
+.brand-logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--blueL));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex:none}
+.brand-name{font-size:15px;font-weight:700}
+.brand-tag{font-size:10.5px;color:var(--muted);margin-top:2px}
+.nav-group-label{font-size:10.5px;color:var(--muted);padding:16px 16px 6px;letter-spacing:.5px;font-weight:600}
+.nav-list{display:flex;flex-direction:column;gap:2px;padding:0 10px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:9px;font-size:13.5px;color:var(--ink);cursor:pointer;font-weight:500;text-align:left;width:100%;background:none;border:none;font-family:inherit}
+.nav-item .ni-ico{width:20px;height:20px;flex:none;font-size:15px}
+.nav-item:hover{background:#F2F5F9}
+.nav-item.on{background:var(--blueT);color:var(--blue);font-weight:700}
+.sidebar-foot{margin-top:auto;padding:14px 16px;font-size:11px;color:var(--muted);line-height:1.7;border-top:1px solid var(--line)}
+.main-area{margin-left:var(--sidebar-w);min-height:100vh}
+.content{max-width:1100px;width:100%;margin:0 auto;padding:20px 24px 60px}
+.mobile-topbar{display:none;position:sticky;top:0;z-index:60;height:52px;align-items:center;gap:12px;padding:0 16px;background:#fff;border-bottom:1px solid var(--line)}
+.mb-logo{font-weight:800;font-size:15px;color:var(--blue)}
+.mb-title{flex:1;font-size:14.5px;font-weight:600}
+.mb-toggle{width:36px;height:36px;border:0;background:#F4F6F9;border-radius:8px;cursor:pointer;font-size:18px}
+.mobile-tabbar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;background:#fff;border-top:1px solid var(--line);padding:6px 0 calc(6px + env(safe-area-inset-bottom))}
+.mtab{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 0;cursor:pointer;color:var(--muted);font-size:10.5px;font-weight:500}
+.mtab .mt-ico{font-size:18px}
+.mtab.on{color:var(--blue);font-weight:700}
+.pagehead{padding:8px 0 20px}
+.pagehead h1{font-size:24px;font-weight:800}
+.pagehead p{font-size:13.5px;color:var(--muted);margin-top:6px}
+.card{background:#fff;border-radius:var(--r);padding:18px;margin-bottom:14px;box-shadow:var(--shadow)}
+.card h3{font-size:14.5px;font-weight:700;margin-bottom:12px}
+.knowledge-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.know-item{background:#F7F9FC;border:1px solid var(--line);border-radius:10px;padding:16px;cursor:pointer;transition:all .15s}
+.know-item:hover{border-color:var(--blue);background:#fff;transform:translateY(-1px)}
+.know-cat{font-size:11px;color:var(--blue);font-weight:600;margin-bottom:8px}
+.know-title{font-size:14px;font-weight:700;margin-bottom:6px}
+.know-desc{font-size:12px;color:var(--muted);line-height:1.6}
+.toast{position:fixed;bottom:40px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(29,41,57,.92);color:#fff;padding:10px 18px;border-radius:20px;font-size:12.5px;opacity:0;transition:all .25s;z-index:999}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:960px){.sidebar{display:none}.main-area{margin-left:0}.mobile-topbar{display:flex}.mobile-tabbar{display:flex}.content{padding:14px 14px 80px}.knowledge-grid{grid-template-columns:1fr}.pagehead h1{font-size:20px}}
+</style>
 </head>
-<body data-page="knowledge">
-<div id="nav"></div>
-<main id="main"></main>
-<div id="footer"></div>
-<script src="data/courses.js"></script>
-<script src="data/questions.js"></script>
-<script src="data/plan.js"></script>
-<script src="data/docs.js"></script>
-<script src="data/news.js"></script>
-<script src="data/knowledge.js"></script>
-<script src="data/upmasters.js"></script>
-<script src="data/videos.js"></script>
-<script src="data/figures.js"></script>
-<script src="data/know-lab-override.js"></script>
-<script src="data/lessons.js"></script>
-<script src="assets/js/core.js"></script>
-<script src="assets/js/quiz.js"></script>
-<script src="assets/js/pages.js"></script>
+<body>
+<aside class="sidebar">
+<div class="brand"><div class="brand-logo">电</div><div><div class="brand-name">电工学堂</div><div class="brand-tag">E-LEARN · 公益免费</div></div></div>
+<div class="nav-group-label">主导航</div>
+<nav class="nav-list">
+<a href="index.html" class="nav-item"><span class="ni-ico">🏠</span>今日学习</a>
+<a href="courses.html" class="nav-item"><span class="ni-ico">📚</span>课程学习</a>
+<a href="lab.html" class="nav-item"><span class="ni-ico">⚡</span>实操仿真</a>
+<a href="quiz.html" class="nav-item"><span class="ni-ico">✏️</span>考试刷题</a>
+<a href="mine.html" class="nav-item"><span class="ni-ico">👤</span>我的</a>
+</nav>
+<div class="nav-group-label">全局工具</div>
+<nav class="nav-list">
+<a href="search.html" class="nav-item"><span class="ni-ico">🔍</span>元件百科</a>
+<a href="search.html" class="nav-item"><span class="ni-ico">🔎</span>全局搜索</a>
+</nav>
+<div class="sidebar-foot">70 天计划 · 第 18/70 天<br>数据保存在本机浏览器</div>
+</aside>
+<div class="main-area">
+<div class="mobile-topbar"><span class="mb-logo">⚡ 电工学堂</span><span class="mb-title">知识库</span><button class="mb-toggle" onclick="toast('菜单功能开发中')">☰</button></div>
+<div class="content">
+<div class="pagehead"><h1>知识库</h1><p>用大白话讲明白电工概念 · 通俗易懂 · 随查随用</p></div>
+<div class="card"><h3>安全用电</h3><div class="knowledge-grid">
+<div class="know-item" onclick="toast('查看：什么是安全电压？')"><div class="know-cat">安全用电</div><div class="know-title">什么是安全电压？</div><div class="know-desc">36V 以下为什么是安全的？干燥和潮湿环境有什么区别？一次讲清楚。</div></div>
+<div class="know-item" onclick="toast('查看：触电了怎么急救？')"><div class="know-cat">安全用电</div><div class="know-title">触电了怎么急救？</div><div class="know-desc">先断电还是先救人？心肺复苏怎么做？黄金 4 分钟很关键。</div></div>
+<div class="know-item" onclick="toast('查看：接地和接零有什么区别？')"><div class="know-cat">安全用电</div><div class="know-title">接地和接零有什么区别？</div><div class="know-desc">PE 线和 N 线不是一回事！保护接地和保护接零别搞混。</div></div>
+<div class="know-item" onclick="toast('查看：漏电保护器工作原理')"><div class="know-cat">安全用电</div><div class="know-title">漏电保护器工作原理</div><div class="know-desc">为什么漏电了它会跳闸？30mA 和 30mA·s 是什么意思？</div></div>
+</div></div>
+<div class="card"><h3>低压电器</h3><div class="knowledge-grid">
+<div class="know-item" onclick="toast('查看：断路器和熔断器的区别')"><div class="know-cat">低压电器</div><div class="know-title">断路器和熔断器的区别</div><div class="know-desc">哪个是"保险丝"？哪个能重复用？各自保护什么故障？</div></div>
+<div class="know-item" onclick="toast('查看：交流接触器怎么工作？')"><div class="know-cat">低压电器</div><div class="know-title">交流接触器怎么工作？</div><div class="know-desc">线圈通电为什么会吸合？常开常闭触点是什么意思？</div></div>
+<div class="know-item" onclick="toast('查看：热继电器是干嘛的？')"><div class="know-cat">低压电器</div><div class="know-title">热继电器是干嘛的？</div><div class="know-desc">电动机过载为什么会烧？热继电器怎么保护电机？</div></div>
+<div class="know-item" onclick="toast('查看：中间继电器有什么用？')"><div class="know-cat">低压电器</div><div class="know-title">中间继电器有什么用？</div><div class="know-desc">信号放大？触点扩展？为什么控制电路里到处都是它？</div></div>
+</div></div>
+<div class="card"><h3>电动机与控制</h3><div class="knowledge-grid">
+<div class="know-item" onclick="toast('查看：星三角启动为什么降压？')"><div class="know-cat">电动机</div><div class="know-title">星三角启动为什么降压？</div><div class="know-desc">直接启动电流有多大？为什么要先星型再三角型？</div></div>
+<div class="know-item" onclick="toast('查看：正反转怎么实现？')"><div class="know-cat">电动机</div><div class="know-title">正反转怎么实现？</div><div class="know-desc">调换两根线就能反转？互锁为什么必不可少？</div></div>
+</div></div>
+</div>
+</div>
+<div class="mobile-tabbar">
+<a href="index.html" class="mtab"><div class="mt-ico">🏠</div>今日学习</a>
+<a href="courses.html" class="mtab"><div class="mt-ico">📚</div>课程学习</a>
+<a href="lab.html" class="mtab"><div class="mt-ico">⚡</div>实操仿真</a>
+<a href="quiz.html" class="mtab"><div class="mt-ico">✏️</div>考试刷题</a>
+<a href="mine.html" class="mtab"><div class="mt-ico">👤</div>我的</a>
+</div>
+<script>function toast(msg){let t=document.getElementById('globalToast');if(!t){t=document.createElement('div');t.id='globalToast';t.className='toast';document.body.appendChild(t);}t.textContent=msg;t.classList.add('show');clearTimeout(t._tm);t._tm=setTimeout(()=>t.classList.remove('show'),1900);}</script>
 </body>
 </html>
